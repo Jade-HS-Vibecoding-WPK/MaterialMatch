@@ -26,7 +26,7 @@ const prod = id => PR.find(p => p.id === id);
 // Unabhängige Nachbildung: generischer Datensatz + Werte des Standardprodukts (so startet die Seite)
 const KEYS = ['rohdichte', 'waermeleitfaehigkeit', 'waermeleitfaehigkeit_bemessung', 'druckfestigkeit', 'preis', 'gwp', 'brandverhalten', 'wasserdampf_mu', 'waermekapazitaet', 'recycling'];
 const gemischt = m => { const e = Object.assign({}, m.eigenschaften); const std = PR.find(p => p.material === m.id && p.standard); if (std) Object.assign(e, std.eigenschaften); return e; };
-const zaehleLive = () => { const z = { richt: 0, bsp: 0, na: 0, nv: 0 }; DB.baustoffe.forEach(m => { const e = gemischt(m); KEYS.forEach(k => { const x = e[k] || {}; const hat = x.werte !== undefined ? x.werte !== null : (x.wert !== null && x.wert !== undefined); if (x.nicht_anwendbar) z.na++; else if (!hat) z.nv++; else if (x.art === 'beispiel') z.bsp++; else z.richt++; }); }); return z; };
+const zaehleLive = (echtModus) => { const z = { richt: 0, bsp: 0, na: 0, nv: 0 }; DB.baustoffe.forEach(m => { const e = gemischt(m); KEYS.forEach(k => { const x = e[k] || {}; const ec = echtModus && x.echt && x.echt.wert !== null && x.echt.wert !== undefined; const hat = x.werte !== undefined ? x.werte !== null : (x.wert !== null && x.wert !== undefined); if (x.nicht_anwendbar) z.na++; else if (ec) z.richt++; else if (!hat) z.nv++; else if (x.art === 'beispiel') z.bsp++; else z.richt++; }); }); return z; };
 const mat = id => DB.baustoffe.find(m => m.id === id);
 const qu = id => DB.quellen.find(q => q.id === id);
 
@@ -50,7 +50,7 @@ const qu = id => DB.quellen.find(q => q.id === id);
   await p.click('#modus-schalter');
   const m1 = await modus(p);
   const anzB2 = await p.evaluate(() => MATERIALMATCH_DATA.baustoffe.flatMap(m => Object.values(m.eigenschaften)).filter(e => e.art === 'beispiel').length);
-  const ZL = zaehleLive();
+  const ZL = zaehleLive(false), ZE = zaehleLive(true);
   check('Demo-Modus bleibt optional verfügbar: Schalter an → Demo-Modus, die Beispieldaten sind wieder da (Zahl aus den Rohdaten nachgebildet: generische Datensätze plus Standardprodukte)', m1.m === 'demo' && m1.an && anzB2 === ZL.bsp && anzB2 > 0, [m1.m, anzB2, ZL]);
   const pd = await neu(URL + '?modus=demo');
   check('Adresszusatz ?modus=demo startet im Demo-Modus, ?modus=echt im Echtdaten-Modus', (await modus(pd)).m === 'demo' && (await modus(await neu(URL + '?modus=echt'))).m === 'echt');
@@ -143,7 +143,7 @@ const qu = id => DB.quellen.find(q => q.id === id);
   const neueQuellen = ['hersteller-sager-saglan-sr30', 'eta-thermo-hanf', 'hersteller-rheinzink-produktlinien'].map(qu);
   check('Neue Quellen vollständig: Titel, https-URL, Abrufdatum, Quellenart, Region, Geltung, Produkt, geprüft', neueQuellen.every(x => x && x.geprueft === true && /^https:\/\//.test(x.url) && /^\d{4}-\d{2}-\d{2}$/.test(x.abgerufen) && x.quellenart && x.region && x.geltung === 'produktspezifisch' && x.produkt && x.titel));
   const zaehle = await p.evaluate(() => { const z = MM.quellen.zaehle(MATERIALMATCH_DATA); const pr = MM.quellen.pruefe(MATERIALMATCH_DATA); return { s: z.summe, ok: pr.ok, f: MM.pruefeDaten(MATERIALMATCH_DATA).fehler.length }; });
-  check(`Zählung in der Anwendung = unabhängige Nachbildung (generische Datensätze + Standardprodukte): 500 Felder = ${ZL.richt} Richtwerte + ${ZL.na} nicht anwendbar + ${ZL.nv + ZL.bsp} nicht verfügbar (Echtdaten-Modus: ${ZL.bsp} Beispieldaten zählen als nicht verfügbar)`, zaehle.s.gesamt === 500 && zaehle.s.richtwert === ZL.richt && zaehle.s.beispiel === 0 && zaehle.s.nicht_anwendbar === ZL.na && zaehle.s.fehlt === ZL.nv + ZL.bsp && zaehle.ok && zaehle.f === 0, [zaehle.s, ZL]);
+  check(`Zählung in der Anwendung = unabhängige Nachbildung (generische Datensätze + Standardprodukte): 500 Felder = ${ZE.richt} Richtwerte (inkl. belegte Händlerpreisspannen „echt“) + ${ZE.na} nicht anwendbar + ${ZE.nv + ZE.bsp} nicht verfügbar (Echtdaten-Modus: ${ZE.bsp} Beispieldaten zählen als nicht verfügbar)`, zaehle.s.gesamt === 500 && zaehle.s.richtwert === ZE.richt && zaehle.s.beispiel === 0 && zaehle.s.nicht_anwendbar === ZE.na && zaehle.s.fehlt === ZE.nv + ZE.bsp && zaehle.ok && zaehle.f === 0, [zaehle.s, ZE]);
   const zd = await (await neu(URL + '?modus=demo')).evaluate(() => MM.quellen.zaehle(MATERIALMATCH_DATA).summe);
   check('Dieselbe Zählung im Demo-Modus: die Beispieldaten sind als solche gezählt, nicht verfügbar = die übrigen', zd.beispiel === ZL.bsp && zd.fehlt === ZL.nv && zd.richtwert === ZL.richt, [zd, ZL]);
 

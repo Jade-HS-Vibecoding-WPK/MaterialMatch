@@ -10,20 +10,20 @@ Erzeugt am 2026-11-18 mit `node tools/pruefe_datenqualitaet.js --bericht` (Daten
 |---|---|
 | Baustoffe | 50 |
 | Produkte | 82 |
-| Quellen | 154 |
+| Quellen | 168 |
 | Kennwert-Felder (50 × 10) | 500 |
-| belegt | 142 |
-| nur Beispiel | 82 |
-| fehlt | 257 |
+| belegt | 156 |
+| nur Beispiel | 76 |
+| fehlt | 249 |
 | nicht anwendbar | 19 |
-| Materialien mit belegtem Preis | 5 von 50 |
+| Materialien mit belegtem Preis | 19 von 50 |
 | Produkte mit Preis | 40 |
 
 ## Je Kennwert
 
 | Kennwert | belegt | nur Beispiel | fehlt | n. a. | Grund, weshalb Lücken bleiben |
 |---|---|---|---|---|---|
-| Preis | 5 | 15 | 30 | 0 | Kein frei abrufbarer deutscher Händler- oder Herstellerpreis gefunden (BKI-Baupreise kostenpflichtig; HORNBACH, BAUHAUS, OBI und viele Händler blockieren automatische Abrufe, das wurde nicht umgangen; Heinze verbietet automatisches Auslesen). Preise stehen bei Produkten mit Preisliste und als Preisspanne bei allgemeinen Baustoffen mit mindestens zwei belegten Produktpreisen. |
+| Preis | 19 | 9 | 22 | 0 | Kein frei abrufbarer deutscher Händler- oder Herstellerpreis gefunden (BKI-Baupreise kostenpflichtig; HORNBACH, BAUHAUS, OBI, Baustoffshop, benz24 und Contorion blockieren automatische Abrufe, das wurde nicht umgangen; Heinze verbietet automatisches Auslesen). Preise stehen bei Produkten mit Preisliste und als Preisspanne bei allgemeinen Baustoffen mit mindestens zwei belegten Produktpreisen (Händlerpreise von bausep.de seit MaterialMatch 3.3). |
 | Rohdichte | 38 | 3 | 9 | 0 | Der ÖKOBAUDAT-Datensatz nennt für dieses Material keine Rohdichte. |
 | Wärmeleitfähigkeit λ (Nennwert) | 9 | 9 | 32 | 0 | Bemessungs- und Nennwerte stehen in kostenpflichtigen Normen (DIN 4108-4, DIN EN ISO 10456); für das allgemeine Material liegt kein frei zugänglicher, passender Herstellerwert vor. Produkte mit Herstellerangabe tragen ihre eigenen Werte. |
 | Bemessungswert λB | 2 | 0 | 48 | 0 | Der Bemessungswert nach DIN 4108-4 bzw. Zulassung ist kostenpflichtig oder produktspezifisch; ein Wert wird nur bei Produkten mit Herstellerangabe für Deutschland geführt. |
@@ -41,33 +41,33 @@ Erzeugt am 2026-11-18 mit `node tools/pruefe_datenqualitaet.js --bericht` (Daten
 | Normalbeton (C25/30) | belegt | belegt | nur Beispiel | FEHLT | nur Beispiel | belegt | belegt | nur Beispiel | belegt | nur Beispiel |
 | Stahlbeton (C30/37, bewehrt) | nur Beispiel | nur Beispiel | nur Beispiel | FEHLT | nur Beispiel | nur Beispiel | belegt | nur Beispiel | FEHLT | nur Beispiel |
 | Mauerziegel, ungefüllt (Hochlochziegel) | nur Beispiel | belegt | belegt | FEHLT | nur Beispiel | belegt | belegt | nur Beispiel | belegt | nur Beispiel |
-| Porenbeton (P2 04, unbewehrt) | nur Beispiel | belegt | belegt | FEHLT | nur Beispiel | belegt | belegt | nur Beispiel | belegt | nur Beispiel |
+| Porenbeton (P2 04, unbewehrt) | belegt | belegt | belegt | FEHLT | nur Beispiel | belegt | belegt | nur Beispiel | belegt | nur Beispiel |
 | Brettsperrholz (BSP / CLT) | nur Beispiel | belegt | nur Beispiel | FEHLT | nur Beispiel | nur Beispiel | nur Beispiel | nur Beispiel | belegt | nur Beispiel |
 | Brettschichtholz (BSH, GL24h) | nur Beispiel | belegt | nur Beispiel | FEHLT | nur Beispiel | nur Beispiel | nur Beispiel | nur Beispiel | belegt | nur Beispiel |
-| Konstruktionsvollholz (KVH, C24) | nur Beispiel | belegt | nur Beispiel | FEHLT | nur Beispiel | nur Beispiel | nur Beispiel | nur Beispiel | belegt | nur Beispiel |
+| Konstruktionsvollholz (KVH, C24) | belegt | belegt | nur Beispiel | FEHLT | nur Beispiel | nur Beispiel | nur Beispiel | nur Beispiel | belegt | nur Beispiel |
 | Baustahl (Profile und Stabstahl) | nur Beispiel | belegt | nur Beispiel | FEHLT | nur Beispiel | n. a. | belegt | n. a. | belegt | nur Beispiel |
-| Mineralwolle (Fassadendämmung) | nur Beispiel | belegt | belegt | belegt | nur Beispiel | n. a. | belegt | belegt | belegt | nur Beispiel |
-| EPS (expandiertes Polystyrol) | nur Beispiel | belegt | belegt | belegt | nur Beispiel | n. a. | belegt | nur Beispiel | belegt | nur Beispiel |
-| Holzfaserdämmung | nur Beispiel | belegt | nur Beispiel | FEHLT | nur Beispiel | n. a. | nur Beispiel | nur Beispiel | belegt | nur Beispiel |
+| Mineralwolle (Fassadendämmung) | belegt | belegt | belegt | belegt | nur Beispiel | n. a. | belegt | belegt | belegt | nur Beispiel |
+| EPS (expandiertes Polystyrol) | belegt | belegt | belegt | belegt | nur Beispiel | n. a. | belegt | nur Beispiel | belegt | nur Beispiel |
+| Holzfaserdämmung | belegt | belegt | nur Beispiel | FEHLT | nur Beispiel | n. a. | nur Beispiel | nur Beispiel | belegt | nur Beispiel |
 | Zellulosedämmung | nur Beispiel | belegt | belegt | FEHLT | belegt | n. a. | belegt | belegt | belegt | nur Beispiel |
 | Hanfdämmung | nur Beispiel | belegt | belegt | FEHLT | nur Beispiel | n. a. | belegt | nur Beispiel | belegt | nur Beispiel |
 | Klinker (Fassadenklinker) | nur Beispiel | belegt | nur Beispiel | FEHLT | nur Beispiel | nur Beispiel | belegt | nur Beispiel | belegt | nur Beispiel |
 | Gipsplatte (nach DIN EN 520 / DIN 18180) | nur Beispiel | nur Beispiel | nur Beispiel | FEHLT | nur Beispiel | n. a. | nur Beispiel | nur Beispiel | belegt | nur Beispiel |
-| OSB-Platte | nur Beispiel | belegt | belegt | FEHLT | nur Beispiel | n. a. | belegt | nur Beispiel | belegt | nur Beispiel |
+| OSB-Platte | belegt | belegt | belegt | FEHLT | nur Beispiel | n. a. | belegt | nur Beispiel | belegt | nur Beispiel |
 | Dachziegel (Tonziegel) | FEHLT | nur Beispiel | FEHLT | FEHLT | FEHLT | n. a. | belegt | FEHLT | belegt | nur Beispiel |
 | Leichtbetonstein (Naturbims) | FEHLT | belegt | FEHLT | FEHLT | FEHLT | FEHLT | belegt | FEHLT | belegt | FEHLT |
 | Leichtbetonstein (Blähton, Planstein Außenwand) | FEHLT | belegt | FEHLT | FEHLT | FEHLT | FEHLT | belegt | FEHLT | belegt | FEHLT |
 | Kalksandstein | belegt | belegt | FEHLT | FEHLT | FEHLT | FEHLT | belegt | FEHLT | belegt | FEHLT |
 | Massivholz Nadelholz (Schnittholz, getrocknet) | FEHLT | belegt | FEHLT | FEHLT | FEHLT | FEHLT | FEHLT | FEHLT | belegt | FEHLT |
 | Massivholz Laubholz (Schnittholz, getrocknet) | FEHLT | belegt | FEHLT | FEHLT | FEHLT | FEHLT | FEHLT | FEHLT | belegt | FEHLT |
-| Glaswolle (SAGLAN, phenolharzgebunden) | FEHLT | belegt | belegt | FEHLT | FEHLT | n. a. | belegt | belegt | belegt | FEHLT |
-| Steinwolle (Flachdämmplatte) | FEHLT | belegt | FEHLT | FEHLT | FEHLT | n. a. | belegt | FEHLT | belegt | FEHLT |
-| XPS (extrudiertes Polystyrol) | FEHLT | belegt | FEHLT | FEHLT | FEHLT | n. a. | FEHLT | FEHLT | belegt | FEHLT |
-| PUR-Hartschaum | FEHLT | belegt | FEHLT | FEHLT | FEHLT | n. a. | FEHLT | FEHLT | belegt | FEHLT |
-| PIR-Hartschaum | FEHLT | belegt | FEHLT | FEHLT | FEHLT | n. a. | FEHLT | FEHLT | belegt | FEHLT |
+| Glaswolle (SAGLAN, phenolharzgebunden) | belegt | belegt | belegt | FEHLT | FEHLT | n. a. | belegt | belegt | belegt | FEHLT |
+| Steinwolle (Flachdämmplatte) | belegt | belegt | FEHLT | FEHLT | FEHLT | n. a. | belegt | FEHLT | belegt | FEHLT |
+| XPS (extrudiertes Polystyrol) | belegt | belegt | FEHLT | FEHLT | FEHLT | n. a. | FEHLT | FEHLT | belegt | FEHLT |
+| PUR-Hartschaum | belegt | belegt | FEHLT | FEHLT | FEHLT | n. a. | FEHLT | FEHLT | belegt | FEHLT |
+| PIR-Hartschaum | belegt | belegt | FEHLT | FEHLT | FEHLT | n. a. | FEHLT | FEHLT | belegt | FEHLT |
 | Flachsdämmung (Flachsvlies) | FEHLT | belegt | FEHLT | FEHLT | FEHLT | n. a. | FEHLT | FEHLT | belegt | FEHLT |
 | Kork (expandiert) | FEHLT | belegt | FEHLT | FEHLT | FEHLT | n. a. | FEHLT | FEHLT | belegt | FEHLT |
-| Schaumglas | FEHLT | belegt | FEHLT | FEHLT | FEHLT | n. a. | belegt | FEHLT | belegt | FEHLT |
+| Schaumglas | belegt | belegt | FEHLT | FEHLT | FEHLT | n. a. | belegt | FEHLT | belegt | FEHLT |
 | Schafwolle (Isolena) | FEHLT | belegt | FEHLT | FEHLT | FEHLT | n. a. | FEHLT | FEHLT | belegt | FEHLT |
 | Faserzementplatte (Fassade) | FEHLT | belegt | FEHLT | FEHLT | FEHLT | FEHLT | belegt | FEHLT | belegt | FEHLT |
 | Aluminiumblech | FEHLT | belegt | FEHLT | FEHLT | FEHLT | FEHLT | belegt | FEHLT | belegt | FEHLT |
@@ -77,7 +77,7 @@ Erzeugt am 2026-11-18 mit `node tools/pruefe_datenqualitaet.js --bericht` (Daten
 | Keramische Fliesen (Steinzeug, unglasiert) | FEHLT | FEHLT | FEHLT | FEHLT | FEHLT | FEHLT | belegt | FEHLT | belegt | FEHLT |
 | Kalkzement-Putzmörtel | belegt | belegt | FEHLT | FEHLT | FEHLT | FEHLT | belegt | FEHLT | belegt | FEHLT |
 | Fensterglas (Einfachglas) | FEHLT | FEHLT | FEHLT | FEHLT | FEHLT | FEHLT | belegt | FEHLT | belegt | FEHLT |
-| Gipsfaserplatte (10 mm) | FEHLT | FEHLT | FEHLT | FEHLT | FEHLT | FEHLT | FEHLT | FEHLT | belegt | FEHLT |
+| Gipsfaserplatte (10 mm) | belegt | FEHLT | FEHLT | FEHLT | FEHLT | FEHLT | FEHLT | FEHLT | belegt | FEHLT |
 | Spanplatte (roh) | FEHLT | belegt | FEHLT | FEHLT | FEHLT | FEHLT | FEHLT | FEHLT | belegt | FEHLT |
 | Sperrholz (Furniersperrholz) | FEHLT | belegt | FEHLT | FEHLT | FEHLT | FEHLT | FEHLT | FEHLT | belegt | FEHLT |
 | Zementestrich | FEHLT | belegt | FEHLT | FEHLT | FEHLT | FEHLT | belegt | FEHLT | belegt | FEHLT |
@@ -86,7 +86,7 @@ Erzeugt am 2026-11-18 mit `node tools/pruefe_datenqualitaet.js --bericht` (Daten
 | Betondachstein | FEHLT | FEHLT | FEHLT | FEHLT | FEHLT | FEHLT | belegt | FEHLT | belegt | FEHLT |
 | Schiefer (Schieferplatten) | FEHLT | FEHLT | FEHLT | FEHLT | FEHLT | FEHLT | belegt | FEHLT | belegt | FEHLT |
 | Zinkblech (RHEINZINK-CLASSIC walzblank) | FEHLT | belegt | belegt | FEHLT | FEHLT | FEHLT | belegt | FEHLT | belegt | FEHLT |
-| Bitumenbahn (PYE PV 200 S5, ungeschiefert) | FEHLT | FEHLT | FEHLT | FEHLT | FEHLT | FEHLT | FEHLT | FEHLT | belegt | FEHLT |
+| Bitumenbahn (PYE PV 200 S5, ungeschiefert) | belegt | FEHLT | FEHLT | FEHLT | FEHLT | FEHLT | FEHLT | FEHLT | belegt | FEHLT |
 | EPDM-Dachbahn | FEHLT | FEHLT | FEHLT | FEHLT | FEHLT | FEHLT | FEHLT | FEHLT | belegt | FEHLT |
 
 ## Lückenliste (jeder fehlende Kennwert mit Begründung)
@@ -101,7 +101,7 @@ Erzeugt am 2026-11-18 mit `node tools/pruefe_datenqualitaet.js --bericht` (Daten
 
 ### Stahlbeton (C30/37, bewehrt) (`stahlbeton`)
 
-- **Preis:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Kein frei abrufbarer deutscher Händler- oder Herstellerpreis gefunden (BKI-Baupreise kostenpflichtig; HORNBACH, BAUHAUS, OBI und viele Händler blockieren automatische Abrufe, das wurde nicht umgangen; Heinze verbietet automatisches Auslesen). Preise stehen bei Produkten mit Preisliste und als Preisspanne bei allgemeinen Baustoffen mit mindestens zwei belegten Produktpreisen.
+- **Preis:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Kein frei abrufbarer deutscher Händler- oder Herstellerpreis gefunden (BKI-Baupreise kostenpflichtig; HORNBACH, BAUHAUS, OBI, Baustoffshop, benz24 und Contorion blockieren automatische Abrufe, das wurde nicht umgangen; Heinze verbietet automatisches Auslesen). Preise stehen bei Produkten mit Preisliste und als Preisspanne bei allgemeinen Baustoffen mit mindestens zwei belegten Produktpreisen (Händlerpreise von bausep.de seit MaterialMatch 3.3).
 - **Rohdichte:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Der ÖKOBAUDAT-Datensatz nennt für dieses Material keine Rohdichte.
 - **Wärmeleitfähigkeit λ (Nennwert):** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Bemessungs- und Nennwerte stehen in kostenpflichtigen Normen (DIN 4108-4, DIN EN ISO 10456); für das allgemeine Material liegt kein frei zugänglicher, passender Herstellerwert vor. Produkte mit Herstellerangabe tragen ihre eigenen Werte.
 - **Bemessungswert λB:** Nicht verfügbar: Ein Bemessungswert der Wärmeleitfähigkeit (z. B. nach DIN 4108-4) liegt nicht vor. Die Norm ist kostenpflichtig und wurde nicht eingesehen; ein Herstellerwert wurde nicht gefunden. Es wurde kein Wert angenommen.
@@ -113,7 +113,7 @@ Erzeugt am 2026-11-18 mit `node tools/pruefe_datenqualitaet.js --bericht` (Daten
 
 ### Mauerziegel, ungefüllt (Hochlochziegel) (`hochlochziegel`)
 
-- **Preis:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Kein frei abrufbarer deutscher Händler- oder Herstellerpreis gefunden (BKI-Baupreise kostenpflichtig; HORNBACH, BAUHAUS, OBI und viele Händler blockieren automatische Abrufe, das wurde nicht umgangen; Heinze verbietet automatisches Auslesen). Preise stehen bei Produkten mit Preisliste und als Preisspanne bei allgemeinen Baustoffen mit mindestens zwei belegten Produktpreisen.
+- **Preis:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Kein frei abrufbarer deutscher Händler- oder Herstellerpreis gefunden (BKI-Baupreise kostenpflichtig; HORNBACH, BAUHAUS, OBI, Baustoffshop, benz24 und Contorion blockieren automatische Abrufe, das wurde nicht umgangen; Heinze verbietet automatisches Auslesen). Preise stehen bei Produkten mit Preisliste und als Preisspanne bei allgemeinen Baustoffen mit mindestens zwei belegten Produktpreisen (Händlerpreise von bausep.de seit MaterialMatch 3.3).
 - **Bemessungswert λB:** Nicht verfügbar: Ein Bemessungswert nach DIN 4108-4 oder aus einer gültigen Zulassung liegt für dieses Produkt nicht vor; es wurde kein Wert angenommen.
 - **Spezifische Wärmekapazität:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Normwerte (DIN EN ISO 10456) kostenpflichtig; Herstellerangaben gibt es nur für einzelne Produkte.
 - **Wasserdampf-Diffusionswiderstand μ:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Normwerte (DIN EN ISO 10456) kostenpflichtig; Herstellerangaben nur für einzelne Produkte.
@@ -121,7 +121,6 @@ Erzeugt am 2026-11-18 mit `node tools/pruefe_datenqualitaet.js --bericht` (Daten
 
 ### Porenbeton (P2 04, unbewehrt) (`porenbeton`)
 
-- **Preis:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Kein frei abrufbarer deutscher Händler- oder Herstellerpreis gefunden (BKI-Baupreise kostenpflichtig; HORNBACH, BAUHAUS, OBI und viele Händler blockieren automatische Abrufe, das wurde nicht umgangen; Heinze verbietet automatisches Auslesen). Preise stehen bei Produkten mit Preisliste und als Preisspanne bei allgemeinen Baustoffen mit mindestens zwei belegten Produktpreisen.
 - **Bemessungswert λB:** Nicht verfügbar: Ein Bemessungswert nach DIN 4108-4 oder aus einer gültigen Zulassung liegt für dieses Produkt nicht vor; es wurde kein Wert angenommen.
 - **Spezifische Wärmekapazität:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Normwerte (DIN EN ISO 10456) kostenpflichtig; Herstellerangaben gibt es nur für einzelne Produkte.
 - **Wasserdampf-Diffusionswiderstand μ:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Normwerte (DIN EN ISO 10456) kostenpflichtig; Herstellerangaben nur für einzelne Produkte.
@@ -129,7 +128,7 @@ Erzeugt am 2026-11-18 mit `node tools/pruefe_datenqualitaet.js --bericht` (Daten
 
 ### Brettsperrholz (BSP / CLT) (`brettsperrholz`)
 
-- **Preis:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Kein frei abrufbarer deutscher Händler- oder Herstellerpreis gefunden (BKI-Baupreise kostenpflichtig; HORNBACH, BAUHAUS, OBI und viele Händler blockieren automatische Abrufe, das wurde nicht umgangen; Heinze verbietet automatisches Auslesen). Preise stehen bei Produkten mit Preisliste und als Preisspanne bei allgemeinen Baustoffen mit mindestens zwei belegten Produktpreisen.
+- **Preis:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Kein frei abrufbarer deutscher Händler- oder Herstellerpreis gefunden (BKI-Baupreise kostenpflichtig; HORNBACH, BAUHAUS, OBI, Baustoffshop, benz24 und Contorion blockieren automatische Abrufe, das wurde nicht umgangen; Heinze verbietet automatisches Auslesen). Preise stehen bei Produkten mit Preisliste und als Preisspanne bei allgemeinen Baustoffen mit mindestens zwei belegten Produktpreisen (Händlerpreise von bausep.de seit MaterialMatch 3.3).
 - **Wärmeleitfähigkeit λ (Nennwert):** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Bemessungs- und Nennwerte stehen in kostenpflichtigen Normen (DIN 4108-4, DIN EN ISO 10456); für das allgemeine Material liegt kein frei zugänglicher, passender Herstellerwert vor. Produkte mit Herstellerangabe tragen ihre eigenen Werte.
 - **Bemessungswert λB:** Nicht verfügbar: Ein Bemessungswert der Wärmeleitfähigkeit (z. B. nach DIN 4108-4) liegt nicht vor. Die Norm ist kostenpflichtig und wurde nicht eingesehen; ein Herstellerwert wurde nicht gefunden. Es wurde kein Wert angenommen.
 - **Spezifische Wärmekapazität:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Normwerte (DIN EN ISO 10456) kostenpflichtig; Herstellerangaben gibt es nur für einzelne Produkte.
@@ -140,7 +139,7 @@ Erzeugt am 2026-11-18 mit `node tools/pruefe_datenqualitaet.js --bericht` (Daten
 
 ### Brettschichtholz (BSH, GL24h) (`brettschichtholz`)
 
-- **Preis:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Kein frei abrufbarer deutscher Händler- oder Herstellerpreis gefunden (BKI-Baupreise kostenpflichtig; HORNBACH, BAUHAUS, OBI und viele Händler blockieren automatische Abrufe, das wurde nicht umgangen; Heinze verbietet automatisches Auslesen). Preise stehen bei Produkten mit Preisliste und als Preisspanne bei allgemeinen Baustoffen mit mindestens zwei belegten Produktpreisen.
+- **Preis:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Kein frei abrufbarer deutscher Händler- oder Herstellerpreis gefunden (BKI-Baupreise kostenpflichtig; HORNBACH, BAUHAUS, OBI, Baustoffshop, benz24 und Contorion blockieren automatische Abrufe, das wurde nicht umgangen; Heinze verbietet automatisches Auslesen). Preise stehen bei Produkten mit Preisliste und als Preisspanne bei allgemeinen Baustoffen mit mindestens zwei belegten Produktpreisen (Händlerpreise von bausep.de seit MaterialMatch 3.3).
 - **Wärmeleitfähigkeit λ (Nennwert):** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Bemessungs- und Nennwerte stehen in kostenpflichtigen Normen (DIN 4108-4, DIN EN ISO 10456); für das allgemeine Material liegt kein frei zugänglicher, passender Herstellerwert vor. Produkte mit Herstellerangabe tragen ihre eigenen Werte.
 - **Bemessungswert λB:** Nicht verfügbar: Ein Bemessungswert der Wärmeleitfähigkeit (z. B. nach DIN 4108-4) liegt nicht vor. Die Norm ist kostenpflichtig und wurde nicht eingesehen; ein Herstellerwert wurde nicht gefunden. Es wurde kein Wert angenommen.
 - **Spezifische Wärmekapazität:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Normwerte (DIN EN ISO 10456) kostenpflichtig; Herstellerangaben gibt es nur für einzelne Produkte.
@@ -151,7 +150,6 @@ Erzeugt am 2026-11-18 mit `node tools/pruefe_datenqualitaet.js --bericht` (Daten
 
 ### Konstruktionsvollholz (KVH, C24) (`konstruktionsvollholz`)
 
-- **Preis:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Kein frei abrufbarer deutscher Händler- oder Herstellerpreis gefunden (BKI-Baupreise kostenpflichtig; HORNBACH, BAUHAUS, OBI und viele Händler blockieren automatische Abrufe, das wurde nicht umgangen; Heinze verbietet automatisches Auslesen). Preise stehen bei Produkten mit Preisliste und als Preisspanne bei allgemeinen Baustoffen mit mindestens zwei belegten Produktpreisen.
 - **Wärmeleitfähigkeit λ (Nennwert):** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Bemessungs- und Nennwerte stehen in kostenpflichtigen Normen (DIN 4108-4, DIN EN ISO 10456); für das allgemeine Material liegt kein frei zugänglicher, passender Herstellerwert vor. Produkte mit Herstellerangabe tragen ihre eigenen Werte.
 - **Bemessungswert λB:** Nicht verfügbar: Ein Bemessungswert der Wärmeleitfähigkeit (z. B. nach DIN 4108-4) liegt nicht vor. Die Norm ist kostenpflichtig und wurde nicht eingesehen; ein Herstellerwert wurde nicht gefunden. Es wurde kein Wert angenommen.
 - **Spezifische Wärmekapazität:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Normwerte (DIN EN ISO 10456) kostenpflichtig; Herstellerangaben gibt es nur für einzelne Produkte.
@@ -162,7 +160,7 @@ Erzeugt am 2026-11-18 mit `node tools/pruefe_datenqualitaet.js --bericht` (Daten
 
 ### Baustahl (Profile und Stabstahl) (`baustahl`)
 
-- **Preis:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Kein frei abrufbarer deutscher Händler- oder Herstellerpreis gefunden (BKI-Baupreise kostenpflichtig; HORNBACH, BAUHAUS, OBI und viele Händler blockieren automatische Abrufe, das wurde nicht umgangen; Heinze verbietet automatisches Auslesen). Preise stehen bei Produkten mit Preisliste und als Preisspanne bei allgemeinen Baustoffen mit mindestens zwei belegten Produktpreisen.
+- **Preis:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Kein frei abrufbarer deutscher Händler- oder Herstellerpreis gefunden (BKI-Baupreise kostenpflichtig; HORNBACH, BAUHAUS, OBI, Baustoffshop, benz24 und Contorion blockieren automatische Abrufe, das wurde nicht umgangen; Heinze verbietet automatisches Auslesen). Preise stehen bei Produkten mit Preisliste und als Preisspanne bei allgemeinen Baustoffen mit mindestens zwei belegten Produktpreisen (Händlerpreise von bausep.de seit MaterialMatch 3.3).
 - **Wärmeleitfähigkeit λ (Nennwert):** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Bemessungs- und Nennwerte stehen in kostenpflichtigen Normen (DIN 4108-4, DIN EN ISO 10456); für das allgemeine Material liegt kein frei zugänglicher, passender Herstellerwert vor. Produkte mit Herstellerangabe tragen ihre eigenen Werte.
 - **Bemessungswert λB:** Nicht verfügbar: Ein Bemessungswert der Wärmeleitfähigkeit (z. B. nach DIN 4108-4) liegt nicht vor. Die Norm ist kostenpflichtig und wurde nicht eingesehen; ein Herstellerwert wurde nicht gefunden. Es wurde kein Wert angenommen.
 - **Spezifische Wärmekapazität:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Normwerte (DIN EN ISO 10456) kostenpflichtig; Herstellerangaben gibt es nur für einzelne Produkte.
@@ -170,20 +168,17 @@ Erzeugt am 2026-11-18 mit `node tools/pruefe_datenqualitaet.js --bericht` (Daten
 
 ### Mineralwolle (Fassadendämmung) (`mineralwolle`)
 
-- **Preis:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Kein frei abrufbarer deutscher Händler- oder Herstellerpreis gefunden (BKI-Baupreise kostenpflichtig; HORNBACH, BAUHAUS, OBI und viele Händler blockieren automatische Abrufe, das wurde nicht umgangen; Heinze verbietet automatisches Auslesen). Preise stehen bei Produkten mit Preisliste und als Preisspanne bei allgemeinen Baustoffen mit mindestens zwei belegten Produktpreisen.
 - **Spezifische Wärmekapazität:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Normwerte (DIN EN ISO 10456) kostenpflichtig; Herstellerangaben gibt es nur für einzelne Produkte.
 - **Recyclingfähigkeit:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Es gibt keine vergleichbaren Messwerte, nur Freitext; Angaben von WECOBIS/baubook dürfen nicht kopiert werden bzw. erfordern eine Anmeldung. Recyclingfähigkeit fließt deshalb nicht in die Bewertung ein.
 
 ### EPS (expandiertes Polystyrol) (`eps`)
 
-- **Preis:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Kein frei abrufbarer deutscher Händler- oder Herstellerpreis gefunden (BKI-Baupreise kostenpflichtig; HORNBACH, BAUHAUS, OBI und viele Händler blockieren automatische Abrufe, das wurde nicht umgangen; Heinze verbietet automatisches Auslesen). Preise stehen bei Produkten mit Preisliste und als Preisspanne bei allgemeinen Baustoffen mit mindestens zwei belegten Produktpreisen.
 - **Spezifische Wärmekapazität:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Normwerte (DIN EN ISO 10456) kostenpflichtig; Herstellerangaben gibt es nur für einzelne Produkte.
 - **Wasserdampf-Diffusionswiderstand μ:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Normwerte (DIN EN ISO 10456) kostenpflichtig; Herstellerangaben nur für einzelne Produkte.
 - **Recyclingfähigkeit:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Es gibt keine vergleichbaren Messwerte, nur Freitext; Angaben von WECOBIS/baubook dürfen nicht kopiert werden bzw. erfordern eine Anmeldung. Recyclingfähigkeit fließt deshalb nicht in die Bewertung ein.
 
 ### Holzfaserdämmung (`holzfaserdaemmung`)
 
-- **Preis:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Kein frei abrufbarer deutscher Händler- oder Herstellerpreis gefunden (BKI-Baupreise kostenpflichtig; HORNBACH, BAUHAUS, OBI und viele Händler blockieren automatische Abrufe, das wurde nicht umgangen; Heinze verbietet automatisches Auslesen). Preise stehen bei Produkten mit Preisliste und als Preisspanne bei allgemeinen Baustoffen mit mindestens zwei belegten Produktpreisen.
 - **Wärmeleitfähigkeit λ (Nennwert):** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Bemessungs- und Nennwerte stehen in kostenpflichtigen Normen (DIN 4108-4, DIN EN ISO 10456); für das allgemeine Material liegt kein frei zugänglicher, passender Herstellerwert vor. Produkte mit Herstellerangabe tragen ihre eigenen Werte.
 - **Bemessungswert λB:** Nicht verfügbar: Ein Bemessungswert der Wärmeleitfähigkeit (z. B. nach DIN 4108-4) liegt nicht vor. Die Norm ist kostenpflichtig und wurde nicht eingesehen; ein Herstellerwert wurde nicht gefunden. Es wurde kein Wert angenommen.
 - **Spezifische Wärmekapazität:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Normwerte (DIN EN ISO 10456) kostenpflichtig; Herstellerangaben gibt es nur für einzelne Produkte.
@@ -193,13 +188,13 @@ Erzeugt am 2026-11-18 mit `node tools/pruefe_datenqualitaet.js --bericht` (Daten
 
 ### Zellulosedämmung (`zellulose`)
 
-- **Preis:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Kein frei abrufbarer deutscher Händler- oder Herstellerpreis gefunden (BKI-Baupreise kostenpflichtig; HORNBACH, BAUHAUS, OBI und viele Händler blockieren automatische Abrufe, das wurde nicht umgangen; Heinze verbietet automatisches Auslesen). Preise stehen bei Produkten mit Preisliste und als Preisspanne bei allgemeinen Baustoffen mit mindestens zwei belegten Produktpreisen.
+- **Preis:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Kein frei abrufbarer deutscher Händler- oder Herstellerpreis gefunden (BKI-Baupreise kostenpflichtig; HORNBACH, BAUHAUS, OBI, Baustoffshop, benz24 und Contorion blockieren automatische Abrufe, das wurde nicht umgangen; Heinze verbietet automatisches Auslesen). Preise stehen bei Produkten mit Preisliste und als Preisspanne bei allgemeinen Baustoffen mit mindestens zwei belegten Produktpreisen (Händlerpreise von bausep.de seit MaterialMatch 3.3).
 - **Bemessungswert λB:** Nicht verfügbar: Das ISOCELL-Datenblatt nennt Bemessungswerte für Österreich (0,038), die Schweiz (0,037) und in der deutschen Fassung 0,039 W/(m·K) für Deutschland (Herstellerangabe). Ein Beleg aus einer gültigen deutschen Zulassung oder aus DIN 4108-4 liegt nicht vor: Die Zulassung Z-23.11-1236 war nur bis 26.04.2021 gültig (DIBt-Zulassungsdownload), DIN 4108-4 ist kostenpflichtig und wurde nicht eingesehen. Der Schweizer oder österreichische Wert wird nicht als deutscher Bemessungswert verwendet.
 - **Recyclingfähigkeit:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Es gibt keine vergleichbaren Messwerte, nur Freitext; Angaben von WECOBIS/baubook dürfen nicht kopiert werden bzw. erfordern eine Anmeldung. Recyclingfähigkeit fließt deshalb nicht in die Bewertung ein.
 
 ### Hanfdämmung (`hanfdaemmung`)
 
-- **Preis:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Kein frei abrufbarer deutscher Händler- oder Herstellerpreis gefunden (BKI-Baupreise kostenpflichtig; HORNBACH, BAUHAUS, OBI und viele Händler blockieren automatische Abrufe, das wurde nicht umgangen; Heinze verbietet automatisches Auslesen). Preise stehen bei Produkten mit Preisliste und als Preisspanne bei allgemeinen Baustoffen mit mindestens zwei belegten Produktpreisen.
+- **Preis:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Kein frei abrufbarer deutscher Händler- oder Herstellerpreis gefunden (BKI-Baupreise kostenpflichtig; HORNBACH, BAUHAUS, OBI, Baustoffshop, benz24 und Contorion blockieren automatische Abrufe, das wurde nicht umgangen; Heinze verbietet automatisches Auslesen). Preise stehen bei Produkten mit Preisliste und als Preisspanne bei allgemeinen Baustoffen mit mindestens zwei belegten Produktpreisen (Händlerpreise von bausep.de seit MaterialMatch 3.3).
 - **Bemessungswert λB:** Nicht verfügbar: Der Bemessungswert ist laut ETA nach nationalen Regeln festzulegen und steht nicht darin; ein Wert nach DIN 4108-4 oder aus einer deutschen Zulassung liegt nicht vor.
 - **Spezifische Wärmekapazität:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Normwerte (DIN EN ISO 10456) kostenpflichtig; Herstellerangaben gibt es nur für einzelne Produkte.
 - **Wasserdampf-Diffusionswiderstand μ:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Normwerte (DIN EN ISO 10456) kostenpflichtig; Herstellerangaben nur für einzelne Produkte.
@@ -207,7 +202,7 @@ Erzeugt am 2026-11-18 mit `node tools/pruefe_datenqualitaet.js --bericht` (Daten
 
 ### Klinker (Fassadenklinker) (`klinker`)
 
-- **Preis:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Kein frei abrufbarer deutscher Händler- oder Herstellerpreis gefunden (BKI-Baupreise kostenpflichtig; HORNBACH, BAUHAUS, OBI und viele Händler blockieren automatische Abrufe, das wurde nicht umgangen; Heinze verbietet automatisches Auslesen). Preise stehen bei Produkten mit Preisliste und als Preisspanne bei allgemeinen Baustoffen mit mindestens zwei belegten Produktpreisen.
+- **Preis:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Kein frei abrufbarer deutscher Händler- oder Herstellerpreis gefunden (BKI-Baupreise kostenpflichtig; HORNBACH, BAUHAUS, OBI, Baustoffshop, benz24 und Contorion blockieren automatische Abrufe, das wurde nicht umgangen; Heinze verbietet automatisches Auslesen). Preise stehen bei Produkten mit Preisliste und als Preisspanne bei allgemeinen Baustoffen mit mindestens zwei belegten Produktpreisen (Händlerpreise von bausep.de seit MaterialMatch 3.3).
 - **Wärmeleitfähigkeit λ (Nennwert):** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Bemessungs- und Nennwerte stehen in kostenpflichtigen Normen (DIN 4108-4, DIN EN ISO 10456); für das allgemeine Material liegt kein frei zugänglicher, passender Herstellerwert vor. Produkte mit Herstellerangabe tragen ihre eigenen Werte.
 - **Bemessungswert λB:** Nicht verfügbar: Ein Bemessungswert der Wärmeleitfähigkeit (z. B. nach DIN 4108-4) liegt nicht vor. Die Norm ist kostenpflichtig und wurde nicht eingesehen; ein Herstellerwert wurde nicht gefunden. Es wurde kein Wert angenommen.
 - **Spezifische Wärmekapazität:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Normwerte (DIN EN ISO 10456) kostenpflichtig; Herstellerangaben gibt es nur für einzelne Produkte.
@@ -217,7 +212,7 @@ Erzeugt am 2026-11-18 mit `node tools/pruefe_datenqualitaet.js --bericht` (Daten
 
 ### Gipsplatte (nach DIN EN 520 / DIN 18180) (`gipskarton`)
 
-- **Preis:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Kein frei abrufbarer deutscher Händler- oder Herstellerpreis gefunden (BKI-Baupreise kostenpflichtig; HORNBACH, BAUHAUS, OBI und viele Händler blockieren automatische Abrufe, das wurde nicht umgangen; Heinze verbietet automatisches Auslesen). Preise stehen bei Produkten mit Preisliste und als Preisspanne bei allgemeinen Baustoffen mit mindestens zwei belegten Produktpreisen.
+- **Preis:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Kein frei abrufbarer deutscher Händler- oder Herstellerpreis gefunden (BKI-Baupreise kostenpflichtig; HORNBACH, BAUHAUS, OBI, Baustoffshop, benz24 und Contorion blockieren automatische Abrufe, das wurde nicht umgangen; Heinze verbietet automatisches Auslesen). Preise stehen bei Produkten mit Preisliste und als Preisspanne bei allgemeinen Baustoffen mit mindestens zwei belegten Produktpreisen (Händlerpreise von bausep.de seit MaterialMatch 3.3).
 - **Rohdichte:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Der ÖKOBAUDAT-Datensatz nennt für dieses Material keine Rohdichte.
 - **Wärmeleitfähigkeit λ (Nennwert):** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Bemessungs- und Nennwerte stehen in kostenpflichtigen Normen (DIN 4108-4, DIN EN ISO 10456); für das allgemeine Material liegt kein frei zugänglicher, passender Herstellerwert vor. Produkte mit Herstellerangabe tragen ihre eigenen Werte.
 - **Bemessungswert λB:** Nicht verfügbar: Ein Bemessungswert der Wärmeleitfähigkeit (z. B. nach DIN 4108-4) liegt nicht vor. Die Norm ist kostenpflichtig und wurde nicht eingesehen; ein Herstellerwert wurde nicht gefunden. Es wurde kein Wert angenommen.
@@ -228,7 +223,6 @@ Erzeugt am 2026-11-18 mit `node tools/pruefe_datenqualitaet.js --bericht` (Daten
 
 ### OSB-Platte (`osb`)
 
-- **Preis:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Kein frei abrufbarer deutscher Händler- oder Herstellerpreis gefunden (BKI-Baupreise kostenpflichtig; HORNBACH, BAUHAUS, OBI und viele Händler blockieren automatische Abrufe, das wurde nicht umgangen; Heinze verbietet automatisches Auslesen). Preise stehen bei Produkten mit Preisliste und als Preisspanne bei allgemeinen Baustoffen mit mindestens zwei belegten Produktpreisen.
 - **Bemessungswert λB:** Nicht verfügbar: Ein Bemessungswert nach DIN 4108-4 oder aus einer gültigen Zulassung liegt für dieses Produkt nicht vor; es wurde kein Wert angenommen.
 - **Spezifische Wärmekapazität:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Normwerte (DIN EN ISO 10456) kostenpflichtig; Herstellerangaben gibt es nur für einzelne Produkte.
 - **Wasserdampf-Diffusionswiderstand μ:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Normwerte (DIN EN ISO 10456) kostenpflichtig; Herstellerangaben nur für einzelne Produkte.
@@ -297,14 +291,12 @@ Erzeugt am 2026-11-18 mit `node tools/pruefe_datenqualitaet.js --bericht` (Daten
 
 ### Glaswolle (SAGLAN, phenolharzgebunden) (`glaswolle`)
 
-- **Preis:** Nicht verfügbar: Kein belegter Preis (BKI-Daten oder Händlerangebot) vorhanden; es wurde kein Marktpreis angenommen.
 - **Bemessungswert λB:** Nicht verfügbar: Ein Bemessungswert der Wärmeleitfähigkeit (z. B. nach DIN 4108-4) liegt nicht vor. Die Norm ist kostenpflichtig und wurde nicht eingesehen; ein Herstellerwert wurde nicht gefunden. Es wurde kein Wert angenommen.
 - **Spezifische Wärmekapazität:** Nicht verfügbar: Ein geprüfter Beleg liegt noch nicht vor; es wurde kein Wert angenommen.
 - **Recyclingfähigkeit:** Nicht verfügbar: Ein geprüfter Beleg liegt noch nicht vor; es wurde keine Aussage getroffen.
 
 ### Steinwolle (Flachdämmplatte) (`steinwolle`)
 
-- **Preis:** Nicht verfügbar: Kein belegter Preis (BKI-Daten oder Händlerangebot) vorhanden; es wurde kein Marktpreis angenommen.
 - **Wärmeleitfähigkeit λ (Nennwert):** Nicht verfügbar: Die ÖKOBAUDAT enthält keine Wärmeleitfähigkeit. Ein geprüfter Beleg (Herstellerdatenblatt, Leistungserklärung, Norm) liegt noch nicht vor; es wurde kein Wert angenommen.
 - **Bemessungswert λB:** Nicht verfügbar: Ein Bemessungswert der Wärmeleitfähigkeit (z. B. nach DIN 4108-4) liegt nicht vor. Die Norm ist kostenpflichtig und wurde nicht eingesehen; ein Herstellerwert wurde nicht gefunden. Es wurde kein Wert angenommen.
 - **Spezifische Wärmekapazität:** Nicht verfügbar: Ein geprüfter Beleg liegt noch nicht vor; es wurde kein Wert angenommen.
@@ -313,7 +305,6 @@ Erzeugt am 2026-11-18 mit `node tools/pruefe_datenqualitaet.js --bericht` (Daten
 
 ### XPS (extrudiertes Polystyrol) (`xps`)
 
-- **Preis:** Nicht verfügbar: Kein belegter Preis (BKI-Daten oder Händlerangebot) vorhanden; es wurde kein Marktpreis angenommen.
 - **Wärmeleitfähigkeit λ (Nennwert):** Nicht verfügbar: Die ÖKOBAUDAT enthält keine Wärmeleitfähigkeit. Ein geprüfter Beleg (Herstellerdatenblatt, Leistungserklärung, Norm) liegt noch nicht vor; es wurde kein Wert angenommen.
 - **Bemessungswert λB:** Nicht verfügbar: Ein Bemessungswert der Wärmeleitfähigkeit (z. B. nach DIN 4108-4) liegt nicht vor. Die Norm ist kostenpflichtig und wurde nicht eingesehen; ein Herstellerwert wurde nicht gefunden. Es wurde kein Wert angenommen.
 - **Spezifische Wärmekapazität:** Nicht verfügbar: Ein geprüfter Beleg liegt noch nicht vor; es wurde kein Wert angenommen.
@@ -323,7 +314,6 @@ Erzeugt am 2026-11-18 mit `node tools/pruefe_datenqualitaet.js --bericht` (Daten
 
 ### PUR-Hartschaum (`pur`)
 
-- **Preis:** Nicht verfügbar: Kein belegter Preis (BKI-Daten oder Händlerangebot) vorhanden; es wurde kein Marktpreis angenommen.
 - **Wärmeleitfähigkeit λ (Nennwert):** Nicht verfügbar: Die ÖKOBAUDAT enthält keine Wärmeleitfähigkeit. Ein geprüfter Beleg (Herstellerdatenblatt, Leistungserklärung, Norm) liegt noch nicht vor; es wurde kein Wert angenommen.
 - **Bemessungswert λB:** Nicht verfügbar: Ein Bemessungswert der Wärmeleitfähigkeit (z. B. nach DIN 4108-4) liegt nicht vor. Die Norm ist kostenpflichtig und wurde nicht eingesehen; ein Herstellerwert wurde nicht gefunden. Es wurde kein Wert angenommen.
 - **Spezifische Wärmekapazität:** Nicht verfügbar: Ein geprüfter Beleg liegt noch nicht vor; es wurde kein Wert angenommen.
@@ -333,7 +323,6 @@ Erzeugt am 2026-11-18 mit `node tools/pruefe_datenqualitaet.js --bericht` (Daten
 
 ### PIR-Hartschaum (`pir`)
 
-- **Preis:** Nicht verfügbar: Kein belegter Preis (BKI-Daten oder Händlerangebot) vorhanden; es wurde kein Marktpreis angenommen.
 - **Wärmeleitfähigkeit λ (Nennwert):** Nicht verfügbar: Die ÖKOBAUDAT enthält keine Wärmeleitfähigkeit. Ein geprüfter Beleg (Herstellerdatenblatt, Leistungserklärung, Norm) liegt noch nicht vor; es wurde kein Wert angenommen.
 - **Bemessungswert λB:** Nicht verfügbar: Ein Bemessungswert der Wärmeleitfähigkeit (z. B. nach DIN 4108-4) liegt nicht vor. Die Norm ist kostenpflichtig und wurde nicht eingesehen; ein Herstellerwert wurde nicht gefunden. Es wurde kein Wert angenommen.
 - **Spezifische Wärmekapazität:** Nicht verfügbar: Ein geprüfter Beleg liegt noch nicht vor; es wurde kein Wert angenommen.
@@ -363,7 +352,6 @@ Erzeugt am 2026-11-18 mit `node tools/pruefe_datenqualitaet.js --bericht` (Daten
 
 ### Schaumglas (`schaumglas`)
 
-- **Preis:** Nicht verfügbar: Kein belegter Preis (BKI-Daten oder Händlerangebot) vorhanden; es wurde kein Marktpreis angenommen.
 - **Wärmeleitfähigkeit λ (Nennwert):** Nicht verfügbar: Die ÖKOBAUDAT enthält keine Wärmeleitfähigkeit. Ein geprüfter Beleg (Herstellerdatenblatt, Leistungserklärung, Norm) liegt noch nicht vor; es wurde kein Wert angenommen.
 - **Bemessungswert λB:** Nicht verfügbar: Ein Bemessungswert der Wärmeleitfähigkeit (z. B. nach DIN 4108-4) liegt nicht vor. Die Norm ist kostenpflichtig und wurde nicht eingesehen; ein Herstellerwert wurde nicht gefunden. Es wurde kein Wert angenommen.
 - **Spezifische Wärmekapazität:** Nicht verfügbar: Ein geprüfter Beleg liegt noch nicht vor; es wurde kein Wert angenommen.
@@ -465,7 +453,6 @@ Erzeugt am 2026-11-18 mit `node tools/pruefe_datenqualitaet.js --bericht` (Daten
 
 ### Gipsfaserplatte (10 mm) (`gipsfaserplatte`)
 
-- **Preis:** Nicht verfügbar: Kein belegter Preis (BKI-Daten oder Händlerangebot) vorhanden; es wurde kein Marktpreis angenommen.
 - **Rohdichte:** Nicht verfügbar: Der ÖKOBAUDAT-Datensatz nennt für dieses Produkt keine Rohdichte (nur das Flächengewicht).
 - **Wärmeleitfähigkeit λ (Nennwert):** Nicht verfügbar: Die ÖKOBAUDAT enthält keine Wärmeleitfähigkeit. Ein geprüfter Beleg (Herstellerdatenblatt, Leistungserklärung, Norm) liegt noch nicht vor; es wurde kein Wert angenommen.
 - **Bemessungswert λB:** Nicht verfügbar: Ein Bemessungswert der Wärmeleitfähigkeit (z. B. nach DIN 4108-4) liegt nicht vor. Die Norm ist kostenpflichtig und wurde nicht eingesehen; ein Herstellerwert wurde nicht gefunden. Es wurde kein Wert angenommen.
@@ -558,7 +545,6 @@ Erzeugt am 2026-11-18 mit `node tools/pruefe_datenqualitaet.js --bericht` (Daten
 
 ### Bitumenbahn (PYE PV 200 S5, ungeschiefert) (`bitumenbahn`)
 
-- **Preis:** Nicht verfügbar: Kein belegter Preis (BKI-Daten oder Händlerangebot) vorhanden; es wurde kein Marktpreis angenommen.
 - **Rohdichte:** Nicht verfügbar: Der ÖKOBAUDAT-Datensatz nennt für dieses Produkt keine Rohdichte (nur das Flächengewicht).
 - **Wärmeleitfähigkeit λ (Nennwert):** Nicht verfügbar: Die ÖKOBAUDAT enthält keine Wärmeleitfähigkeit. Ein geprüfter Beleg (Herstellerdatenblatt, Leistungserklärung, Norm) liegt noch nicht vor; es wurde kein Wert angenommen.
 - **Bemessungswert λB:** Nicht verfügbar: Ein Bemessungswert der Wärmeleitfähigkeit (z. B. nach DIN 4108-4) liegt nicht vor. Die Norm ist kostenpflichtig und wurde nicht eingesehen; ein Herstellerwert wurde nicht gefunden. Es wurde kein Wert angenommen.
@@ -586,5 +572,9 @@ Erzeugt am 2026-11-18 mit `node tools/pruefe_datenqualitaet.js --bericht` (Daten
 - **WECOBIS** (www.wecobis.de): erreichbar, enthält aber überwiegend beschreibende Texte (Rohstoffe, Herstellung, Entsorgung) statt Zahlenwerte; Vervielfältigung nur mit Genehmigung der Bayerischen Architektenkammer; nichts übernommen.
 - **baubook** (www.baubook.info): öffentliche Seiten ohne Kennwerttabellen; die Materialdatenbank (baubook.at) verlangt eine Anmeldung; nichts übernommen.
 - **EUR-Lex** (Entscheidungen zum Brandverhalten ohne Prüfung): am 18.11.2026 mit Bot-Prüfung (HTTP 202, AWS WAF) beantwortet; nicht umgangen.
-- **OBI, HORNBACH, BAUHAUS, Knauf, ISOVER**: automatische Abrufe blockiert (Bot-Abwehr); nicht umgangen.
+- **HORNBACH, BAUHAUS, Baustoffshop, benz24, Contorion, Knauf, ISOVER**: automatische Abrufe blockiert (Bot-Abwehr); nicht umgangen.
+- **OBI**: die Produktseiten waren am 18.11.2026 nicht abrufbar (404 bzw. leere Antwort); nur die in früheren Runden gelesenen Preise (Datenstand 16.11.2026) bleiben als Produktpreise erhalten.
+- **Holzland, BayWa Baustoffe, MEGA, Raab Karcher**: am 18.11.2026 keine öffentlich abrufbaren Preise für die benötigten Baustoffe gefunden (Raab Karcher: keine Verbindung); nichts übernommen.
+- **IBU** (ibu-epd.com, epd-online.com): ibu-epd.com antwortete am 18.11.2026 mit HTTP 503; epd-online.com ist die Erstellungsplattform mit Anmeldung. Keine EPD-Werte übernommen; ÖKOBAUDAT liefert die CO₂-Werte.
+- **bausep.de** (genutzt): 14 Preisspannen in den Echtdaten (Dämmstoffe, OSB, KVH, Porenbeton, Gipsfaserplatte, Bitumenbahn); jede Spanne ist aus den Einzelpreisen mit Produktlink nachgerechnet (tests/test51.js). Nur ein Händler, deshalb Richtwert mit Spanne, kein Marktpreis.
 - **Normen** (DIN 4108-4, DIN EN ISO 10456, DIN EN 1745, DIN EN 12524): kostenpflichtig, nicht eingesehen.

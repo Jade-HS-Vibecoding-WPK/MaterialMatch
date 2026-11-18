@@ -92,12 +92,13 @@ const URL = 'file://' + PROJ + '/index.html?modus=demo';
   await p.evaluate(() => MM.prioritaet.setzen('ausgewogen'));
 
   // ---- Datenmodus
-  await setze(p, { a: 'mineralwolle', b: 'eps', c: '' });
+  await setze(p, { a: 'zellulose', b: 'flachsdaemmung', c: '' });
   await p.evaluate(() => MM.datenmodus.setze(false));
   const echt = await p.$$eval('.kennwert[data-kennwert=kosten] .kw-zeile', z => z.map(x => [x.querySelector('.kw-zahl') ? x.querySelector('.kw-zahl').textContent : null, x.querySelector('.kw-fehlt') ? x.querySelector('.kw-fehlt').textContent : null, x.querySelector('.kw-punkt').classList.contains('leer')]));
-  check('Echtdaten-Modus: Mineralwolle (Fixrock) ohne belegten Preis zeigt „fehlt“ (keine Zahl, kein Farbpunkt); es werden keine Zahlen erfunden', echt[0][0] === null && echt[0][1] === 'fehlt' && echt[0][2] === true && echt[1][1] === 'fehlt', echt);
+  check('Echtdaten-Modus: Zellulose und Flachsdämmung ohne belegten Preis zeigen „fehlt“ (keine Zahl, kein Farbpunkt); es werden keine Zahlen erfunden', echt[0][0] === null && echt[0][1] === 'fehlt' && echt[0][2] === true && echt[1][1] === 'fehlt', echt);
   check('Echtdaten-Modus: Karten weiter identisch mit den Diagrammen', (await abgleich(p)).abw.length === 0);
   await p.evaluate(() => MM.datenmodus.setze(true));
+  await setze(p, { a: 'mineralwolle', b: 'eps', c: '' });
   check('Zurück in den Demo-Modus: die Beispielpreise erscheinen wieder (mit B-Marke)', await p.$eval('.kennwert[data-kennwert=kosten] .kw-zeile .kw-zahl', e => e.textContent) === '1.700');
 
   // ---- Nicht vergleichbare / nicht bewertete Werte

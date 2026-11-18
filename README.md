@@ -164,7 +164,7 @@ Alle automatischen Tests (Node.js und Playwright mit Chromium nötig):
 bash tests/alle.sh
 ```
 
-Rund 1.881 Prüfungen in 49 Dateien (`tests/test1.js` bis `tests/test50.js`; `test50` prüft die Match-Funktion mit Nutzerprofilen, den Fallback, Preisspannen und das Prüfskript; `test49` prüft Datenpaket 3: STEICO, Cirkel PORIT, KS-ORIGINAL; `test21` gehört zu Schritt 11, `test22` zu Schritt 13 und braucht für die PDF-Prüfung `pdftotext`, `pdfinfo` und `pdftoppm` aus dem Paket poppler-utils, `test23` zu Schritt 14 und nutzt `tests/referenzrechnung.py` als unabhängigen Referenzrechner; es braucht Python 3 und startet kurz einen lokalen Server). Ergebnis: `QUALITAETSBERICHT.md`. `tools/pruefe_gegen_csv.js` arbeitet mit dem Auszug im Projekt (`data/quellen/`).
+Rund 1.897 Prüfungen in 50 Dateien (`tests/test1.js` bis `tests/test51.js`; `test51` prüft die Händlerpreisspannen von bausep.de (jede Spanne wird aus den Einzelpreisen nachgerechnet) und das Feld „echt“, das belegte Preise nur im Echtdaten-Modus einsetzt; `test50` prüft die Match-Funktion mit Nutzerprofilen, den Fallback, Preisspannen und das Prüfskript; `test49` prüft Datenpaket 3: STEICO, Cirkel PORIT, KS-ORIGINAL; `test21` gehört zu Schritt 11, `test22` zu Schritt 13 und braucht für die PDF-Prüfung `pdftotext`, `pdfinfo` und `pdftoppm` aus dem Paket poppler-utils, `test23` zu Schritt 14 und nutzt `tests/referenzrechnung.py` als unabhängigen Referenzrechner; es braucht Python 3 und startet kurz einen lokalen Server). Ergebnis: `QUALITAETSBERICHT.md`. `tools/pruefe_gegen_csv.js` arbeitet mit dem Auszug im Projekt (`data/quellen/`).
 Nur `test21` liest zusätzlich die ÖKOBAUDAT-Originaldatei und erwartet sie unter `/home/user/oekobaudat_original/`
 (Pfad oben in `tests/test21.js` anpassen, falls sie woanders liegt; ohne die Datei schlägt dieser Test fehl).
 
@@ -184,7 +184,7 @@ Nur `test21` liest zusätzlich die ÖKOBAUDAT-Originaldatei und erwartet sie unt
 - [x] Schritt 10 – Quellen und Datentransparenz
 - [x] Schritt 12 – Benutzeroberfläche und Bedienung (Erklärknöpfe, Akkordeon, eine Legende; zuerst ausgeführt)
 - [x] Schritt 11 – Erweiterung der Baustoffdatenbank (50 Baustoffe, 49 ÖKOBAUDAT-Quellen; nachträglich ausgeführt)
-- [ ] Quellenrecherche für technische Kennwerte und Preise (pausiert, siehe `PROJEKTDOKUMENTATION.md`)
+- [ ] Quellenrecherche für technische Kennwerte und Preise (fortlaufend; Stand MaterialMatch 3.3: 19 von 50 Materialien mit belegtem Preis, Lücken in `DATENLUECKEN.md`)
 - [x] Schritt 13 – Exportfunktion (Druckansicht/PDF, CSV)
 - [x] Schritt 14 – Abschließende Qualitätskontrolle (`QUALITAETSBERICHT.md`)
 - [x] Schritt 15 – Projektdokumentation und Präsentationsmaterial (`PROJEKTDOKUMENTATION.md`, `PRAESENTATION.md`)

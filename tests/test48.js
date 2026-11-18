@@ -77,7 +77,7 @@ const TMP = fs.mkdtempSync(path.join(os.tmpdir(), 'mm-pdf-'));
   await p.close();
 
   // ---------- Echtdaten, zwei Materialien: fehlende Werte stehen als solche da, kein Erfinden
-  p = await neu('echt', { a: 'mineralwolle', b: 'eps', c: '' }, '100', '20');
+  p = await neu('echt', { a: 'zellulose', b: 'flachsdaemmung', c: '' }, '100', '20');
   const E = await pdf(p, 'echt2');
   const e1 = flach(E.text(1));
   check('Echtdaten-Modus: Seite 1 nennt „nicht berechenbar“ bzw. „fehlt“ statt Zahlen für den fehlenden Preis; Datenmodus „Echtdaten-Modus“; kein Beispielwert (B)', /Datenmodus: Echtdaten-Modus/.test(e1) && /Materialkosten/.test(e1) && /nicht berechenbar|fehlt/.test(e1) && !/ B\b/.test(e1.replace(/Material B/g, '').replace(/ B-/g, '')) && !/undefined|NaN/.test(E.alles), e1.slice(0, 1200));

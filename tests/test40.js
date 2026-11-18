@@ -140,11 +140,15 @@ const TMP = fs.mkdtempSync(path.join(os.tmpdir(), 'mm40-'));
   // F20 Demo-/Echtdaten-Modus
   const BSP = 'td .art-beispiel, #dashboard .art-beispiel, .chart-value .art-beispiel, #auswahl-karten .art-beispiel';
   const demoB = await p.$$eval(BSP, a => a.length);
+  const idsVorher = await p.evaluate(() => MM.auswahl.holeAuswahl().plaetze.map(x => x.material.id));
   await p.click('#modus-schalter');
+  // Seit 3.3 haben Mineralwolle, EPS u. a. eine belegte Preisspanne; für die Prüfung „Preise nicht verfügbar“ zwei Materialien ohne belegten Preis wählen
+  await p.evaluate(() => MM.auswahl.setzeAuswahl({ a: 'zellulose', b: 'flachsdaemmung', c: '' }));
   const echt = await p.evaluate(() => ({ b: document.querySelectorAll('td .art-beispiel, #dashboard .art-beispiel, .chart-value .art-beispiel, #auswahl-karten .art-beispiel').length, modus: document.getElementById('modus-titel').textContent, preis: MM.auswahl.holeAuswahl().plaetze.map(x => x.material.eigenschaften.preis.wert) }));
   const kEcht = await dash(p, 'Materialkosten');
-  check('F20 Demo-/Echtdaten-Modus: Im Echtdaten-Modus verschwinden alle B-Kennzeichen an Werten (Tabellen, Dashboard, Diagramme, Karten; vorher > 0; die Legende erklärt „B“ weiter), Preise sind „nicht verfügbar“ (keine Zahl, nichts geschätzt), Kosten werden nicht berechnet; Modusleiste zeigt „Verifizierte Daten“', demoB > 0 && echt.b === 0 && echt.modus === 'Datenmodus: Verifizierte Daten' && echt.preis.every(x => x === null) && kEcht.length === 0, [demoB, echt, kEcht]);
+  check('F20 Demo-/Echtdaten-Modus: Im Echtdaten-Modus verschwinden alle B-Kennzeichen an Werten (Tabellen, Dashboard, Diagramme, Karten; vorher > 0; die Legende erklärt „B“ weiter), Preise sind „nicht verfügbar“ (keine Zahl, nichts geschätzt), Kosten werden nicht berechnet (hier mit Zellulose und Flachsdämmung, die keinen belegten Preis haben); Modusleiste zeigt „Verifizierte Daten“', demoB > 0 && echt.b === 0 && echt.modus === 'Datenmodus: Verifizierte Daten' && echt.preis.every(x => x === null) && kEcht.length === 0, [demoB, echt, kEcht]);
   await p.click('#modus-schalter');
+  await p.evaluate(ids => MM.auswahl.setzeAuswahl({ a: ids[0] || '', b: ids[1] || '', c: ids[2] || '' }), idsVorher);
 
   // F17 Alternativen
   await reiter(p, 'alternativen');

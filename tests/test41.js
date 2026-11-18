@@ -77,6 +77,7 @@ const PFLICHT = 'Die Farben zeigen eine relative Bewertung der ausgewählten Mat
   check('Pflichthinweise erhalten: keine Aussage zu Zulassungen, technischer Gleichwertigkeit oder Normkonformität; ersetzt keine Nachweise; Brandverhalten ≠ Feuerwiderstand; Fußzeile nennt „kein Nachweis“', /Zulassung/.test(hin) && /Gleichwertigkeit/.test(hin) && /Normkonformität/.test(hin) && /ersetz/.test(hin) && /Feuerwiderstand/.test(hin) && /kein Nachweis/.test(fuss), [hin.slice(0, 120), fuss.slice(0, 120)]);
   await p.click('#reiter-vergleich');
   // Orientierungshinweis und Datenwarnungen
+  await p.selectOption('#materialA', 'zellulose'); await p.selectOption('#materialB', 'flachsdaemmung');   // ohne belegten Preis
   check('Datenwarnungen erhalten (Echtdaten): „Nur zur Orientierung …“ und fehlender Preis („kein belegter Preis“) sichtbar; Modusleiste „Datenmodus: Verifizierte Daten“', await p.evaluate(() => /Nur zur Orientierung/.test(document.getElementById('orientierung').textContent) && /kein belegter Preis/.test(document.getElementById('orientierung').textContent) && document.getElementById('modus-titel').textContent === 'Datenmodus: Verifizierte Daten'));
   await p.close();
 

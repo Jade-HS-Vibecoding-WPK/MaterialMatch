@@ -82,10 +82,19 @@
     return n;
   }
 
+  // MaterialMatch 3.3: Ein Kennwert kann ein Feld „echt“ tragen (z. B. eine Preisspanne aus Händlerpreisen mit Quelle). Es gilt nur im
+  // Echtdaten-Modus und ersetzt dort den Beispielwert bzw. die Lücke; im Demo-Modus bleibt der Kennwert unverändert (die Demo-Zahlen
+  // und die Präsentation ändern sich nicht).
+  function fuerModusEin(e) {
+    if (!beispieleAktiv && e.echt && typeof e.echt === "object") return klon(e.echt);
+    if (!beispieleAktiv && e.art === "beispiel") return ohneBeispiel(e);
+    return klon(e);
+  }
+
   // Eigenschaften (z. B. eines Produkts) so umwandeln, wie es der aktuelle Modus verlangt
   function fuerModus(ei) {
     var o = {};
-    Object.keys(ei).forEach(function (k) { o[k] = (!beispieleAktiv && ei[k].art === "beispiel") ? ohneBeispiel(ei[k]) : klon(ei[k]); });
+    Object.keys(ei).forEach(function (k) { o[k] = fuerModusEin(ei[k]); });
     return o;
   }
 
@@ -95,7 +104,7 @@
       var o = original.baustoffe.filter(function (x) { return x.id === m.id; })[0];
       Object.keys(o.eigenschaften).forEach(function (k) {
         var e = o.eigenschaften[k];
-        m.eigenschaften[k] = (!beispieleAktiv && e.art === "beispiel") ? ohneBeispiel(e) : klon(e);
+        m.eigenschaften[k] = fuerModusEin(e);
       });
     });
   }

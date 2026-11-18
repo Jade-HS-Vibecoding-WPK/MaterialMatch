@@ -54,7 +54,7 @@ const URL = 'file://' + PROJ + '/index.html?modus=demo';
   await setze(p, { a: 'mineralwolle', b: 'mineralwolle', c: '', pa: 'rockwool-fixrock-035', pb: 'rockwool-klemmrock-035' });
   ist = await anzeige(p);
   check('Herstellerprodukt gewechselt (Fixrock 035 gegen Klemmrock 035): die Gruppen nennen das jeweilige Produkt und seine Datenblätter; Klemmrock zeigt zusätzlich die Preisquelle (OBI)', /Klemmrock/.test(ist[1].kopf) && ist[1].zeilen.some(z => /Klemmrock 035/.test(z.titel) && /λD/.test(z.kennwerte)) && ist[1].zeilen.some(z => /OBI/.test(z.titel) && /Preis/.test(z.kennwerte)) && !ist[0].zeilen.some(z => /OBI/.test(z.titel)), ist.map(g => g.zeilen.map(z => z.titel)));
-  await setze(p, { a: 'mineralwolle', b: 'eps', c: '' });
+  await setze(p, { a: 'zellulose', b: 'flachsdaemmung', c: '' });   // beide ohne belegten Preis (Mineralwolle/EPS haben seit 3.3 eine belegte Preisspanne)
   await p.evaluate(() => MM.datenmodus.setze(false));
   ist = await anzeige(p); soll = await erwartung(p);
   check('Echtdaten-Modus: Beispielwerte zählen als „nicht verfügbar“; die Listen folgen den Daten des Modus (keine „Ohne Quelle (Beispieldaten)“-Zeile mehr)', ist.every(g => !g.notizen.some(n => /Beispieldaten/.test(n))) && ist.every((g, i) => g.zeilen.length === Object.keys(soll[i].q).length) && ist.some(g => g.notizen.some(n => /Nicht verfügbar:.*Preis/.test(n))), ist.map(g => g.notizen));

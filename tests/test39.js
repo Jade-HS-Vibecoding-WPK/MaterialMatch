@@ -51,7 +51,7 @@ const TMP = fs.mkdtempSync(path.join(os.tmpdir(), 'mm39-'));
   // Warnungen bleiben erhalten
   await waehle(p, 'mineralwolle', 'eps');
   check('Datenwarnungen bleiben: Demo-Werte tragen weiter „B“ (gelb), der Orientierungshinweis „Nur zur Orientierung …“ ist sichtbar, der Hinweis zu Beispielpreisen im Diagramm steht da', await p.evaluate(() => document.querySelectorAll('.art-beispiel').length > 0 && !document.getElementById('orientierung').hidden && /Nur zur Orientierung/.test(document.getElementById('orientierung').textContent) && /Beispielwerte \(Demo\)/.test(document.getElementById('diagramme').textContent)));
-  const e2 = await neu('echt'); await waehle(e2, 'mineralwolle', 'eps');
+  const e2 = await neu('echt'); await waehle(e2, 'zellulose', 'flachsdaemmung');
   check('Echtdaten: fehlende Preise stehen weiter als Hinweis da (nicht berechenbar), nichts wird geschätzt', await e2.evaluate(() => /kein belegter Preis/.test(document.getElementById('orientierung').textContent) && !/Beispielwerte \(Demo\)/.test(document.getElementById('diagramme').textContent)));
   await e2.close();
 

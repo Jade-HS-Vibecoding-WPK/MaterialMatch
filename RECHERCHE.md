@@ -299,6 +299,47 @@ Die Siniat-EPD „Gipsplatte nach DIN EN 520 und DIN 18180“ (BVG, EPD-BVG-2021
 
 **Bilanz Preise:** Materialien mit belegtem Preis 1 → 5 von 50; Produkte mit Preis 33 → 40; belegte Kennwerte 138 → 142; nicht belegt 261 → 257. **Die übrigen 45 Materialien haben weiterhin keinen belastbaren Preis** (Gründe und alle weiteren Lücken: `DATENLUECKEN.md`).
 
+## 2j. Runde 9 (18.11.2026), MaterialMatch 3.3: Händlerpreise und Prüfung weiterer Quellen für alle zehn Kennwerte
+
+**Anlass:** Auftrag „Ergänze systematisch sämtliche fehlenden Baustoffkennwerte“ (Materialpreis, GWP, λ-Nennwert, λ-Bemessungswert, Rohdichte, Brandverhalten, Druckfestigkeit, μ, spezifische Wärmekapazität, Recycling/Rückbau). Höchste Priorität: Preise.
+
+**Ausgangslage (Echtdaten-Modus, 500 Kennwert-Felder):** 142 belegt, 82 nur Beispiel (unsichtbar), 257 nicht belegt, 19 nicht anwendbar; belegter Preis bei 5 von 50 Materialien. Vor den Änderungen gab es eine Sicherung (`…_vor-kennwerte-haendler.tar.gz`).
+
+**Zugang geprüft (nichts umgangen, keine Zugangsdaten verwendet):**
+| Quelle | Ergebnis am 18.11.2026 |
+|---|---|
+| **bausep.de** | **Genutzt.** Die Produktseiten nennen je Variante (Dicke) Netto- und Bruttopreis je m² öffentlich im Seitenquelltext. 14 Preisspannen daraus berechnet (siehe unten). Nur ein Händler; die Seiten wurden einzeln und mit Pausen gelesen, nicht gespiegelt. |
+| **HORNBACH, BAUHAUS, Baustoffshop, benz24, Contorion** | Bot-Abwehr bzw. Sperre bei automatischen Abrufen; nicht umgangen, nichts übernommen. |
+| **OBI** | Produktseiten antworteten mit 404 bzw. leer. Die in früheren Runden (16.11.2026) gelesenen OBI-Preise bleiben als Produktpreise erhalten. |
+| **Holzland, BayWa Baustoffe, MEGA, Raab Karcher** | Startseiten teils erreichbar, aber keine öffentlich abrufbaren Preise für die benötigten Baustoffe gefunden (Raab Karcher: keine Verbindung). Nichts übernommen. |
+| **IBU (ibu-epd.com), epd-online.com** | ibu-epd.com: HTTP 503; epd-online.com ist die Erstellungsplattform mit Anmeldung. Keine EPD-Werte übernommen. Die CO₂-Werte kommen weiter aus der ÖKOBAUDAT (lokaler Datenstand zuerst geprüft, 49 von 50 Materialien belegt). |
+| **WECOBIS** | Erreichbar; enthält überwiegend beschreibende Texte statt Zahlenwerte. Impressum: „Vervielfältigungen … nur mit Genehmigung“ der Bayerischen Architektenkammer. Nichts übernommen (Recycling/Rückbau bleibt deshalb ohne belegten Wert). |
+| **baubook** | Öffentliche Seiten ohne Kennwerttabellen; Materialdatenbank nur nach Anmeldung. Nichts übernommen. |
+| **Heinze, EUR-Lex, Normen** | Wie in 2h und 2i: nicht nutzbar (Nutzungsbedingungen, Bot-Prüfung, kostenpflichtig). |
+
+**Übernommen: 14 Preisspannen aus bausep.de** (Quellen `haendlerspanne-bausep-<material>`, jede mit allen Einzelpreisen, Produktnamen, Links und Abrufdatum 18.11.2026). Rechenweg: Netto-Preis je m² (Brutto ÷ 1,19 bzw. `basePrice` des Shops) ÷ Dicke der Variante = €/m³; je Produkt der Median seiner Varianten; Wert für Berechnungen = Median dieser Produktwerte; angezeigt werden Minimum, Maximum, Zahl der Produkte und Preisvarianten. Alle Preise netto, ohne Versand, Einbau und Verschnitt.
+
+| Material | Median €/m³ | Spanne | Produkte / Preise |
+|---|---|---|---|
+| XPS | 178,47 | 156,22 bis 282,35 | 8 / 53 |
+| PUR | 224,09 | 185,57 bis 376,05 | 1 / 9 |
+| PIR | 262,66 | 217,07 bis 524,79 | 5 / 39 |
+| Glaswolle | 84,03 | 52,17 bis 219,75 | 3 / 21 |
+| Steinwolle | 367,23 | 179,20 bis 485,29 | 5 / 26 |
+| Schaumglas | 512,59 | 483,33 bis 513,66 | 1 / 6 |
+| Mineralwolle (allgemein) | 96,92 | 49,16 bis 231,75 | 20 / 145 |
+| EPS | 126,13 | 111,76 bis 197,48 | 19 / 136 |
+| Holzfaserdämmung | 250,88 | 82,77 bis 526,37 | 26 / 89 |
+| OSB | 498,60 | 497,67 bis 509,92 | 1 / 5 |
+| Konstruktionsvollholz | 843,83 | 833,77 bis 852,01 | 1 / 3 |
+| Porenbeton | 161,12 | 161,09 bis 195,80 | 3 / 10 |
+| Gipsfaserplatte (12,5 mm) | 8,32 €/m² | 8,28 bis 8,40 | 3 / 3 |
+| Bitumenbahn | 5,40 €/m² | 4,00 bis 13,27 | 7 / 7 |
+
+**Wichtig für die Nutzung:** Diese Werte sind **Richtwerte mit Spanne, keine Marktpreise**. Sie gelten nur im **Echtdaten-Modus**. Im Demo-Modus bleiben die Beispielpreise und die bisherigen Lücken unverändert (Feld `echt` am Kennwert, siehe PROJEKTDOKUMENTATION.md „MaterialMatch 3.3“); dadurch ändern sich die Demo-Ergebnisse und die Präsentation nicht. Die Spannen sind breit, weil Qualität, Wärmeleitgruppe, Dichte und Hersteller stark streuen; ein Preisvergleich mit weiteren Händlern steht aus.
+
+**Bilanz (Echtdaten-Modus):** belegt 142 → **156**, nicht belegt 257 → **249** (82 Beispielwerte, davon 6 jetzt durch belegte Preise ersetzt, 76 bleiben unsichtbar), Materialien mit belegtem Preis 5 → **19 von 50**, Produkte mit Preis 40 (unverändert). **Technische Kennwerte** (λ, λB, Rohdichte, Brandverhalten, Druckfestigkeit, μ, Wärmekapazität) und **GWP** wurden in dieser Runde **nicht** ergänzt: Es gab keine frei und rechtlich sicher nutzbare, maschinenlesbare Quelle (Normen kostenpflichtig, Herstellerseiten und Portale gesperrt oder anmeldepflichtig). Jede einzelne Lücke mit Grund: `DATENLUECKEN.md`.
+
 ## 3. Gelesen, aber bewusst nicht übernommen
 
 | Dokument | Grund |

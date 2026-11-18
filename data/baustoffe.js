@@ -2213,6 +2213,3644 @@ window.MATERIALMATCH_DATA = {
       verwendung: "Flächengewicht und CO₂-Kennwerte (A1–A3) für epdm."
     },
     // <<OEBD-QUELLEN-ENDE>>
+    // ---- Händlerpreise bausep.de, Preisspannen (18.11.2026, MaterialMatch 3.3) ----
+    {
+      "id": "haendlerspanne-bausep-osb",
+      "titel": "Preisspanne OSB-Platte: berechnet aus 1 Produkten (5 Preisvarianten) des Online-Händlers bausep.de, abgerufen 18.11.2026 (497.67 bis 509.92 €/m³ netto, Median 498.60)",
+      "herausgeber": "MaterialMatch (berechnet aus Preisen des Online-Händlers bausep.de)",
+      "url": "https://www.bausep.de/osb-platten-3-n-f-ungeschliffen-masse-2050-x-675-mm.html",
+      "datum": null,
+      "datum_hinweis": "Händlerpreise am Abrufdatum 2026-11-18; Preise und Verfügbarkeit können sich täglich ändern.",
+      "abgerufen": "2026-11-18",
+      "quellenart": "Preisspanne (berechnet aus Händlerpreisen)",
+      "produkt": "1 Produkte: siehe einzelpreise (Name, Link, Variante, Preis)",
+      "region": "Deutschland (Online-Händler bausep.de, Preise für Privatkunden inkl. 19 % MwSt. laut Shop, hier als Nettopreis)",
+      "geltung": "generisch",
+      "qualitaet": "Berechnete Kennzahl (Minimum, Maximum, Median) aus Händlerpreisen verschiedener Produkte und Dicken; kein Marktpreis und kein Preis für ein bestimmtes Produkt. Umrechnung: €/m³ = Preis je m² ÷ Dicke (Dicke aus der Variante des Shops). Nettopreis: der Shop weist den Nettobetrag im Seitenquelltext aus (Bruttopreis ÷ 1,19).",
+      "geprueft": true,
+      "verwendung": "Preisspanne und Median für das allgemeine Material osb; jeder Einzelpreis steht mit Produktlink in „einzelpreise“.",
+      "einzelpreise": [
+        {
+          "produkt": "OSB Platten 3 N+F ungeschliffen Maße 2050 x 675 mm",
+          "url": "https://www.bausep.de/osb-platten-3-n-f-ungeschliffen-masse-2050-x-675-mm.html",
+          "punkte": [
+            {
+              "variante": "25 mm",
+              "eur_m3": 509.92,
+              "netto_je_m2": 12.7479
+            },
+            {
+              "variante": "12 mm",
+              "eur_m3": 498.6,
+              "netto_je_m2": 5.9832
+            },
+            {
+              "variante": "15 mm",
+              "eur_m3": 498.6,
+              "netto_je_m2": 7.479
+            },
+            {
+              "variante": "22 mm",
+              "eur_m3": 498.09,
+              "netto_je_m2": 10.958
+            },
+            {
+              "variante": "18 mm",
+              "eur_m3": 497.67,
+              "netto_je_m2": 8.958
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "haendlerspanne-bausep-holzfaserdaemmung",
+      "titel": "Preisspanne Holzfaserdämmung: berechnet aus 26 Produkten (89 Preisvarianten) des Online-Händlers bausep.de, abgerufen 18.11.2026 (82.77 bis 526.37 €/m³ netto, Median 250.88)",
+      "herausgeber": "MaterialMatch (berechnet aus Preisen des Online-Händlers bausep.de)",
+      "url": "https://www.bausep.de/guenstiger-holzfaser-flex-wls-036-daemmung.html",
+      "datum": null,
+      "datum_hinweis": "Händlerpreise am Abrufdatum 2026-11-18; Preise und Verfügbarkeit können sich täglich ändern.",
+      "abgerufen": "2026-11-18",
+      "quellenart": "Preisspanne (berechnet aus Händlerpreisen)",
+      "produkt": "26 Produkte: siehe einzelpreise (Name, Link, Variante, Preis)",
+      "region": "Deutschland (Online-Händler bausep.de, Preise für Privatkunden inkl. 19 % MwSt. laut Shop, hier als Nettopreis)",
+      "geltung": "generisch",
+      "qualitaet": "Berechnete Kennzahl (Minimum, Maximum, Median) aus Händlerpreisen verschiedener Produkte und Dicken; kein Marktpreis und kein Preis für ein bestimmtes Produkt. Umrechnung: €/m³ = Preis je m² ÷ Dicke (Dicke aus der Variante des Shops). Nettopreis: der Shop weist den Nettobetrag im Seitenquelltext aus (Bruttopreis ÷ 1,19).",
+      "geprueft": true,
+      "verwendung": "Preisspanne und Median für das allgemeine Material holzfaserdaemmung; jeder Einzelpreis steht mit Produktlink in „einzelpreise“.",
+      "einzelpreise": [
+        {
+          "produkt": "Günstiger ! Holzfaser flex WLS 036 Dämmung",
+          "url": "https://www.bausep.de/guenstiger-holzfaser-flex-wls-036-daemmung.html",
+          "punkte": [
+            {
+              "variante": "140 mm",
+              "eur_m3": 90.28,
+              "netto_je_m2": 12.6387
+            },
+            {
+              "variante": "60 mm",
+              "eur_m3": 82.77,
+              "netto_je_m2": 4.9664
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 90.34,
+              "netto_je_m2": 7.2269
+            },
+            {
+              "variante": "40 mm",
+              "eur_m3": 83.61,
+              "netto_je_m2": 3.3445
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 83.33,
+              "netto_je_m2": 10.0
+            },
+            {
+              "variante": "100 mm",
+              "eur_m3": 87.39,
+              "netto_je_m2": 8.7395
+            },
+            {
+              "variante": "160 mm",
+              "eur_m3": 88.76,
+              "netto_je_m2": 14.2017
+            },
+            {
+              "variante": "200 mm",
+              "eur_m3": 89.92,
+              "netto_je_m2": 17.9832
+            },
+            {
+              "variante": "180 mm",
+              "eur_m3": 88.24,
+              "netto_je_m2": 15.8824
+            },
+            {
+              "variante": "220 mm",
+              "eur_m3": 90.26,
+              "netto_je_m2": 19.8571
+            },
+            {
+              "variante": "240 mm",
+              "eur_m3": 90.3,
+              "netto_je_m2": 21.6723
+            },
+            {
+              "variante": "50 mm",
+              "eur_m3": 90.25,
+              "netto_je_m2": 4.5126
+            }
+          ]
+        },
+        {
+          "produkt": "Günstiger ! Holzfaser Unterdeckplatte in der Aktion",
+          "url": "https://www.bausep.de/guenstiger-holzfaser-unterdeckplatte-in-der-aktion.html",
+          "punkte": [
+            {
+              "variante": "40 mm",
+              "eur_m3": 242.65,
+              "netto_je_m2": 9.7059
+            },
+            {
+              "variante": "60 mm",
+              "eur_m3": 242.3,
+              "netto_je_m2": 14.5378
+            }
+          ]
+        },
+        {
+          "produkt": "Gutex Thermosafe-homogen Holzfaser-Dämmplatte stumpf",
+          "url": "https://www.bausep.de/gutex-thermosafe-homogen-holzfaser-daemmplatte-stumpf.html",
+          "punkte": [
+            {
+              "variante": "100 mm",
+              "eur_m3": 182.35,
+              "netto_je_m2": 18.2353
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 182.77,
+              "netto_je_m2": 14.6218
+            },
+            {
+              "variante": "40 mm",
+              "eur_m3": 183.19,
+              "netto_je_m2": 7.3277
+            },
+            {
+              "variante": "60 mm",
+              "eur_m3": 183.47,
+              "netto_je_m2": 11.0084
+            }
+          ]
+        },
+        {
+          "produkt": "Gutex Thermowall 5in1 Holzfaserdämmung N+F",
+          "url": "https://www.bausep.de/gutex-thermowall-5in1-holzfaserdaemmung-n-f.html",
+          "punkte": [
+            {
+              "variante": "60 mm",
+              "eur_m3": 226.89,
+              "netto_je_m2": 13.6134
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 226.89,
+              "netto_je_m2": 18.1513
+            }
+          ]
+        },
+        {
+          "produkt": "Gutex Thermowall-gf N+F Putzträgerplatte 1300 x 600 mm",
+          "url": "https://www.bausep.de/gutex-thermowall-gf-n-f-putztraegerplatte-1300-x-600-mm.html",
+          "punkte": [
+            {
+              "variante": "40 mm",
+              "eur_m3": 272.9,
+              "netto_je_m2": 10.916
+            },
+            {
+              "variante": "60 mm",
+              "eur_m3": 246.5,
+              "netto_je_m2": 14.7899
+            }
+          ]
+        },
+        {
+          "produkt": "Gutex Thermowall Putzträgerplatte 1300 x 600 mm",
+          "url": "https://www.bausep.de/gutex-thermowall-putztraegerplatte-1300-x-600-mm.html",
+          "punkte": [
+            {
+              "variante": "100 mm",
+              "eur_m3": 253.36,
+              "netto_je_m2": 25.3361
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 255.6,
+              "netto_je_m2": 30.6723
+            }
+          ]
+        },
+        {
+          "produkt": "Holzfaser Unterdeckplatte in der Aktion",
+          "url": "https://www.bausep.de/holzfaser-unterdeckplatte-in-der-aktion.html",
+          "punkte": [
+            {
+              "variante": "100 mm",
+              "eur_m3": 214.29,
+              "netto_je_m2": 21.4286
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 214.22,
+              "netto_je_m2": 25.7059
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 214.29,
+              "netto_je_m2": 17.1429
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 214.29,
+              "netto_je_m2": 30.0
+            }
+          ]
+        },
+        {
+          "produkt": "Naturheld 110 verputzbare Holzfaserdämmplatte",
+          "url": "https://www.bausep.de/naturheld-110-verputzbare-holzfaserdaemmplatte.html",
+          "punkte": [
+            {
+              "variante": "80 mm",
+              "eur_m3": 178.05,
+              "netto_je_m2": 14.2437
+            },
+            {
+              "variante": "40 mm",
+              "eur_m3": 199.58,
+              "netto_je_m2": 7.9832
+            },
+            {
+              "variante": "100 mm",
+              "eur_m3": 170.92,
+              "netto_je_m2": 17.0924
+            }
+          ]
+        },
+        {
+          "produkt": "naturheld Innen 200 / 180 druckfeste Holzfaserdämmplatte",
+          "url": "https://www.bausep.de/naturheld-innen-200-180-druckfeste-holzfaserdaemmplatte.html",
+          "punkte": [
+            {
+              "variante": "30 mm",
+              "eur_m3": 274.51,
+              "netto_je_m2": 8.2353
+            }
+          ]
+        },
+        {
+          "produkt": "naturheld Wand 140 Putzträgerplatte",
+          "url": "https://www.bausep.de/naturheld-wand-140-putztraegerplatte.html",
+          "punkte": [
+            {
+              "variante": "100 mm",
+              "eur_m3": 214.29,
+              "netto_je_m2": 21.4286
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 214.29,
+              "netto_je_m2": 17.1429
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 214.22,
+              "netto_je_m2": 25.7059
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 214.29,
+              "netto_je_m2": 30.0
+            }
+          ]
+        },
+        {
+          "produkt": "naturheld Wand 180 Putzträgerplatte",
+          "url": "https://www.bausep.de/naturheld-wand-180-putztraegerplatte.html",
+          "punkte": [
+            {
+              "variante": "60 mm",
+              "eur_m3": 242.3,
+              "netto_je_m2": 14.5378
+            },
+            {
+              "variante": "40 mm",
+              "eur_m3": 242.65,
+              "netto_je_m2": 9.7059
+            }
+          ]
+        },
+        {
+          "produkt": "Timber Loft Holzfaser begehbare Dachbodendämmung",
+          "url": "https://www.bausep.de/timber-loft-holzfaser-begehbare-dachbodendaemmung.html",
+          "punkte": [
+            {
+              "variante": "100 mm",
+              "eur_m3": 182.35,
+              "netto_je_m2": 18.2353
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 182.77,
+              "netto_je_m2": 14.6218
+            },
+            {
+              "variante": "40 mm",
+              "eur_m3": 183.19,
+              "netto_je_m2": 7.3277
+            },
+            {
+              "variante": "60 mm",
+              "eur_m3": 183.47,
+              "netto_je_m2": 11.0084
+            }
+          ]
+        },
+        {
+          "produkt": "Steico protect Putzträgerplatte",
+          "url": "https://www.bausep.de/steico-protect-putztraegerplatte.html",
+          "punkte": [
+            {
+              "variante": "40 mm",
+              "eur_m3": 356.93,
+              "netto_je_m2": 14.2773
+            },
+            {
+              "variante": "60 mm",
+              "eur_m3": 355.74,
+              "netto_je_m2": 21.3445
+            }
+          ]
+        },
+        {
+          "produkt": "Steico universal dry Unterdeckplatte",
+          "url": "https://www.bausep.de/steico-universal-dry-unterdeckplatte.html",
+          "punkte": [
+            {
+              "variante": "60 mm",
+              "eur_m3": 250.7,
+              "netto_je_m2": 15.042
+            },
+            {
+              "variante": "40 mm",
+              "eur_m3": 283.19,
+              "netto_je_m2": 11.3277
+            }
+          ]
+        },
+        {
+          "produkt": "Gutex Ultratherm Unterdeckplatte",
+          "url": "https://www.bausep.de/gutex-ultratherm-unterdeckplatte.html",
+          "punkte": [
+            {
+              "variante": "60 mm",
+              "eur_m3": 268.21,
+              "netto_je_m2": 16.0924
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 267.86,
+              "netto_je_m2": 21.4286
+            }
+          ]
+        },
+        {
+          "produkt": "Steico safe Unterdeckplatte",
+          "url": "https://www.bausep.de/steico-safe-unterdeckplatte.html",
+          "punkte": [
+            {
+              "variante": "60 mm",
+              "eur_m3": 366.25,
+              "netto_je_m2": 21.9748
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 328.78,
+              "netto_je_m2": 26.3025
+            }
+          ]
+        },
+        {
+          "produkt": "Steico special dry Unterdeckplatte",
+          "url": "https://www.bausep.de/steico-special-dry-unterdeckplatte.html",
+          "punkte": [
+            {
+              "variante": "100 mm",
+              "eur_m3": 248.32,
+              "netto_je_m2": 24.8319
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 246.64,
+              "netto_je_m2": 29.5966
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 246.1,
+              "netto_je_m2": 34.4538
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 247.9,
+              "netto_je_m2": 19.8319
+            }
+          ]
+        },
+        {
+          "produkt": "Gutex Thermoflex flexible Holzfaserdämmung",
+          "url": "https://www.bausep.de/gutex-thermoflex-flexible-holzfaserdaemmung.html",
+          "punkte": [
+            {
+              "variante": "120 mm",
+              "eur_m3": 83.33,
+              "netto_je_m2": 10.0
+            },
+            {
+              "variante": "200 mm",
+              "eur_m3": 83.61,
+              "netto_je_m2": 16.7227
+            }
+          ]
+        },
+        {
+          "produkt": "Steico flex WLS 036 Holzfaserdämmung",
+          "url": "https://www.bausep.de/steico-flex-wls-036-holzfaserdaemmung.html",
+          "punkte": [
+            {
+              "variante": "40 mm",
+              "eur_m3": 94.12,
+              "netto_je_m2": 3.7647
+            },
+            {
+              "variante": "100 mm",
+              "eur_m3": 87.98,
+              "netto_je_m2": 8.7983
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 97.9,
+              "netto_je_m2": 7.8319
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 88.94,
+              "netto_je_m2": 10.6723
+            },
+            {
+              "variante": "160 mm",
+              "eur_m3": 89.18,
+              "netto_je_m2": 14.2689
+            },
+            {
+              "variante": "50 mm",
+              "eur_m3": 103.87,
+              "netto_je_m2": 5.1933
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 97.84,
+              "netto_je_m2": 13.6975
+            },
+            {
+              "variante": "60 mm",
+              "eur_m3": 93.14,
+              "netto_je_m2": 5.5882
+            },
+            {
+              "variante": "30 mm",
+              "eur_m3": 112.04,
+              "netto_je_m2": 3.3613
+            },
+            {
+              "variante": "180 mm",
+              "eur_m3": 88.24,
+              "netto_je_m2": 15.8824
+            },
+            {
+              "variante": "200 mm",
+              "eur_m3": 92.86,
+              "netto_je_m2": 18.5714
+            },
+            {
+              "variante": "220 mm",
+              "eur_m3": 92.44,
+              "netto_je_m2": 20.3361
+            },
+            {
+              "variante": "240 mm",
+              "eur_m3": 92.96,
+              "netto_je_m2": 22.3109
+            }
+          ]
+        },
+        {
+          "produkt": "Steico base hochdruckfeste Fußbodendämmplatte",
+          "url": "https://www.bausep.de/steico-base-hochdruckfeste-fussbodendaemmplatte.html",
+          "punkte": [
+            {
+              "variante": "40 mm",
+              "eur_m3": 325.42,
+              "netto_je_m2": 13.0168
+            },
+            {
+              "variante": "60 mm",
+              "eur_m3": 324.93,
+              "netto_je_m2": 19.4958
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 327.73,
+              "netto_je_m2": 26.2185
+            }
+          ]
+        },
+        {
+          "produkt": "Steico floor WLS 038 Holzfaser-Dämmplatte",
+          "url": "https://www.bausep.de/steico-floor-wls-038-holzfaser-daemmplatte.html",
+          "punkte": [
+            {
+              "variante": "60 mm",
+              "eur_m3": 264.71,
+              "netto_je_m2": 15.8824
+            },
+            {
+              "variante": "40 mm",
+              "eur_m3": 268.07,
+              "netto_je_m2": 10.7227
+            }
+          ]
+        },
+        {
+          "produkt": "Steico therm Holzfaserdämmplatte WLS 040 1350 x 600 mm",
+          "url": "https://www.bausep.de/steico-therm-holzfaserdaemmplatte-wls-040-1350-x-600-mm.html",
+          "punkte": [
+            {
+              "variante": "30 mm",
+              "eur_m3": 200.56,
+              "netto_je_m2": 6.0168
+            },
+            {
+              "variante": "40 mm",
+              "eur_m3": 197.48,
+              "netto_je_m2": 7.8992
+            },
+            {
+              "variante": "60 mm",
+              "eur_m3": 201.68,
+              "netto_je_m2": 12.1008
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 201.68,
+              "netto_je_m2": 16.1345
+            },
+            {
+              "variante": "100 mm",
+              "eur_m3": 201.68,
+              "netto_je_m2": 20.1681
+            }
+          ]
+        },
+        {
+          "produkt": "Claytec HFD Holzfaserdämmplatte 120 cm x 38 cm",
+          "url": "https://www.bausep.de/claytec-hfd-holzfaserdaemmplatte-120-cm-x-38-cm.html",
+          "punkte": [
+            {
+              "variante": "40 mm",
+              "eur_m3": 524.79,
+              "netto_je_m2": 20.9916
+            },
+            {
+              "variante": "60 mm",
+              "eur_m3": 516.25,
+              "netto_je_m2": 30.9748
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 526.37,
+              "netto_je_m2": 42.1092
+            }
+          ]
+        },
+        {
+          "produkt": "Steico Top 1200 x 400 mm Geschossdeckendämmung",
+          "url": "https://www.bausep.de/steico-top-1200-x-400-mm-geschossdeckendaemmung.html",
+          "punkte": [
+            {
+              "variante": "80 mm",
+              "eur_m3": 257.77,
+              "netto_je_m2": 20.6218
+            },
+            {
+              "variante": "100 mm",
+              "eur_m3": 258.4,
+              "netto_je_m2": 25.8403
+            }
+          ]
+        },
+        {
+          "produkt": "Gutex Thermoroom Innenwanddämmung",
+          "url": "https://www.bausep.de/gutex-thermoroom-innenwanddaemmung.html",
+          "punkte": [
+            {
+              "variante": "40 mm",
+              "eur_m3": 268.91,
+              "netto_je_m2": 10.7563
+            },
+            {
+              "variante": "60 mm",
+              "eur_m3": 257.7,
+              "netto_je_m2": 15.4622
+            }
+          ]
+        },
+        {
+          "produkt": "Steico internal Innenwand Dämmplatte",
+          "url": "https://www.bausep.de/steico-internal-innenwand-daemmplatte.html",
+          "punkte": [
+            {
+              "variante": "60 mm",
+              "eur_m3": 279.97,
+              "netto_je_m2": 16.7983
+            },
+            {
+              "variante": "40 mm",
+              "eur_m3": 271.85,
+              "netto_je_m2": 10.8739
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 283.61,
+              "netto_je_m2": 22.6891
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "haendlerspanne-bausep-porenbeton",
+      "titel": "Preisspanne Porenbeton (Plansteine): berechnet aus 3 Produkten (10 Preisvarianten) des Online-Händlers bausep.de, abgerufen 18.11.2026 (161.09 bis 195.80 €/m³ netto, Median 161.12)",
+      "herausgeber": "MaterialMatch (berechnet aus Preisen des Online-Händlers bausep.de)",
+      "url": "https://www.bausep.de/ytong-porenbeton-planplatte-599x249-mm-pppl-0-50.html",
+      "datum": null,
+      "datum_hinweis": "Händlerpreise am Abrufdatum 2026-11-18; Preise und Verfügbarkeit können sich täglich ändern.",
+      "abgerufen": "2026-11-18",
+      "quellenart": "Preisspanne (berechnet aus Händlerpreisen)",
+      "produkt": "3 Produkte: siehe einzelpreise (Name, Link, Variante, Preis)",
+      "region": "Deutschland (Online-Händler bausep.de, Preise für Privatkunden inkl. 19 % MwSt. laut Shop, hier als Nettopreis)",
+      "geltung": "generisch",
+      "qualitaet": "Berechnete Kennzahl (Minimum, Maximum, Median) aus Händlerpreisen verschiedener Produkte und Dicken; kein Marktpreis und kein Preis für ein bestimmtes Produkt. Umrechnung: €/m³ = Preis je m² ÷ Dicke (Dicke aus der Variante des Shops). Nettopreis: der Shop weist den Nettobetrag im Seitenquelltext aus (Bruttopreis ÷ 1,19).",
+      "geprueft": true,
+      "verwendung": "Preisspanne und Median für das allgemeine Material porenbeton; jeder Einzelpreis steht mit Produktlink in „einzelpreise“.",
+      "einzelpreise": [
+        {
+          "produkt": "Ytong Porenbeton Planplatte 599x249 mm PPpl-0,50",
+          "url": "https://www.bausep.de/ytong-porenbeton-planplatte-599x249-mm-pppl-0-50.html",
+          "punkte": [
+            {
+              "variante": "50 mm",
+              "eur_m3": 195.8,
+              "netto_je_m2": 9.7899
+            },
+            {
+              "variante": "100 mm",
+              "eur_m3": 195.8,
+              "netto_je_m2": 19.5798
+            },
+            {
+              "variante": "75 mm",
+              "eur_m3": 195.74,
+              "netto_je_m2": 14.6807
+            }
+          ]
+        },
+        {
+          "produkt": "Ytong Porenbeton Planstein PP2- 0,35",
+          "url": "https://www.bausep.de/ytong-porenbeton-planstein-pp2-0-35.html",
+          "punkte": [
+            {
+              "variante": "36,5 cm",
+              "eur_m3": 161.11,
+              "netto_je_m2": 58.8067
+            },
+            {
+              "variante": "30 cm",
+              "eur_m3": 161.12,
+              "netto_je_m2": 48.3361
+            }
+          ]
+        },
+        {
+          "produkt": "Ytong Porenbeton Planstein PP4-0,50-0,55",
+          "url": "https://www.bausep.de/ytong-porenbeton-planstein-pp4-0-50-0-55.html",
+          "punkte": [
+            {
+              "variante": "15 cm",
+              "eur_m3": 161.12,
+              "netto_je_m2": 24.1681
+            },
+            {
+              "variante": "11,5 cm",
+              "eur_m3": 161.13,
+              "netto_je_m2": 18.5294
+            },
+            {
+              "variante": "17,5 cm",
+              "eur_m3": 161.1,
+              "netto_je_m2": 28.1933
+            },
+            {
+              "variante": "24 cm",
+              "eur_m3": 161.1,
+              "netto_je_m2": 38.6639
+            },
+            {
+              "variante": "20 cm",
+              "eur_m3": 161.09,
+              "netto_je_m2": 32.2185
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "haendlerspanne-bausep-mineralwolle",
+      "titel": "Preisspanne Mineralwolle (Klemmfilz, Fassaden-/Kernplatten): berechnet aus 20 Produkten (145 Preisvarianten) des Online-Händlers bausep.de, abgerufen 18.11.2026 (49.16 bis 231.75 €/m³ netto, Median 96.92)",
+      "herausgeber": "MaterialMatch (berechnet aus Preisen des Online-Händlers bausep.de)",
+      "url": "https://www.bausep.de/isover-kontur-fsp-1-031-fassadendaemmplatte.html",
+      "datum": null,
+      "datum_hinweis": "Händlerpreise am Abrufdatum 2026-11-18; Preise und Verfügbarkeit können sich täglich ändern.",
+      "abgerufen": "2026-11-18",
+      "quellenart": "Preisspanne (berechnet aus Händlerpreisen)",
+      "produkt": "20 Produkte: siehe einzelpreise (Name, Link, Variante, Preis)",
+      "region": "Deutschland (Online-Händler bausep.de, Preise für Privatkunden inkl. 19 % MwSt. laut Shop, hier als Nettopreis)",
+      "geltung": "generisch",
+      "qualitaet": "Berechnete Kennzahl (Minimum, Maximum, Median) aus Händlerpreisen verschiedener Produkte und Dicken; kein Marktpreis und kein Preis für ein bestimmtes Produkt. Umrechnung: €/m³ = Preis je m² ÷ Dicke (Dicke aus der Variante des Shops). Nettopreis: der Shop weist den Nettobetrag im Seitenquelltext aus (Bruttopreis ÷ 1,19).",
+      "geprueft": true,
+      "verwendung": "Preisspanne und Median für das allgemeine Material mineralwolle; jeder Einzelpreis steht mit Produktlink in „einzelpreise“.",
+      "einzelpreise": [
+        {
+          "produkt": "Isover Kontur FSP 1-031 Fassadendämmplatte",
+          "url": "https://www.bausep.de/isover-kontur-fsp-1-031-fassadendaemmplatte.html",
+          "punkte": [
+            {
+              "variante": "120 mm",
+              "eur_m3": 123.04,
+              "netto_je_m2": 14.7647
+            },
+            {
+              "variante": "100 mm",
+              "eur_m3": 130.76,
+              "netto_je_m2": 13.0756
+            },
+            {
+              "variante": "50 mm",
+              "eur_m3": 131.6,
+              "netto_je_m2": 6.5798
+            },
+            {
+              "variante": "60 mm",
+              "eur_m3": 130.39,
+              "netto_je_m2": 7.8235
+            },
+            {
+              "variante": "40 mm",
+              "eur_m3": 141.18,
+              "netto_je_m2": 5.6471
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 123.23,
+              "netto_je_m2": 17.2521
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 128.15,
+              "netto_je_m2": 10.2521
+            },
+            {
+              "variante": "160 mm",
+              "eur_m3": 124.53,
+              "netto_je_m2": 19.9244
+            },
+            {
+              "variante": "200 mm",
+              "eur_m3": 140.38,
+              "netto_je_m2": 28.0756
+            },
+            {
+              "variante": "220 mm",
+              "eur_m3": 148.17,
+              "netto_je_m2": 32.5966
+            },
+            {
+              "variante": "240 mm",
+              "eur_m3": 148.04,
+              "netto_je_m2": 35.5294
+            }
+          ]
+        },
+        {
+          "produkt": "Isover Kontur FSP 1-034 Fassadendämmplatte",
+          "url": "https://www.bausep.de/isover-kontur-fsp-1-034-fassadendaemmplatte.html",
+          "punkte": [
+            {
+              "variante": "60 mm",
+              "eur_m3": 95.52,
+              "netto_je_m2": 5.7311
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 95.38,
+              "netto_je_m2": 7.6303
+            },
+            {
+              "variante": "100 mm",
+              "eur_m3": 95.29,
+              "netto_je_m2": 9.5294
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 95.31,
+              "netto_je_m2": 11.437
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 95.68,
+              "netto_je_m2": 13.395
+            },
+            {
+              "variante": "160 mm",
+              "eur_m3": 96.38,
+              "netto_je_m2": 15.4202
+            },
+            {
+              "variante": "180 mm",
+              "eur_m3": 96.83,
+              "netto_je_m2": 17.4286
+            },
+            {
+              "variante": "200 mm",
+              "eur_m3": 97.61,
+              "netto_je_m2": 19.521
+            }
+          ]
+        },
+        {
+          "produkt": "Isover Kontur KP 1-031 Fassadendämmplatten",
+          "url": "https://www.bausep.de/isover-kontur-kp-1-031-fassadendaemmplatten.html",
+          "punkte": [
+            {
+              "variante": "60 mm",
+              "eur_m3": 118.63,
+              "netto_je_m2": 7.1176
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 118.7,
+              "netto_je_m2": 9.4958
+            },
+            {
+              "variante": "100 mm",
+              "eur_m3": 118.57,
+              "netto_je_m2": 11.8571
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 118.84,
+              "netto_je_m2": 14.2605
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 118.85,
+              "netto_je_m2": 16.6387
+            },
+            {
+              "variante": "160 mm",
+              "eur_m3": 118.7,
+              "netto_je_m2": 18.9916
+            }
+          ]
+        },
+        {
+          "produkt": "Isover Kontur KP 1-034 Fassadendämmplatten",
+          "url": "https://www.bausep.de/isover-kontur-kp-1-034-fassadendaemmplatten.html",
+          "punkte": [
+            {
+              "variante": "40 mm",
+              "eur_m3": 72.48,
+              "netto_je_m2": 2.8992
+            },
+            {
+              "variante": "50 mm",
+              "eur_m3": 73.11,
+              "netto_je_m2": 3.6555
+            },
+            {
+              "variante": "60 mm",
+              "eur_m3": 72.69,
+              "netto_je_m2": 4.3613
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 73.11,
+              "netto_je_m2": 5.8487
+            },
+            {
+              "variante": "100 mm",
+              "eur_m3": 72.86,
+              "netto_je_m2": 7.2857
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 79.97,
+              "netto_je_m2": 9.5966
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 80.19,
+              "netto_je_m2": 11.2269
+            },
+            {
+              "variante": "160 mm",
+              "eur_m3": 80.2,
+              "netto_je_m2": 12.8319
+            }
+          ]
+        },
+        {
+          "produkt": "Isover Kontur KR Xpress 031 Kern-Dämmrolle",
+          "url": "https://www.bausep.de/isover-kontur-kr-xpress-031-kern-daemmrolle.html",
+          "punkte": [
+            {
+              "variante": "160 mm",
+              "eur_m3": 142.28,
+              "netto_je_m2": 22.7647
+            }
+          ]
+        },
+        {
+          "produkt": "Isover Kontur KR Xpress-034 Kern-Dämmrolle Breite 375 mm",
+          "url": "https://www.bausep.de/isover-kontur-kr-xpress-034-kern-daemmrolle-breite-375-mm.html",
+          "punkte": [
+            {
+              "variante": "160 mm",
+              "eur_m3": 97.64,
+              "netto_je_m2": 15.6218
+            }
+          ]
+        },
+        {
+          "produkt": "Isover Kontur KR Xpress-034 Kern-Dämmrolle Breite 500 mm",
+          "url": "https://www.bausep.de/isover-kontur-kr-xpress-034-kern-daemmrolle-breite-500-mm.html",
+          "punkte": [
+            {
+              "variante": "140 mm",
+              "eur_m3": 97.6,
+              "netto_je_m2": 13.6639
+            },
+            {
+              "variante": "160 mm",
+              "eur_m3": 97.64,
+              "netto_je_m2": 15.6218
+            },
+            {
+              "variante": "180 mm",
+              "eur_m3": 97.43,
+              "netto_je_m2": 17.5378
+            },
+            {
+              "variante": "200 mm",
+              "eur_m3": 97.65,
+              "netto_je_m2": 19.5294
+            }
+          ]
+        },
+        {
+          "produkt": "Aktion Klemmfilz WLG 032",
+          "url": "https://www.bausep.de/aktion-klemmfilz-wlg-032.html",
+          "punkte": [
+            {
+              "variante": "100 mm",
+              "eur_m3": 84.03,
+              "netto_je_m2": 8.4034
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 84.03,
+              "netto_je_m2": 10.084
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 84.03,
+              "netto_je_m2": 11.7647
+            },
+            {
+              "variante": "160 mm",
+              "eur_m3": 84.03,
+              "netto_je_m2": 13.4454
+            },
+            {
+              "variante": "180 mm",
+              "eur_m3": 84.03,
+              "netto_je_m2": 15.126
+            },
+            {
+              "variante": "200 mm",
+              "eur_m3": 84.03,
+              "netto_je_m2": 16.8067
+            },
+            {
+              "variante": "220 mm",
+              "eur_m3": 84.03,
+              "netto_je_m2": 18.4874
+            },
+            {
+              "variante": "240 mm",
+              "eur_m3": 84.73,
+              "netto_je_m2": 20.3361
+            }
+          ]
+        },
+        {
+          "produkt": "Aktion Klemmfilz WLG 035 Dachdämmung",
+          "url": "https://www.bausep.de/aktion-klemmfilz-wlg-035-dachdaemmung.html",
+          "punkte": [
+            {
+              "variante": "100 mm",
+              "eur_m3": 49.16,
+              "netto_je_m2": 4.916
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 49.37,
+              "netto_je_m2": 5.9244
+            },
+            {
+              "variante": "220 mm",
+              "eur_m3": 50.8,
+              "netto_je_m2": 11.1765
+            },
+            {
+              "variante": "160 mm",
+              "eur_m3": 50.42,
+              "netto_je_m2": 8.0672
+            },
+            {
+              "variante": "180 mm",
+              "eur_m3": 50.42,
+              "netto_je_m2": 9.0756
+            },
+            {
+              "variante": "240 mm",
+              "eur_m3": 52.17,
+              "netto_je_m2": 12.521
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 50.12,
+              "netto_je_m2": 7.0168
+            },
+            {
+              "variante": "200 mm",
+              "eur_m3": 50.42,
+              "netto_je_m2": 10.084
+            },
+            {
+              "variante": "260 mm",
+              "eur_m3": 57.53,
+              "netto_je_m2": 14.958
+            }
+          ]
+        },
+        {
+          "produkt": "Climowool KF2 Klemmfilz 035",
+          "url": "https://www.bausep.de/climowool-kf2-klemmfilz-035.html",
+          "punkte": [
+            {
+              "variante": "100 mm",
+              "eur_m3": 54.54,
+              "netto_je_m2": 5.4538
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 54.41,
+              "netto_je_m2": 6.5294
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 54.44,
+              "netto_je_m2": 7.6218
+            },
+            {
+              "variante": "160 mm",
+              "eur_m3": 54.41,
+              "netto_je_m2": 8.7059
+            },
+            {
+              "variante": "180 mm",
+              "eur_m3": 54.43,
+              "netto_je_m2": 9.7983
+            },
+            {
+              "variante": "200 mm",
+              "eur_m3": 54.58,
+              "netto_je_m2": 10.916
+            },
+            {
+              "variante": "220 mm",
+              "eur_m3": 54.85,
+              "netto_je_m2": 12.0672
+            },
+            {
+              "variante": "240 mm",
+              "eur_m3": 54.1,
+              "netto_je_m2": 12.9832
+            },
+            {
+              "variante": "260 mm",
+              "eur_m3": 54.78,
+              "netto_je_m2": 14.2437
+            },
+            {
+              "variante": "280 mm",
+              "eur_m3": 54.89,
+              "netto_je_m2": 15.3697
+            },
+            {
+              "variante": "300 mm",
+              "eur_m3": 54.87,
+              "netto_je_m2": 16.4622
+            }
+          ]
+        },
+        {
+          "produkt": "Climowool KF3 Klemmfilz 032",
+          "url": "https://www.bausep.de/climowool-kf3-klemmfilz-032.html",
+          "punkte": [
+            {
+              "variante": "100 mm",
+              "eur_m3": 86.72,
+              "netto_je_m2": 8.6723
+            },
+            {
+              "variante": "180 mm",
+              "eur_m3": 86.74,
+              "netto_je_m2": 15.6134
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 86.69,
+              "netto_je_m2": 10.4034
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 86.49,
+              "netto_je_m2": 12.1092
+            },
+            {
+              "variante": "160 mm",
+              "eur_m3": 86.82,
+              "netto_je_m2": 13.8908
+            },
+            {
+              "variante": "200 mm",
+              "eur_m3": 86.89,
+              "netto_je_m2": 17.3782
+            },
+            {
+              "variante": "220 mm",
+              "eur_m3": 86.82,
+              "netto_je_m2": 19.1008
+            },
+            {
+              "variante": "240 mm",
+              "eur_m3": 86.9,
+              "netto_je_m2": 20.8571
+            },
+            {
+              "variante": "260 mm",
+              "eur_m3": 86.91,
+              "netto_je_m2": 22.5966
+            },
+            {
+              "variante": "280 mm",
+              "eur_m3": 86.91,
+              "netto_je_m2": 24.3361
+            }
+          ]
+        },
+        {
+          "produkt": "Isover Integra ZKF Lanaé 1-031 Klemmfilz",
+          "url": "https://www.bausep.de/isover-integra-zkf-lanae-1-031-klemmfilz.html",
+          "punkte": [
+            {
+              "variante": "200 mm",
+              "eur_m3": 88.91,
+              "netto_je_m2": 17.7815
+            },
+            {
+              "variante": "240 mm",
+              "eur_m3": 96.5,
+              "netto_je_m2": 23.1597
+            },
+            {
+              "variante": "100 mm",
+              "eur_m3": 95.97,
+              "netto_je_m2": 9.5966
+            },
+            {
+              "variante": "180 mm",
+              "eur_m3": 96.41,
+              "netto_je_m2": 17.3529
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 96.52,
+              "netto_je_m2": 13.5126
+            },
+            {
+              "variante": "220 mm",
+              "eur_m3": 94.16,
+              "netto_je_m2": 20.7143
+            },
+            {
+              "variante": "160 mm",
+              "eur_m3": 96.22,
+              "netto_je_m2": 15.395
+            },
+            {
+              "variante": "260 mm",
+              "eur_m3": 128.44,
+              "netto_je_m2": 33.395
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 96.22,
+              "netto_je_m2": 11.5462
+            }
+          ]
+        },
+        {
+          "produkt": "Isover Integra ZKF Lanaé 1-034 Klemmfilz",
+          "url": "https://www.bausep.de/isover-integra-zkf-lanae-1-034-klemmfilz.html",
+          "punkte": [
+            {
+              "variante": "100 mm",
+              "eur_m3": 58.32,
+              "netto_je_m2": 5.8319
+            },
+            {
+              "variante": "240 mm",
+              "eur_m3": 61.87,
+              "netto_je_m2": 14.8487
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 62.26,
+              "netto_je_m2": 7.4706
+            },
+            {
+              "variante": "180 mm",
+              "eur_m3": 61.76,
+              "netto_je_m2": 11.1176
+            },
+            {
+              "variante": "160 mm",
+              "eur_m3": 61.66,
+              "netto_je_m2": 9.8655
+            },
+            {
+              "variante": "200 mm",
+              "eur_m3": 63.15,
+              "netto_je_m2": 12.6303
+            },
+            {
+              "variante": "220 mm",
+              "eur_m3": 63.87,
+              "netto_je_m2": 14.0504
+            },
+            {
+              "variante": "260 mm",
+              "eur_m3": 68.39,
+              "netto_je_m2": 17.7815
+            },
+            {
+              "variante": "280 mm",
+              "eur_m3": 73.71,
+              "netto_je_m2": 20.6387
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 61.58,
+              "netto_je_m2": 8.6218
+            }
+          ]
+        },
+        {
+          "produkt": "Isover Ultimate 035 Klemmfilz",
+          "url": "https://www.bausep.de/isover-ultimate-035-klemmfilz.html",
+          "punkte": [
+            {
+              "variante": "100 mm",
+              "eur_m3": 92.44,
+              "netto_je_m2": 9.2437
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 90.06,
+              "netto_je_m2": 10.8067
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 90.16,
+              "netto_je_m2": 12.6218
+            },
+            {
+              "variante": "160 mm",
+              "eur_m3": 89.76,
+              "netto_je_m2": 14.3613
+            },
+            {
+              "variante": "180 mm",
+              "eur_m3": 91.88,
+              "netto_je_m2": 16.5378
+            },
+            {
+              "variante": "200 mm",
+              "eur_m3": 90.04,
+              "netto_je_m2": 18.0084
+            },
+            {
+              "variante": "220 mm",
+              "eur_m3": 90.53,
+              "netto_je_m2": 19.916
+            },
+            {
+              "variante": "240 mm",
+              "eur_m3": 90.02,
+              "netto_je_m2": 21.605
+            }
+          ]
+        },
+        {
+          "produkt": "Isover Ultimate ZKF 031 Klemmfilz",
+          "url": "https://www.bausep.de/isover-ultimate-zkf-031-klemmfilz.html",
+          "punkte": [
+            {
+              "variante": "100 mm",
+              "eur_m3": 173.78,
+              "netto_je_m2": 17.3782
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 173.39,
+              "netto_je_m2": 20.8067
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 173.71,
+              "netto_je_m2": 24.3193
+            },
+            {
+              "variante": "160 mm",
+              "eur_m3": 173.63,
+              "netto_je_m2": 27.7815
+            },
+            {
+              "variante": "180 mm",
+              "eur_m3": 173.67,
+              "netto_je_m2": 31.2605
+            },
+            {
+              "variante": "200 mm",
+              "eur_m3": 173.15,
+              "netto_je_m2": 34.6303
+            }
+          ]
+        },
+        {
+          "produkt": "URSA GEO SF 35 Spannfilz Klemmfilz WLG 035",
+          "url": "https://www.bausep.de/ursa-geo-sf-35-spannfilz-klemmfilz-wlg-035.html",
+          "punkte": [
+            {
+              "variante": "160 mm",
+              "eur_m3": 53.83,
+              "netto_je_m2": 8.6134
+            },
+            {
+              "variante": "180 mm",
+              "eur_m3": 53.22,
+              "netto_je_m2": 9.5798
+            },
+            {
+              "variante": "200 mm",
+              "eur_m3": 55.0,
+              "netto_je_m2": 11.0
+            }
+          ]
+        },
+        {
+          "produkt": "Isover Ultimate 035 Fassadendämmplatte",
+          "url": "https://www.bausep.de/isover-ultimate-035-fassadendaemmplatte.html",
+          "punkte": [
+            {
+              "variante": "100 mm",
+              "eur_m3": 109.58,
+              "netto_je_m2": 10.958
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 110.01,
+              "netto_je_m2": 13.2017
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 110.71,
+              "netto_je_m2": 8.8571
+            },
+            {
+              "variante": "60 mm",
+              "eur_m3": 109.38,
+              "netto_je_m2": 6.563
+            },
+            {
+              "variante": "220 mm",
+              "eur_m3": 109.4,
+              "netto_je_m2": 24.0672
+            },
+            {
+              "variante": "160 mm",
+              "eur_m3": 110.82,
+              "netto_je_m2": 17.7311
+            },
+            {
+              "variante": "200 mm",
+              "eur_m3": 109.37,
+              "netto_je_m2": 21.8739
+            },
+            {
+              "variante": "180 mm",
+              "eur_m3": 108.87,
+              "netto_je_m2": 19.5966
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 110.56,
+              "netto_je_m2": 15.479
+            }
+          ]
+        },
+        {
+          "produkt": "Isover Ultimate FSP-030 Fassadendämmplatte",
+          "url": "https://www.bausep.de/isover-ultimate-fsp-030-fassadendaemmplatte.html",
+          "punkte": [
+            {
+              "variante": "80 mm",
+              "eur_m3": 203.36,
+              "netto_je_m2": 16.2689
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 185.99,
+              "netto_je_m2": 22.3193
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 165.79,
+              "netto_je_m2": 23.2101
+            },
+            {
+              "variante": "160 mm",
+              "eur_m3": 231.62,
+              "netto_je_m2": 37.0588
+            },
+            {
+              "variante": "100 mm",
+              "eur_m3": 197.39,
+              "netto_je_m2": 19.7395
+            }
+          ]
+        },
+        {
+          "produkt": "Isover Ultimate FSP-031 Fassadendämmplatte",
+          "url": "https://www.bausep.de/isover-ultimate-fsp-031-fassadendaemmplatte.html",
+          "punkte": [
+            {
+              "variante": "200 mm",
+              "eur_m3": 231.72,
+              "netto_je_m2": 46.3445
+            },
+            {
+              "variante": "60 mm",
+              "eur_m3": 213.44,
+              "netto_je_m2": 12.8067
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 203.36,
+              "netto_je_m2": 16.2689
+            },
+            {
+              "variante": "100 mm",
+              "eur_m3": 197.39,
+              "netto_je_m2": 19.7395
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 185.99,
+              "netto_je_m2": 22.3193
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 165.79,
+              "netto_je_m2": 23.2101
+            },
+            {
+              "variante": "160 mm",
+              "eur_m3": 231.62,
+              "netto_je_m2": 37.0588
+            },
+            {
+              "variante": "180 mm",
+              "eur_m3": 231.75,
+              "netto_je_m2": 41.7143
+            }
+          ]
+        },
+        {
+          "produkt": "Isover Ultimate Kern-Dämmplatte 035",
+          "url": "https://www.bausep.de/isover-ultimate-kern-daemmplatte-035.html",
+          "punkte": [
+            {
+              "variante": "50 mm",
+              "eur_m3": 138.66,
+              "netto_je_m2": 6.9328
+            },
+            {
+              "variante": "60 mm",
+              "eur_m3": 138.8,
+              "netto_je_m2": 8.3277
+            },
+            {
+              "variante": "40 mm",
+              "eur_m3": 138.23,
+              "netto_je_m2": 5.5294
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 138.97,
+              "netto_je_m2": 11.1176
+            },
+            {
+              "variante": "100 mm",
+              "eur_m3": 138.23,
+              "netto_je_m2": 13.8235
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 139.22,
+              "netto_je_m2": 16.7059
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 138.29,
+              "netto_je_m2": 19.3613
+            },
+            {
+              "variante": "160 mm",
+              "eur_m3": 138.45,
+              "netto_je_m2": 22.1513
+            },
+            {
+              "variante": "180 mm",
+              "eur_m3": 138.42,
+              "netto_je_m2": 24.916
+            },
+            {
+              "variante": "200 mm",
+              "eur_m3": 138.45,
+              "netto_je_m2": 27.6891
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "haendlerspanne-bausep-xps",
+      "titel": "Preisspanne XPS: berechnet aus 8 Produkten (53 Preisvarianten) des Online-Händlers bausep.de, abgerufen 18.11.2026 (156.22 bis 282.35 €/m³ netto, Median 178.47)",
+      "herausgeber": "MaterialMatch (berechnet aus Preisen des Online-Händlers bausep.de)",
+      "url": "https://www.bausep.de/bachl-styrodur-2800-c-hartschaum-platte.html",
+      "datum": null,
+      "datum_hinweis": "Händlerpreise am Abrufdatum 2026-11-18; Preise und Verfügbarkeit können sich täglich ändern.",
+      "abgerufen": "2026-11-18",
+      "quellenart": "Preisspanne (berechnet aus Händlerpreisen)",
+      "produkt": "8 Produkte: siehe einzelpreise (Name, Link, Variante, Preis)",
+      "region": "Deutschland (Online-Händler bausep.de, Preise für Privatkunden inkl. 19 % MwSt. laut Shop, hier als Nettopreis)",
+      "geltung": "generisch",
+      "qualitaet": "Berechnete Kennzahl (Minimum, Maximum, Median) aus Händlerpreisen verschiedener Produkte und Dicken; kein Marktpreis und kein Preis für ein bestimmtes Produkt. Umrechnung: €/m³ = Preis je m² ÷ Dicke (Dicke aus der Variante des Shops). Nettopreis: der Shop weist den Nettobetrag im Seitenquelltext aus (Bruttopreis ÷ 1,19).",
+      "geprueft": true,
+      "verwendung": "Preisspanne und Median für das allgemeine Material xps; jeder Einzelpreis steht mit Produktlink in „einzelpreise“.",
+      "einzelpreise": [
+        {
+          "produkt": "Bachl Styrodur 2800 C Hartschaum-Platte",
+          "url": "https://www.bausep.de/bachl-styrodur-2800-c-hartschaum-platte.html",
+          "punkte": [
+            {
+              "variante": "50 mm",
+              "eur_m3": 178.49,
+              "netto_je_m2": 8.9244
+            },
+            {
+              "variante": "60 mm",
+              "eur_m3": 178.43,
+              "netto_je_m2": 10.7059
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 178.47,
+              "netto_je_m2": 14.2773
+            },
+            {
+              "variante": "100 mm",
+              "eur_m3": 178.15,
+              "netto_je_m2": 17.8151
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 201.68,
+              "netto_je_m2": 24.2017
+            },
+            {
+              "variante": "20 mm",
+              "eur_m3": 196.64,
+              "netto_je_m2": 3.9328
+            },
+            {
+              "variante": "30 mm",
+              "eur_m3": 178.43,
+              "netto_je_m2": 5.3529
+            },
+            {
+              "variante": "40 mm",
+              "eur_m3": 178.57,
+              "netto_je_m2": 7.1429
+            }
+          ]
+        },
+        {
+          "produkt": "Bachl Styrodur 3000 CS/SQ Hartschaumplatte",
+          "url": "https://www.bausep.de/bachl-styrodur-3000-cs-sq-hartschaumplatte.html",
+          "punkte": [
+            {
+              "variante": "60 mm",
+              "eur_m3": 201.68,
+              "netto_je_m2": 12.1008
+            },
+            {
+              "variante": "180 mm",
+              "eur_m3": 221.06,
+              "netto_je_m2": 39.7899
+            },
+            {
+              "variante": "200 mm",
+              "eur_m3": 240.0,
+              "netto_je_m2": 48.0
+            },
+            {
+              "variante": "240 mm",
+              "eur_m3": 244.05,
+              "netto_je_m2": 58.5714
+            }
+          ]
+        },
+        {
+          "produkt": "Bachl Styrodur 3035 CS XPSplatte 1265 x 615 mm",
+          "url": "https://www.bausep.de/bachl-styrodur-3035-cs-xpsplatte-1265-x-615-mm.html",
+          "punkte": [
+            {
+              "variante": "60 mm",
+              "eur_m3": 178.43,
+              "netto_je_m2": 10.7059
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 178.47,
+              "netto_je_m2": 14.2773
+            },
+            {
+              "variante": "100 mm",
+              "eur_m3": 184.87,
+              "netto_je_m2": 18.4874
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 186.07,
+              "netto_je_m2": 26.0504
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 178.57,
+              "netto_je_m2": 21.4286
+            },
+            {
+              "variante": "160 mm",
+              "eur_m3": 237.29,
+              "netto_je_m2": 37.9664
+            },
+            {
+              "variante": "50 mm",
+              "eur_m3": 178.15,
+              "netto_je_m2": 8.9076
+            },
+            {
+              "variante": "30 mm",
+              "eur_m3": 159.66,
+              "netto_je_m2": 4.7899
+            },
+            {
+              "variante": "40 mm",
+              "eur_m3": 161.76,
+              "netto_je_m2": 6.4706
+            }
+          ]
+        },
+        {
+          "produkt": "Bachl Styrodur 4000 CS Dämmplatte 1265 x 615 mm",
+          "url": "https://www.bausep.de/bachl-styrodur-4000-cs-daemmplatte-1265-x-615-mm.html",
+          "punkte": [
+            {
+              "variante": "60 mm",
+              "eur_m3": 226.89,
+              "netto_je_m2": 13.6134
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 226.89,
+              "netto_je_m2": 18.1513
+            },
+            {
+              "variante": "100 mm",
+              "eur_m3": 227.31,
+              "netto_je_m2": 22.7311
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 227.31,
+              "netto_je_m2": 27.2773
+            }
+          ]
+        },
+        {
+          "produkt": "Bachl Styrodur 5000 CS XPSplatte 1265 x 615 mm",
+          "url": "https://www.bausep.de/bachl-styrodur-5000-cs-xpsplatte-1265-x-615-mm.html",
+          "punkte": [
+            {
+              "variante": "60 mm",
+              "eur_m3": 282.35,
+              "netto_je_m2": 16.9412
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 282.35,
+              "netto_je_m2": 22.5882
+            },
+            {
+              "variante": "100 mm",
+              "eur_m3": 282.35,
+              "netto_je_m2": 28.2353
+            }
+          ]
+        },
+        {
+          "produkt": "Jackodur KF 300 GL 035 gefiniert XPS",
+          "url": "https://www.bausep.de/jackodur-kf-300-gl-035-gefiniert-xps.html",
+          "punkte": [
+            {
+              "variante": "60 mm",
+              "eur_m3": 172.13,
+              "netto_je_m2": 10.3277
+            },
+            {
+              "variante": "100 mm",
+              "eur_m3": 156.22,
+              "netto_je_m2": 15.6218
+            },
+            {
+              "variante": "50 mm",
+              "eur_m3": 171.93,
+              "netto_je_m2": 8.5966
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 156.41,
+              "netto_je_m2": 12.5126
+            },
+            {
+              "variante": "20 mm",
+              "eur_m3": 178.15,
+              "netto_je_m2": 3.563
+            },
+            {
+              "variante": "30 mm",
+              "eur_m3": 171.71,
+              "netto_je_m2": 5.1513
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 156.37,
+              "netto_je_m2": 18.7647
+            },
+            {
+              "variante": "40 mm",
+              "eur_m3": 172.27,
+              "netto_je_m2": 6.8908
+            }
+          ]
+        },
+        {
+          "produkt": "Jackodur KF 300 SF 035 XPS Perimeterdämmung",
+          "url": "https://www.bausep.de/jackodur-kf-300-sf-035-xps-perimeterdaemmung.html",
+          "punkte": [
+            {
+              "variante": "50 mm",
+              "eur_m3": 171.93,
+              "netto_je_m2": 8.5966
+            },
+            {
+              "variante": "40 mm",
+              "eur_m3": 172.27,
+              "netto_je_m2": 6.8908
+            },
+            {
+              "variante": "60 mm",
+              "eur_m3": 172.13,
+              "netto_je_m2": 10.3277
+            },
+            {
+              "variante": "30 mm",
+              "eur_m3": 171.71,
+              "netto_je_m2": 5.1513
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 157.68,
+              "netto_je_m2": 22.0756
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 156.37,
+              "netto_je_m2": 18.7647
+            },
+            {
+              "variante": "100 mm",
+              "eur_m3": 156.22,
+              "netto_je_m2": 15.6218
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 156.41,
+              "netto_je_m2": 12.5126
+            }
+          ]
+        },
+        {
+          "produkt": "URSA XPS D N-III-L Perimeterdämmung mit Stufenfalz",
+          "url": "https://www.bausep.de/ursa-xps-d-n-iii-l-perimeterdaemmung-mit-stufenfalz.html",
+          "punkte": [
+            {
+              "variante": "30 mm",
+              "eur_m3": 172.27,
+              "netto_je_m2": 5.1681
+            },
+            {
+              "variante": "40 mm",
+              "eur_m3": 172.27,
+              "netto_je_m2": 6.8908
+            },
+            {
+              "variante": "60 mm",
+              "eur_m3": 172.27,
+              "netto_je_m2": 10.3361
+            },
+            {
+              "variante": "50 mm",
+              "eur_m3": 173.11,
+              "netto_je_m2": 8.6555
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 173.32,
+              "netto_je_m2": 13.8655
+            },
+            {
+              "variante": "100 mm",
+              "eur_m3": 173.11,
+              "netto_je_m2": 17.3109
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 172.62,
+              "netto_je_m2": 20.7143
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 178.57,
+              "netto_je_m2": 25.0
+            },
+            {
+              "variante": "160 mm",
+              "eur_m3": 184.87,
+              "netto_je_m2": 29.5798
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "haendlerspanne-bausep-schaumglas",
+      "titel": "Preisspanne Schaumglas: berechnet aus 1 Produkten (6 Preisvarianten) des Online-Händlers bausep.de, abgerufen 18.11.2026 (483.33 bis 513.66 €/m³ netto, Median 512.59)",
+      "herausgeber": "MaterialMatch (berechnet aus Preisen des Online-Händlers bausep.de)",
+      "url": "https://www.bausep.de/glapor-schaumglasplatte-pg-600-3-800-x-600-mm.html",
+      "datum": null,
+      "datum_hinweis": "Händlerpreise am Abrufdatum 2026-11-18; Preise und Verfügbarkeit können sich täglich ändern.",
+      "abgerufen": "2026-11-18",
+      "quellenart": "Preisspanne (berechnet aus Händlerpreisen)",
+      "produkt": "1 Produkte: siehe einzelpreise (Name, Link, Variante, Preis)",
+      "region": "Deutschland (Online-Händler bausep.de, Preise für Privatkunden inkl. 19 % MwSt. laut Shop, hier als Nettopreis)",
+      "geltung": "generisch",
+      "qualitaet": "Berechnete Kennzahl (Minimum, Maximum, Median) aus Händlerpreisen verschiedener Produkte und Dicken; kein Marktpreis und kein Preis für ein bestimmtes Produkt. Umrechnung: €/m³ = Preis je m² ÷ Dicke (Dicke aus der Variante des Shops). Nettopreis: der Shop weist den Nettobetrag im Seitenquelltext aus (Bruttopreis ÷ 1,19).",
+      "geprueft": true,
+      "verwendung": "Preisspanne und Median für das allgemeine Material schaumglas; jeder Einzelpreis steht mit Produktlink in „einzelpreise“.",
+      "einzelpreise": [
+        {
+          "produkt": "GLAPOR Schaumglasplatte PG 600.3 800 x 600 mm",
+          "url": "https://www.bausep.de/glapor-schaumglasplatte-pg-600-3-800-x-600-mm.html",
+          "punkte": [
+            {
+              "variante": "40 mm",
+              "eur_m3": 512.19,
+              "netto_je_m2": 20.4874
+            },
+            {
+              "variante": "60 mm",
+              "eur_m3": 483.33,
+              "netto_je_m2": 29.0
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 513.66,
+              "netto_je_m2": 61.6387
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 512.9,
+              "netto_je_m2": 71.8067
+            },
+            {
+              "variante": "100 mm",
+              "eur_m3": 512.27,
+              "netto_je_m2": 51.2269
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 513.65,
+              "netto_je_m2": 41.0924
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "haendlerspanne-bausep-glaswolle",
+      "titel": "Preisspanne Glaswolle: berechnet aus 3 Produkten (21 Preisvarianten) des Online-Händlers bausep.de, abgerufen 18.11.2026 (52.17 bis 219.75 €/m³ netto, Median 84.03)",
+      "herausgeber": "MaterialMatch (berechnet aus Preisen des Online-Händlers bausep.de)",
+      "url": "https://www.bausep.de/aktion-dachbodendaemmung-wlg-032-glaswolle.html",
+      "datum": null,
+      "datum_hinweis": "Händlerpreise am Abrufdatum 2026-11-18; Preise und Verfügbarkeit können sich täglich ändern.",
+      "abgerufen": "2026-11-18",
+      "quellenart": "Preisspanne (berechnet aus Händlerpreisen)",
+      "produkt": "3 Produkte: siehe einzelpreise (Name, Link, Variante, Preis)",
+      "region": "Deutschland (Online-Händler bausep.de, Preise für Privatkunden inkl. 19 % MwSt. laut Shop, hier als Nettopreis)",
+      "geltung": "generisch",
+      "qualitaet": "Berechnete Kennzahl (Minimum, Maximum, Median) aus Händlerpreisen verschiedener Produkte und Dicken; kein Marktpreis und kein Preis für ein bestimmtes Produkt. Umrechnung: €/m³ = Preis je m² ÷ Dicke (Dicke aus der Variante des Shops). Nettopreis: der Shop weist den Nettobetrag im Seitenquelltext aus (Bruttopreis ÷ 1,19).",
+      "geprueft": true,
+      "verwendung": "Preisspanne und Median für das allgemeine Material glaswolle; jeder Einzelpreis steht mit Produktlink in „einzelpreise“.",
+      "einzelpreise": [
+        {
+          "produkt": "Aktion Dachbodendämmung WLG 032 Glaswolle",
+          "url": "https://www.bausep.de/aktion-dachbodendaemmung-wlg-032-glaswolle.html",
+          "punkte": [
+            {
+              "variante": "100 mm",
+              "eur_m3": 84.03,
+              "netto_je_m2": 8.4034
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 84.03,
+              "netto_je_m2": 10.084
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 84.03,
+              "netto_je_m2": 11.7647
+            },
+            {
+              "variante": "160 mm",
+              "eur_m3": 84.03,
+              "netto_je_m2": 13.4454
+            },
+            {
+              "variante": "180 mm",
+              "eur_m3": 84.03,
+              "netto_je_m2": 15.126
+            },
+            {
+              "variante": "200 mm",
+              "eur_m3": 84.03,
+              "netto_je_m2": 16.8067
+            },
+            {
+              "variante": "240 mm",
+              "eur_m3": 84.73,
+              "netto_je_m2": 20.3361
+            },
+            {
+              "variante": "220 mm",
+              "eur_m3": 84.03,
+              "netto_je_m2": 18.4874
+            }
+          ]
+        },
+        {
+          "produkt": "Aktion Dachbodendämmung WLG 035 Glaswolle",
+          "url": "https://www.bausep.de/aktion-dachbodendaemmung-wlg-035-glaswolle.html",
+          "punkte": [
+            {
+              "variante": "100 mm",
+              "eur_m3": 52.27,
+              "netto_je_m2": 5.2269
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 52.17,
+              "netto_je_m2": 6.2605
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 52.22,
+              "netto_je_m2": 7.3109
+            },
+            {
+              "variante": "160 mm",
+              "eur_m3": 52.21,
+              "netto_je_m2": 8.3529
+            },
+            {
+              "variante": "180 mm",
+              "eur_m3": 52.19,
+              "netto_je_m2": 9.395
+            },
+            {
+              "variante": "200 mm",
+              "eur_m3": 52.18,
+              "netto_je_m2": 10.437
+            },
+            {
+              "variante": "220 mm",
+              "eur_m3": 52.18,
+              "netto_je_m2": 11.479
+            },
+            {
+              "variante": "240 mm",
+              "eur_m3": 52.21,
+              "netto_je_m2": 12.5294
+            }
+          ]
+        },
+        {
+          "produkt": "Isover Akustic EP 1 Glaswolle-Dämmplatte",
+          "url": "https://www.bausep.de/isover-akustic-ep-1-glaswolle-daemmplatte.html",
+          "punkte": [
+            {
+              "variante": "20 mm",
+              "eur_m3": 219.75,
+              "netto_je_m2": 4.395
+            },
+            {
+              "variante": "25 mm",
+              "eur_m3": 218.82,
+              "netto_je_m2": 5.4706
+            },
+            {
+              "variante": "30 mm",
+              "eur_m3": 219.33,
+              "netto_je_m2": 6.5798
+            },
+            {
+              "variante": "35 mm",
+              "eur_m3": 218.49,
+              "netto_je_m2": 7.6471
+            },
+            {
+              "variante": "40 mm",
+              "eur_m3": 218.91,
+              "netto_je_m2": 8.7563
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "haendlerspanne-bausep-pir",
+      "titel": "Preisspanne PIR: berechnet aus 5 Produkten (39 Preisvarianten) des Online-Händlers bausep.de, abgerufen 18.11.2026 (217.07 bis 524.79 €/m³ netto, Median 262.66)",
+      "herausgeber": "MaterialMatch (berechnet aus Preisen des Online-Händlers bausep.de)",
+      "url": "https://www.bausep.de/bauder-pir-plus-wls-023-aufsparrendaemmung.html",
+      "datum": null,
+      "datum_hinweis": "Händlerpreise am Abrufdatum 2026-11-18; Preise und Verfügbarkeit können sich täglich ändern.",
+      "abgerufen": "2026-11-18",
+      "quellenart": "Preisspanne (berechnet aus Händlerpreisen)",
+      "produkt": "5 Produkte: siehe einzelpreise (Name, Link, Variante, Preis)",
+      "region": "Deutschland (Online-Händler bausep.de, Preise für Privatkunden inkl. 19 % MwSt. laut Shop, hier als Nettopreis)",
+      "geltung": "generisch",
+      "qualitaet": "Berechnete Kennzahl (Minimum, Maximum, Median) aus Händlerpreisen verschiedener Produkte und Dicken; kein Marktpreis und kein Preis für ein bestimmtes Produkt. Umrechnung: €/m³ = Preis je m² ÷ Dicke (Dicke aus der Variante des Shops). Nettopreis: der Shop weist den Nettobetrag im Seitenquelltext aus (Bruttopreis ÷ 1,19).",
+      "geprueft": true,
+      "verwendung": "Preisspanne und Median für das allgemeine Material pir; jeder Einzelpreis steht mit Produktlink in „einzelpreise“.",
+      "einzelpreise": [
+        {
+          "produkt": "Bauder PIR PLUS WLS 023 Aufsparrendämmung",
+          "url": "https://www.bausep.de/bauder-pir-plus-wls-023-aufsparrendaemmung.html",
+          "punkte": [
+            {
+              "variante": "80 mm",
+              "eur_m3": 303.57,
+              "netto_je_m2": 24.2857
+            },
+            {
+              "variante": "100 mm",
+              "eur_m3": 284.45,
+              "netto_je_m2": 28.4454
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 270.8,
+              "netto_je_m2": 32.4958
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 262.66,
+              "netto_je_m2": 36.7731
+            },
+            {
+              "variante": "160 mm",
+              "eur_m3": 251.26,
+              "netto_je_m2": 40.2017
+            },
+            {
+              "variante": "180 mm",
+              "eur_m3": 242.39,
+              "netto_je_m2": 43.6303
+            },
+            {
+              "variante": "200 mm",
+              "eur_m3": 235.25,
+              "netto_je_m2": 47.0504
+            }
+          ]
+        },
+        {
+          "produkt": "Bauder PIR SF WLS 023 Aufsparrendämmung",
+          "url": "https://www.bausep.de/bauder-pir-sf-wls-023-aufsparrendaemmung.html",
+          "punkte": [
+            {
+              "variante": "80 mm",
+              "eur_m3": 282.77,
+              "netto_je_m2": 22.6218
+            },
+            {
+              "variante": "100 mm",
+              "eur_m3": 267.14,
+              "netto_je_m2": 26.7143
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 257.91,
+              "netto_je_m2": 30.9496
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 252.16,
+              "netto_je_m2": 35.3025
+            },
+            {
+              "variante": "160 mm",
+              "eur_m3": 241.81,
+              "netto_je_m2": 38.6891
+            },
+            {
+              "variante": "180 mm",
+              "eur_m3": 235.01,
+              "netto_je_m2": 42.3025
+            },
+            {
+              "variante": "200 mm",
+              "eur_m3": 230.67,
+              "netto_je_m2": 46.1345
+            },
+            {
+              "variante": "220 mm",
+              "eur_m3": 226.93,
+              "netto_je_m2": 49.9244
+            },
+            {
+              "variante": "240 mm",
+              "eur_m3": 224.16,
+              "netto_je_m2": 53.7983
+            }
+          ]
+        },
+        {
+          "produkt": "Bauder PIR DAL Dachboden-Wärmedämmelement",
+          "url": "https://www.bausep.de/bauder-pir-dal-dachboden-waermedaemmelement.html",
+          "punkte": [
+            {
+              "variante": "60 mm",
+              "eur_m3": 369.89,
+              "netto_je_m2": 22.1933
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 348.53,
+              "netto_je_m2": 27.8824
+            },
+            {
+              "variante": "100 mm",
+              "eur_m3": 347.65,
+              "netto_je_m2": 34.7647
+            }
+          ]
+        },
+        {
+          "produkt": "Bauder PIR FA-TE Flachdach-Dämmplatte stumpf",
+          "url": "https://www.bausep.de/bauder-pir-fa-te-flachdach-daemmplatte-stumpf.html",
+          "punkte": [
+            {
+              "variante": "100 mm",
+              "eur_m3": 285.38,
+              "netto_je_m2": 28.5378
+            },
+            {
+              "variante": "40 mm",
+              "eur_m3": 355.25,
+              "netto_je_m2": 14.2101
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 300.0,
+              "netto_je_m2": 24.0
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 277.87,
+              "netto_je_m2": 33.3445
+            },
+            {
+              "variante": "20 mm",
+              "eur_m3": 524.79,
+              "netto_je_m2": 10.4958
+            },
+            {
+              "variante": "30 mm",
+              "eur_m3": 404.48,
+              "netto_je_m2": 12.1345
+            },
+            {
+              "variante": "50 mm",
+              "eur_m3": 326.89,
+              "netto_je_m2": 16.3445
+            },
+            {
+              "variante": "60 mm",
+              "eur_m3": 324.37,
+              "netto_je_m2": 19.4622
+            },
+            {
+              "variante": "70 mm",
+              "eur_m3": 310.8,
+              "netto_je_m2": 21.7563
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 273.71,
+              "netto_je_m2": 38.3193
+            },
+            {
+              "variante": "160 mm",
+              "eur_m3": 274.0,
+              "netto_je_m2": 43.8403
+            }
+          ]
+        },
+        {
+          "produkt": "Bauder PIR MF Flachdach-Dämmplatte",
+          "url": "https://www.bausep.de/bauder-pir-mf-flachdach-daemmplatte.html",
+          "punkte": [
+            {
+              "variante": "80 mm",
+              "eur_m3": 226.68,
+              "netto_je_m2": 18.1345
+            },
+            {
+              "variante": "100 mm",
+              "eur_m3": 221.85,
+              "netto_je_m2": 22.1849
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 221.85,
+              "netto_je_m2": 26.6218
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 219.81,
+              "netto_je_m2": 30.7731
+            },
+            {
+              "variante": "160 mm",
+              "eur_m3": 217.07,
+              "netto_je_m2": 34.7311
+            },
+            {
+              "variante": "180 mm",
+              "eur_m3": 217.32,
+              "netto_je_m2": 39.1176
+            },
+            {
+              "variante": "40 mm",
+              "eur_m3": 286.97,
+              "netto_je_m2": 11.479
+            },
+            {
+              "variante": "50 mm",
+              "eur_m3": 259.5,
+              "netto_je_m2": 12.9748
+            },
+            {
+              "variante": "60 mm",
+              "eur_m3": 239.64,
+              "netto_je_m2": 14.3782
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "haendlerspanne-bausep-eps",
+      "titel": "Preisspanne EPS: berechnet aus 19 Produkten (136 Preisvarianten) des Online-Händlers bausep.de, abgerufen 18.11.2026 (111.76 bis 197.48 €/m³ netto, Median 126.13)",
+      "herausgeber": "MaterialMatch (berechnet aus Preisen des Online-Händlers bausep.de)",
+      "url": "https://www.bausep.de/eps-035-100-deo-wab-mehrzweckdaemmplatte.html",
+      "datum": null,
+      "datum_hinweis": "Händlerpreise am Abrufdatum 2026-11-18; Preise und Verfügbarkeit können sich täglich ändern.",
+      "abgerufen": "2026-11-18",
+      "quellenart": "Preisspanne (berechnet aus Händlerpreisen)",
+      "produkt": "19 Produkte: siehe einzelpreise (Name, Link, Variante, Preis)",
+      "region": "Deutschland (Online-Händler bausep.de, Preise für Privatkunden inkl. 19 % MwSt. laut Shop, hier als Nettopreis)",
+      "geltung": "generisch",
+      "qualitaet": "Berechnete Kennzahl (Minimum, Maximum, Median) aus Händlerpreisen verschiedener Produkte und Dicken; kein Marktpreis und kein Preis für ein bestimmtes Produkt. Umrechnung: €/m³ = Preis je m² ÷ Dicke (Dicke aus der Variante des Shops). Nettopreis: der Shop weist den Nettobetrag im Seitenquelltext aus (Bruttopreis ÷ 1,19).",
+      "geprueft": true,
+      "verwendung": "Preisspanne und Median für das allgemeine Material eps; jeder Einzelpreis steht mit Produktlink in „einzelpreise“.",
+      "einzelpreise": [
+        {
+          "produkt": "EPS 035 100 DEO/WAB Mehrzweckdämmplatte",
+          "url": "https://www.bausep.de/eps-035-100-deo-wab-mehrzweckdaemmplatte.html",
+          "punkte": [
+            {
+              "variante": "20 mm",
+              "eur_m3": 143.28,
+              "netto_je_m2": 2.8655
+            },
+            {
+              "variante": "30 mm",
+              "eur_m3": 143.14,
+              "netto_je_m2": 4.2941
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 114.15,
+              "netto_je_m2": 13.6975
+            },
+            {
+              "variante": "25 mm",
+              "eur_m3": 143.19,
+              "netto_je_m2": 3.5798
+            },
+            {
+              "variante": "40 mm",
+              "eur_m3": 121.85,
+              "netto_je_m2": 4.8739
+            },
+            {
+              "variante": "50 mm",
+              "eur_m3": 121.01,
+              "netto_je_m2": 6.0504
+            },
+            {
+              "variante": "60 mm",
+              "eur_m3": 121.85,
+              "netto_je_m2": 7.3109
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 120.8,
+              "netto_je_m2": 9.6639
+            },
+            {
+              "variante": "100 mm",
+              "eur_m3": 114.29,
+              "netto_je_m2": 11.4286
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 143.16,
+              "netto_je_m2": 20.042
+            },
+            {
+              "variante": "160 mm",
+              "eur_m3": 143.12,
+              "netto_je_m2": 22.8992
+            }
+          ]
+        },
+        {
+          "produkt": "Bachl Extrapor EPS 032 DEO dm/DAA dm/WAB",
+          "url": "https://www.bausep.de/bachl-extrapor-eps-032-deo-dm-daa-dm-wab.html",
+          "punkte": [
+            {
+              "variante": "30 mm",
+              "eur_m3": 143.7,
+              "netto_je_m2": 4.3109
+            },
+            {
+              "variante": "40 mm",
+              "eur_m3": 143.7,
+              "netto_je_m2": 5.7479
+            },
+            {
+              "variante": "50 mm",
+              "eur_m3": 143.7,
+              "netto_je_m2": 7.1849
+            },
+            {
+              "variante": "60 mm",
+              "eur_m3": 143.56,
+              "netto_je_m2": 8.6134
+            },
+            {
+              "variante": "70 mm",
+              "eur_m3": 143.58,
+              "netto_je_m2": 10.0504
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 143.59,
+              "netto_je_m2": 11.4874
+            },
+            {
+              "variante": "100 mm",
+              "eur_m3": 143.61,
+              "netto_je_m2": 14.3613
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 143.63,
+              "netto_je_m2": 17.2353
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 143.64,
+              "netto_je_m2": 20.1092
+            },
+            {
+              "variante": "160 mm",
+              "eur_m3": 143.65,
+              "netto_je_m2": 22.9832
+            }
+          ]
+        },
+        {
+          "produkt": "EPS 035 150 DEO/WAB Mehrzweckdämmplatte",
+          "url": "https://www.bausep.de/eps-035-150-deo-wab-mehrzweckdaemmplatte.html",
+          "punkte": [
+            {
+              "variante": "100 mm",
+              "eur_m3": 141.76,
+              "netto_je_m2": 14.1765
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 141.74,
+              "netto_je_m2": 17.0084
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 141.78,
+              "netto_je_m2": 19.8487
+            },
+            {
+              "variante": "160 mm",
+              "eur_m3": 141.75,
+              "netto_je_m2": 22.6807
+            },
+            {
+              "variante": "30 mm",
+              "eur_m3": 141.74,
+              "netto_je_m2": 4.2521
+            },
+            {
+              "variante": "40 mm",
+              "eur_m3": 141.81,
+              "netto_je_m2": 5.6723
+            },
+            {
+              "variante": "50 mm",
+              "eur_m3": 141.68,
+              "netto_je_m2": 7.084
+            },
+            {
+              "variante": "60 mm",
+              "eur_m3": 141.74,
+              "netto_je_m2": 8.5042
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 141.7,
+              "netto_je_m2": 11.3361
+            },
+            {
+              "variante": "20 mm",
+              "eur_m3": 141.59,
+              "netto_je_m2": 2.8319
+            },
+            {
+              "variante": "25 mm",
+              "eur_m3": 141.85,
+              "netto_je_m2": 3.5462
+            }
+          ]
+        },
+        {
+          "produkt": "EPS 035 200 DEO/WAB Mehrzweckdämmplatte",
+          "url": "https://www.bausep.de/eps-035-200-deo-wab-mehrzweckdaemmplatte.html",
+          "punkte": [
+            {
+              "variante": "20 mm",
+              "eur_m3": 161.76,
+              "netto_je_m2": 3.2353
+            },
+            {
+              "variante": "25 mm",
+              "eur_m3": 161.68,
+              "netto_je_m2": 4.042
+            },
+            {
+              "variante": "30 mm",
+              "eur_m3": 161.62,
+              "netto_je_m2": 4.8487
+            },
+            {
+              "variante": "40 mm",
+              "eur_m3": 161.76,
+              "netto_je_m2": 6.4706
+            },
+            {
+              "variante": "50 mm",
+              "eur_m3": 161.68,
+              "netto_je_m2": 8.084
+            },
+            {
+              "variante": "60 mm",
+              "eur_m3": 161.77,
+              "netto_je_m2": 9.7059
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 161.76,
+              "netto_je_m2": 12.9412
+            },
+            {
+              "variante": "100 mm",
+              "eur_m3": 161.76,
+              "netto_je_m2": 16.1765
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 161.77,
+              "netto_je_m2": 19.4118
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 161.76,
+              "netto_je_m2": 22.6471
+            },
+            {
+              "variante": "160 mm",
+              "eur_m3": 161.76,
+              "netto_je_m2": 25.8824
+            }
+          ]
+        },
+        {
+          "produkt": "EPS 040 100 DEO/WAB Mehrzweckdämmplatte",
+          "url": "https://www.bausep.de/eps-040-100-deo-wab-mehrzweckdaemmplatte.html",
+          "punkte": [
+            {
+              "variante": "20 mm",
+              "eur_m3": 119.33,
+              "netto_je_m2": 2.3866
+            },
+            {
+              "variante": "25 mm",
+              "eur_m3": 119.33,
+              "netto_je_m2": 2.9832
+            },
+            {
+              "variante": "30 mm",
+              "eur_m3": 119.33,
+              "netto_je_m2": 3.5798
+            },
+            {
+              "variante": "40 mm",
+              "eur_m3": 119.33,
+              "netto_je_m2": 4.7731
+            },
+            {
+              "variante": "50 mm",
+              "eur_m3": 119.33,
+              "netto_je_m2": 5.9664
+            },
+            {
+              "variante": "60 mm",
+              "eur_m3": 119.19,
+              "netto_je_m2": 7.1513
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 119.22,
+              "netto_je_m2": 9.5378
+            },
+            {
+              "variante": "100 mm",
+              "eur_m3": 119.24,
+              "netto_je_m2": 11.9244
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 119.26,
+              "netto_je_m2": 14.3109
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 119.27,
+              "netto_je_m2": 16.6975
+            },
+            {
+              "variante": "160 mm",
+              "eur_m3": 119.27,
+              "netto_je_m2": 19.084
+            }
+          ]
+        },
+        {
+          "produkt": "EPS 032 100 DAA dm Flachdachdämmung Stufenfalz",
+          "url": "https://www.bausep.de/eps-032-100-daa-dm-flachdachdaemmung-stufenfalz.html",
+          "punkte": [
+            {
+              "variante": "80 mm",
+              "eur_m3": 129.2,
+              "netto_je_m2": 10.3361
+            },
+            {
+              "variante": "100 mm",
+              "eur_m3": 129.24,
+              "netto_je_m2": 12.9244
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 129.27,
+              "netto_je_m2": 15.5126
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 129.23,
+              "netto_je_m2": 18.0924
+            },
+            {
+              "variante": "160 mm",
+              "eur_m3": 129.25,
+              "netto_je_m2": 20.6807
+            },
+            {
+              "variante": "180 mm",
+              "eur_m3": 129.27,
+              "netto_je_m2": 23.2689
+            },
+            {
+              "variante": "200 mm",
+              "eur_m3": 129.24,
+              "netto_je_m2": 25.8487
+            }
+          ]
+        },
+        {
+          "produkt": "EPS 032 150 DAA dh Flachdachdämmung Stufenfalz",
+          "url": "https://www.bausep.de/eps-032-150-daa-dh-flachdachdaemmung-stufenfalz.html",
+          "punkte": [
+            {
+              "variante": "80 mm",
+              "eur_m3": 143.59,
+              "netto_je_m2": 11.4874
+            },
+            {
+              "variante": "100 mm",
+              "eur_m3": 143.61,
+              "netto_je_m2": 14.3613
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 143.63,
+              "netto_je_m2": 17.2353
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 143.64,
+              "netto_je_m2": 20.1092
+            },
+            {
+              "variante": "160 mm",
+              "eur_m3": 143.65,
+              "netto_je_m2": 22.9832
+            },
+            {
+              "variante": "180 mm",
+              "eur_m3": 143.6,
+              "netto_je_m2": 25.8487
+            },
+            {
+              "variante": "200 mm",
+              "eur_m3": 143.61,
+              "netto_je_m2": 28.7227
+            }
+          ]
+        },
+        {
+          "produkt": "EPS 035 100 DAA dm Flachdachdämmplatte",
+          "url": "https://www.bausep.de/eps-035-100-daa-dm-flachdachdaemmplatte.html",
+          "punkte": [
+            {
+              "variante": "180 mm",
+              "eur_m3": 111.76,
+              "netto_je_m2": 20.1176
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 111.77,
+              "netto_je_m2": 8.9412
+            },
+            {
+              "variante": "100 mm",
+              "eur_m3": 111.77,
+              "netto_je_m2": 11.1765
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 111.77,
+              "netto_je_m2": 13.4118
+            },
+            {
+              "variante": "160 mm",
+              "eur_m3": 111.77,
+              "netto_je_m2": 17.8824
+            },
+            {
+              "variante": "200 mm",
+              "eur_m3": 111.76,
+              "netto_je_m2": 22.3529
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 111.76,
+              "netto_je_m2": 15.6471
+            }
+          ]
+        },
+        {
+          "produkt": "EPS 035 150 DAA dh Flachdachdämmplatte",
+          "url": "https://www.bausep.de/eps-035-150-daa-dh-flachdachdaemmplatte.html",
+          "punkte": [
+            {
+              "variante": "160 mm",
+              "eur_m3": 126.1,
+              "netto_je_m2": 20.1765
+            },
+            {
+              "variante": "180 mm",
+              "eur_m3": 126.14,
+              "netto_je_m2": 22.7059
+            },
+            {
+              "variante": "200 mm",
+              "eur_m3": 126.13,
+              "netto_je_m2": 25.2269
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 126.15,
+              "netto_je_m2": 10.0924
+            },
+            {
+              "variante": "100 mm",
+              "eur_m3": 126.13,
+              "netto_je_m2": 12.6134
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 126.12,
+              "netto_je_m2": 15.1345
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 126.11,
+              "netto_je_m2": 17.6555
+            }
+          ]
+        },
+        {
+          "produkt": "EPS 035 DI Kellerdeckendämmung Styropor",
+          "url": "https://www.bausep.de/eps-035-di-kellerdeckendaemmung-styropor.html",
+          "punkte": [
+            {
+              "variante": "50 mm",
+              "eur_m3": 151.26,
+              "netto_je_m2": 7.563
+            },
+            {
+              "variante": "60 mm",
+              "eur_m3": 151.54,
+              "netto_je_m2": 9.0924
+            },
+            {
+              "variante": "100 mm",
+              "eur_m3": 151.18,
+              "netto_je_m2": 15.1176
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 151.89,
+              "netto_je_m2": 12.1513
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 157.63,
+              "netto_je_m2": 18.916
+            }
+          ]
+        },
+        {
+          "produkt": "Fassadenplatte EPS 035 WDV 500 x 1000 mm",
+          "url": "https://www.bausep.de/fassadenplatte-eps-035-wdv-500-x-1000-mm.html",
+          "punkte": [
+            {
+              "variante": "40 mm",
+              "eur_m3": 117.44,
+              "netto_je_m2": 4.6975
+            },
+            {
+              "variante": "50 mm",
+              "eur_m3": 117.48,
+              "netto_je_m2": 5.8739
+            },
+            {
+              "variante": "60 mm",
+              "eur_m3": 117.37,
+              "netto_je_m2": 7.042
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 117.44,
+              "netto_je_m2": 9.395
+            },
+            {
+              "variante": "100 mm",
+              "eur_m3": 117.39,
+              "netto_je_m2": 11.7395
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 117.44,
+              "netto_je_m2": 14.0924
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 117.41,
+              "netto_je_m2": 16.437
+            },
+            {
+              "variante": "160 mm",
+              "eur_m3": 117.44,
+              "netto_je_m2": 18.7899
+            }
+          ]
+        },
+        {
+          "produkt": "Fassadenplatte EPS-WDV-Neo 032 1000 x 500 mm",
+          "url": "https://www.bausep.de/fassadenplatte-eps-wdv-neo-032-1000-x-500-mm.html",
+          "punkte": [
+            {
+              "variante": "40 mm",
+              "eur_m3": 115.13,
+              "netto_je_m2": 4.605
+            },
+            {
+              "variante": "50 mm",
+              "eur_m3": 115.13,
+              "netto_je_m2": 5.7563
+            },
+            {
+              "variante": "60 mm",
+              "eur_m3": 115.13,
+              "netto_je_m2": 6.9076
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 115.02,
+              "netto_je_m2": 9.2017
+            },
+            {
+              "variante": "100 mm",
+              "eur_m3": 115.04,
+              "netto_je_m2": 11.5042
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 115.06,
+              "netto_je_m2": 13.8067
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 115.07,
+              "netto_je_m2": 16.1092
+            },
+            {
+              "variante": "160 mm",
+              "eur_m3": 115.07,
+              "netto_je_m2": 18.4118
+            }
+          ]
+        },
+        {
+          "produkt": "Laibungsplatte EPS 035 WDV 500 x 1000 mm",
+          "url": "https://www.bausep.de/laibungsplatte-eps-035-wdv-500-x-1000-mm.html",
+          "punkte": [
+            {
+              "variante": "20 mm",
+              "eur_m3": 117.22,
+              "netto_je_m2": 2.3445
+            },
+            {
+              "variante": "30 mm",
+              "eur_m3": 117.37,
+              "netto_je_m2": 3.521
+            }
+          ]
+        },
+        {
+          "produkt": "Laibungsplatte EPS 040 WDV 500 x 1000 mm",
+          "url": "https://www.bausep.de/laibungsplatte-eps-040-wdv-500-x-1000-mm.html",
+          "punkte": [
+            {
+              "variante": "20 mm",
+              "eur_m3": 111.77,
+              "netto_je_m2": 2.2353
+            },
+            {
+              "variante": "30 mm",
+              "eur_m3": 111.76,
+              "netto_je_m2": 3.3529
+            }
+          ]
+        },
+        {
+          "produkt": "Laibungsplatte EPS-WDV-Neo 032 1000 x 500 mm",
+          "url": "https://www.bausep.de/laibungsplatte-eps-wdv-neo-032-1000-x-500-mm.html",
+          "punkte": [
+            {
+              "variante": "20 mm",
+              "eur_m3": 115.13,
+              "netto_je_m2": 2.3025
+            },
+            {
+              "variante": "30 mm",
+              "eur_m3": 115.13,
+              "netto_je_m2": 3.4538
+            }
+          ]
+        },
+        {
+          "produkt": "Sockeldämmplatte EPS 035  500 x 1000 mm",
+          "url": "https://www.bausep.de/sockeldaemmplatte-eps-035-500-x-1000-mm.html",
+          "punkte": [
+            {
+              "variante": "40 mm",
+              "eur_m3": 159.66,
+              "netto_je_m2": 6.3866
+            },
+            {
+              "variante": "50 mm",
+              "eur_m3": 159.83,
+              "netto_je_m2": 7.9916
+            },
+            {
+              "variante": "60 mm",
+              "eur_m3": 159.8,
+              "netto_je_m2": 9.5882
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 159.77,
+              "netto_je_m2": 12.7815
+            },
+            {
+              "variante": "100 mm",
+              "eur_m3": 159.75,
+              "netto_je_m2": 15.9748
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 159.73,
+              "netto_je_m2": 19.1681
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 159.78,
+              "netto_je_m2": 22.3697
+            },
+            {
+              "variante": "160 mm",
+              "eur_m3": 159.77,
+              "netto_je_m2": 25.563
+            }
+          ]
+        },
+        {
+          "produkt": "weber.therm EPS 035 Fassade speedy Polystyrol-Dämmplatte",
+          "url": "https://www.bausep.de/weber-therm-eps-035-fassade-speedy-polystyrol-daemmplatte.html",
+          "punkte": [
+            {
+              "variante": "40 mm",
+              "eur_m3": 113.44,
+              "netto_je_m2": 4.5378
+            },
+            {
+              "variante": "50 mm",
+              "eur_m3": 113.78,
+              "netto_je_m2": 5.6891
+            },
+            {
+              "variante": "60 mm",
+              "eur_m3": 113.73,
+              "netto_je_m2": 6.8235
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 113.55,
+              "netto_je_m2": 9.084
+            },
+            {
+              "variante": "100 mm",
+              "eur_m3": 113.7,
+              "netto_je_m2": 11.3697
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 113.66,
+              "netto_je_m2": 13.6387
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 113.69,
+              "netto_je_m2": 15.916
+            },
+            {
+              "variante": "160 mm",
+              "eur_m3": 113.6,
+              "netto_je_m2": 18.1765
+            },
+            {
+              "variante": "180 mm",
+              "eur_m3": 113.68,
+              "netto_je_m2": 20.4622
+            },
+            {
+              "variante": "200 mm",
+              "eur_m3": 113.66,
+              "netto_je_m2": 22.7311
+            }
+          ]
+        },
+        {
+          "produkt": "weber.therm EPS 035 Leibung standard Polystyrol-Dämmplatte",
+          "url": "https://www.bausep.de/weber-therm-eps-035-leibung-standard-polystyrol-daemmplatte.html",
+          "punkte": [
+            {
+              "variante": "30 mm",
+              "eur_m3": 154.9,
+              "netto_je_m2": 4.6471
+            },
+            {
+              "variante": "20 mm",
+              "eur_m3": 154.62,
+              "netto_je_m2": 3.0924
+            }
+          ]
+        },
+        {
+          "produkt": "weber.therm EPS 035 Sockel standard Perimeter-Dämmplatte",
+          "url": "https://www.bausep.de/weber-therm-eps-035-sockel-standard-perimeter-daemmplatte.html",
+          "punkte": [
+            {
+              "variante": "40 mm",
+              "eur_m3": 197.27,
+              "netto_je_m2": 7.8908
+            },
+            {
+              "variante": "60 mm",
+              "eur_m3": 197.48,
+              "netto_je_m2": 11.8487
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 197.06,
+              "netto_je_m2": 15.7647
+            },
+            {
+              "variante": "100 mm",
+              "eur_m3": 197.31,
+              "netto_je_m2": 19.7311
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 197.13,
+              "netto_je_m2": 23.6555
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 197.24,
+              "netto_je_m2": 27.6134
+            },
+            {
+              "variante": "160 mm",
+              "eur_m3": 197.16,
+              "netto_je_m2": 31.5462
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "haendlerspanne-bausep-steinwolle",
+      "titel": "Preisspanne Steinwolle: berechnet aus 5 Produkten (26 Preisvarianten) des Online-Händlers bausep.de, abgerufen 18.11.2026 (179.20 bis 485.29 €/m³ netto, Median 367.23)",
+      "herausgeber": "MaterialMatch (berechnet aus Preisen des Online-Händlers bausep.de)",
+      "url": "https://www.bausep.de/isover-akustic-ep-3-steinwolle-daemmplatte.html",
+      "datum": null,
+      "datum_hinweis": "Händlerpreise am Abrufdatum 2026-11-18; Preise und Verfügbarkeit können sich täglich ändern.",
+      "abgerufen": "2026-11-18",
+      "quellenart": "Preisspanne (berechnet aus Händlerpreisen)",
+      "produkt": "5 Produkte: siehe einzelpreise (Name, Link, Variante, Preis)",
+      "region": "Deutschland (Online-Händler bausep.de, Preise für Privatkunden inkl. 19 % MwSt. laut Shop, hier als Nettopreis)",
+      "geltung": "generisch",
+      "qualitaet": "Berechnete Kennzahl (Minimum, Maximum, Median) aus Händlerpreisen verschiedener Produkte und Dicken; kein Marktpreis und kein Preis für ein bestimmtes Produkt. Umrechnung: €/m³ = Preis je m² ÷ Dicke (Dicke aus der Variante des Shops). Nettopreis: der Shop weist den Nettobetrag im Seitenquelltext aus (Bruttopreis ÷ 1,19).",
+      "geprueft": true,
+      "verwendung": "Preisspanne und Median für das allgemeine Material steinwolle; jeder Einzelpreis steht mit Produktlink in „einzelpreise“.",
+      "einzelpreise": [
+        {
+          "produkt": "Isover Akustic EP 3 Steinwolle-Dämmplatte",
+          "url": "https://www.bausep.de/isover-akustic-ep-3-steinwolle-daemmplatte.html",
+          "punkte": [
+            {
+              "variante": "12 mm",
+              "eur_m3": 479.69,
+              "netto_je_m2": 5.7563
+            },
+            {
+              "variante": "20 mm",
+              "eur_m3": 479.83,
+              "netto_je_m2": 9.5966
+            },
+            {
+              "variante": "25 mm",
+              "eur_m3": 479.66,
+              "netto_je_m2": 11.9916
+            },
+            {
+              "variante": "30 mm",
+              "eur_m3": 479.55,
+              "netto_je_m2": 14.3866
+            },
+            {
+              "variante": "40 mm",
+              "eur_m3": 479.62,
+              "netto_je_m2": 19.1849
+            }
+          ]
+        },
+        {
+          "produkt": "Isover Akustic EP 2 Steinwolle-Dämmplatte",
+          "url": "https://www.bausep.de/isover-akustic-ep-2-steinwolle-daemmplatte.html",
+          "punkte": [
+            {
+              "variante": "20 mm",
+              "eur_m3": 485.29,
+              "netto_je_m2": 9.7059
+            },
+            {
+              "variante": "30 mm",
+              "eur_m3": 471.71,
+              "netto_je_m2": 14.1513
+            }
+          ]
+        },
+        {
+          "produkt": "Isover Akustic EP 5 Steinwolle-Dämmplatte",
+          "url": "https://www.bausep.de/isover-akustic-ep-5-steinwolle-daemmplatte.html",
+          "punkte": [
+            {
+              "variante": "30 mm",
+              "eur_m3": 367.23,
+              "netto_je_m2": 11.0168
+            },
+            {
+              "variante": "25 mm",
+              "eur_m3": 392.27,
+              "netto_je_m2": 9.8067
+            },
+            {
+              "variante": "15 mm",
+              "eur_m3": 350.7,
+              "netto_je_m2": 5.2605
+            },
+            {
+              "variante": "40 mm",
+              "eur_m3": 393.28,
+              "netto_je_m2": 15.7311
+            },
+            {
+              "variante": "20 mm",
+              "eur_m3": 355.04,
+              "netto_je_m2": 7.1008
+            }
+          ]
+        },
+        {
+          "produkt": "Brandriegel Steinwolle WLG 035",
+          "url": "https://www.bausep.de/brandriegel-steinwolle-wlg-035.html",
+          "punkte": [
+            {
+              "variante": "100 mm",
+              "eur_m3": 230.0,
+              "netto_je_m2": 23.0
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 229.97,
+              "netto_je_m2": 27.5966
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 230.01,
+              "netto_je_m2": 32.2017
+            },
+            {
+              "variante": "160 mm",
+              "eur_m3": 229.99,
+              "netto_je_m2": 36.7983
+            },
+            {
+              "variante": "180 mm",
+              "eur_m3": 230.02,
+              "netto_je_m2": 41.4034
+            },
+            {
+              "variante": "200 mm",
+              "eur_m3": 230.0,
+              "netto_je_m2": 46.0
+            }
+          ]
+        },
+        {
+          "produkt": "Putzträgerplatte Steinwolle WLG 035 1200 x 400 mm",
+          "url": "https://www.bausep.de/putztraegerplatte-steinwolle-wlg-035-1200-x-400-mm.html",
+          "punkte": [
+            {
+              "variante": "40 mm",
+              "eur_m3": 179.2,
+              "netto_je_m2": 7.1681
+            },
+            {
+              "variante": "50 mm",
+              "eur_m3": 179.5,
+              "netto_je_m2": 8.9748
+            },
+            {
+              "variante": "60 mm",
+              "eur_m3": 179.27,
+              "netto_je_m2": 10.7563
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 179.31,
+              "netto_je_m2": 14.3445
+            },
+            {
+              "variante": "100 mm",
+              "eur_m3": 179.33,
+              "netto_je_m2": 17.9328
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 179.27,
+              "netto_je_m2": 21.5126
+            },
+            {
+              "variante": "140 mm",
+              "eur_m3": 179.29,
+              "netto_je_m2": 25.1008
+            },
+            {
+              "variante": "160 mm",
+              "eur_m3": 179.31,
+              "netto_je_m2": 28.6891
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "haendlerspanne-bausep-pur",
+      "titel": "Preisspanne PUR: berechnet aus 1 Produkten (9 Preisvarianten) des Online-Händlers bausep.de, abgerufen 18.11.2026 (185.57 bis 376.05 €/m³ netto, Median 224.09)",
+      "herausgeber": "MaterialMatch (berechnet aus Preisen des Online-Händlers bausep.de)",
+      "url": "https://www.bausep.de/pur-polyurethan-fussboden-daemmplatte-wlg-023.html",
+      "datum": null,
+      "datum_hinweis": "Händlerpreise am Abrufdatum 2026-11-18; Preise und Verfügbarkeit können sich täglich ändern.",
+      "abgerufen": "2026-11-18",
+      "quellenart": "Preisspanne (berechnet aus Händlerpreisen)",
+      "produkt": "1 Produkte: siehe einzelpreise (Name, Link, Variante, Preis)",
+      "region": "Deutschland (Online-Händler bausep.de, Preise für Privatkunden inkl. 19 % MwSt. laut Shop, hier als Nettopreis)",
+      "geltung": "generisch",
+      "qualitaet": "Berechnete Kennzahl (Minimum, Maximum, Median) aus Händlerpreisen verschiedener Produkte und Dicken; kein Marktpreis und kein Preis für ein bestimmtes Produkt. Umrechnung: €/m³ = Preis je m² ÷ Dicke (Dicke aus der Variante des Shops). Nettopreis: der Shop weist den Nettobetrag im Seitenquelltext aus (Bruttopreis ÷ 1,19).",
+      "geprueft": true,
+      "verwendung": "Preisspanne und Median für das allgemeine Material pur; jeder Einzelpreis steht mit Produktlink in „einzelpreise“.",
+      "einzelpreise": [
+        {
+          "produkt": "PUR Polyurethan Fußboden-Dämmplatte WLG 023",
+          "url": "https://www.bausep.de/pur-polyurethan-fussboden-daemmplatte-wlg-023.html",
+          "punkte": [
+            {
+              "variante": "30 mm",
+              "eur_m3": 301.12,
+              "netto_je_m2": 9.0336
+            },
+            {
+              "variante": "40 mm",
+              "eur_m3": 260.5,
+              "netto_je_m2": 10.4202
+            },
+            {
+              "variante": "60 mm",
+              "eur_m3": 224.09,
+              "netto_je_m2": 13.4454
+            },
+            {
+              "variante": "70 mm",
+              "eur_m3": 213.69,
+              "netto_je_m2": 14.958
+            },
+            {
+              "variante": "80 mm",
+              "eur_m3": 205.88,
+              "netto_je_m2": 16.4706
+            },
+            {
+              "variante": "100 mm",
+              "eur_m3": 193.28,
+              "netto_je_m2": 19.3277
+            },
+            {
+              "variante": "120 mm",
+              "eur_m3": 185.57,
+              "netto_je_m2": 22.2689
+            },
+            {
+              "variante": "20 mm",
+              "eur_m3": 376.05,
+              "netto_je_m2": 7.521
+            },
+            {
+              "variante": "50 mm",
+              "eur_m3": 238.66,
+              "netto_je_m2": 11.9328
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "haendlerspanne-bausep-gipsfaserplatte",
+      "titel": "Preisspanne Gipsfaserplatte 12,5 mm: berechnet aus 3 Produkten (3 Preisvarianten) des Online-Händlers bausep.de, abgerufen 18.11.2026 (8.28 bis 8.40 €/m² netto, Median 8.32)",
+      "herausgeber": "MaterialMatch (berechnet aus Preisen des Online-Händlers bausep.de)",
+      "url": "https://www.bausep.de/aktion-gipsfaserplatte-einmann-platte.html",
+      "datum": null,
+      "datum_hinweis": "Händlerpreise am Abrufdatum 2026-11-18; Preise und Verfügbarkeit können sich täglich ändern.",
+      "abgerufen": "2026-11-18",
+      "quellenart": "Preisspanne (berechnet aus Händlerpreisen)",
+      "produkt": "3 Produkte: siehe einzelpreise (Name, Link, Variante, Preis)",
+      "region": "Deutschland (Online-Händler bausep.de, Preise für Privatkunden inkl. 19 % MwSt. laut Shop, hier als Nettopreis)",
+      "geltung": "generisch",
+      "qualitaet": "Berechnete Kennzahl (Minimum, Maximum, Median) aus Händlerpreisen verschiedener Produkte und Dicken; kein Marktpreis und kein Preis für ein bestimmtes Produkt. Umrechnung: €/m² = Nettopreis je m² (Plattendicke 12,5 mm). Nettopreis: der Shop weist den Nettobetrag im Seitenquelltext aus (Bruttopreis ÷ 1,19).",
+      "geprueft": true,
+      "verwendung": "Preisspanne und Median für das allgemeine Material gipsfaserplatte; jeder Einzelpreis steht mit Produktlink in „einzelpreise“.",
+      "einzelpreise": [
+        {
+          "produkt": "Aktion Gipsfaserplatte Einmann-Platte",
+          "url": "https://www.bausep.de/aktion-gipsfaserplatte-einmann-platte.html",
+          "punkte": [
+            {
+              "variante": "12,5 mm",
+              "eur_m2": 8.28,
+              "netto_je_m2": 8.2773
+            }
+          ]
+        },
+        {
+          "produkt": "Fermacell Gipsfaser \"Ein Mann-Platte\"  1500 x 1000 mm",
+          "url": "https://www.bausep.de/fermacell-gipsfaser-ein-mann-platte-1500-x-1000-mm.html",
+          "punkte": [
+            {
+              "variante": "12,5 mm",
+              "eur_m2": 8.4,
+              "netto_je_m2": 8.4034
+            }
+          ]
+        },
+        {
+          "produkt": "Rigips Rigidur H Gipsfaserplatte Kleinformat",
+          "url": "https://www.bausep.de/rigips-rigidur-h-gipsfaserplatte-kleinformat.html",
+          "punkte": [
+            {
+              "variante": "12,5 mm",
+              "eur_m2": 8.32,
+              "netto_je_m2": 8.3193
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "haendlerspanne-bausep-bitumenbahn",
+      "titel": "Preisspanne Bitumenbahn: berechnet aus 7 Produkten (7 Preisvarianten) des Online-Händlers bausep.de, abgerufen 18.11.2026 (4.00 bis 13.27 €/m² netto, Median 5.40)",
+      "herausgeber": "MaterialMatch (berechnet aus Preisen des Online-Händlers bausep.de)",
+      "url": "https://www.bausep.de/bauder-bit-r-500-n-bitumen-dach-und-dichtungsbahn-20-qm.html",
+      "datum": null,
+      "datum_hinweis": "Händlerpreise am Abrufdatum 2026-11-18; Preise und Verfügbarkeit können sich täglich ändern.",
+      "abgerufen": "2026-11-18",
+      "quellenart": "Preisspanne (berechnet aus Händlerpreisen)",
+      "produkt": "7 Produkte: siehe einzelpreise (Name, Link, Variante, Preis)",
+      "region": "Deutschland (Online-Händler bausep.de, Preise für Privatkunden inkl. 19 % MwSt. laut Shop, hier als Nettopreis)",
+      "geltung": "generisch",
+      "qualitaet": "Berechnete Kennzahl (Minimum, Maximum, Median) aus Händlerpreisen verschiedener Produkte und Dicken; kein Marktpreis und kein Preis für ein bestimmtes Produkt. Umrechnung: €/m² = Preis je Rolle ÷ Rollenfläche (Brutto ÷ 1,19). Nettopreis: der Shop weist den Nettobetrag im Seitenquelltext aus (Bruttopreis ÷ 1,19).",
+      "geprueft": true,
+      "verwendung": "Preisspanne und Median für das allgemeine Material bitumenbahn; jeder Einzelpreis steht mit Produktlink in „einzelpreise“.",
+      "einzelpreise": [
+        {
+          "produkt": "Bauder BIT R 500 N Bitumen Dach- und Dichtungsbahn 20 qm",
+          "url": "https://www.bausep.de/bauder-bit-r-500-n-bitumen-dach-und-dichtungsbahn-20-qm.html",
+          "punkte": [
+            {
+              "variante": "Rolle 20 m²",
+              "eur_m2": 4.0,
+              "netto_je_m2": 4.0,
+              "brutto_je_rolle": 95.2
+            }
+          ]
+        },
+        {
+          "produkt": "Bauder BIT V 13 Bitumen Dach- und Dichtungsbahn 10 qm",
+          "url": "https://www.bausep.de/bauder-bit-v-13-bitumen-dach-und-dichtungsbahn-10-qm.html",
+          "punkte": [
+            {
+              "variante": "Rolle 10 m²",
+              "eur_m2": 4.2,
+              "netto_je_m2": 4.2,
+              "brutto_je_rolle": 49.98
+            }
+          ]
+        },
+        {
+          "produkt": "Bauder Karat Top-Polymerbitumen-Schweißbahn graphitschwarz 5 qm",
+          "url": "https://www.bausep.de/bauder-karat-top-polymerbitumen-schweissbahn-graphitschwarz-5-qm.html",
+          "punkte": [
+            {
+              "variante": "Rolle 5 m²",
+              "eur_m2": 13.27,
+              "netto_je_m2": 13.2672,
+              "brutto_je_rolle": 78.94
+            }
+          ]
+        },
+        {
+          "produkt": "Bauder PYE PV 200 S 5 Elastomerbitumenbahn 5 qm",
+          "url": "https://www.bausep.de/bauder-pye-pv-200-s-5-elastomerbitumenbahn-5-qm.html",
+          "punkte": [
+            {
+              "variante": "Rolle 5 m²",
+              "eur_m2": 7.4,
+              "netto_je_m2": 7.4,
+              "brutto_je_rolle": 44.03
+            }
+          ]
+        },
+        {
+          "produkt": "Bauder PYE PV 200 S 5 EN Elastomerbitumenbahn 5 qm",
+          "url": "https://www.bausep.de/bauder-pye-pv-200-s-5-en-elastomerbitumenbahn-5-qm.html",
+          "punkte": [
+            {
+              "variante": "Rolle 5 m²",
+              "eur_m2": 7.4,
+              "netto_je_m2": 7.4,
+              "brutto_je_rolle": 44.03
+            }
+          ]
+        },
+        {
+          "produkt": "Bauder V 60 S 4 talkumiert Bitumen-Schweißbahn 5 qm",
+          "url": "https://www.bausep.de/bauder-v-60-s-4-talkumiert-bitumen-schweissbahn-5-qm.html",
+          "punkte": [
+            {
+              "variante": "Rolle 5 m²",
+              "eur_m2": 5.33,
+              "netto_je_m2": 5.3328,
+              "brutto_je_rolle": 31.73
+            }
+          ]
+        },
+        {
+          "produkt": "Bauder VA 4 (V 60 S 4 + AL) talkumiert Bitumen-Schweißbahn 5 qm",
+          "url": "https://www.bausep.de/bauder-va-4-v-60-s-4-al-talkumiert-bitumen-schweissbahn-5-qm.html",
+          "punkte": [
+            {
+              "variante": "Rolle 5 m²",
+              "eur_m2": 5.4,
+              "netto_je_m2": 5.4,
+              "brutto_je_rolle": 32.13
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "haendlerspanne-bausep-konstruktionsvollholz",
+      "titel": "Preisspanne Konstruktionsvollholz: berechnet aus 1 Produkten (3 Preisvarianten) des Online-Händlers bausep.de, abgerufen 18.11.2026 (833.77 bis 852.01 €/m³ netto, Median 843.83)",
+      "herausgeber": "MaterialMatch (berechnet aus Preisen des Online-Händlers bausep.de)",
+      "url": "https://www.bausep.de/bausep-konstruktionsvollholz-gehobelt-2-m.html",
+      "datum": null,
+      "datum_hinweis": "Händlerpreise am Abrufdatum 2026-11-18; Preise und Verfügbarkeit können sich täglich ändern.",
+      "abgerufen": "2026-11-18",
+      "quellenart": "Preisspanne (berechnet aus Händlerpreisen)",
+      "produkt": "1 Produkte: siehe einzelpreise (Name, Link, Variante, Preis)",
+      "region": "Deutschland (Online-Händler bausep.de, Preise für Privatkunden inkl. 19 % MwSt. laut Shop, hier als Nettopreis)",
+      "geltung": "generisch",
+      "qualitaet": "Berechnete Kennzahl (Minimum, Maximum, Median) aus Händlerpreisen verschiedener Produkte und Dicken; kein Marktpreis und kein Preis für ein bestimmtes Produkt. Umrechnung: €/m³ = Preis je Stück (2 m) ÷ Volumen des Stücks. Nettopreis: der Shop weist den Nettobetrag im Seitenquelltext aus (Bruttopreis ÷ 1,19).",
+      "geprueft": true,
+      "verwendung": "Preisspanne und Median für das allgemeine Material konstruktionsvollholz; jeder Einzelpreis steht mit Produktlink in „einzelpreise“.",
+      "einzelpreise": [
+        {
+          "produkt": "bausep Konstruktionsvollholz gehobelt 2 m",
+          "url": "https://www.bausep.de/bausep-konstruktionsvollholz-gehobelt-2-m.html",
+          "punkte": [
+            {
+              "variante": "80 x 80 mm × 2 m",
+              "eur_m3": 833.77,
+              "netto_je_stueck": 10.6723
+            },
+            {
+              "variante": "60 x 60 mm × 2 m",
+              "eur_m3": 852.01,
+              "netto_je_stueck": 6.1345
+            },
+            {
+              "variante": "40 x 60 mm × 2 m",
+              "eur_m3": 843.83,
+              "netto_je_stueck": 4.0504
+            }
+          ]
+        }
+      ]
+    },
     // ---- Profibaustoffe 2026, weitere Preise, und Preisspannen (18.11.2026) ----
     {
       "id": "preisliste-profibaustoffe-2026-mp2",
@@ -3124,7 +6762,7 @@ window.MATERIALMATCH_DATA = {
         waermeleitfaehigkeit:  { wert: 0.10, einheit: "W/(m·K)", art: "beispiel", quelle: null },
         waermeleitfaehigkeit_bemessung: { wert: null, einheit: "W/(m·K)", art: null, quelle: null, hinweis: "Nicht verfügbar: Ein Bemessungswert der Wärmeleitfähigkeit (z. B. nach DIN 4108-4) liegt nicht vor. Die Norm ist kostenpflichtig und wurde nicht eingesehen; ein Herstellerwert wurde nicht gefunden. Es wurde kein Wert angenommen." },
         druckfestigkeit:       { wert: 2,    einheit: "N/mm²", art: "beispiel", quelle: null, hinweis: "Festigkeitsklasse PP2 (Beispiel)." },
-        preis:                 { wert: 180,  einheit: "€/m³", art: "beispiel", quelle: null, mwst: "unbekannt", umfang: "unbekannt", hinweis: "Frei gewählter Demonstrationspreis, kein Marktpreis." },
+        preis:                 { wert: 180,  einheit: "€/m³", art: "beispiel", quelle: null, mwst: "unbekannt", umfang: "unbekannt", hinweis: "Frei gewählter Demonstrationspreis, kein Marktpreis.", echt: {"wert": 161.12, "einheit": "€/m³", "art": "richtwert", "quelle": "haendlerspanne-bausep-porenbeton", "mwst": "exkl. MwSt.", "umfang": "Material (Preisspanne aus Online-Händlerpreisen, ohne Versand, Einbau und Verschnitt)", "spanne": {"min": 161.09, "max": 195.8, "anzahl": 3, "punkte": 10, "mittel": "Median"}, "hinweis": "Preisspanne, kein einzelner Marktpreis: berechnet am 18.11.2026 aus 3 Produkten (10 Preisvarianten) des Online-Händlers bausep.de (161,09 bis 195,80 €/m³ netto; gerechnet wird mit dem Median der Produkt-Mediane 161,12 €/m³). €/m³ = Preis je m² ÷ Dicke (Dicke aus der Variante des Shops). Die Preise hängen von Qualität (Wärmeleitgruppe, Dichte, Hersteller) und Dicke ab; nur ein Händler, kein aktueller Preisvergleich mit weiteren Händlern (Hornbach, Bauhaus, OBI u. a. blockieren automatische Abrufe). Zustellung und Einbau kommen hinzu."} },
         gwp:                   { werte: { gesamt: 191.01733785098, fossil: 190.728698455544, biogen: 0.15950620280011, luluc: 0.12913319263559 }, einheit: "kg CO2e", deklarierte_einheit: "1 m³", module: "A1-A3", art: "richtwert", quelle: "oebd-c5310f2b", hinweis: "Generischer Datensatz (generic dataset) „Porenbeton P2 04 unbewehrt“, Sphera Solutions GmbH, Bezugsjahr 2023, Land DE. Gilt nicht für ein bestimmtes Produkt. Generische Datensätze enthalten laut BBSR Sicherheitszuschläge (konservative Annahmen, 10/20/30 %) und wurden nicht extern geprüft." },
         brandverhalten:        { wert: "A1", art: "richtwert", quelle: "eu-entscheidung-96-603", hinweis: "Ohne Prüfung als A1 eingestuft nach Entscheidung 96/603/EG (Anhang: „Im Autoklav behandelter Porenbeton (Gasbeton)“), sofern deren Voraussetzungen erfüllt sind (u. a. höchstens 1 % homogen verteiltes organisches Material). Generische Einstufung des Materials, kein Produktnachweis; für ein konkretes Produkt gilt dessen Leistungserklärung. Euroklasse des Baustoffs, nicht Feuerwiderstand eines Bauteils." },
         wasserdampf_mu:        { wert: 8,    einheit: "–", art: "beispiel", quelle: null },
@@ -3193,7 +6831,7 @@ window.MATERIALMATCH_DATA = {
         waermeleitfaehigkeit:  { wert: 0.13, einheit: "W/(m·K)", art: "beispiel", quelle: null },
         waermeleitfaehigkeit_bemessung: { wert: null, einheit: "W/(m·K)", art: null, quelle: null, hinweis: "Nicht verfügbar: Ein Bemessungswert der Wärmeleitfähigkeit (z. B. nach DIN 4108-4) liegt nicht vor. Die Norm ist kostenpflichtig und wurde nicht eingesehen; ein Herstellerwert wurde nicht gefunden. Es wurde kein Wert angenommen." },
         druckfestigkeit:       { wert: 21,   einheit: "N/mm²", art: "beispiel", quelle: null, hinweis: "Druck parallel zur Faser (Beispiel). Bei Holz stark richtungsabhängig." },
-        preis:                 { wert: 480,  einheit: "€/m³", art: "beispiel", quelle: null, mwst: "unbekannt", umfang: "unbekannt", hinweis: "Frei gewählter Demonstrationspreis, kein Marktpreis." },
+        preis:                 { wert: 480,  einheit: "€/m³", art: "beispiel", quelle: null, mwst: "unbekannt", umfang: "unbekannt", hinweis: "Frei gewählter Demonstrationspreis, kein Marktpreis.", echt: {"wert": 843.83, "einheit": "€/m³", "art": "richtwert", "quelle": "haendlerspanne-bausep-konstruktionsvollholz", "mwst": "exkl. MwSt.", "umfang": "Material (Preisspanne aus Online-Händlerpreisen, ohne Versand, Einbau und Verschnitt)", "spanne": {"min": 833.77, "max": 852.01, "anzahl": 1, "punkte": 3, "mittel": "Median"}, "hinweis": "Preisspanne, kein einzelner Marktpreis: berechnet am 18.11.2026 aus 1 Produkten (3 Preisvarianten) des Online-Händlers bausep.de (833,77 bis 852,01 €/m³ netto; gerechnet wird mit dem Median der Produkt-Mediane 843,83 €/m³). €/m³ = Preis je Stück (2 m) ÷ Volumen des Stücks. Die Preise hängen von Qualität (Wärmeleitgruppe, Dichte, Hersteller) und Dicke ab; nur ein Händler, kein aktueller Preisvergleich mit weiteren Händlern (Hornbach, Bauhaus, OBI u. a. blockieren automatische Abrufe). Zustellung und Einbau kommen hinzu."} },
         gwp:                   { werte: { gesamt: -629.370198947723, fossil: 215.200208331972, biogen: -845.868118824993, luluc: 1.29771154529712 }, einheit: "kg CO2e", deklarierte_einheit: "1 m³", module: "A1-A3", art: "richtwert", quelle: "oebd-6b363ddc", hinweis: "Generischer Datensatz (generic dataset) „Konstruktionsvollholz (generisch, 15% Feuchte / 13% H2O)“, Sphera Solutions GmbH, Bezugsjahr 2023, Land DE. Gilt nicht für ein bestimmtes Produkt. Generische Datensätze enthalten laut BBSR Sicherheitszuschläge (konservative Annahmen, 10/20/30 %) und wurden nicht extern geprüft. GWP-gesamt enthält die Aufnahme von biogenem Kohlenstoff (GWP-biogen, negativ). Dieser wird am Lebensende wieder freigesetzt oder in Modul D verrechnet; nur bei gleicher Systemgrenze mit anderen Materialien vergleichen." },
         brandverhalten:        { wert: "D-s2,d0", art: "beispiel", quelle: null, hinweis: "Euroklasse des Baustoffs, nicht Feuerwiderstand eines Bauteils." },
         wasserdampf_mu:        { wert: 50,   einheit: "–", art: "beispiel", quelle: null },
@@ -3242,7 +6880,7 @@ window.MATERIALMATCH_DATA = {
         waermeleitfaehigkeit:  { wert: 0.035, einheit: "W/(m·K)", art: "beispiel", quelle: null },
         waermeleitfaehigkeit_bemessung: { wert: null, einheit: "W/(m·K)", art: null, quelle: null, hinweis: "Nicht verfügbar: Ein Bemessungswert der Wärmeleitfähigkeit (z. B. nach DIN 4108-4) liegt für den generischen Materialdatensatz nicht vor. Die Norm ist kostenpflichtig und wurde nicht eingesehen; für einzelne Produkte siehe die Produktdaten. Es wurde kein Wert angenommen." },
         druckfestigkeit:       { wert: null,  einheit: "N/mm²", art: null, quelle: null, nicht_anwendbar: true, hinweis: "Bei Dämmstoffen wird die Druckspannung bei 10 % Stauchung angegeben, eine andere Prüfgröße als die Druckfestigkeit von Tragstoffen." },
-        preis:                 { wert: 85,    einheit: "€/m³", art: "beispiel", quelle: null, mwst: "unbekannt", umfang: "unbekannt", hinweis: "Frei gewählter Demonstrationspreis, kein Marktpreis." },
+        preis:                 { wert: 85,    einheit: "€/m³", art: "beispiel", quelle: null, mwst: "unbekannt", umfang: "unbekannt", hinweis: "Frei gewählter Demonstrationspreis, kein Marktpreis.", echt: {"wert": 96.92, "einheit": "€/m³", "art": "richtwert", "quelle": "haendlerspanne-bausep-mineralwolle", "mwst": "exkl. MwSt.", "umfang": "Material (Preisspanne aus Online-Händlerpreisen, ohne Versand, Einbau und Verschnitt)", "spanne": {"min": 49.16, "max": 231.75, "anzahl": 20, "punkte": 145, "mittel": "Median"}, "hinweis": "Preisspanne, kein einzelner Marktpreis: berechnet am 18.11.2026 aus 20 Produkten (145 Preisvarianten) des Online-Händlers bausep.de (49,16 bis 231,75 €/m³ netto; gerechnet wird mit dem Median der Produkt-Mediane 96,92 €/m³). €/m³ = Preis je m² ÷ Dicke (Dicke aus der Variante des Shops). Die Preise hängen von Qualität (Wärmeleitgruppe, Dichte, Hersteller) und Dicke ab; nur ein Händler, kein aktueller Preisvergleich mit weiteren Händlern (Hornbach, Bauhaus, OBI u. a. blockieren automatische Abrufe). Zustellung und Einbau kommen hinzu."} },
         gwp:                   { werte: { gesamt: 66.9749789974578, fossil: 66.4456825951734, biogen: 0.492242397655523, luluc: 0.0370540046288292 }, einheit: "kg CO2e", deklarierte_einheit: "1 m³", module: "A1-A3", art: "richtwert", quelle: "oebd-50d421e2", hinweis: "Generischer Datensatz (generic dataset) „Mineralwolle (Fassaden-Dämmung)“, Sphera Solutions GmbH, Bezugsjahr 2023, Land DE. Gilt nicht für ein bestimmtes Produkt. Generische Datensätze enthalten laut BBSR Sicherheitszuschläge (konservative Annahmen, 10/20/30 %) und wurden nicht extern geprüft." },
         brandverhalten:        { wert: "A1", art: "richtwert", quelle: "eu-entscheidung-96-603", hinweis: "Ohne Prüfung als A1 eingestuft nach Entscheidung 96/603/EG (Anhang: „Mineralwolle“), sofern deren Voraussetzungen erfüllt sind (u. a. höchstens 1 % homogen verteiltes organisches Material). Generische Einstufung des Materials, kein Produktnachweis; für ein konkretes Produkt gilt dessen Leistungserklärung. Euroklasse des Baustoffs, nicht Feuerwiderstand eines Bauteils." },
         wasserdampf_mu:        { wert: 1,     einheit: "–", art: "beispiel", quelle: null },
@@ -3265,7 +6903,7 @@ window.MATERIALMATCH_DATA = {
         waermeleitfaehigkeit:  { wert: 0.035, einheit: "W/(m·K)", art: "beispiel", quelle: null },
         waermeleitfaehigkeit_bemessung: { wert: null, einheit: "W/(m·K)", art: null, quelle: null, hinweis: "Nicht verfügbar: Ein Bemessungswert der Wärmeleitfähigkeit (z. B. nach DIN 4108-4) liegt für den generischen Materialdatensatz nicht vor. Die Norm ist kostenpflichtig und wurde nicht eingesehen; für einzelne Produkte siehe die Produktdaten. Es wurde kein Wert angenommen." },
         druckfestigkeit:       { wert: null,  einheit: "N/mm²", art: null, quelle: null, nicht_anwendbar: true, hinweis: "Bei Dämmstoffen wird die Druckspannung bei 10 % Stauchung angegeben, eine andere Prüfgröße als die Druckfestigkeit von Tragstoffen." },
-        preis:                 { wert: 70,    einheit: "€/m³", art: "beispiel", quelle: null, mwst: "unbekannt", umfang: "unbekannt", hinweis: "Frei gewählter Demonstrationspreis, kein Marktpreis." },
+        preis:                 { wert: 70,    einheit: "€/m³", art: "beispiel", quelle: null, mwst: "unbekannt", umfang: "unbekannt", hinweis: "Frei gewählter Demonstrationspreis, kein Marktpreis.", echt: {"wert": 126.13, "einheit": "€/m³", "art": "richtwert", "quelle": "haendlerspanne-bausep-eps", "mwst": "exkl. MwSt.", "umfang": "Material (Preisspanne aus Online-Händlerpreisen, ohne Versand, Einbau und Verschnitt)", "spanne": {"min": 111.76, "max": 197.48, "anzahl": 19, "punkte": 136, "mittel": "Median"}, "hinweis": "Preisspanne, kein einzelner Marktpreis: berechnet am 18.11.2026 aus 19 Produkten (136 Preisvarianten) des Online-Händlers bausep.de (111,76 bis 197,48 €/m³ netto; gerechnet wird mit dem Median der Produkt-Mediane 126,13 €/m³). €/m³ = Preis je m² ÷ Dicke (Dicke aus der Variante des Shops). Die Preise hängen von Qualität (Wärmeleitgruppe, Dichte, Hersteller) und Dicke ab; nur ein Händler, kein aktueller Preisvergleich mit weiteren Händlern (Hornbach, Bauhaus, OBI u. a. blockieren automatische Abrufe). Zustellung und Einbau kommen hinzu."} },
         gwp:                   { werte: { gesamt: 86.9290183109761, fossil: 86.4015080986334, biogen: 0.487838310188589, luluc: 0.0396719021541068 }, einheit: "kg CO2e", deklarierte_einheit: "1 m³", module: "A1-A3", art: "richtwert", quelle: "oebd-121c71e8", hinweis: "Generischer Datensatz (generic dataset) „EPS-Hartschaumdämmung“, Sphera Solutions GmbH, Bezugsjahr 2023, Land DE. Gilt nicht für ein bestimmtes Produkt. Generische Datensätze enthalten laut BBSR Sicherheitszuschläge (konservative Annahmen, 10/20/30 %) und wurden nicht extern geprüft." },
         brandverhalten:        { wert: "E", art: "beispiel", quelle: null, hinweis: "Euroklasse des Baustoffs. Im Fassadensystem sind Brandschutzmaßnahmen nötig (Feuerwiderstand/Gesamtsystem separat bewerten)." },
         wasserdampf_mu:        { wert: 30,    einheit: "–", art: "beispiel", quelle: null },
@@ -3288,7 +6926,7 @@ window.MATERIALMATCH_DATA = {
         waermeleitfaehigkeit:  { wert: 0.040, einheit: "W/(m·K)", art: "beispiel", quelle: null },
         waermeleitfaehigkeit_bemessung: { wert: null, einheit: "W/(m·K)", art: null, quelle: null, hinweis: "Nicht verfügbar: Ein Bemessungswert der Wärmeleitfähigkeit (z. B. nach DIN 4108-4) liegt nicht vor. Die Norm ist kostenpflichtig und wurde nicht eingesehen; ein Herstellerwert wurde nicht gefunden. Es wurde kein Wert angenommen." },
         druckfestigkeit:       { wert: null,  einheit: "N/mm²", art: null, quelle: null, nicht_anwendbar: true, hinweis: "Bei Dämmstoffen wird die Druckspannung bei 10 % Stauchung angegeben, eine andere Prüfgröße als die Druckfestigkeit von Tragstoffen." },
-        preis:                 { wert: 220,   einheit: "€/m³", art: "beispiel", quelle: null, mwst: "unbekannt", umfang: "unbekannt", hinweis: "Frei gewählter Demonstrationspreis, kein Marktpreis." },
+        preis:                 { wert: 220,   einheit: "€/m³", art: "beispiel", quelle: null, mwst: "unbekannt", umfang: "unbekannt", hinweis: "Frei gewählter Demonstrationspreis, kein Marktpreis.", echt: {"wert": 250.88, "einheit": "€/m³", "art": "richtwert", "quelle": "haendlerspanne-bausep-holzfaserdaemmung", "mwst": "exkl. MwSt.", "umfang": "Material (Preisspanne aus Online-Händlerpreisen, ohne Versand, Einbau und Verschnitt)", "spanne": {"min": 82.77, "max": 526.37, "anzahl": 26, "punkte": 89, "mittel": "Median"}, "hinweis": "Preisspanne, kein einzelner Marktpreis: berechnet am 18.11.2026 aus 26 Produkten (89 Preisvarianten) des Online-Händlers bausep.de (82,77 bis 526,37 €/m³ netto; gerechnet wird mit dem Median der Produkt-Mediane 250,88 €/m³). €/m³ = Preis je m² ÷ Dicke (Dicke aus der Variante des Shops). Die Preise hängen von Qualität (Wärmeleitgruppe, Dichte, Hersteller) und Dicke ab; nur ein Händler, kein aktueller Preisvergleich mit weiteren Händlern (Hornbach, Bauhaus, OBI u. a. blockieren automatische Abrufe). Zustellung und Einbau kommen hinzu."} },
         gwp:                   { werte: { gesamt: -162.685243764979, fossil: 115.372336192051, biogen: -278.168190275288, luluc: 0.110610318258221 }, einheit: "kg CO2e", deklarierte_einheit: "1 m³", module: "A1-A3", art: "richtwert", quelle: "oebd-c91aa879", hinweis: "Generischer Datensatz (generic dataset) „Holzfaserdämmplatte (Nassverfahren)“, Sphera Solutions GmbH, Bezugsjahr 2023, Land DE. Gilt nicht für ein bestimmtes Produkt. Generische Datensätze enthalten laut BBSR Sicherheitszuschläge (konservative Annahmen, 10/20/30 %) und wurden nicht extern geprüft. GWP-gesamt enthält die Aufnahme von biogenem Kohlenstoff (GWP-biogen, negativ). Dieser wird am Lebensende wieder freigesetzt oder in Modul D verrechnet; nur bei gleicher Systemgrenze mit anderen Materialien vergleichen." },
         brandverhalten:        { wert: "E", art: "beispiel", quelle: null, hinweis: "Euroklasse des Baustoffs, nicht Feuerwiderstand eines Bauteils." },
         wasserdampf_mu:        { wert: 5,     einheit: "–", art: "beispiel", quelle: null },
@@ -3410,7 +7048,7 @@ window.MATERIALMATCH_DATA = {
         waermeleitfaehigkeit:  { wert: 0.13, einheit: "W/(m·K)", art: "beispiel", quelle: null },
         waermeleitfaehigkeit_bemessung: { wert: null, einheit: "W/(m·K)", art: null, quelle: null, hinweis: "Nicht verfügbar: Ein Bemessungswert der Wärmeleitfähigkeit (z. B. nach DIN 4108-4) liegt nicht vor. Die Norm ist kostenpflichtig und wurde nicht eingesehen; ein Herstellerwert wurde nicht gefunden. Es wurde kein Wert angenommen." },
         druckfestigkeit:       { wert: null, einheit: "N/mm²", art: null, quelle: null, nicht_anwendbar: true, hinweis: "Bei Platten ist die Biegefestigkeit maßgebend, nicht die Druckfestigkeit." },
-        preis:                 { wert: 420,  einheit: "€/m³", art: "beispiel", quelle: null, mwst: "unbekannt", umfang: "unbekannt", hinweis: "Frei gewählter Demonstrationspreis, kein Marktpreis." },
+        preis:                 { wert: 420,  einheit: "€/m³", art: "beispiel", quelle: null, mwst: "unbekannt", umfang: "unbekannt", hinweis: "Frei gewählter Demonstrationspreis, kein Marktpreis.", echt: {"wert": 498.6, "einheit": "€/m³", "art": "richtwert", "quelle": "haendlerspanne-bausep-osb", "mwst": "exkl. MwSt.", "umfang": "Material (Preisspanne aus Online-Händlerpreisen, ohne Versand, Einbau und Verschnitt)", "spanne": {"min": 497.67, "max": 509.92, "anzahl": 1, "punkte": 5, "mittel": "Median"}, "hinweis": "Preisspanne, kein einzelner Marktpreis: berechnet am 18.11.2026 aus 1 Produkten (5 Preisvarianten) des Online-Händlers bausep.de (497,67 bis 509,92 €/m³ netto; gerechnet wird mit dem Median der Produkt-Mediane 498,60 €/m³). €/m³ = Preis je m² ÷ Dicke (Dicke aus der Variante des Shops). Die Preise hängen von Qualität (Wärmeleitgruppe, Dichte, Hersteller) und Dicke ab; nur ein Händler, kein aktueller Preisvergleich mit weiteren Händlern (Hornbach, Bauhaus, OBI u. a. blockieren automatische Abrufe). Zustellung und Einbau kommen hinzu."} },
         gwp:                   { werte: { gesamt: -639.2855812615953, fossil: 347.38249887094076, biogen: -986.668080132536 }, einheit: "kg CO2e", deklarierte_einheit: "1 m³", module: "A1-A3", art: "richtwert", quelle: "oebd-aab0ed28", hinweis: "Repräsentativer Durchschnitt (representative dataset) „Oriented Strand Board (Durchschnitt DE)“, Thünen-Institut für Holzforschung, Bezugsjahr 2023, Land DE. Gilt nicht für ein bestimmtes Produkt. GWP-gesamt enthält die Aufnahme von biogenem Kohlenstoff (GWP-biogen, negativ). Dieser wird am Lebensende wieder freigesetzt oder in Modul D verrechnet; nur bei gleicher Systemgrenze mit anderen Materialien vergleichen." },
         brandverhalten:        { wert: "D-s2,d0", art: "beispiel", quelle: null, hinweis: "Euroklasse des Baustoffs, nicht Feuerwiderstand eines Bauteils." },
         wasserdampf_mu:        { wert: 50,   einheit: "–", art: "beispiel", quelle: null },
@@ -3577,7 +7215,7 @@ window.MATERIALMATCH_DATA = {
         waermeleitfaehigkeit:  { wert: null, einheit: "W/(m·K)", art: null, quelle: null, hinweis: "Nicht verfügbar: Die ÖKOBAUDAT enthält keine Wärmeleitfähigkeit. Ein geprüfter Beleg (Herstellerdatenblatt, Leistungserklärung, Norm) liegt noch nicht vor; es wurde kein Wert angenommen." },
         waermeleitfaehigkeit_bemessung: { wert: null, einheit: "W/(m·K)", art: null, quelle: null, hinweis: "Nicht verfügbar: Ein Bemessungswert der Wärmeleitfähigkeit (z. B. nach DIN 4108-4) liegt nicht vor. Die Norm ist kostenpflichtig und wurde nicht eingesehen; ein Herstellerwert wurde nicht gefunden. Es wurde kein Wert angenommen." },
         druckfestigkeit:       { wert: null, einheit: "N/mm²", art: null, quelle: null, nicht_anwendbar: true, hinweis: "Bei Dämmstoffen wird die Druckspannung bei 10 % Stauchung angegeben, eine andere Prüfgröße als die Druckfestigkeit von Tragstoffen." },
-        preis:                 { wert: null, einheit: "€/m³", art: null, quelle: null, mwst: null, umfang: null, hinweis: "Nicht verfügbar: Kein belegter Preis (BKI-Daten oder Händlerangebot) vorhanden; es wurde kein Marktpreis angenommen." },
+        preis:                 { wert: null, einheit: "€/m³", art: null, quelle: null, mwst: null, umfang: null, hinweis: "Nicht verfügbar: Kein belegter Preis (BKI-Daten oder Händlerangebot) vorhanden; es wurde kein Marktpreis angenommen.", echt: {"wert": 84.03, "einheit": "€/m³", "art": "richtwert", "quelle": "haendlerspanne-bausep-glaswolle", "mwst": "exkl. MwSt.", "umfang": "Material (Preisspanne aus Online-Händlerpreisen, ohne Versand, Einbau und Verschnitt)", "spanne": {"min": 52.17, "max": 219.75, "anzahl": 3, "punkte": 21, "mittel": "Median"}, "hinweis": "Preisspanne, kein einzelner Marktpreis: berechnet am 18.11.2026 aus 3 Produkten (21 Preisvarianten) des Online-Händlers bausep.de (52,17 bis 219,75 €/m³ netto; gerechnet wird mit dem Median der Produkt-Mediane 84,03 €/m³). €/m³ = Preis je m² ÷ Dicke (Dicke aus der Variante des Shops). Die Preise hängen von Qualität (Wärmeleitgruppe, Dichte, Hersteller) und Dicke ab; nur ein Händler, kein aktueller Preisvergleich mit weiteren Händlern (Hornbach, Bauhaus, OBI u. a. blockieren automatische Abrufe). Zustellung und Einbau kommen hinzu."} },
         gwp:                   { werte: { gesamt: 1.34496525030678, fossil: 1.48376399190494, biogen: -0.139518358026873, luluc: 0.000719616428705253 }, einheit: "kg CO2e", deklarierte_einheit: "1 kg", module: "A1-A3", art: "richtwert", quelle: "oebd-ceaaae5b", hinweis: "Branchendurchschnitt (average dataset) „SAGLAN Glaswolle, phenolharzgebunden +A2“, Sager AG, Bezugsjahr 2021, Land CH. Gilt nicht für ein bestimmtes Produkt." },
         brandverhalten:        { wert: "A1", art: "richtwert", quelle: "eu-entscheidung-96-603", hinweis: "Ohne Prüfung als A1 eingestuft nach Entscheidung 96/603/EG (Anhang: „Mineralwolle“), sofern deren Voraussetzungen erfüllt sind (u. a. höchstens 1 % homogen verteiltes organisches Material). Generische Einstufung des Materials, kein Produktnachweis; für ein konkretes Produkt gilt dessen Leistungserklärung. Euroklasse des Baustoffs, nicht Feuerwiderstand eines Bauteils." },
         wasserdampf_mu:        { wert: null, einheit: "–", art: null, quelle: null, hinweis: "Nicht verfügbar: Ein geprüfter Beleg liegt noch nicht vor; es wurde kein Wert angenommen." },
@@ -3600,7 +7238,7 @@ window.MATERIALMATCH_DATA = {
         waermeleitfaehigkeit:  { wert: null, einheit: "W/(m·K)", art: null, quelle: null, hinweis: "Nicht verfügbar: Die ÖKOBAUDAT enthält keine Wärmeleitfähigkeit. Ein geprüfter Beleg (Herstellerdatenblatt, Leistungserklärung, Norm) liegt noch nicht vor; es wurde kein Wert angenommen." },
         waermeleitfaehigkeit_bemessung: { wert: null, einheit: "W/(m·K)", art: null, quelle: null, hinweis: "Nicht verfügbar: Ein Bemessungswert der Wärmeleitfähigkeit (z. B. nach DIN 4108-4) liegt nicht vor. Die Norm ist kostenpflichtig und wurde nicht eingesehen; ein Herstellerwert wurde nicht gefunden. Es wurde kein Wert angenommen." },
         druckfestigkeit:       { wert: null, einheit: "N/mm²", art: null, quelle: null, nicht_anwendbar: true, hinweis: "Bei Dämmstoffen wird die Druckspannung bei 10 % Stauchung angegeben, eine andere Prüfgröße als die Druckfestigkeit von Tragstoffen." },
-        preis:                 { wert: null, einheit: "€/m³", art: null, quelle: null, mwst: null, umfang: null, hinweis: "Nicht verfügbar: Kein belegter Preis (BKI-Daten oder Händlerangebot) vorhanden; es wurde kein Marktpreis angenommen." },
+        preis:                 { wert: null, einheit: "€/m³", art: null, quelle: null, mwst: null, umfang: null, hinweis: "Nicht verfügbar: Kein belegter Preis (BKI-Daten oder Händlerangebot) vorhanden; es wurde kein Marktpreis angenommen.", echt: {"wert": 367.23, "einheit": "€/m³", "art": "richtwert", "quelle": "haendlerspanne-bausep-steinwolle", "mwst": "exkl. MwSt.", "umfang": "Material (Preisspanne aus Online-Händlerpreisen, ohne Versand, Einbau und Verschnitt)", "spanne": {"min": 179.2, "max": 485.29, "anzahl": 5, "punkte": 26, "mittel": "Median"}, "hinweis": "Preisspanne, kein einzelner Marktpreis: berechnet am 18.11.2026 aus 5 Produkten (26 Preisvarianten) des Online-Händlers bausep.de (179,20 bis 485,29 €/m³ netto; gerechnet wird mit dem Median der Produkt-Mediane 367,23 €/m³). €/m³ = Preis je m² ÷ Dicke (Dicke aus der Variante des Shops). Die Preise hängen von Qualität (Wärmeleitgruppe, Dichte, Hersteller) und Dicke ab; nur ein Händler, kein aktueller Preisvergleich mit weiteren Händlern (Hornbach, Bauhaus, OBI u. a. blockieren automatische Abrufe). Zustellung und Einbau kommen hinzu."} },
         gwp:                   { werte: { gesamt: 191.576118212762, fossil: 190.914050277393, biogen: 0.54476713912997, luluc: 0.117300796238288 }, einheit: "kg CO2e", deklarierte_einheit: "1 m³", module: "A1-A3", art: "richtwert", quelle: "oebd-5ad90c89", hinweis: "Generischer Datensatz (generic dataset) „Steinwolle Flachdämmplatte“, Sphera Solutions GmbH, Bezugsjahr 2023, Land DE. Gilt nicht für ein bestimmtes Produkt. Generische Datensätze enthalten laut BBSR Sicherheitszuschläge (konservative Annahmen, 10/20/30 %) und wurden nicht extern geprüft." },
         brandverhalten:        { wert: "A1", art: "richtwert", quelle: "eu-entscheidung-96-603", hinweis: "Ohne Prüfung als A1 eingestuft nach Entscheidung 96/603/EG (Anhang: „Mineralwolle“), sofern deren Voraussetzungen erfüllt sind (u. a. höchstens 1 % homogen verteiltes organisches Material). Generische Einstufung des Materials, kein Produktnachweis; für ein konkretes Produkt gilt dessen Leistungserklärung. Euroklasse des Baustoffs, nicht Feuerwiderstand eines Bauteils." },
         wasserdampf_mu:        { wert: null, einheit: "–", art: null, quelle: null, hinweis: "Nicht verfügbar: Ein geprüfter Beleg liegt noch nicht vor; es wurde kein Wert angenommen." },
@@ -3623,7 +7261,7 @@ window.MATERIALMATCH_DATA = {
         waermeleitfaehigkeit:  { wert: null, einheit: "W/(m·K)", art: null, quelle: null, hinweis: "Nicht verfügbar: Die ÖKOBAUDAT enthält keine Wärmeleitfähigkeit. Ein geprüfter Beleg (Herstellerdatenblatt, Leistungserklärung, Norm) liegt noch nicht vor; es wurde kein Wert angenommen." },
         waermeleitfaehigkeit_bemessung: { wert: null, einheit: "W/(m·K)", art: null, quelle: null, hinweis: "Nicht verfügbar: Ein Bemessungswert der Wärmeleitfähigkeit (z. B. nach DIN 4108-4) liegt nicht vor. Die Norm ist kostenpflichtig und wurde nicht eingesehen; ein Herstellerwert wurde nicht gefunden. Es wurde kein Wert angenommen." },
         druckfestigkeit:       { wert: null, einheit: "N/mm²", art: null, quelle: null, nicht_anwendbar: true, hinweis: "Bei Dämmstoffen wird die Druckspannung bei 10 % Stauchung angegeben, eine andere Prüfgröße als die Druckfestigkeit von Tragstoffen." },
-        preis:                 { wert: null, einheit: "€/m³", art: null, quelle: null, mwst: null, umfang: null, hinweis: "Nicht verfügbar: Kein belegter Preis (BKI-Daten oder Händlerangebot) vorhanden; es wurde kein Marktpreis angenommen." },
+        preis:                 { wert: null, einheit: "€/m³", art: null, quelle: null, mwst: null, umfang: null, hinweis: "Nicht verfügbar: Kein belegter Preis (BKI-Daten oder Händlerangebot) vorhanden; es wurde kein Marktpreis angenommen.", echt: {"wert": 178.47, "einheit": "€/m³", "art": "richtwert", "quelle": "haendlerspanne-bausep-xps", "mwst": "exkl. MwSt.", "umfang": "Material (Preisspanne aus Online-Händlerpreisen, ohne Versand, Einbau und Verschnitt)", "spanne": {"min": 156.22, "max": 282.35, "anzahl": 8, "punkte": 53, "mittel": "Median"}, "hinweis": "Preisspanne, kein einzelner Marktpreis: berechnet am 18.11.2026 aus 8 Produkten (53 Preisvarianten) des Online-Händlers bausep.de (156,22 bis 282,35 €/m³ netto; gerechnet wird mit dem Median der Produkt-Mediane 178,47 €/m³). €/m³ = Preis je m² ÷ Dicke (Dicke aus der Variante des Shops). Die Preise hängen von Qualität (Wärmeleitgruppe, Dichte, Hersteller) und Dicke ab; nur ein Händler, kein aktueller Preisvergleich mit weiteren Händlern (Hornbach, Bauhaus, OBI u. a. blockieren automatische Abrufe). Zustellung und Einbau kommen hinzu."} },
         gwp:                   { werte: { gesamt: 102.019470065136, fossil: 101.560182830206, biogen: 0.430084069509508, luluc: 0.0292031654204912 }, einheit: "kg CO2e", deklarierte_einheit: "1 m³", module: "A1-A3", art: "richtwert", quelle: "oebd-c4ddfdbc", hinweis: "Generischer Datensatz (generic dataset) „Extrudierter Polystyrol Dämmstoff (XPS)“, Sphera Solutions GmbH, Bezugsjahr 2023, Land DE. Gilt nicht für ein bestimmtes Produkt. Generische Datensätze enthalten laut BBSR Sicherheitszuschläge (konservative Annahmen, 10/20/30 %) und wurden nicht extern geprüft." },
         brandverhalten:        { wert: null, art: null, quelle: null, hinweis: "Nicht verfügbar: Die Euroklasse hängt vom konkreten Produkt ab. Ein geprüfter Beleg (Leistungserklärung) liegt noch nicht vor." },
         wasserdampf_mu:        { wert: null, einheit: "–", art: null, quelle: null, hinweis: "Nicht verfügbar: Ein geprüfter Beleg liegt noch nicht vor; es wurde kein Wert angenommen." },
@@ -3646,7 +7284,7 @@ window.MATERIALMATCH_DATA = {
         waermeleitfaehigkeit:  { wert: null, einheit: "W/(m·K)", art: null, quelle: null, hinweis: "Nicht verfügbar: Die ÖKOBAUDAT enthält keine Wärmeleitfähigkeit. Ein geprüfter Beleg (Herstellerdatenblatt, Leistungserklärung, Norm) liegt noch nicht vor; es wurde kein Wert angenommen." },
         waermeleitfaehigkeit_bemessung: { wert: null, einheit: "W/(m·K)", art: null, quelle: null, hinweis: "Nicht verfügbar: Ein Bemessungswert der Wärmeleitfähigkeit (z. B. nach DIN 4108-4) liegt nicht vor. Die Norm ist kostenpflichtig und wurde nicht eingesehen; ein Herstellerwert wurde nicht gefunden. Es wurde kein Wert angenommen." },
         druckfestigkeit:       { wert: null, einheit: "N/mm²", art: null, quelle: null, nicht_anwendbar: true, hinweis: "Bei Dämmstoffen wird die Druckspannung bei 10 % Stauchung angegeben, eine andere Prüfgröße als die Druckfestigkeit von Tragstoffen." },
-        preis:                 { wert: null, einheit: "€/m³", art: null, quelle: null, mwst: null, umfang: null, hinweis: "Nicht verfügbar: Kein belegter Preis (BKI-Daten oder Händlerangebot) vorhanden; es wurde kein Marktpreis angenommen." },
+        preis:                 { wert: null, einheit: "€/m³", art: null, quelle: null, mwst: null, umfang: null, hinweis: "Nicht verfügbar: Kein belegter Preis (BKI-Daten oder Händlerangebot) vorhanden; es wurde kein Marktpreis angenommen.", echt: {"wert": 224.09, "einheit": "€/m³", "art": "richtwert", "quelle": "haendlerspanne-bausep-pur", "mwst": "exkl. MwSt.", "umfang": "Material (Preisspanne aus Online-Händlerpreisen, ohne Versand, Einbau und Verschnitt)", "spanne": {"min": 185.57, "max": 376.05, "anzahl": 1, "punkte": 9, "mittel": "Median"}, "hinweis": "Preisspanne, kein einzelner Marktpreis: berechnet am 18.11.2026 aus 1 Produkten (9 Preisvarianten) des Online-Händlers bausep.de (185,57 bis 376,05 €/m³ netto; gerechnet wird mit dem Median der Produkt-Mediane 224,09 €/m³). €/m³ = Preis je m² ÷ Dicke (Dicke aus der Variante des Shops). Die Preise hängen von Qualität (Wärmeleitgruppe, Dichte, Hersteller) und Dicke ab; nur ein Händler, kein aktueller Preisvergleich mit weiteren Händlern (Hornbach, Bauhaus, OBI u. a. blockieren automatische Abrufe). Zustellung und Einbau kommen hinzu."} },
         gwp:                   { werte: { gesamt: 176.048177622853, fossil: 176.392191797625, biogen: -0.39796066685481, luluc: 0.0539464920826371 }, einheit: "kg CO2e", deklarierte_einheit: "1 m³", module: "A1-A3", art: "richtwert", quelle: "oebd-b960f95d", hinweis: "Generischer Datensatz (generic dataset) „PUR Hartschaum“, Sphera Solutions GmbH, Bezugsjahr 2023, Land DE. Gilt nicht für ein bestimmtes Produkt. Generische Datensätze enthalten laut BBSR Sicherheitszuschläge (konservative Annahmen, 10/20/30 %) und wurden nicht extern geprüft." },
         brandverhalten:        { wert: null, art: null, quelle: null, hinweis: "Nicht verfügbar: Die Euroklasse hängt vom konkreten Produkt ab. Ein geprüfter Beleg (Leistungserklärung) liegt noch nicht vor." },
         wasserdampf_mu:        { wert: null, einheit: "–", art: null, quelle: null, hinweis: "Nicht verfügbar: Ein geprüfter Beleg liegt noch nicht vor; es wurde kein Wert angenommen." },
@@ -3669,7 +7307,7 @@ window.MATERIALMATCH_DATA = {
         waermeleitfaehigkeit:  { wert: null, einheit: "W/(m·K)", art: null, quelle: null, hinweis: "Nicht verfügbar: Die ÖKOBAUDAT enthält keine Wärmeleitfähigkeit. Ein geprüfter Beleg (Herstellerdatenblatt, Leistungserklärung, Norm) liegt noch nicht vor; es wurde kein Wert angenommen." },
         waermeleitfaehigkeit_bemessung: { wert: null, einheit: "W/(m·K)", art: null, quelle: null, hinweis: "Nicht verfügbar: Ein Bemessungswert der Wärmeleitfähigkeit (z. B. nach DIN 4108-4) liegt nicht vor. Die Norm ist kostenpflichtig und wurde nicht eingesehen; ein Herstellerwert wurde nicht gefunden. Es wurde kein Wert angenommen." },
         druckfestigkeit:       { wert: null, einheit: "N/mm²", art: null, quelle: null, nicht_anwendbar: true, hinweis: "Bei Dämmstoffen wird die Druckspannung bei 10 % Stauchung angegeben, eine andere Prüfgröße als die Druckfestigkeit von Tragstoffen." },
-        preis:                 { wert: null, einheit: "€/m³", art: null, quelle: null, mwst: null, umfang: null, hinweis: "Nicht verfügbar: Kein belegter Preis (BKI-Daten oder Händlerangebot) vorhanden; es wurde kein Marktpreis angenommen." },
+        preis:                 { wert: null, einheit: "€/m³", art: null, quelle: null, mwst: null, umfang: null, hinweis: "Nicht verfügbar: Kein belegter Preis (BKI-Daten oder Händlerangebot) vorhanden; es wurde kein Marktpreis angenommen.", echt: {"wert": 262.66, "einheit": "€/m³", "art": "richtwert", "quelle": "haendlerspanne-bausep-pir", "mwst": "exkl. MwSt.", "umfang": "Material (Preisspanne aus Online-Händlerpreisen, ohne Versand, Einbau und Verschnitt)", "spanne": {"min": 217.07, "max": 524.79, "anzahl": 5, "punkte": 39, "mittel": "Median"}, "hinweis": "Preisspanne, kein einzelner Marktpreis: berechnet am 18.11.2026 aus 5 Produkten (39 Preisvarianten) des Online-Händlers bausep.de (217,07 bis 524,79 €/m³ netto; gerechnet wird mit dem Median der Produkt-Mediane 262,66 €/m³). €/m³ = Preis je m² ÷ Dicke (Dicke aus der Variante des Shops). Die Preise hängen von Qualität (Wärmeleitgruppe, Dichte, Hersteller) und Dicke ab; nur ein Händler, kein aktueller Preisvergleich mit weiteren Händlern (Hornbach, Bauhaus, OBI u. a. blockieren automatische Abrufe). Zustellung und Einbau kommen hinzu."} },
         gwp:                   { werte: { gesamt: 98.797882138416, fossil: 99.0070719333185, biogen: -0.536834585573654, luluc: 0.327644790671186 }, einheit: "kg CO2e", deklarierte_einheit: "1 m³", module: "A1-A3", art: "richtwert", quelle: "oebd-355dbd58", hinweis: "Generischer Datensatz (generic dataset) „PIR Hartschaum“, Sphera Solutions GmbH, Bezugsjahr 2023, Land DE. Gilt nicht für ein bestimmtes Produkt. Generische Datensätze enthalten laut BBSR Sicherheitszuschläge (konservative Annahmen, 10/20/30 %) und wurden nicht extern geprüft." },
         brandverhalten:        { wert: null, art: null, quelle: null, hinweis: "Nicht verfügbar: Die Euroklasse hängt vom konkreten Produkt ab. Ein geprüfter Beleg (Leistungserklärung) liegt noch nicht vor." },
         wasserdampf_mu:        { wert: null, einheit: "–", art: null, quelle: null, hinweis: "Nicht verfügbar: Ein geprüfter Beleg liegt noch nicht vor; es wurde kein Wert angenommen." },
@@ -3738,7 +7376,7 @@ window.MATERIALMATCH_DATA = {
         waermeleitfaehigkeit:  { wert: null, einheit: "W/(m·K)", art: null, quelle: null, hinweis: "Nicht verfügbar: Die ÖKOBAUDAT enthält keine Wärmeleitfähigkeit. Ein geprüfter Beleg (Herstellerdatenblatt, Leistungserklärung, Norm) liegt noch nicht vor; es wurde kein Wert angenommen." },
         waermeleitfaehigkeit_bemessung: { wert: null, einheit: "W/(m·K)", art: null, quelle: null, hinweis: "Nicht verfügbar: Ein Bemessungswert der Wärmeleitfähigkeit (z. B. nach DIN 4108-4) liegt nicht vor. Die Norm ist kostenpflichtig und wurde nicht eingesehen; ein Herstellerwert wurde nicht gefunden. Es wurde kein Wert angenommen." },
         druckfestigkeit:       { wert: null, einheit: "N/mm²", art: null, quelle: null, nicht_anwendbar: true, hinweis: "Bei Dämmstoffen wird die Druckspannung bei 10 % Stauchung angegeben, eine andere Prüfgröße als die Druckfestigkeit von Tragstoffen." },
-        preis:                 { wert: null, einheit: "€/m³", art: null, quelle: null, mwst: null, umfang: null, hinweis: "Nicht verfügbar: Kein belegter Preis (BKI-Daten oder Händlerangebot) vorhanden; es wurde kein Marktpreis angenommen." },
+        preis:                 { wert: null, einheit: "€/m³", art: null, quelle: null, mwst: null, umfang: null, hinweis: "Nicht verfügbar: Kein belegter Preis (BKI-Daten oder Händlerangebot) vorhanden; es wurde kein Marktpreis angenommen.", echt: {"wert": 512.59, "einheit": "€/m³", "art": "richtwert", "quelle": "haendlerspanne-bausep-schaumglas", "mwst": "exkl. MwSt.", "umfang": "Material (Preisspanne aus Online-Händlerpreisen, ohne Versand, Einbau und Verschnitt)", "spanne": {"min": 483.33, "max": 513.66, "anzahl": 1, "punkte": 6, "mittel": "Median"}, "hinweis": "Preisspanne, kein einzelner Marktpreis: berechnet am 18.11.2026 aus 1 Produkten (6 Preisvarianten) des Online-Händlers bausep.de (483,33 bis 513,66 €/m³ netto; gerechnet wird mit dem Median der Produkt-Mediane 512,59 €/m³). €/m³ = Preis je m² ÷ Dicke (Dicke aus der Variante des Shops). Die Preise hängen von Qualität (Wärmeleitgruppe, Dichte, Hersteller) und Dicke ab; nur ein Händler, kein aktueller Preisvergleich mit weiteren Händlern (Hornbach, Bauhaus, OBI u. a. blockieren automatische Abrufe). Zustellung und Einbau kommen hinzu."} },
         gwp:                   { werte: { gesamt: 2.39096912723294, fossil: 2.38891607769286, biogen: 0.000494437399290397, luluc: 0.00155861214079769 }, einheit: "kg CO2e", deklarierte_einheit: "1 kg", module: "A1-A3", art: "richtwert", quelle: "oebd-7091503e", hinweis: "Generischer Datensatz (generic dataset) „Schaumglas Dämmstoff“, Sphera Solutions GmbH, Bezugsjahr 2023, Land DE. Gilt nicht für ein bestimmtes Produkt. Generische Datensätze enthalten laut BBSR Sicherheitszuschläge (konservative Annahmen, 10/20/30 %) und wurden nicht extern geprüft." },
         brandverhalten:        { wert: "A1", art: "richtwert", quelle: "eu-entscheidung-96-603", hinweis: "Ohne Prüfung als A1 eingestuft nach Entscheidung 96/603/EG (Anhang: „Schaumglas“), sofern deren Voraussetzungen erfüllt sind (u. a. höchstens 1 % homogen verteiltes organisches Material). Generische Einstufung des Materials, kein Produktnachweis; für ein konkretes Produkt gilt dessen Leistungserklärung. Euroklasse des Baustoffs, nicht Feuerwiderstand eines Bauteils." },
         wasserdampf_mu:        { wert: null, einheit: "–", art: null, quelle: null, hinweis: "Nicht verfügbar: Ein geprüfter Beleg liegt noch nicht vor; es wurde kein Wert angenommen." },
@@ -3979,7 +7617,7 @@ window.MATERIALMATCH_DATA = {
         waermeleitfaehigkeit:  { wert: null, einheit: "W/(m·K)", art: null, quelle: null, hinweis: "Nicht verfügbar: Die ÖKOBAUDAT enthält keine Wärmeleitfähigkeit. Ein geprüfter Beleg (Herstellerdatenblatt, Leistungserklärung, Norm) liegt noch nicht vor; es wurde kein Wert angenommen." },
         waermeleitfaehigkeit_bemessung: { wert: null, einheit: "W/(m·K)", art: null, quelle: null, hinweis: "Nicht verfügbar: Ein Bemessungswert der Wärmeleitfähigkeit (z. B. nach DIN 4108-4) liegt nicht vor. Die Norm ist kostenpflichtig und wurde nicht eingesehen; ein Herstellerwert wurde nicht gefunden. Es wurde kein Wert angenommen." },
         druckfestigkeit:       { wert: null, einheit: "N/mm²", art: null, quelle: null, hinweis: "Nicht verfügbar: Die ÖKOBAUDAT enthält keine Druckfestigkeit. Ein geprüfter Beleg liegt noch nicht vor; es wurde kein Wert angenommen." },
-        preis:                 { wert: null, einheit: "€/m²", art: null, quelle: null, mwst: null, umfang: null, hinweis: "Nicht verfügbar: Kein belegter Preis (BKI-Daten oder Händlerangebot) vorhanden; es wurde kein Marktpreis angenommen." },
+        preis:                 { wert: null, einheit: "€/m²", art: null, quelle: null, mwst: null, umfang: null, hinweis: "Nicht verfügbar: Kein belegter Preis (BKI-Daten oder Händlerangebot) vorhanden; es wurde kein Marktpreis angenommen.", echt: {"wert": 8.32, "einheit": "€/m²", "art": "richtwert", "quelle": "haendlerspanne-bausep-gipsfaserplatte", "mwst": "exkl. MwSt.", "umfang": "Material (Preisspanne aus Online-Händlerpreisen, ohne Versand, Einbau und Verschnitt)", "spanne": {"min": 8.28, "max": 8.4, "anzahl": 3, "punkte": 3, "mittel": "Median"}, "hinweis": "Preisspanne, kein einzelner Marktpreis: berechnet am 18.11.2026 aus 3 Produkten (3 Preisvarianten) des Online-Händlers bausep.de (8,28 bis 8,40 €/m² netto; gerechnet wird mit dem Median der Produkt-Mediane 8,32 €/m²). €/m² = Nettopreis je m² (Plattendicke 12,5 mm). Die Preise hängen von Qualität (Wärmeleitgruppe, Dichte, Hersteller) und Dicke ab; nur ein Händler, kein aktueller Preisvergleich mit weiteren Händlern (Hornbach, Bauhaus, OBI u. a. blockieren automatische Abrufe). Zustellung und Einbau kommen hinzu."} },
         gwp:                   { werte: { gesamt: 3.25926825662394, fossil: 3.24813045356539, biogen: 0.010301000347326, luluc: 0.000836802711221655 }, einheit: "kg CO2e", deklarierte_einheit: "1 m²", module: "A1-A3", art: "richtwert", quelle: "oebd-1b0a3488", hinweis: "Generischer Datensatz (generic dataset) „Gipsfaserplatte (10mm)“, Sphera Solutions GmbH, Bezugsjahr 2023, Land DE. Gilt nicht für ein bestimmtes Produkt. Generische Datensätze enthalten laut BBSR Sicherheitszuschläge (konservative Annahmen, 10/20/30 %) und wurden nicht extern geprüft." },
         brandverhalten:        { wert: null, art: null, quelle: null, hinweis: "Nicht verfügbar: Die Euroklasse hängt vom konkreten Produkt ab. Ein geprüfter Beleg (Leistungserklärung) liegt noch nicht vor." },
         wasserdampf_mu:        { wert: null, einheit: "–", art: null, quelle: null, hinweis: "Nicht verfügbar: Ein geprüfter Beleg liegt noch nicht vor; es wurde kein Wert angenommen." },
@@ -4192,7 +7830,7 @@ window.MATERIALMATCH_DATA = {
         waermeleitfaehigkeit:  { wert: null, einheit: "W/(m·K)", art: null, quelle: null, hinweis: "Nicht verfügbar: Die ÖKOBAUDAT enthält keine Wärmeleitfähigkeit. Ein geprüfter Beleg (Herstellerdatenblatt, Leistungserklärung, Norm) liegt noch nicht vor; es wurde kein Wert angenommen." },
         waermeleitfaehigkeit_bemessung: { wert: null, einheit: "W/(m·K)", art: null, quelle: null, hinweis: "Nicht verfügbar: Ein Bemessungswert der Wärmeleitfähigkeit (z. B. nach DIN 4108-4) liegt nicht vor. Die Norm ist kostenpflichtig und wurde nicht eingesehen; ein Herstellerwert wurde nicht gefunden. Es wurde kein Wert angenommen." },
         druckfestigkeit:       { wert: null, einheit: "N/mm²", art: null, quelle: null, hinweis: "Nicht verfügbar: Die ÖKOBAUDAT enthält keine Druckfestigkeit. Ein geprüfter Beleg liegt noch nicht vor; es wurde kein Wert angenommen." },
-        preis:                 { wert: null, einheit: "€/m²", art: null, quelle: null, mwst: null, umfang: null, hinweis: "Nicht verfügbar: Kein belegter Preis (BKI-Daten oder Händlerangebot) vorhanden; es wurde kein Marktpreis angenommen." },
+        preis:                 { wert: null, einheit: "€/m²", art: null, quelle: null, mwst: null, umfang: null, hinweis: "Nicht verfügbar: Kein belegter Preis (BKI-Daten oder Händlerangebot) vorhanden; es wurde kein Marktpreis angenommen.", echt: {"wert": 5.4, "einheit": "€/m²", "art": "richtwert", "quelle": "haendlerspanne-bausep-bitumenbahn", "mwst": "exkl. MwSt.", "umfang": "Material (Preisspanne aus Online-Händlerpreisen, ohne Versand, Einbau und Verschnitt)", "spanne": {"min": 4.0, "max": 13.27, "anzahl": 7, "punkte": 7, "mittel": "Median"}, "hinweis": "Preisspanne, kein einzelner Marktpreis: berechnet am 18.11.2026 aus 7 Produkten (7 Preisvarianten) des Online-Händlers bausep.de (4,00 bis 13,27 €/m² netto; gerechnet wird mit dem Median der Produkt-Mediane 5,40 €/m²). €/m² = Preis je Rolle ÷ Rollenfläche (Brutto ÷ 1,19). Die Preise hängen von Qualität (Wärmeleitgruppe, Dichte, Hersteller) und Dicke ab; nur ein Händler, kein aktueller Preisvergleich mit weiteren Händlern (Hornbach, Bauhaus, OBI u. a. blockieren automatische Abrufe). Zustellung und Einbau kommen hinzu."} },
         gwp:                   { werte: { gesamt: 5.79634503826103, fossil: 5.76390611864123, biogen: 0.0296977636186643, luluc: 0.00274115600113484 }, einheit: "kg CO2e", deklarierte_einheit: "1 m²", module: "A1-A3", art: "richtwert", quelle: "oebd-c984526a", hinweis: "Generischer Datensatz (generic dataset) „Bitumenbahnen PYE PV 200 S5 (ungeschiefert)“, Sphera Solutions GmbH, Bezugsjahr 2023, Land DE. Gilt nicht für ein bestimmtes Produkt. Generische Datensätze enthalten laut BBSR Sicherheitszuschläge (konservative Annahmen, 10/20/30 %) und wurden nicht extern geprüft." },
         brandverhalten:        { wert: null, art: null, quelle: null, hinweis: "Nicht verfügbar: Die Euroklasse hängt vom konkreten Produkt ab. Ein geprüfter Beleg (Leistungserklärung) liegt noch nicht vor." },
         wasserdampf_mu:        { wert: null, einheit: "–", art: null, quelle: null, hinweis: "Nicht verfügbar: Ein geprüfter Beleg liegt noch nicht vor; es wurde kein Wert angenommen." },

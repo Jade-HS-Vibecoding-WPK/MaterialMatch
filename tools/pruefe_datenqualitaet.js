@@ -72,7 +72,17 @@ DB.baustoffe.forEach((m) => {
   (m.anwendungen || []).forEach((a) => { if (!anwIds.has(a)) err(m.id + ": unbekannter Anwendungsbereich " + a); });
   if (PROFIL && !PROFIL.materialien[m.id]) err(m.id + ": keine Einordnung in data/materialprofil.js");
   if (!fs.existsSync(path.join(PROJ, "img", "schraffuren", m.id + ".svg"))) err(m.id + ": keine Schraffur img/schraffuren/" + m.id + ".svg");
-  Object.keys(m.eigenschaften).forEach((k) => pruefeEigenschaft(m.id, k, m.eigenschaften[k], "Baustoff"));
+  Object.keys(m.eigenschaften).forEach((k) => {
+    const e = m.eigenschaften[k];
+    pruefeEigenschaft(m.id, k, e, "Baustoff");
+    // MaterialMatch 3.3: belegter Gegenpart („echt“) zu einem Beispielwert oder einer Lücke, gilt im Echtdaten-Modus
+    if (e && e.echt !== undefined) {
+      const leer = e.wert === null || e.wert === undefined;
+      if (e.art !== "beispiel" && !leer) err("Baustoff " + m.id + ": " + k + ": „echt“ ist nur zu einem Beispielwert oder zu einer Lücke erlaubt");
+      else if (!e.echt || e.echt.art !== "richtwert" || !e.echt.quelle) err("Baustoff " + m.id + ": " + k + ": „echt“ braucht Datenart Richtwert und Quelle");
+      else pruefeEigenschaft(m.id, k + " (echt)", e.echt, "Baustoff");
+    }
+  });
 });
 
 function pruefeEigenschaft(wo, k, e, ebene) {
@@ -97,7 +107,7 @@ function pruefeEigenschaft(wo, k, e, ebene) {
       if (!q.abgerufen) warn(w + ": Quelle " + e.quelle + " ohne Abrufdatum");
     }
   }
-  if (k === "gwp") {
+  if (k.replace(" (echt)", "") === "gwp") {
     const g = e.werte;
     ["gesamt", "fossil"].forEach((f) => { if (!istZahl(g[f])) err(w + ": GWP " + f + " keine Zahl"); });
     if (istZahl(g.fossil) && (g.fossil < -50 || g.fossil > 100000)) warn(w + ": GWP fossil " + g.fossil + " unplausibel");
@@ -107,7 +117,7 @@ function pruefeEigenschaft(wo, k, e, ebene) {
   }
   if (k === "brandverhalten") { if (!/^(A1|A2|B|C|D|E|F)/.test(String(e.wert))) err(w + ": Euroklasse nicht erkennbar: " + e.wert); return; }
   if (k === "recycling") { if (typeof e.wert !== "string") err(w + ": Freitext erwartet"); return; }
-  const er = ERWARTET[k];
+  const er = ERWARTET[k.replace(" (echt)", "")];
   if (!er) return;
   if (!istZahl(e.wert)) { err(w + ": Wert keine Zahl: " + e.wert); return; }
   if (er.einheit.indexOf(e.einheit) === -1) err(w + ": Einheit „" + e.einheit + "“ statt " + er.einheit.join(" / "));
@@ -148,8 +158,8 @@ function zustand(e, k) {
   if (!x) return "feld_fehlt";
   if (x.nicht_anwendbar === true) return "nicht_anwendbar";
   const hat = k === "gwp" ? !!x.werte : (x.wert !== null && x.wert !== undefined && x.wert !== "");
-  if (!hat) return "fehlt";
-  if (x.art === "beispiel") return "beispiel";
+  if (!hat) return x.echt && x.echt.quelle ? "belegt" : "fehlt";
+  if (x.art === "beispiel") return x.echt && x.echt.quelle ? "belegt" : "beispiel";
   return "belegt";
 }
 const zeilen = [];
@@ -189,7 +199,7 @@ if (warns.length > 25) console.log("  … " + (warns.length - 25) + " weitere Wa
 // ---------- Bericht ----------
 if (opt("--bericht")) {
   const GRUND = {
-    preis: "Kein frei abrufbarer deutscher Händler- oder Herstellerpreis gefunden (BKI-Baupreise kostenpflichtig; HORNBACH, BAUHAUS, OBI und viele Händler blockieren automatische Abrufe, das wurde nicht umgangen; Heinze verbietet automatisches Auslesen). Preise stehen bei Produkten mit Preisliste und als Preisspanne bei allgemeinen Baustoffen mit mindestens zwei belegten Produktpreisen.",
+    preis: "Kein frei abrufbarer deutscher Händler- oder Herstellerpreis gefunden (BKI-Baupreise kostenpflichtig; HORNBACH, BAUHAUS, OBI, Baustoffshop, benz24 und Contorion blockieren automatische Abrufe, das wurde nicht umgangen; Heinze verbietet automatisches Auslesen). Preise stehen bei Produkten mit Preisliste und als Preisspanne bei allgemeinen Baustoffen mit mindestens zwei belegten Produktpreisen (Händlerpreise von bausep.de seit MaterialMatch 3.3).",
     rohdichte: "Der ÖKOBAUDAT-Datensatz nennt für dieses Material keine Rohdichte.",
     waermeleitfaehigkeit: "Bemessungs- und Nennwerte stehen in kostenpflichtigen Normen (DIN 4108-4, DIN EN ISO 10456); für das allgemeine Material liegt kein frei zugänglicher, passender Herstellerwert vor. Produkte mit Herstellerangabe tragen ihre eigenen Werte.",
     waermeleitfaehigkeit_bemessung: "Der Bemessungswert nach DIN 4108-4 bzw. Zulassung ist kostenpflichtig oder produktspezifisch; ein Wert wird nur bei Produkten mit Herstellerangabe für Deutschland geführt.",
@@ -228,7 +238,11 @@ if (opt("--bericht")) {
   md += "- **WECOBIS** (www.wecobis.de): erreichbar, enthält aber überwiegend beschreibende Texte (Rohstoffe, Herstellung, Entsorgung) statt Zahlenwerte; Vervielfältigung nur mit Genehmigung der Bayerischen Architektenkammer; nichts übernommen.\n";
   md += "- **baubook** (www.baubook.info): öffentliche Seiten ohne Kennwerttabellen; die Materialdatenbank (baubook.at) verlangt eine Anmeldung; nichts übernommen.\n";
   md += "- **EUR-Lex** (Entscheidungen zum Brandverhalten ohne Prüfung): am 18.11.2026 mit Bot-Prüfung (HTTP 202, AWS WAF) beantwortet; nicht umgangen.\n";
-  md += "- **OBI, HORNBACH, BAUHAUS, Knauf, ISOVER**: automatische Abrufe blockiert (Bot-Abwehr); nicht umgangen.\n";
+  md += "- **HORNBACH, BAUHAUS, Baustoffshop, benz24, Contorion, Knauf, ISOVER**: automatische Abrufe blockiert (Bot-Abwehr); nicht umgangen.\n";
+  md += "- **OBI**: die Produktseiten waren am 18.11.2026 nicht abrufbar (404 bzw. leere Antwort); nur die in früheren Runden gelesenen Preise (Datenstand 16.11.2026) bleiben als Produktpreise erhalten.\n";
+  md += "- **Holzland, BayWa Baustoffe, MEGA, Raab Karcher**: am 18.11.2026 keine öffentlich abrufbaren Preise für die benötigten Baustoffe gefunden (Raab Karcher: keine Verbindung); nichts übernommen.\n";
+  md += "- **IBU** (ibu-epd.com, epd-online.com): ibu-epd.com antwortete am 18.11.2026 mit HTTP 503; epd-online.com ist die Erstellungsplattform mit Anmeldung. Keine EPD-Werte übernommen; ÖKOBAUDAT liefert die CO₂-Werte.\n";
+  md += "- **bausep.de** (genutzt): 14 Preisspannen in den Echtdaten (Dämmstoffe, OSB, KVH, Porenbeton, Gipsfaserplatte, Bitumenbahn); jede Spanne ist aus den Einzelpreisen mit Produktlink nachgerechnet (tests/test51.js). Nur ein Händler, deshalb Richtwert mit Spanne, kein Marktpreis.\n";
   md += "- **Normen** (DIN 4108-4, DIN EN ISO 10456, DIN EN 1745, DIN EN 12524): kostenpflichtig, nicht eingesehen.\n";
   fs.writeFileSync(path.join(PROJ, "DATENLUECKEN.md"), md);
   console.log("\nDATENLUECKEN.md geschrieben (" + md.length + " Zeichen).");
