@@ -1,0 +1,114 @@
+const PROJ = require('path').resolve(__dirname, '..');
+const AUSGABE = require('path').join(require('os').tmpdir(), 'materialmatch-tests') + '/';
+require('fs').mkdirSync(AUSGABE, { recursive: true });
+const B = require(PROJ + '/js/bewertung.js');
+let fails = 0;
+const ok = (n, c, x) => { if (!c) fails++; console.log((c ? 'OK   ' : 'FAIL ') + n + (c || x === undefined ? '' : ' -> ' + JSON.stringify(x))); };
+const near = (a, b, e = 1e-9) => Math.abs(a - b) <= e;
+
+console.log('--- Farbskala: Stützpunkte laut Prompt ---');
+[[0,'#951F2B'],[0.25,'#E68B43'],[0.5,'#E9C94E'],[0.75,'#78B85A'],[1,'#17643A']].forEach(([s,h]) => ok(`s=${s} -> ${h}`, B.farbeFuerScore(s) === h, B.farbeFuerScore(s)));
+console.log('--- Zwischenfarben (Mittelpunkte, von Hand gerechnet) ---');
+[[0.125,'#BE5537'],[0.375,'#E8AA49'],[0.625,'#B1C154'],[0.875,'#488E4A']].forEach(([s,h]) => ok(`s=${s} -> ${h}`, B.farbeFuerScore(s) === h, B.farbeFuerScore(s)));
+ok('s<0 wird auf Dunkelrot begrenzt', B.farbeFuerScore(-3) === '#951F2B');
+ok('s>1 wird auf Dunkelgrün begrenzt', B.farbeFuerScore(7) === '#17643A');
+ok('Farbe ist gültiger Hex-Code', /^#[0-9A-F]{6}$/.test(B.farbeFuerScore(0.3333)));
+// monoton: Grünanteil steigt von Rot nach Gelb nicht fallend im ersten Halbstück, Rotanteil fällt im zweiten Halbstück
+let mono = true, prev = -1; for (let i = 0; i <= 100; i++) { const g = parseInt(B.farbeFuerScore(i/200).slice(3,5),16); if (g < prev) mono = false; prev = g; }
+ok('Grünanteil steigt von Dunkelrot bis Gelb stetig', mono);
+let sprung = 0, pc = B.farbeFuerScore(0).slice(1); for (let i = 1; i <= 1000; i++) { const c = B.farbeFuerScore(i/1000).slice(1); for (let k = 0; k < 3; k++) sprung = Math.max(sprung, Math.abs(parseInt(c.substr(k*2,2),16) - parseInt(pc.substr(k*2,2),16))); pc = c; }
+ok('Keine Farbsprünge (max. 2 Stufen je 0,001)', sprung <= 2, sprung);
+
+console.log('--- Wortbewertung ---');
+[[1,'vergleichsweise günstig'],[0.875,'vergleichsweise günstig'],[0.8,'eher günstig'],[0.625,'eher günstig'],[0.5,'mittlerer Bereich'],[0.375,'mittlerer Bereich'],[0.2,'eher ungünstig'],[0.125,'eher ungünstig'],[0.1,'vergleichsweise ungünstig'],[0,'vergleichsweise ungünstig']].forEach(([s,t]) => ok(`s=${s} -> ${t}`, B.bewertungText(s) === t));
+
+console.log('--- Normalisierung: niedriger ist besser ---');
+let n = B.normalisiere([100, 200, 300], 'niedriger');
+ok('100/200/300: Scores 1 / 0,5 / 0', n.status === 'ok' && near(n.scores[0],1) && near(n.scores[1],0.5) && near(n.scores[2],0), n);
+n = B.normalisiere([100, 200, 300], 'hoeher');
+ok('höher ist besser: 0 / 0,5 / 1', n.status === 'ok' && near(n.scores[0],0) && near(n.scores[1],0.5) && near(n.scores[2],1), n);
+n = B.normalisiere([10, 40, 20], 'niedriger');
+ok('10/40/20: bester Wert 10 -> 1, schlechtester 40 -> 0, 20 -> 2/3', near(n.scores[0],1) && near(n.scores[1],0) && near(n.scores[2],2/3), n);
+n = B.normalisiere([222, null, 190], 'niedriger');
+ok('Fehlender Wert bleibt null, die anderen werden bewertet', n.status === 'ok' && n.scores[1] === null && near(n.scores[0],0) && near(n.scores[2],1), n);
+n = B.normalisiere([5, 5, 5], 'niedriger');
+ok('Identische Werte: Status "identisch", keine Scores', n.status === 'identisch' && n.scores.every(s => s === null), n);
+n = B.normalisiere([100, 101], 'niedriger');
+ok('Unterschied 1 % (<2 %): "gleich"', n.status === 'gleich', n);
+n = B.normalisiere([100, 102], 'niedriger');
+ok('Grenzfall 100 gegen 102 (1,96 % des größeren Werts): "gleich"', n.status === 'gleich', n);
+n = B.normalisiere([100, 102.1], 'niedriger');
+ok('100 gegen 102,1 (2,06 %): bewertet, 1 und 0', n.status === 'ok' && near(n.scores[0],1) && near(n.scores[1],0), n);
+n = B.normalisiere([100, 97.9], 'niedriger');
+ok('Unterschied 2,1 %: bewertet', n.status === 'ok', n);
+n = B.normalisiere([7], 'niedriger');
+ok('Nur ein Wert: "zuwenig"', n.status === 'zuwenig' && n.scores[0] === null, n);
+n = B.normalisiere([null, 4, null], 'niedriger');
+ok('Ein Wert und zwei fehlende: "zuwenig"', n.status === 'zuwenig', n);
+n = B.normalisiere([null, null], 'niedriger');
+ok('Nur fehlende Werte: "zuwenig"', n.status === 'zuwenig', n);
+n = B.normalisiere([-600, 200, 50], 'niedriger');
+ok('Negative Werte: -600 bestes (1), 200 schlechtestes (0), 50 -> 150/800 = 0,1875', n.status === 'ok' && near(n.scores[0],1) && near(n.scores[1],0) && near(n.scores[2], 150/800), n);
+n = B.normalisiere([0, 0.001], 'niedriger');
+ok('0 und 0,001: großer relativer Unterschied -> bewertet', n.status === 'ok', n);
+n = B.normalisiere([-1, 1], 'niedriger');
+ok('-1 und +1: bewertet', n.status === 'ok' && near(n.scores[0],1) && near(n.scores[1],0), n);
+n = B.normalisiere([1000000, 1000001], 'niedriger');
+ok('Sehr große gleiche Werte (Differenz 0,0001 %): "gleich"', n.status === 'gleich', n);
+n = B.normalisiere([100, 300], 'niedriger');
+ok('Zwei Werte: Bester immer 1, Schlechtester 0 (relative Bewertung)', near(n.scores[0],1) && near(n.scores[1],0));
+n = B.normalisiere([100, 150], 'niedriger');
+ok('Zwei Werte mit 50 % Unterschied: ebenfalls 1 und 0', near(n.scores[0],1) && near(n.scores[1],0));
+
+console.log('--- Achse und Balken ---');
+let a = B.achse([20, 40, 10]);
+ok('Nur positive Werte: Achse 0..40, Null links', a.min === 0 && a.max === 40 && a.spanne === 40 && a.nullProzent === 0, a);
+ok('Balkenlänge proportional: 10 -> 25 %, 40 -> 100 %', near(B.balkenGeometrie(10,a).breite,25) && near(B.balkenGeometrie(40,a).breite,100) && B.balkenGeometrie(10,a).links === 0);
+a = B.achse([-600, 200]);
+ok('Gemischte Vorzeichen: Achse -600..200, Nulllinie bei 75 %', a.min === -600 && a.max === 200 && near(a.nullProzent,75), a);
+ok('Positiver Balken 200: links 75 %, Breite 25 %', near(B.balkenGeometrie(200,a).links,75) && near(B.balkenGeometrie(200,a).breite,25));
+ok('Negativer Balken -600: links 0 %, Breite 75 % (endet bei der Nulllinie)', near(B.balkenGeometrie(-600,a).links,0) && near(B.balkenGeometrie(-600,a).breite,75));
+ok('Negativer Balken -150: links 56,25 %, Breite 18,75 %', near(B.balkenGeometrie(-150,a).links,56.25) && near(B.balkenGeometrie(-150,a).breite,18.75));
+a = B.achse([-5, -10]);
+ok('Nur negative Werte: Achse -10..0, Nulllinie bei 100 %', a.min === -10 && a.max === 0 && near(a.nullProzent,100), a);
+a = B.achse([0, 0]);
+ok('Alle null: Achse ohne Division durch 0', a.spanne === 1 && isFinite(a.nullProzent), a);
+a = B.achse([null, 8]);
+ok('Fehlende Werte werden ignoriert', a.max === 8 && a.min === 0);
+
+console.log('--- Vergleichbarkeit Preis ---');
+const P = (wert, einheit, mwst = 'unbekannt', umfang = 'unbekannt', art = 'beispiel') => ({ wert, einheit, mwst, umfang, art });
+let r = B.pruefePreis([P(140,'€/m³'), P(600,'€/m³')]);
+ok('Gleiche Einheit: gleicheEinheit, keine Einheitsprobleme', r.gleicheEinheit && r.probleme.length === 0 && r.anzahl === 2, r);
+ok('MwSt und Umfang unbekannt -> zwei Vorbehalte', r.vorbehalte.length === 2, r);
+ok('Nur Beispielpreise erkannt', r.nurBeispiel === true);
+r = B.pruefePreis([P(140,'€/m³'), P(1.3,'€/kg')]);
+ok('€/m³ und €/kg: nicht gleiche Einheit mit Problemtext', !r.gleicheEinheit && r.probleme.length === 1 && r.probleme[0].includes('€/m³, €/kg'), r);
+r = B.pruefePreis([P(140,'€/m³','netto','Material'), P(150,'€/m³','netto','Material','verifiziert')]);
+ok('Bekannt und gleich: keine Vorbehalte', r.vorbehalte.length === 0 && !r.nurBeispiel, r);
+r = B.pruefePreis([P(140,'€/m³','netto','Material'), P(150,'€/m³','brutto','Material')]);
+ok('Unterschiedliche MwSt: Vorbehalt', r.vorbehalte.length === 1 && r.vorbehalte[0].includes('Mehrwertsteuer'), r);
+r = B.pruefePreis([P(140,'€/m³'), { wert: null }, undefined]);
+ok('Weniger als zwei Preise: keine Aussage, anzahl 1', r.anzahl === 1 && r.probleme.length === 0, r);
+
+console.log('--- Vergleichbarkeit CO2 ---');
+const Q = { 'q-gen': { typ: 'generic dataset' }, 'q-gen2': { typ: 'generic dataset' }, 'q-avg': { typ: 'average dataset' } };
+const qf = id => Q[id] || null;
+const G = (gesamt, fossil, biogen, einheit = '1 m³', modul = 'A1-A3', quelle = 'q-gen') => ({ werte: { gesamt, fossil, biogen }, deklarierte_einheit: einheit, module: modul, quelle });
+r = B.pruefeCo2([G(222,222,-0.3), G(191,191,0.2,'1 m³','A1-A3','q-gen2')], qf);
+ok('Gleiche Basis: keine Probleme, kein Biogen', r.probleme.length === 0 && r.gleicheEinheit && !r.hatBiogen && r.anzahl === 2, r);
+r = B.pruefeCo2([G(222,222,-0.3), G(-581,240,-822)], qf);
+ok('Holz mit starkem Biogen-Anteil: hatBiogen', r.hatBiogen === true && r.probleme.length === 0, r);
+r = B.pruefeCo2([G(222,222,0), G(0.56,0.56,0,'1 kg','A1-A3','q-avg')], qf);
+ok('m³ gegen kg + generisch gegen Durchschnitt: zwei Probleme', !r.gleicheEinheit && r.probleme.length === 2 && r.zusatz.length === 2, r);
+ok('Problemtext nennt Bezugsgrößen und Datensatztypen', r.probleme[0].includes('1 m³, 1 kg') && r.probleme[1].includes('generischer Datensatz') && r.probleme[1].includes('Branchendurchschnitt'), r.probleme);
+r = B.pruefeCo2([G(10,10,0), G(12,12,0,'1 m³','A1-A3C','q-gen')], qf);
+ok('Unterschiedliche Module: Problem', r.probleme.length === 1 && r.probleme[0].includes('Lebenszyklusmodule'), r);
+r = B.pruefeCo2([G(10,10,0,'1 m³','A1-A3',null), G(12,12,0,'1 m³','A1-A3',null)], qf);
+ok('Nur Beispiel-Werte ohne Quelle: nurBeispiel', r.nurBeispiel === true && r.probleme.length === 0, r);
+r = B.pruefeCo2([G(10,10,0), { werte: null }, undefined], qf);
+ok('Weniger als zwei Werte: anzahl 1, keine Probleme', r.anzahl === 1 && r.probleme.length === 0, r);
+r = B.pruefeCo2([G(10,10,0.5), G(12,12,-0.9)], qf);
+ok('Kleiner Biogen-Anteil (|x| ≤ 1): kein hatBiogen', r.hatBiogen === false);
+
+console.log(fails === 0 ? '\nALLE TESTS BESTANDEN' : '\nFEHLGESCHLAGEN: ' + fails);

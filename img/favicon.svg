@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <title>MaterialMatch</title>
+  <rect width="48" height="48" rx="11" fill="#ffffff"/>
+  <rect x=".75" y=".75" width="46.5" height="46.5" rx="10.25" fill="none" stroke="#1f2530" stroke-opacity=".18" stroke-width="1.5"/>
+  <g stroke="#ffffff" stroke-width="1.6" stroke-linejoin="round">
+    <polygon points="12,26 40,26 33,41 6,41" fill="#b7cff0"/>
+    <polygon points="20,16 44,16 37,31 13,31" fill="#5b8fd6"/>
+    <polygon points="13,7 40,7 33,22 6,22" fill="#1f2530"/>
+  </g>
+</svg>

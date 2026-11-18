@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <!-- Sorgt dafür, dass die Seite auf Handy und Tablet richtig skaliert -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MaterialMatch – Baustoffe vergleichen</title>
+  <meta name="description" content="MaterialMatch: Der richtige Baustoff. Für deine Idee. Baustoffe vergleichen, nachhaltige Alternativen entdecken und das persönliche Match finden.">
+  <!-- Favicon: das Logo (drei Materialschichten) als SVG, lokal gespeichert -->
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+  <!-- Schrift „Nunito“ (Google Fonts). Ohne Internet greift automatisch die Systemschrift (siehe css/bento.css). -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Bento-Grid-Gestaltung: liegt über style.css und ändert nur das Aussehen -->
+  <link rel="stylesheet" href="css/bento.css">
+</head>
+<body>
+
+<!-- Symbole: Lucide (lucide.dev, Lizenz ISC), als Inline-SVG eingebettet; funktioniert offline -->
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" /> <path d="M12 16v-4" /> <path d="M12 8h.01" /></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 21-4.34-4.34" /> <circle cx="11" cy="11" r="8" /></symbol>
+  <symbol id="i-wallet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1" /> <path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4" /></symbol>
+  <symbol id="i-leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20a10 10 0 0010-10 25.9 25.9 0 00-1.04-7.281 1 1 0 00-1.755-.325C15.833 5.5 13 5.5 9.8 6.1A7 7 0 0011 20" /> <path d="M2 21a5 5 0 012.911-4.544C7.613 15.212 8.351 15.24 11 13" /></symbol>
+  <symbol id="i-thermometer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z" /></symbol>
+  <symbol id="i-weight" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="3" /> <path d="M6.5 8a2 2 0 0 0-1.905 1.46L2.1 18.5A2 2 0 0 0 4 21h16a2 2 0 0 0 1.925-2.54L19.4 9.5A2 2 0 0 0 17.48 8Z" /></symbol>
+  <symbol id="i-scale" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18" /> <path d="m19 8 3 8a5 5 0 0 1-6 0zV7" /> <path d="M3 7h1a17 17 0 0 0 8-2 17 17 0 0 0 8 2h1" /> <path d="m5 8 3 8a5 5 0 0 1-6 0zV7" /> <path d="M7 21h10" /></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z" /> <path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12" /> <path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17" /></symbol>
+  <symbol id="i-lightbulb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" /> <path d="M9 18h6" /> <path d="M10 22h4" /></symbol>
+  <symbol id="i-book-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v16" /> <path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z" /></symbol>
+  <symbol id="i-file-text" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" /> <path d="M14 2v5a1 1 0 0 0 1 1h5" /> <path d="M10 9H8" /> <path d="M16 13H8" /> <path d="M16 17H8" /></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3" /> <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /> <path d="m7 10 5 5 5-5" /></symbol>
+  <symbol id="i-package" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z" /> <path d="M12 22V12" /> <polyline points="3.29 7 12 12 20.71 7" /> <path d="m7.5 4.27 9 5.15" /></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18" /> <path d="m6 6 12 12" /></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14" /> <path d="M12 5v14" /></symbol>
+  <symbol id="i-sliders-horizontal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 5H3" /> <path d="M12 19H3" /> <path d="M14 3v4" /> <path d="M16 17v4" /> <path d="M21 12h-9" /> <path d="M21 19h-5" /> <path d="M21 5h-7" /> <path d="M8 10v4" /> <path d="M8 12H3" /></symbol>
+  <symbol id="i-ruler" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z" /> <path d="m14.5 12.5 2-2" /> <path d="m11.5 9.5 2-2" /> <path d="m8.5 6.5 2-2" /> <path d="m17.5 15.5 2-2" /></symbol>
+  <symbol id="i-building-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 12h4" /> <path d="M10 8h4" /> <path d="M14 21v-3a2 2 0 0 0-4 0v3" /> <path d="M6 10H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2" /> <path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16" /></symbol>
+  <symbol id="i-recycle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 19H4.815a1.83 1.83 0 0 1-1.57-.881 1.785 1.785 0 0 1-.004-1.784L7.196 9.5" /> <path d="M11 19h8.203a1.83 1.83 0 0 0 1.556-.89 1.784 1.784 0 0 0 0-1.775l-1.226-2.12" /> <path d="m14 16-3 3 3 3" /> <path d="M8.293 13.596 7.196 9.5 3.1 10.598" /> <path d="m9.344 5.811 1.093-1.892A1.83 1.83 0 0 1 11.985 3a1.784 1.784 0 0 1 1.546.888l3.943 6.843" /> <path d="m13.378 9.633 4.096 1.098 1.097-4.096" /></symbol>
+  <symbol id="i-euro" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12" /> <path d="M4 14h9" /> <path d="M19 6a7.7 7.7 0 0 0-5.2-2A7.9 7.9 0 0 0 6 12c0 4.4 3.5 8 7.8 8 2 0 3.8-.8 5.2-2" /></symbol>
+  <symbol id="i-chevron-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6" /></symbol>
+  <symbol id="i-arrow-right-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 3 4 4-4 4" /> <path d="M20 7H4" /> <path d="m8 21-4-4 4-4" /> <path d="M4 17h16" /></symbol>
+  <symbol id="i-sparkles" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" /> <path d="M20 2v4" /> <path d="M22 4h-4" /> <circle cx="4" cy="20" r="2" /></symbol>
+  <symbol id="i-factory" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16h.01" /> <path d="M16 16h.01" /> <path d="M3 19a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8.5a.5.5 0 0 0-.769-.422l-4.462 2.844A.5.5 0 0 1 15 10.5v-2a.5.5 0 0 0-.769-.422L9.77 10.922A.5.5 0 0 1 9 10.5V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z" /> <path d="M8 16h.01" /></symbol>
+  <symbol id="i-marke" viewBox="0 0 48 48">
+    <g stroke="var(--logo-fuge, #ffffff)" stroke-width="2" stroke-linejoin="round">
+      <polygon points="14,27 44,27 34,44 4,44" fill="var(--logo-3, #b7cff0)"/>
+      <polygon points="22,15 48,15 38,32 12,32" fill="var(--logo-2, #5b8fd6)"/>
+      <polygon points="14,3 44,3 34,20 4,20" fill="var(--logo-1, #1f2530)"/>
+    </g>
+  </symbol>
+</svg>
+
+  <!-- ============ BEREICH 1: KOPFBEREICH ============ -->
+  <header class="site-header">
+    <div class="container">
+    <div class="kopf">
+      <div class="kopf-text">
+        <h1><svg class="marke" aria-hidden="true" focusable="false"><use href="#i-marke"/></svg>MaterialMatch</h1>
+        <p class="tagline">Der richtige Baustoff. Für deine Idee.</p>
+        <p class="untertitel">Vergleiche Materialien, entdecke nachhaltige Alternativen und finde dein persönliches Match.</p>
+      </div>
+      <!-- Zwei Hauptaktionen (js/kopf.js): wechseln in den Bereich und setzen den Fokus dorthin -->
+      <div class="kopf-aktionen" role="group" aria-label="Hauptaktionen">
+        <a class="btn kopf-knopf kopf-knopf-haupt" id="kopf-vergleichen" href="#vergleich" data-ziel="vergleich"><svg class="ico" aria-hidden="true"><use href="#i-scale"/></svg>Baustoffe vergleichen</a>
+        <a class="btn kopf-knopf kopf-knopf-zweit" id="kopf-match" href="#match" data-ziel="match"><svg class="ico" aria-hidden="true"><use href="#i-sparkles"/></svg>Match finden</a>
+      </div>
+    </div>
+    </div>
+  </header>
+
+  <!-- Datenmodus (js/datenmodus.js): schmale Zeile; die ausführliche Erklärung ist zugeklappt, Demo bleibt gelb erkennbar -->
+  <div class="modus-leiste" id="modus-leiste" role="region" aria-label="Datenmodus">
+    <div class="container">
+      <p class="modus-zeile"><strong class="modus-titel" id="modus-titel"></strong><span class="modus-kurz" id="modus-kurz"></span></p>
+      <label class="modus-schalter" for="modus-schalter">
+        <input type="checkbox" id="modus-schalter">
+        <span>Beispieldaten (Demo) verwenden</span>
+      </label>
+      <details class="modus-mehr" id="modus-mehr">
+        <summary>Erklärung</summary>
+        <p class="modus-text" id="modus-text"></p>
+      </details>
+    </div>
+  </div>
+
+  <!-- Nur im Ausdruck sichtbar: Eingaben, Materialien und Datenstand (wird von js/export.js vor dem Drucken gefüllt) -->
+  <div class="container print-only" id="druck-kopf" aria-hidden="true"></div>
+
+  <!-- ============ NAVIGATION: DREI HAUPTREITER (js/reiter.js) ============ -->
+  <nav class="tabs-leiste" aria-label="Hauptbereiche">
+    <div class="container">
+      <div class="tabs" role="tablist" aria-label="Hauptbereiche">
+        <button type="button" role="tab" id="reiter-vergleich" class="tab" aria-controls="bereich-vergleich" aria-selected="true">Vergleich</button>
+        <button type="button" role="tab" id="reiter-match" class="tab" aria-controls="bereich-match" aria-selected="false" tabindex="-1">Match finden</button>
+        <button type="button" role="tab" id="reiter-alternativen" class="tab" aria-controls="bereich-alternativen" aria-selected="false" tabindex="-1">Alternativen</button>
+        <button type="button" role="tab" id="reiter-quellen" class="tab" aria-controls="bereich-quellen" aria-selected="false" tabindex="-1">Quellen &amp; Details</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+
+  <!-- ====== REITER 1: VERGLEICH ====== -->
+  <div role="tabpanel" id="bereich-vergleich" class="tab-bereich" aria-labelledby="reiter-vergleich" tabindex="-1">
+
+    <!-- BENTO-GRID: Kacheln unterschiedlicher Größe (css/bento.css). Die Kachelnamen stehen als Klassen k-… an den Bereichen. -->
+    <div class="bento" id="bento">
+
+    <!-- ============ BEREICH 2: MATERIALAUSWAHL ============ -->
+    <section class="panel kachel k-auswahl" id="auswahl">
+      <details open>
+        <summary><h2><svg class="ico" aria-hidden="true"><use href="#i-layers"/></svg>Materialauswahl</h2></summary>
+        <div class="panel-body">
+          <!-- Suche (js/suche.js): findet Baustoffe und Herstellerprodukte und legt sie auf den nächsten freien Platz -->
+          <div class="auswahl-kopf">
+          <div class="suche" id="suche-box">
+            <label for="suche" class="sr-only">Baustoff oder Produkt suchen</label>
+            <svg class="ico suche-icon" aria-hidden="true"><use href="#i-search"/></svg>
+            <input id="suche" type="search" autocomplete="off" placeholder="Baustoff oder Produkt suchen, z. B. Holzfaser" role="combobox"
+                   aria-expanded="false" aria-controls="suche-liste" aria-autocomplete="list" aria-describedby="suche-status">
+            <ul id="suche-liste" class="suche-liste" role="listbox" aria-label="Suchtreffer" hidden></ul>
+            <p class="sr-only" id="suche-status" role="status" aria-live="polite"></p>
+          </div>
+          <div class="field auswahl-kategorie">
+            <label for="kategorie">Baustoffkategorie</label>
+            <select id="kategorie" disabled>
+              <option>Kategorie wählen …</option>
+            </select>
+          </div>
+          </div><!-- Ende auswahl-kopf -->
+
+          <div class="auswahl-grid" id="auswahl-grid">
+            <div class="field" id="feld-materialA">
+              <label for="materialA">Material A</label>
+              <select id="materialA" disabled><option>Material wählen …</option></select>
+              <div class="produkt-zeile" hidden>
+                <label class="produkt-label" for="produktA">Produkt A</label>
+                <select id="produktA" disabled><option>Zuerst ein Material wählen</option></select>
+              </div>
+            </div>
+            <div class="field" id="feld-materialB">
+              <label for="materialB">Material B</label>
+              <select id="materialB" disabled><option>Material wählen …</option></select>
+              <div class="produkt-zeile" hidden>
+                <label class="produkt-label" for="produktB">Produkt B</label>
+                <select id="produktB" disabled><option>Zuerst ein Material wählen</option></select>
+              </div>
+            </div>
+            <div class="field" id="feld-materialC" hidden>
+              <label for="materialC">Material C</label>
+              <select id="materialC" disabled><option>Kein drittes Material</option></select>
+              <div class="produkt-zeile" hidden>
+                <label class="produkt-label" for="produktC">Produkt C</label>
+                <select id="produktC" disabled><option>Zuerst ein Material wählen</option></select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Optionale Funktionen: erst nach einem Klick sichtbar (js/auswahl-optionen.js) -->
+          <div class="auswahl-optionen" role="group" aria-label="Weitere Auswahlmöglichkeiten">
+            <button type="button" class="btn-option" id="btn-drittes" aria-expanded="false" aria-controls="feld-materialC">+ Drittes Material hinzufügen</button>
+            <button type="button" class="btn-option" id="btn-produkt" aria-expanded="false" aria-controls="produktA produktB produktC">Herstellerprodukt auswählen</button>
+            <button type="button" class="btn-option" id="btn-eigen" aria-expanded="false" aria-controls="eigenes-produkt-wrap">Eigenes Produkt hinzufügen</button>
+          </div>
+          <p class="hint produkt-hinweis" id="produkt-hinweis" hidden>Ohne Produktwahl gilt der <strong>generische Materialdatensatz</strong> (kein konkretes Produkt).</p>
+          <div id="eigenes-produkt-wrap" hidden>
+            <details class="sub" id="eigenes-produkt" open>
+              <summary>Eigenes Produkt ergänzen</summary>
+              <div class="sub-body" id="eigenes-produkt-box"></div>
+            </details>
+          </div>
+
+          <!-- Hier zeichnet js/auswahl.js die Karten der gewählten Materialien -->
+          <div id="auswahl-karten" aria-live="polite"></div>
+        </div>
+      </details>
+    </section>
+
+    <!-- ============ BEREICH 3: EINGABEN ============ -->
+    <section class="panel kachel k-eingaben" id="eingaben">
+      <details open>
+        <summary><h2><svg class="ico" aria-hidden="true"><use href="#i-sliders-horizontal"/></svg>Eingaben</h2></summary>
+        <div class="panel-body">
+          <div class="eingaben-grid">
+            <div class="field">
+              <label for="flaeche" data-begriff="flaeche">Fläche (m²)</label>
+              <input id="flaeche" type="text" inputmode="decimal" autocomplete="off" placeholder="z. B. 100"
+                     aria-describedby="flaeche-fehler" disabled>
+              <p class="field-error" id="flaeche-fehler" role="alert"></p>
+            </div>
+            <div class="field">
+              <label for="dicke" data-begriff="dicke">Dicke</label>
+              <div class="input-row">
+                <input id="dicke" type="text" inputmode="decimal" autocomplete="off" placeholder="z. B. 20"
+                       aria-describedby="dicke-fehler" disabled>
+                <select id="dickeEinheit" aria-label="Einheit der Materialdicke" disabled>
+                  <option value="mm">mm</option>
+                  <option value="cm" selected>cm</option>
+                  <option value="m">m</option>
+                </select>
+              </div>
+              <p class="field-error" id="dicke-fehler" role="alert"></p>
+            </div>
+            <div class="field">
+              <label for="anwendung" data-begriff="anwendungsbereich">Anwendung</label>
+              <select id="anwendung" disabled><option>Anwendungsbereich wählen …</option></select>
+            </div>
+            <div class="field">
+              <label for="prioritaet" data-begriff="prioritaet">Priorität</label>
+              <select id="prioritaet" disabled><option>Ausgewogener Vergleich</option></select>
+            </div>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <!-- ============ DASHBOARD: VERGLEICH AUF EINEN BLICK (js/dashboard.js) ============ -->
+    <section class="dashboard k-dashboard" id="dashboard" aria-labelledby="dashboard-titel">
+      <h2 id="dashboard-titel">Vergleich auf einen Blick</h2>
+      <div id="dashboard-inhalt" aria-live="polite"></div>
+    </section>
+
+    <!-- Hinweis „nur zur Orientierung“ zu den gewählten Materialien (füllt js/datenmodus.js) -->
+    <p class="note warn orientierung" id="orientierung" role="note" hidden></p>
+
+    <!-- ============ DIAGRAMME: MATERIALIEN IM VERGLEICH (kein eigener Hauptbereich mehr) ============ -->
+    <section class="diagramme-bereich kachel k-diagramme" id="diagramme" aria-labelledby="diagramme-titel">
+      <h2 id="diagramme-titel"><svg class="ico" aria-hidden="true"><use href="#i-scale"/></svg>Materialien im Vergleich</h2>
+      <!-- Hier zeichnet js/diagramme.js die Balkendiagramme und die Legende -->
+      <div id="diagramme-inhalt" aria-live="polite"></div>
+
+      <p class="note">
+        Die Farben zeigen eine relative Bewertung der ausgewählten Materialien und stellen
+        keine allgemeingültige Aussage über deren Qualität dar.
+      </p>
+    </section>
+
+    <!-- Export (js/export.js): ein Menü „Ergebnisse exportieren“ mit PDF und CSV -->
+    <div class="export-leiste kachel k-export" role="group" aria-label="Export">
+      <button type="button" class="btn-option export-toggle" id="export-menue-knopf" aria-expanded="false" aria-controls="export-menue" disabled>Ergebnisse exportieren</button>
+      <p class="hint" id="export-hinweis">Wählen Sie zuerst mindestens ein Material.</p>
+      <div class="export-menue" id="export-menue" hidden>
+        <button type="button" class="export-eintrag" id="druck-knopf" disabled>Als PDF speichern</button>
+        <button type="button" class="export-eintrag" id="csv-knopf" disabled>Als CSV herunterladen</button>
+        <p class="hint export-erklaerung">PDF: Der Druckdialog des Browsers öffnet sich; dort „Als PDF speichern“ wählen. Der Bericht enthält alle Bereiche, auch die gerade nicht sichtbaren Reiter. CSV: Datei für Excel mit Eingaben, Kennwerten (Datenart und Quelle), Ergebnissen, Empfehlungen und Quellen.</p>
+      </div>
+    </div>
+
+    <!-- ============ BEREICH 4: ALLE TECHNISCHEN EIGENSCHAFTEN (standardmäßig zugeklappt) ============ -->
+    <section class="panel kachel k-ergebnisse" id="ergebnisse">
+      <details>
+        <summary><h2><svg class="ico" aria-hidden="true"><use href="#i-file-text"/></svg>Alle technischen Eigenschaften anzeigen</h2></summary>
+        <div class="panel-body">
+          <div class="results-toolbar">
+            <p class="legend-line">
+              <strong>Datenart:</strong> B = Beispieldaten (nicht geprüft) · R = Richtwert (mit Quelle) · V = verifiziert.
+              Hochgestellte Zahlen verweisen auf die Hinweise unter der Tabelle. „i“ erklärt einen Fachbegriff.
+            </p>
+            <button type="button" class="btn-link" id="alle-umschalten" aria-expanded="true">Alle Abschnitte zuklappen</button>
+          </div>
+
+          <!-- Einklappbare Unterabschnitte (HTML-Element <details>, ohne JavaScript) -->
+          <details class="sub" open>
+            <summary>Menge und Gewicht</summary>
+            <div class="sub-body"><div id="ergebnis-menge" aria-live="polite"></div></div>
+          </details>
+
+          <details class="sub" open>
+            <summary>Technische Eigenschaften</summary>
+            <div class="sub-body"><div id="ergebnis-technisch" aria-live="polite"></div></div>
+          </details>
+
+          <details class="sub" open>
+            <summary>Kosten</summary>
+            <div class="sub-body">
+              <h3 class="subsub">Berechnete Materialkosten</h3>
+              <div id="rechnung-kosten" aria-live="polite"></div>
+              <h3 class="subsub">Kennwerte</h3>
+              <div id="ergebnis-kosten" aria-live="polite"></div>
+            </div>
+          </details>
+
+          <details class="sub" open>
+            <summary>CO₂-Bilanz</summary>
+            <div class="sub-body">
+              <h3 class="subsub">Berechnete CO₂-Menge</h3>
+              <div id="rechnung-co2" aria-live="polite"></div>
+              <h3 class="subsub">Kennwerte</h3>
+              <div id="ergebnis-co2" aria-live="polite"></div>
+            </div>
+          </details>
+
+          <details class="sub" open>
+            <summary>Wärmedurchlasswiderstand (R-Wert)</summary>
+            <div class="sub-body">
+              <div id="rechnung-r" aria-live="polite"></div>
+
+              <h3 class="subsub">Erforderliche Dicke für einen gewünschten R-Wert (optional)</h3>
+              <div class="field field-narrow">
+                <label for="rZiel">Gewünschter R-Wert (m²K/W)</label>
+                <input id="rZiel" type="text" inputmode="decimal" autocomplete="off" placeholder="z. B. 5"
+                       aria-describedby="rziel-fehler">
+                <p class="field-error" id="rziel-fehler" role="alert"></p>
+              </div>
+              <div id="rechnung-rziel" aria-live="polite"></div>
+            </div>
+          </details>
+
+          <details class="sub">
+            <summary>Weitere Eigenschaften</summary>
+            <div class="sub-body"><div id="ergebnis-weitere" aria-live="polite"></div></div>
+          </details>
+        </div>
+      </details>
+    </section>
+
+    </div><!-- Ende Bento-Grid -->
+
+  </div><!-- Ende Reiter 1 -->
+
+  <!-- ====== REITER: MATCH FINDEN (Interview, Swipe-Karten, Favoriten: js/match.js, interview.js, swipe.js, favoriten.js) ====== -->
+  <div role="tabpanel" id="bereich-match" class="tab-bereich" aria-labelledby="reiter-match" tabindex="-1" hidden>
+    <div class="bento match-bento">
+      <section class="kachel k-match" id="match" aria-labelledby="match-titel">
+        <h2 id="match-titel"><svg class="ico" aria-hidden="true"><use href="#i-sparkles"/></svg>Match finden</h2>
+        <!-- Hier erscheinen erst die Fragen, danach die Karten -->
+        <div id="match-inhalt"></div>
+      </section>
+      <aside class="kachel k-favoriten" id="match-favoriten" aria-labelledby="favoriten-titel">
+        <h2 id="favoriten-titel"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Favoriten <span class="fav-zaehler" id="favoriten-zaehler">0</span></h2>
+        <div id="favoriten-inhalt"></div>
+      </aside>
+    </div>
+  </div><!-- Ende Reiter Match -->
+
+  <!-- ====== REITER 2: ALTERNATIVEN ====== -->
+  <div role="tabpanel" id="bereich-alternativen" class="tab-bereich" aria-labelledby="reiter-alternativen" tabindex="-1" hidden>
+
+    <!-- ============ ALTERNATIVEN: ALTERNATIVE BAUSTOFFE ENTDECKEN ============ -->
+    <section class="alternativen-bereich kachel k-alternativen" id="alternativen" aria-labelledby="alternativen-titel">
+      <h2 id="alternativen-titel"><svg class="ico" aria-hidden="true"><use href="#i-lightbulb"/></svg>Alternative Baustoffe entdecken</h2>
+      <p class="bereich-intro">MaterialMatch schlägt geeignete Alternativen anhand Ihrer Auswahl und Prioritäten vor.</p>
+      <!-- Hier zeichnet js/alternativen.js die Empfehlungskarten -->
+      <div id="alternativen-inhalt" aria-live="polite"></div>
+    </section>
+
+  </div><!-- Ende Reiter 2 -->
+
+  <!-- ====== REITER 3: QUELLEN & DETAILS ====== -->
+  <div role="tabpanel" id="bereich-quellen" class="tab-bereich" aria-labelledby="reiter-quellen" tabindex="-1" hidden>
+
+    <!-- ============ QUELLEN & DETAILS ============ -->
+    <section class="quellen-bereich kachel k-quellen" id="quellen" aria-labelledby="quellen-titel">
+      <h2 id="quellen-titel"><svg class="ico" aria-hidden="true"><use href="#i-book-open"/></svg>Quellen der ausgewählten Materialien</h2>
+      <!-- Hier zeichnet js/quellen-anzeige.js die Quellen der gewählten Materialien, gruppiert nach Material -->
+      <div id="quellen-auswahl" aria-live="polite"></div>
+
+      <details class="sub" id="quellen-qualitaet">
+        <summary>Datenqualität und Kennzeichnungen</summary>
+        <div class="sub-body" id="qd-inhalt"></div>
+      </details>
+
+      <details class="sub" id="quellen-methode">
+        <summary>Wie berechnet MaterialMatch die Ergebnisse?</summary>
+        <div class="sub-body" id="qm-inhalt"></div>
+      </details>
+
+      <details class="sub" id="quellen-datenbank">
+        <summary>Erweiterte Datenbankinformationen</summary>
+        <div class="sub-body">
+          <!-- Hier zeichnet js/quellen-anzeige.js Datenstand, Kennwertmatrix, Produkte, Quellenübersicht und Datenprüfung -->
+          <div id="quellen-inhalt"></div>
+
+          <details class="sub" id="katalog">
+            <summary>Alle Baustoffe in der Datenbank</summary>
+            <div class="sub-body">
+              <div class="table-wrap">
+                <table class="data-table kompakt" id="datenuebersicht">
+                  <thead>
+                    <tr>
+                      <th scope="col">Baustoff</th>
+                      <th scope="col">Kategorie</th>
+                      <th scope="col">Anwendungsbereich</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+          </details>
+        </div>
+      </details>
+
+      <details class="sub" id="quellen-hinweise">
+        <summary>Rechtliche und fachliche Hinweise</summary>
+        <div class="sub-body">
+          <!-- Einleitung und Kurzanleitung (früher im Kopf) -->
+          <div id="ueber">
+            <p class="intro">
+              MaterialMatch vergleicht Baustoffe nach Kosten, Gewicht, CO₂-Bilanz,
+              Wärmeschutz und weiteren Eigenschaften und schlägt passende Alternativen vor.
+              Das Werkzeug unterstützt frühe Entwurfsentscheidungen. Es ersetzt keine
+              bauphysikalischen Nachweise, keine Tragwerks- oder Brandschutzplanung.
+            </p>
+            <ol class="quickstart">
+              <li><span><strong>Material wählen</strong> (Kategorie, dann Material A und B)</span></li>
+              <li><span><strong>Fläche und Dicke eingeben</strong></span></li>
+              <li><span><strong>Ergebnisse, Diagramme und Alternativen</strong> ansehen</span></li>
+            </ol>
+          </div>
+          <div id="qh-inhalt"></div>
+          <!-- Materialillustrationen und Einordnung durch das Projekt (js/steckbrief.js) -->
+          <div id="qi-inhalt"></div>
+        </div>
+      </details>
+    </section>
+
+  </div><!-- Ende Reiter 3 -->
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>MaterialMatch · Hochschulprojekt, Jade Hochschule Oldenburg · Kurs „Vibecoding KI-Werkstatt“</p>
+      <p class="fussnote">Orientierungshilfe für frühe Entwurfsentscheidungen, kein Nachweis. Hinweise unter „Quellen &amp; Details“.</p>
+      <p class="status" id="datenstand"></p>
+      <p class="status" id="status">Systemcheck: wird geprüft …</p>
+    </div>
+  </footer>
+
+  <!-- Reihenfolge ist wichtig: erst Daten, dann Prüfung, dann Programm -->
+  <script src="data/baustoffe.js"></script>
+  <script src="data/materialprofil.js"></script>
+  <script src="data/produkte.js"></script>
+  <script src="data/einstellungen.js"></script>
+  <script src="js/daten-pruefung.js"></script>
+  <script src="js/hilfen.js"></script>
+  <script src="js/begriffe.js"></script>
+  <script src="js/berechnung.js"></script>
+  <script src="js/bewertung.js"></script>
+  <script src="js/quellen.js"></script>
+  <script src="js/empfehlung.js"></script>
+  <script src="js/prioritaet.js"></script>
+  <script src="js/produkte.js"></script>
+  <script src="js/produktformular.js"></script>
+  <script src="js/materialbilder.js"></script>
+  <script src="js/steckbrief.js"></script>
+  <script src="js/auswahl-optionen.js"></script>
+  <script src="js/suche.js"></script>
+  <script src="js/auswahl.js"></script>
+  <script src="js/eingaben.js"></script>
+  <script src="js/tabelle.js"></script>
+  <script src="js/quellen-anzeige.js"></script>
+  <script src="js/mengen.js"></script>
+  <script src="js/eigenschaften.js"></script>
+  <script src="js/diagramme.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/rechnen.js"></script>
+  <script src="js/alternativen.js"></script>
+  <script src="js/export.js"></script>
+  <script src="js/datenmodus.js"></script>
+  <script src="js/oberflaeche.js"></script>
+  <script src="js/matching.js"></script>
+  <script src="js/interview.js"></script>
+  <script src="js/favoriten.js"></script>
+  <script src="js/swipe.js"></script>
+  <script src="js/match.js"></script>
+  <script src="js/reiter.js"></script>
+  <script src="js/kopf.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

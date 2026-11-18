@@ -1,0 +1,1095 @@
+/* ==========================================================
+   MaterialMatch – Gestaltung
+   Prinzip: hell, ruhig, viel Weißraum, dezente Linien.
+   Keine externen Schriften -> funktioniert auch offline.
+   ========================================================== */
+
+/* ---------- Farben und Maße an einer zentralen Stelle ----------
+   Wer später eine Farbe ändern möchte, ändert sie nur hier. */
+:root {
+  --bg: #f6f7f8;            /* sehr helles Grau (Seitenhintergrund) */
+  --surface: #ffffff;       /* Weiß (Karten) */
+  --text: #2b2f33;          /* Dunkelgrau (Schrift) */
+  --text-soft: #6a7178;     /* Hellere Schrift für Nebentexte */
+  --line: #e1e4e8;          /* dezente Linien */
+  --accent: #2b2f33;        /* Akzent: schlichtes Dunkelgrau */
+
+  /* Bewertungsfarben für die Diagramme (ab Schritt 6) */
+  --score-1: #17643a;       /* sehr gut  */
+  --score-2: #78b85a;       /* gut       */
+  --score-3: #e9c94e;       /* mittel    */
+  --score-4: #e68b43;       /* schlecht  */
+  --score-5: #951f2b;       /* sehr schlecht */
+
+  --radius: 8px;
+  --gap: 1.25rem;
+}
+
+/* ---------- Grundeinstellungen ---------- */
+* { box-sizing: border-box; }
+
+html { font-size: 100%; }
+
+body { margin: 0; line-height: 1.55; -webkit-text-size-adjust: 100%; }
+
+/* Begrenzt die Inhaltsbreite und sorgt für seitlichen Abstand */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* ---------- Kopfbereich ---------- */
+
+
+h1 {
+  margin: 0 0 .4rem;
+  font-size: clamp(2rem, 6vw, 2.75rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.tagline {
+  margin: 0 0 1.25rem;
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  color: var(--text-soft);
+}
+
+.intro {
+  margin: 0;
+  max-width: 62ch;
+  color: var(--text);
+}
+
+/* ---------- Bereiche (Karten) ---------- */
+main { padding-top: 2rem; padding-bottom: 2rem; }
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  margin-bottom: var(--gap);
+}
+
+/* Einklappbarer Bereich: <details> kann der Browser selbst auf- und zuklappen */
+.panel details > summary {
+  list-style: none;          /* Standard-Pfeil ausblenden */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: 1.1rem 1.25rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+.panel details > summary::-webkit-details-marker { display: none; }
+
+/* Eigener, dezenter Pfeil rechts */
+.panel details > summary::after { content: ""; margin-left: auto; border-right: 2px solid var(--text-soft); border-bottom: 2px solid var(--text-soft); transform: rotate(45deg); transition: none; }
+.panel details[open] > summary::after { transform: rotate(-135deg); }
+.panel details[open] > summary { border-bottom: 1px solid var(--line); }
+
+.panel details > summary:focus-visible { outline: 2px solid var(--accent); }
+
+.num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  font-size: .875rem;
+  font-weight: 600;
+  color: var(--text-soft);
+}
+
+.panel-body { padding: 1.25rem; }
+
+/* ---------- Formularfelder ---------- */
+.field { margin-bottom: 1rem; }
+
+label {
+  display: block;
+  margin-bottom: .35rem;
+  font-size: .9375rem;
+  font-weight: 600;
+}
+.optional { font-weight: 400; color: var(--text-soft); }
+
+select, input[type="text"], input[type="number"] {
+  width: 100%;
+  padding: .65rem .75rem;
+  font: inherit;
+  color: var(--text);
+  background: #fff;
+  border: 1px solid #c9ced4;
+  border-radius: 6px;
+}
+select:focus-visible, input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+select:disabled, input:disabled {
+  background: #f1f3f5;
+  color: var(--text-soft);
+  cursor: not-allowed;
+}
+
+/* Eingabefeld mit Einheiten-Auswahl daneben */
+.input-row { display: flex; gap: .5rem; }
+.input-row input { flex: 1; min-width: 0; }
+.input-row select { flex: none; width: auto; }
+
+/* Fehlermeldung direkt unter dem Feld (leer = unsichtbar) */
+.field-error { margin: .35rem 0 0; font-size: .8125rem; }
+.field-error:empty { display: none; }
+input.is-invalid { border-color: var(--score-5); }
+
+/* Raster: auf dem Desktop nebeneinander, auf dem Handy untereinander */
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 var(--gap); }
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 var(--gap); }
+
+@media (max-width: 720px) {
+  .grid-3, .grid-2 { grid-template-columns: 1fr; }
+  .site-header { padding: 2rem 0 1.75rem; }
+}
+
+/* ---------- Platzhalter und Hinweise ---------- */
+.note {
+  margin: .5rem 0 0;
+  font-size: .875rem;
+  color: var(--text-soft);
+}
+
+.empty-state {
+  padding: 1.75rem 1rem;
+  text-align: center;
+  color: var(--text-soft);
+  border: 1px dashed #c9ced4;
+  border-radius: 6px;
+  background: #fafbfc;
+}
+
+/* ---------- Materialkarten (Auswahl) ---------- */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--gap);
+  margin-top: .5rem;
+}
+
+.card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem;
+  background: #fff;
+}
+
+.card-head { display: flex; align-items: center; gap: .6rem; }
+.card-head h3 { margin: 0; font-size: 1rem; line-height: 1.3; }
+
+.slot {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 50%;
+  background: var(--text);
+  color: #fff;
+  font-size: .875rem;
+  font-weight: 700;
+}
+
+.card-sub { margin: .35rem 0 .9rem; font-size: .8125rem; color: var(--text-soft); }
+
+.card-facts { margin: 0 0 .9rem; font-size: .875rem; }
+.card-facts dt { margin-top: .5rem; font-size: .75rem; font-weight: 600; color: var(--text-soft); text-transform: uppercase; letter-spacing: .03em; }
+.card-facts dd { margin: 0; }
+
+.card-list { margin-bottom: .75rem; }
+.card-list h4 { margin: 0 0 .25rem; font-size: .75rem; font-weight: 600; color: var(--text-soft); text-transform: uppercase; letter-spacing: .03em; }
+.card-list ul { margin: 0; padding-left: 1.1rem; font-size: .875rem; }
+
+.card-note {
+  margin: .5rem 0 0;
+  padding: .55rem .7rem;
+  font-size: .8125rem;
+  background: #fafbfc;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+
+.warn {
+  margin: 0 0 1rem;
+  padding: .65rem .85rem;
+  font-size: .875rem;
+  background: #fdf6ec;
+  border: 1px solid #f0d9b5;
+  border-radius: 6px;
+}
+
+/* ---------- Tabellen ---------- */
+.subhead {
+  margin: 1.75rem 0 .25rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* Auf schmalen Bildschirmen scrollt nur die Tabelle, nicht die ganze Seite */
+.table-wrap { margin-top: .75rem; overflow-x: auto; }
+
+.data-table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  font-size: .875rem;
+}
+.data-table th, .data-table td {
+  padding: .6rem .75rem;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--line);
+}
+.data-table th {
+  background: #fafbfc;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.data-table tbody tr:last-child td { border-bottom: none; }
+.data-table td:first-child { font-weight: 600; }
+.data-table td.missing { color: var(--text); }
+.data-table td.complete { color: var(--text-soft); }
+
+/* Vergleichstabelle: Zahlen rechtsbündig */
+.scroll-hint { display: none; margin: 0 0 .25rem; }
+@media (max-width: 720px) { .scroll-hint { display: block; } }
+
+.compare-table { min-width: 0; table-layout: fixed; }
+.compare-table th { white-space: normal; overflow-wrap: break-word; hyphens: auto; }
+.compare-table tbody th { width: 30%; }
+.compare-table td { overflow-wrap: break-word; }
+@media (max-width: 720px) {
+  /* Schmale Bildschirme: Tabelle behält Mindestbreite und scrollt allein seitlich,
+     die erste Spalte (Kennwert) bleibt stehen. */
+  .compare-table { min-width: 640px; }
+  .compare-table th, .compare-table td { padding: .5rem .5rem; font-size: .8125rem; }
+  .compare-table tbody th, .compare-table thead th:first-child {
+    position: sticky; left: 0; z-index: 1;
+    width: 7.5rem; background: #fafbfc;
+    box-shadow: 1px 0 0 var(--line);
+  }
+}
+.compare-table th.zahl, .compare-table td.zahl { text-align: right; }
+.compare-table tbody th { font-weight: 600; background: #fafbfc; }
+.compare-table td.soft, .compare-table .sub { color: var(--text-soft); font-size: .8125rem; }
+.compare-table td.strong { font-weight: 700; }
+.compare-table tr.key-row td, .compare-table tr.key-row th { border-top: 1px solid #c9ced4; }
+.slot-small { width: 1.35rem; height: 1.35rem; font-size: .75rem; vertical-align: middle; }
+
+.calc-summary { margin: 0 0 .5rem; font-size: .9375rem; }
+.subhead.first { margin-top: 0; }
+
+/* ---------- Einklappbare Unterabschnitte in den Ergebnissen ---------- */
+.sub { border-top: 1px solid var(--line); }
+.sub:first-of-type { border-top: none; }
+.sub > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: .85rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  /* lange Fachwörter (z. B. "Wärmedurchlasswiderstand") dürfen auf 320 px umbrechen */
+  hyphens: auto;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+.sub > summary::-webkit-details-marker { display: none; }
+.sub > summary::after {
+  content: "";
+  flex-shrink: 0;
+  margin-left: auto;
+  width: .5rem;
+  height: .5rem;
+  border-right: 2px solid var(--text-soft);
+  border-bottom: 2px solid var(--text-soft);
+  transform: rotate(45deg);
+}
+.sub[open] > summary::after { transform: rotate(-135deg); }
+.sub > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+.sub-body { padding: 0 0 1.1rem; }
+
+/* Linksbündige Tabelle (für Textzeilen) und Tabellen-Zusätze */
+.compare-table.align-left th.zahl, .compare-table.align-left td.zahl { text-align: left; }
+.compare-table td.missing { color: var(--text-soft); font-style: italic; }
+.compare-table sup.fn { margin-left: .15rem; font-size: .75rem; color: var(--text-soft); }
+
+/* Datenart-Kürzel: B = Beispieldaten, R = Richtwert, V = verifiziert (bewusst neutral, keine Bewertungsfarben) */
+.art {
+  display: inline-block;
+  margin-left: .35rem;
+  min-width: 1.15rem;
+  padding: 0 .25rem;
+  border: 1px solid #c9ced4;
+  border-radius: 4px;
+  background: #fff;
+  color: var(--text-soft);
+  font-size: .75rem;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+  vertical-align: middle;
+  cursor: help;
+}
+.art-beispiel { border-style: dashed; }
+.art-verifiziert { background: var(--text); border-color: var(--text); color: #fff; }
+
+/* Fußnoten unter den Tabellen */
+.footnotes { margin: .6rem 0 0; padding-left: 1.2rem; font-size: .8125rem; color: var(--text-soft); }
+.footnotes li { margin-bottom: .2rem; }
+
+/* Zwischenüberschriften in einem Unterabschnitt */
+.subsub { margin: 0 0 .6rem; font-size: .875rem; font-weight: 600; color: var(--text-soft); }
+.sub-body > .subsub:not(:first-child), .sub-body > div + .subsub { margin-top: 1.5rem; }
+.field-narrow { max-width: 20rem; }
+
+/* ---------- Empfehlungen (alternative Baustoffe) ---------- */
+.hint { margin: .3rem 0 0; font-size: .8125rem; color: var(--text-soft); }
+
+.rec-card .card-head h3 { font-size: 1rem; }
+.rec-card .slot { background: var(--surface); color: var(--text); border: 2px solid var(--text); }
+
+.reliability {
+  margin: 0 0 .8rem;
+  padding: .5rem .65rem;
+  font-size: .8125rem;
+  line-height: 1.4;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  background: #fafbfc;
+}
+.reliability strong { display: block; margin-bottom: .1rem; }
+.reliability-nicht_belastbar, .reliability-unvollstaendig { background: #fdf6ec; border-color: #f0d9b5; }
+
+.rec-text { margin: 0 0 .8rem; font-size: .875rem; }
+.rec-point { margin: 0 0 .7rem; font-size: .875rem; }
+.rec-point .label { display: block; font-size: .75rem; font-weight: 600; color: var(--text-soft); text-transform: uppercase; letter-spacing: .03em; }
+.rec-point .src { display: block; font-size: .75rem; color: var(--text-soft); }
+
+.rec-sources { margin: 0 0 .9rem; padding-left: 1.1rem; font-size: .8125rem; }
+.rec-sources li { margin-bottom: .2rem; overflow-wrap: anywhere; }
+.rec-sources .nosrc { color: var(--text-soft); list-style: none; margin-left: -1.1rem; }
+
+.rec-scores { margin: 0; padding-left: 1.1rem; font-size: .8125rem; }
+.rec-scores li { margin-bottom: .2rem; }
+.rec-scores .rec-total { font-weight: 600; }
+.src-note { margin: .3rem 0 .8rem; font-size: .75rem; color: var(--text-soft); }
+.data-table.kompakt { min-width: 0; }
+.data-table.kompakt th { white-space: normal; }
+.data-table.kompakt th, .data-table.kompakt td { hyphens: auto; overflow-wrap: break-word; }
+@media (max-width: 720px) {
+  .data-table.kompakt th, .data-table.kompakt td { padding: .5rem .45rem; font-size: .8125rem; }
+}
+
+.card .btn { margin-top: .4rem; }
+.btn { display: inline-block; padding: .55rem .9rem; font: inherit; font-size: .875rem; font-weight: 600; color: #fff; border: 1px solid var(--text); border-radius: 6px; cursor: pointer; }
+.btn:hover { background: #000; }
+.btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.btn[disabled] { background: #f1f3f5; color: #5c636a; border-color: var(--line); cursor: not-allowed; }
+
+.rec-meta { margin: 0 0 .9rem; font-size: .875rem; }
+.rec-confirm { margin: 0 0 1rem; padding: .6rem .85rem; font-size: .875rem; background: #f4f8f5; border: 1px solid #cfe0d4; border-radius: 6px; }
+.rec-list { margin: .6rem 0 0; padding-left: 1.1rem; font-size: .8125rem; }
+.rec-list li { margin-bottom: .35rem; }
+
+/* ---------- Quellen und Datentransparenz ---------- */
+.facts-list { margin: 0 0 .9rem; padding-left: 1.1rem; font-size: .875rem; }
+.facts-list li { margin-bottom: .3rem; }
+.facts-list .art { margin: 0 .3rem 0 0; }
+
+.matrix-table { min-width: 0; }
+.matrix-table th, .matrix-table td { padding: .45rem .4rem; font-size: .8125rem; white-space: normal; }
+.matrix-table th.mitte, .matrix-table td.mitte { text-align: center; }
+.matrix-table tbody th { font-weight: 600; background: #fafbfc; min-width: 8.5rem; }
+.matrix-table .art { margin: 0; cursor: help; }
+.matrix-table th { hyphens: auto; overflow-wrap: break-word; }
+@media (max-width: 1000px) and (min-width: 721px) {
+  .matrix-table th, .matrix-table td { padding: .4rem .25rem; font-size: .75rem; }
+  .matrix-table tbody th { min-width: 7rem; }
+}
+.soft-text { color: var(--text-soft); font-size: .75rem; }
+.quellen-table td.mitte, .quellen-table th.mitte { text-align: center; }
+.quellen-table td:first-child { overflow-wrap: anywhere; }
+
+.check-ok { margin: 0 0 .7rem; padding: .6rem .85rem; font-size: .875rem; background: #f4f8f5; border: 1px solid #cfe0d4; border-radius: 6px; }
+.check-list { list-style: none; margin: 0 0 .9rem; padding: 0; font-size: .875rem; }
+.check-list li { margin-bottom: .35rem; }
+.check-list .check-mark { display: inline-block; width: 1.1rem; font-weight: 700; }
+.check-list li.fehler { color: var(--score-5); }
+
+.explain-list { margin: 0; font-size: .875rem; }
+.explain-list dt { margin-top: .8rem; font-weight: 600; }
+.explain-list dd { margin: .15rem 0 0; color: var(--text); }
+
+.fn-source a, .footnotes a { color: inherit; text-decoration: underline; }
+
+@media (max-width: 720px) {
+  .matrix-table { min-width: 560px; }
+  .matrix-table tbody th, .matrix-table thead th:first-child { position: sticky; left: 0; z-index: 1; background: #fafbfc; box-shadow: 1px 0 0 var(--line); }
+}
+
+/* ---------- Schritt 12: Kurzanleitung, Erklärknöpfe, Werkzeugleiste ---------- */
+.quickstart {
+  display: flex; flex-wrap: wrap; gap: .5rem 1.75rem;
+  margin: 1.4rem 0 0; padding: 0; list-style: none; counter-reset: q;
+  font-size: .9375rem; color: var(--text);
+}
+.quickstart li { counter-increment: q; display: flex; align-items: center; gap: .55rem; }
+.quickstart li::before {
+  content: counter(q);
+  display: inline-flex; align-items: center; justify-content: center;
+  flex: none; width: 1.55rem; height: 1.55rem;
+  border: 1px solid var(--text); border-radius: 50%;
+  font-size: .8125rem; font-weight: 700;
+}
+
+/* "i"-Knopf neben Fachbegriffen; die Trefferfläche ist für Touch vergrößert */
+.info {
+  position: relative;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 1.3rem; height: 1.3rem; margin-left: .4rem; padding: 0;
+  border: 1px solid #aab0b7; border-radius: 50%;
+  background: #fff; color: var(--text-soft);
+  font: italic 700 .72rem Georgia, "Times New Roman", serif; line-height: 1;
+  vertical-align: middle; cursor: pointer;
+  text-transform: none; letter-spacing: 0;
+}
+.info::before { content: "i"; }
+.info::after { content: ""; position: absolute; inset: -.5rem; }
+.info:hover { border-color: var(--text); color: var(--text); }
+.info[aria-expanded="true"] { background: var(--text); border-color: var(--text); color: #fff; }
+.info:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.info-text {
+  display: block; margin-top: .45rem; padding: .5rem .65rem;
+  font-size: .8125rem; font-weight: 400; line-height: 1.45;
+  text-transform: none; letter-spacing: 0; color: var(--text);
+  background: #f6f7f8; border-left: 3px solid #c9ced4; border-radius: 0 4px 4px 0;
+}
+.info-text[hidden] { display: none; }
+.info-text strong { font-weight: 600; }
+
+.results-toolbar {
+  display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: .4rem 1rem;
+  margin-bottom: .75rem; padding-bottom: .75rem; border-bottom: 1px solid var(--line);
+}
+.legend-line { flex: 1 1 22rem; margin: 0; font-size: .8125rem; color: var(--text-soft); }
+.btn-link {
+  min-height: 2.5rem; padding: .4rem 0; background: none; border: 0;
+  font: inherit; font-size: .8125rem; font-weight: 600; color: var(--text);
+  text-decoration: underline; cursor: pointer; white-space: nowrap;
+}
+.btn-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+select { text-overflow: ellipsis; }
+
+/* ---------- Diagramme ---------- */
+
+
+
+
+.chart-grid { display: flex; flex-direction: column; }
+
+/* Eine Zeile: Name links | Balken in der Mitte | Zahlenwert mit Einheit rechts */
+.chart-row {
+  display: grid;
+  grid-template-columns: minmax(8rem, 27%) 1fr minmax(7.5rem, 25%);
+  align-items: center;
+  gap: .75rem;
+}
+.chart-label { font-size: .875rem; line-height: 1.3; overflow-wrap: break-word; hyphens: auto; }
+
+
+/* Alle Balken haben dieselbe Höhe */
+.chart-track { position: relative; }
+.chart-track.missing { background: transparent; border: 1px dashed #c9ced4; }
+.chart-bar { position: absolute; top: 0; bottom: 0; min-width: 2px; }
+.chart-zero { position: absolute; top: -3px; bottom: -3px; width: 1px; background: var(--text-soft); }
+
+.chart-value { line-height: 1.3; }
+
+.chart-unit { color: var(--text-soft); }
+.missing-text { color: var(--text-soft); font-style: italic; }
+
+/* Achsenbeschriftung unter den Balken */
+
+.chart-scale { position: relative; height: 1rem; color: var(--text-soft); }
+.chart-scale .tick { position: absolute; top: 0; white-space: nowrap; }
+.chart-scale .tick-end { transform: translateX(-100%); }
+.chart-scale .tick-zero { transform: translateX(-50%); }
+
+.chart-note { color: var(--text-soft); }
+
+
+/* Legende */
+
+
+
+.legend-labels { display: flex; justify-content: space-between; margin-top: .25rem; color: var(--text-soft); }
+.legend-items { list-style: none; padding: 0; }
+.legend-items li { margin-bottom: .3rem; }
+.swatch { display: inline-block; width: 1rem; height: .75rem; margin-right: .35rem; border-radius: 2px; vertical-align: middle; }
+.swatch.missing { border: 1px dashed #aab0b7; background: transparent; }
+
+@media (max-width: 720px) {
+  /* Schmale Bildschirme: Name über dem Balken, darunter Balken und Wert nebeneinander */
+  .chart-row { grid-template-columns: 1fr minmax(6.5rem, 36%); gap: .25rem .6rem; }
+  .chart-row .chart-label { grid-column: 1 / -1; }
+  .chart-axis > div:first-child { display: none; }
+  .chart-grid { gap: .8rem; }
+}
+
+/* ---------- Fußbereich ---------- */
+.site-footer { padding: 1.5rem 0 2.5rem; font-size: .875rem; color: var(--text-soft); }
+.site-footer p { margin: 0 0 .35rem; }
+
+.status.ok { color: var(--score-1); }
+.status.fehler { color: var(--score-5); }
+
+/* ==========================================================================
+   Schritt 13: Export (Bildschirm)
+   ========================================================================== */
+.print-only { display: none; }
+.export-leiste {
+  display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .75rem;
+  margin: 0 0 1rem; padding: .75rem .9rem; background: #fafbfc; border: 1px solid var(--line); border-radius: var(--radius);
+}
+.export-leiste .btn { min-height: 2.5rem; }
+.export-leiste .hint { flex: 1 1 100%; margin: 0; font-size: .8125rem; color: var(--text-soft); }
+.export-leiste .hint[hidden] { display: none; }
+@media (max-width: 720px) {
+  .export-leiste .btn { flex: 1 1 100%; min-height: 2.75rem; }
+}
+
+/* ==========================================================================
+   Schritt 13: Druckansicht (wird auch für "Als PDF speichern" verwendet)
+   Ziel: A4, schwarz auf weiß, alles aufgeklappt, nichts Interaktives, Farben der Diagramme bleiben erhalten.
+   ========================================================================== */
+@media print {
+  @page { size: A4; margin: 14mm 12mm; }
+
+  html, body { background: #fff; color: #000; font-size: 10pt; line-height: 1.4; }
+  .container { max-width: none; padding: 0; }
+
+  /* Farben der Diagramme, Legende und Datenart-Marken müssen im Ausdruck erhalten bleiben */
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  /* Interaktives und Überflüssiges ausblenden */
+  .nicht-drucken, #katalog, .quickstart, .site-header .intro, #auswahl, #eingaben, .export-leiste, .results-toolbar .btn-link,
+  button, .btn, .btn-link, .info, .info-text, .scroll-hint, #status, .field-narrow,
+  .panel > details > summary::after, .sub > summary::after, .rec-card button { display: none !important; }
+  .results-toolbar { border: 0; margin: 0 0 3mm; padding: 0; }
+
+  /* Berichtskopf */
+  .print-only { display: block !important; margin: 0 0 6mm; padding: 0 0 4mm; border-bottom: 1pt solid #000; }
+  .print-only h2 { margin: 0 0 2mm; font-size: 14pt; }
+  .print-only .facts-list { margin: 0 0 2mm; padding-left: 4mm; font-size: 9.5pt; }
+  .print-only .note { margin: 0; font-size: 8.5pt; color: #000; }
+  .site-header { padding: 0 0 3mm; border: 0; background: #fff; }
+  h1 { font-size: 20pt; margin: 0; }
+  .tagline { margin: 0; font-size: 10pt; color: #000; }
+
+  /* Bereiche */
+  .panel { border: 0; box-shadow: none; margin: 0 0 6mm; background: #fff; }
+  .panel > details > summary { padding: 0 0 2mm; font-size: 13pt; border: 0 !important; }
+  .panel-body { padding: 0; }
+  .sub > summary { padding: 2mm 0; font-size: 11pt; }
+  .sub { border-color: #999; }
+  .panel > details > summary, .sub > summary, h3, h4 { break-after: avoid; page-break-after: avoid; }
+  details, .panel, .panel-body, .sub, .sub-body { break-inside: auto; page-break-inside: auto; }
+
+  /* Tabellen: volle Breite, kein seitliches Scrollen, erste Spalte nicht festkleben */
+  .table-wrap { overflow: visible !important; border: 0; }
+  table { width: 100% !important; min-width: 0 !important; font-size: 8.5pt; }
+  th, td { position: static !important; padding: 1.2mm 1.5mm !important; box-shadow: none !important; }
+  tr, figure.chart, .rec-card, .reliability, .card, .legend { break-inside: avoid; page-break-inside: avoid; }
+  thead { display: table-header-group; }
+
+  /* Karten und Diagramme */
+  .rec-list, .grid-3 { display: block !important; }
+  .rec-card { margin: 0 0 4mm; border: 1pt solid #999; }
+  .chart-track { border: 0.5pt solid #bbb; }
+
+  /* Quellenlinks im Klartext, damit sie auf Papier nachvollziehbar sind */
+  .footnotes a[href^="https://"]::after, #quellen a[href^="https://"]::after, .rec-card a[href^="https://"]::after {
+    content: " (" attr(href) ")"; font-size: 7pt; color: #000; word-break: break-all;
+  }
+  a { color: #000; text-decoration: none; }
+
+  .site-footer { margin-top: 4mm; padding: 2mm 0 0; border-top: 0.5pt solid #999; background: #fff; font-size: 8pt; color: #000; }
+}
+
+/* ==========================================================================
+   Schritt 14: Barrierefreiheit (Überschriftenebenen, Beschriftungszeile)
+   ========================================================================== */
+.panel details > summary h2 {
+  display: flex; align-items: center; gap: .75rem; flex: 1;
+  margin: 0; font: inherit; letter-spacing: inherit;
+}
+.label-row { display: flex; align-items: center; margin-bottom: .35rem; }
+.label-row label { margin-bottom: 0; }
+.table-wrap:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+
+/* ==========================================================================
+   Schritt 16: Datenmodus (Demo mit Beispieldaten / Echtdaten) und Kennzeichnung der Beispieldaten
+   ========================================================================== */
+
+.modus-leiste .container { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem 1rem; }
+.modus-demo { background: #fff4d6; border-bottom-color: #e6c870; color: #4d3500; }
+.modus-echt { background: #eaf4ee; border-bottom-color: #b5d3c0; color: #1f3d2b; }
+.modus-schalter { display: inline-flex; align-items: center; gap: .5rem; margin: 0; font-size: .875rem; font-weight: 700; white-space: nowrap; cursor: pointer; min-height: 2.5rem; }
+.modus-schalter input { width: 1.25rem; height: 1.25rem; margin: 0; accent-color: #4d3500; cursor: pointer; }
+.modus-echt .modus-schalter input { accent-color: #1f3d2b; }
+.modus-text { flex: 1 1 24rem; margin: 0; font-size: .8125rem; line-height: 1.4; }
+.modus-schalter:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+/* Beispieldaten sind überall gelb hinterlegt und mit „B“ gekennzeichnet: nie wie geprüfte Echtwerte */
+.art-beispiel { background: #fff1c9; border-color: #b8860b; color: #4d3500; }
+td.beispiel { background: #fff9e6; box-shadow: inset 3px 0 0 #e0b84a; }
+.compare-table td.beispiel { background: #fff9e6; }
+@media print { .modus-schalter { display: none !important; } .modus-leiste { padding: 1.5mm 0; border: 0.5pt solid #000; background: #fff !important; color: #000 !important; margin: 0 0 3mm; } td.beispiel { background: #fff3cc !important; } }
+.chart-detail { display: block; margin-top: .1rem; font-weight: 400; color: var(--text-soft); overflow-wrap: anywhere; }
+.chart-annahmen { margin: .6rem 0 0; }
+.chart-annahmen > summary { cursor: pointer; font-weight: 600; min-height: 2rem; padding: .2rem 0; color: var(--text); }
+.chart-annahmen ul { margin: .25rem 0 0; padding-left: 1.2rem; color: var(--text-soft); }
+.chart-annahmen li { margin-bottom: .25rem; }
+
+/* Produkte (Schritt 17): Produktwahl, Datenart „E“ (eigene Angabe), Formular */
+.produkt-label { margin-top: .55rem; font-weight: 600; font-size: .875rem; }
+.produkt-hinweis { margin-top: .6rem; }
+.produkt-zeile { display: inline-block; font-size: .75rem; font-weight: 400; color: var(--text-soft); line-height: 1.3; }
+.art-eigen { background: #e9eefb; border-color: #3d5a99; color: #1d2f5c; }
+td .art-eigen { border-style: double; }
+#eigenes-produkt-box h3 { margin: 1rem 0 .4rem; font-size: .9375rem; }
+#eigenes-produkt-box .grid-2, #eigenes-produkt-box .grid-3 { gap: .2rem 1rem; }
+.eigene-liste { margin: .3rem 0 0; padding-left: 1.1rem; }
+@media print { .produkt-label, #eigenes-produkt { display: none !important; } .art-eigen { background: #fff !important; } }
+
+/* ==========================================================================
+   MaterialMatch 2.0, Schritt 2: Hauptreiter (Vergleich, Alternativen, Quellen & Details)
+   ========================================================================== */
+
+.tabs { overflow-x: auto; scrollbar-width: none; }
+.tabs::-webkit-scrollbar { display: none; }
+.tab { flex: 0 0 auto; margin: 0; font: inherit; background: none; border-bottom: 3px solid transparent; cursor: pointer; }
+
+.tab[aria-selected="true"] { color: var(--text); border-bottom-color: var(--text); }
+.tab:focus-visible { outline: 2px solid var(--accent); border-radius: 4px; }
+.tab-bereich:focus { outline: none; }
+@media (max-width: 720px) {
+  .tabs { gap: 0; }
+  .tab { flex: 1 1 0; padding: .85rem .4rem; text-align: center; font-size: .9375rem; }
+}
+@media print {
+  /* Im Ausdruck erscheinen immer alle drei Bereiche, auch die gerade verborgenen */
+  .tabs-leiste { display: none !important; }
+  .tab-bereich[hidden] { display: block !important; }
+}
+
+/* ==========================================================================
+   MaterialMatch 2.0, Schritt 3: kompakter Kopf, schlanke Materialauswahl, kompakte Karten
+   ========================================================================== */
+
+.site-header h1 { margin: 0; }
+.site-header .tagline { margin: .15rem 0 0; }
+.fussnote { margin: .2rem 0 0; font-size: .8125rem; color: var(--text-soft); }
+
+
+.auswahl-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+.auswahl-grid [hidden], .auswahl-optionen [hidden] { display: none !important; }
+.produkt-zeile { margin-top: .5rem; }
+.produkt-zeile .produkt-label { margin-top: 0; display: block; }
+@media (max-width: 720px) {
+  .auswahl-grid, .auswahl-grid.mit-c { grid-template-columns: 1fr; }
+}
+
+.auswahl-optionen { display: flex; flex-wrap: wrap; gap: .5rem; }
+.btn-option { margin: 0; padding: .45rem .8rem; font: inherit; font-size: .9375rem; color: var(--text); border-radius: 999px; cursor: pointer; }
+
+
+.btn-option:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+#eigenes-produkt-wrap { margin: 0 0 .75rem; }
+
+/* Kompakte Materialkarten */
+.card .card-head { flex-wrap: wrap; }
+.card .card-head h3 { flex: 1 1 8rem; }
+.datenbadge {
+  flex: 0 0 auto; padding: .1rem .5rem; font-size: .75rem; font-weight: 600; line-height: 1.4;
+  color: var(--text-soft); border: 1px solid var(--line); border-radius: 999px; background: var(--bg); cursor: help;
+}
+.card .card-sub { margin: .3rem 0 .4rem; }
+.panel .card-mehr > summary { display: list-item; padding: .2rem 0; font-size: .875rem; font-weight: 600; color: var(--text-soft); cursor: pointer; }
+.panel .card-mehr > summary::after { content: none; }
+.panel .card-mehr > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.panel .card-mehr[open] > summary { margin-bottom: .4rem; border-bottom: 0; }
+.panel .card-mehr > summary::-webkit-details-marker { display: inline-block; }
+.panel .card-mehr > summary { list-style: revert; }
+@media print {
+  .fussnote { font-size: 8pt; color: #000; }
+  .auswahl-optionen { display: none !important; }
+  .panel .card-mehr > summary { display: none !important; }
+}
+
+/* ==========================================================================
+   MaterialMatch 2.0, Schritt 4: kompakter Eingabebereich (vier Felder in einer Reihe)
+   ========================================================================== */
+.eingaben-grid { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.05fr) minmax(0, 1.25fr) minmax(0, 1.25fr); gap: 0 var(--gap); align-items: start; }
+.eingaben-grid .field { margin-bottom: .5rem; }
+.eingaben-grid .input-row { display: flex; gap: .4rem; }
+.eingaben-grid .input-row input { flex: 1 1 auto; min-width: 0; }
+.eingaben-grid .input-row select { flex: 0 0 auto; width: 4.6rem; }
+@media (max-width: 1000px) { .eingaben-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 720px) { .eingaben-grid { grid-template-columns: 1fr; } }
+@media print { .eingaben-grid { display: block; } }
+
+/* ==========================================================================
+   MaterialMatch 2.0, Schritt 5: Dashboard „Vergleich auf einen Blick“
+   ========================================================================== */
+.dashboard {
+  margin-bottom: var(--gap); padding: 1.1rem 1.25rem 1rem;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+}
+.dashboard > h2 { margin: 0 0 .9rem; font-size: 1.125rem; font-weight: 600; }
+.kw-raster { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem 1.5rem; }
+.kennwert { min-width: 0; border-top: 2px solid var(--line); }
+.kennwert h3 { margin: 0 0 .35rem; font-size: .9375rem; font-weight: 600; }
+.kw-einheit { font-weight: 400; color: var(--text-soft); }
+
+.kw-zeilen { margin: 0; padding: 0; list-style: none; }
+.kw-zeile { display: grid; grid-template-columns: auto minmax(0, 1fr) auto .8rem; align-items: center; gap: .45rem; padding: .22rem 0; font-size: .9375rem; }
+.kw-name { overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; line-height: 1.25; font-size: .875rem; color: var(--text-soft); }
+.kw-wert { display: inline-flex; justify-content: flex-end; font-variant-numeric: tabular-nums; }
+
+.kw-wert .art { margin: 0; }
+
+.kw-punkt { border-radius: 50%; }
+.kw-punkt.leer { background: transparent; }
+
+
+.kw-warn { color: #7a4a00; }
+.kw-mehr-warn { color: #7a4a00; }
+.kw-mehr { color: var(--text-soft); }
+.kw-mehr > summary { cursor: pointer; }
+.kw-mehr p { margin: .25rem 0 0; }
+.kw-fuss { margin: .9rem 0 0; font-size: .8125rem; color: var(--text-soft); }
+@media (max-width: 1000px) { .kw-raster { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .dashboard { padding: 1rem; } .kw-raster { grid-template-columns: 1fr; } }
+@media print { .dashboard { display: none !important; } }
+
+/* ==========================================================================
+   MaterialMatch 2.0, Schritt 6: Diagramme „Materialien im Vergleich“ (kein eigener Hauptbereich mehr)
+   ========================================================================== */
+.diagramme-bereich {
+  margin-bottom: var(--gap); padding: 1.1rem 1.25rem 1rem;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+}
+.diagramme-bereich > h2 { margin: 0 0 .9rem; font-size: 1.125rem; font-weight: 600; }
+.chart-liste { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 2rem; align-items: start; }
+.chart-liste .chart { min-width: 0; }
+.chart-liste .chart-title { font-size: 1rem; }
+.chart-liste[hidden] { display: none; }
+
+.diagramme-bereich .warn, .diagramme-bereich .note { margin-top: 0; }
+@media (max-width: 1000px) { .chart-liste { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .diagramme-bereich { padding: 1rem; } }
+@media print {
+  .diagramme-bereich { border: 0; padding: 0; margin: 0 0 6mm; background: #fff; }
+  .diagramme-bereich > h2 { font-size: 13pt; margin: 0 0 2mm; break-after: avoid; page-break-after: avoid; }
+  .chart-liste { display: block !important; }
+  .chart-liste[hidden] { display: block !important; }
+  .chart-mehr-knopf { display: none !important; }
+}
+@media (min-width: 1001px) {
+  /* Zwei Diagramme nebeneinander: jede Spalte ist halb so breit, deshalb steht der Name über dem Balken (wie am Handy) */
+  .chart-liste .chart-row { grid-template-columns: 1fr minmax(6.5rem, 36%); gap: .25rem .6rem; }
+  .chart-liste .chart-row .chart-label { grid-column: 1 / -1; }
+  .chart-liste .chart-axis > div:first-child { display: none; }
+  .chart-liste .chart-grid { gap: .8rem; }
+}
+
+/* ==========================================================================
+   MaterialMatch 2.0, Schritt 8: Alternative Baustoffe entdecken (kompakte Empfehlungskarten)
+   ========================================================================== */
+.alternativen-bereich {
+  margin-bottom: var(--gap); padding: 1.1rem 1.25rem 1rem;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+}
+.alternativen-bereich > h2 { margin: 0 0 .25rem; font-size: 1.125rem; font-weight: 600; }
+.bereich-intro { margin: 0 0 .9rem; font-size: .9375rem; color: var(--text-soft); }
+.alternativen-bereich .rec-meta { margin: 0 0 .9rem; font-size: .875rem; color: var(--text-soft); }
+.alternativen-bereich .rec-meta strong { color: var(--text); }
+.alternativen-bereich .rec-meta .btn-link { margin-left: .15rem; font-size: .875rem; }
+.rec-card { display: flex; flex-direction: column; gap: .15rem; }
+.rec-card .card-head { flex-wrap: wrap; }
+.rec-card .card-head h3 { flex: 1 1 8rem; }
+.reliability-badge {
+  flex: 0 0 auto; padding: .1rem .5rem; font-size: .75rem; font-weight: 600; line-height: 1.4;
+  border: 1px solid var(--line); border-radius: 999px; background: var(--bg); color: var(--text-soft); cursor: help;
+}
+.reliability-badge.reliability-nicht_belastbar { background: #fff1c9; border-color: #b8860b; color: #4d3500; }
+.reliability-badge.reliability-unvollstaendig { background: #fbe9e0; border-color: #c46b3a; color: #5c2a0e; }
+.rec-card .rec-point { margin: .35rem 0 0; font-size: .875rem; }
+.rec-card .rec-point .label { display: block; margin-bottom: .05rem; font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .03em; color: var(--text-soft); }
+.rec-card .rec-text { margin: .5rem 0 .2rem; font-size: .875rem; color: var(--text-soft); }
+.rec-hinweise { margin: .4rem 0 .2rem; padding-left: 1.1rem; font-size: .8125rem; color: #7a4a00; }
+.rec-card > .btn { align-self: flex-start; margin-top: .6rem; }
+.rec-card .card-mehr { margin-top: .6rem; }
+.rec-card .card-mehr .card-list { margin: 0 0 .8rem; }
+.rec-card .card-mehr .rec-text { margin: 0; color: var(--text); }
+@media print {
+  .alternativen-bereich { border: 0; padding: 0; margin: 0 0 6mm; background: #fff; }
+  .alternativen-bereich > h2 { font-size: 13pt; margin: 0 0 2mm; break-after: avoid; page-break-after: avoid; }
+  .rec-meta .btn-link { display: none !important; }
+}
+.rec-prio { white-space: nowrap; }
+.rec-card .card-mehr > summary { font-size: .875rem; font-weight: 600; color: var(--text-soft); cursor: pointer; padding: .2rem 0; }
+.rec-card .card-mehr > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.rec-card .card-mehr[open] > summary { margin-bottom: .5rem; }
+.rec-card .card-mehr p { font-size: .875rem; margin: 0 0 .3rem; }
+.rec-card .card-mehr p.src-note { font-size: .75rem; color: var(--text-soft); }
+
+/* ==========================================================================
+   MaterialMatch 2.0, Schritt 9: Quellen & Details
+   ========================================================================== */
+.quellen-bereich {
+  margin-bottom: var(--gap); padding: 1.1rem 1.25rem 1rem;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+}
+.quellen-bereich > h2 { margin: 0 0 .9rem; font-size: 1.125rem; font-weight: 600; }
+.quelle-material { margin-bottom: 1.2rem; }
+.quelle-material > .subhead { margin: 0 0 .5rem; font-size: .9375rem; }
+.quelle-material .note { margin: .4rem 0 0; font-size: .8125rem; }
+.quellen-bereich > details.sub { margin-top: .6rem; }
+.quellen-bereich .explain-list dt { font-weight: 600; }
+.quellen-bereich .sub-body .subhead { margin-top: 1.1rem; }
+.quellen-bereich .sub-body > div > .subhead:first-child { margin-top: 0; }
+@media (max-width: 560px) { .quellen-bereich { padding: 1rem; } }
+@media print {
+  .quellen-bereich { border: 0; padding: 0; margin: 0 0 6mm; background: #fff; }
+  .quellen-bereich > h2 { font-size: 13pt; margin: 0 0 2mm; break-after: avoid; page-break-after: avoid; }
+}
+
+/* ==========================================================================
+   MaterialMatch 2.0, Schritt 10: ruhigeres Design
+   Ziel: weniger Rahmen, einheitliche Abstände, einheitliche Buttons und Karten, größere Inhaltsbreite.
+   Rahmen und weiße Flächen haben nur noch: Materialauswahl, Kennwertübersicht (Dashboard), Materialkarten
+   und Alternativenkarten. Alles andere liegt ohne Kasten auf dem hellgrauen Hintergrund.
+   Die fünf Bewertungsfarben (--score-1 bis --score-5) bleiben unverändert.
+   ========================================================================== */
+:root { --bg: #f5f6f7; --text: #24282c; --gap: 1.5rem; /* Abstand zwischen Karten */
+  --abstand: 2rem; /* Abstand zwischen Hauptabschnitten */
+  --innen: 1.25rem; /* Innenabstand der Karten */
+  --breite: 1160px; }
+
+body { line-height: 1.6; }
+.container { max-width: var(--breite); padding: 0 1.5rem; }
+@media (max-width: 900px) { .container { padding: 0 1rem; } }
+
+/* ---- Typografie: klare Hierarchie für Überschriften ---- */
+.panel details > summary,
+.dashboard > h2, .diagramme-bereich > h2, .alternativen-bereich > h2, .quellen-bereich > h2 {
+  font-size: 1.25rem; font-weight: 600; letter-spacing: -.01em; line-height: 1.3;
+}
+h3, .chart-title, .kennwert h3, .card-head h3 { font-weight: 600; }
+.bereich-intro, #orientierung, .intro { max-width: 75ch; }
+
+/* ---- Reiterleiste ---- */
+
+.tab[aria-selected="true"] { border-bottom-color: var(--accent); }
+
+/* ---- Abstände zwischen den Hauptabschnitten ---- */
+
+.data-table { line-height: 1.45; }  /* Tabellen etwas dichter als Fließtext */
+.panel, .dashboard, .diagramme-bereich, .alternativen-bereich, .quellen-bereich { margin-bottom: var(--abstand); }
+#orientierung { margin: calc(-1 * var(--abstand) + 1rem) 0 var(--abstand); }
+
+/* ---- Rahmen reduzieren ----
+   Karte (mit Rahmen): Materialauswahl und Kennwertübersicht.
+   Ohne Kasten: Eingaben, Diagramme, Alternativen (nur die Karten darin haben Rahmen), Quellen, technische Tabellen, Export. */
+.panel, .dashboard { border-radius: var(--radius); }
+.panel#eingaben, .panel#ergebnisse {
+  background: none; border: 0; border-top: 1px solid var(--line); border-radius: 0; margin-bottom: 0;
+}
+.panel#ergebnisse { border-bottom: 1px solid var(--line); margin-bottom: var(--abstand); }
+.panel#eingaben { margin-bottom: var(--abstand); border-bottom: 0; }
+.panel#eingaben details > summary, .panel#ergebnisse details > summary { padding: 1rem 0; }
+.panel#eingaben details[open] > summary, .panel#ergebnisse details[open] > summary { border-bottom: 0; }
+.panel#eingaben .panel-body, .panel#ergebnisse .panel-body { padding: 0 0 1rem; }
+.diagramme-bereich, .alternativen-bereich, .quellen-bereich { background: none; border: 0; padding: 0; }
+.dashboard { padding: var(--innen) 1.5rem 1.1rem; }
+.dashboard > h2, .diagramme-bereich > h2, .alternativen-bereich > h2, .quellen-bereich > h2 { margin-bottom: 1rem; }
+.export-leiste { background: none; border: 0; padding: 0; margin: 0 0 var(--abstand); }
+
+
+.chart-track.missing { background: transparent; }
+
+@media (max-width: 560px) {
+  .dashboard { padding: 1rem; }
+}
+
+/* ---- Karten einheitlich (Materialkarten, Alternativenkarten) ---- */
+.card { padding: var(--innen); border-radius: var(--radius); }
+.cards { gap: var(--gap); }
+.warn, .card-note, .reliability, .rec-confirm, .check-ok { border-radius: var(--radius-sm); }
+
+/* ---- Buttons einheitlich: gleiche Form, gleiche Mindesthöhe (gut antippbar), gleiche Fokusmarkierung ---- */
+.btn, .btn-option {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 2.5rem; padding: .5rem 1rem; font: inherit; font-size: .9375rem; font-weight: 600; line-height: 1.3;
+  border-radius: var(--radius-sm); cursor: pointer;
+}
+.btn { color: #fff; border: 1px solid var(--text); }
+.btn:hover { background: #000; }
+.btn-option { color: var(--text); font-weight: 600; }
+
+
+.btn[disabled], .btn:disabled { background: #eceef0; color: #5c636a; border-color: var(--line); }
+.btn:focus-visible, .btn-option:focus-visible, .btn-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.auswahl-optionen { gap: .6rem; }
+
+/* ---- Eingabefelder ---- */
+select, input[type="text"], input[type="number"] { border-color: var(--line-strong); border-radius: var(--radius-sm); }
+.cards + p, .cards + .note { margin-top: 1rem; }
+.alternativen-bereich > details.sub, .quellen-bereich > details.sub { margin-top: 0; }
+/* Links ruhig: dunkelgrau und unterstrichen (Farben bleiben der Bewertung vorbehalten) */
+a { color: var(--text); text-underline-offset: .15em; }
+a:hover { text-decoration-thickness: 2px; }
+@media print {
+  /* Schritt 10: die neue Bildschirmbreite darf den Druck nicht begrenzen */
+  .container { max-width: none; padding: 0; }
+  main.container { padding-top: 0; padding-bottom: 0; }
+  a { color: #000; }
+  .panel#eingaben, .panel#ergebnisse { border: 0; }
+}
+
+/* ==========================================================================
+   MaterialMatch 2.0, Schritt 11: mobile Darstellung (Handys bis 720 px)
+   Ziele: gut antippbar (mindestens 44 px), nichts unter 12 px Schrift, Reiter in einer Zeile,
+   kein seitliches Scrollen der Seite. Nur Darstellung, keine Änderung an Inhalten oder Rechnung.
+   ========================================================================== */
+@media (max-width: 720px) {
+  :root { --abstand: 1.5rem; --gap: 1rem; }
+
+  /* Reiter: eine Zeile, gleichmäßig verteilt */
+  .tab { flex: 1 1 auto; padding: .85rem .35rem; font-size: .9375rem; line-height: 1.25; min-height: 2.75rem; }
+
+  /* Tippflächen: mindestens 44 px */
+  .btn, .btn-option, select, input[type="text"], input[type="number"] { min-height: 2.75rem; }
+  summary { min-height: 2.75rem; }
+  .panel .card-mehr > summary, .rec-card .card-mehr > summary, .kw-mehr > summary, .chart-annahmen > summary, .sub > summary {
+    display: flex; align-items: center; min-height: 2.75rem; padding-top: 0; padding-bottom: 0;
+  }
+  .panel .card-mehr > summary, .rec-card .card-mehr > summary { display: list-item; padding-top: .55rem; padding-bottom: .55rem; }
+  .info::after { inset: -.7rem; }
+  .info { margin-left: .55rem; width: 1.5rem; height: 1.5rem; }
+  .modus-schalter { min-height: 2.75rem; }
+  .btn-link { min-height: 2.75rem; }
+  .modus-schalter input { width: 1.5rem; height: 1.5rem; }
+  .rec-card > .btn, .cards .btn, #eigenes-produkt-wrap .btn { align-self: stretch; width: 100%; }
+  .auswahl-optionen .btn-option { flex: 1 1 100%; }
+  .chart-mehr-knopf { width: 100%; }
+
+  /* Schrift: nichts unter 12 px */
+  .art, .datenbadge, .reliability-badge, .rec-card .rec-point .label, .rec-point .label, .chart-detail, .chart-scale,
+  .soft-text, .hint, .src-note, .kw-unter, .kw-status, .kw-mehr, .kw-fuss, .produkt-zeile, .card-facts dt, .card-list h4,
+  .chart-unit, .compare-table td.soft, .compare-table .sub, .compare-table sup.fn, .matrix-table th, .matrix-table td, .card-sub {
+    font-size: .75rem;
+  }
+  .art { min-width: 1.3rem; }
+  .slot-small { width: 1.5rem; height: 1.5rem; font-size: .75rem; }
+
+  /* Tabellen: schmale feste erste Spalte, damit mehr von den Zahlen sichtbar bleibt */
+  .compare-table { min-width: 560px; }
+  .compare-table tbody th, .compare-table thead th:first-child { width: 6.25rem; }
+  .compare-table th, .compare-table td { font-size: .8125rem; }
+
+  /* Karten etwas enger */
+  .card { padding: 1rem; }
+  .dashboard { padding: 1rem; }
+  .panel#eingaben details > summary, .panel#ergebnisse details > summary { padding: .75rem 0; }
+}
+@media (max-width: 360px) {
+  .tab { font-size: .875rem; padding: .85rem .2rem; }
+  .container { padding: 0 .75rem; }
+}
+
+/* ==========================================================================
+   MaterialMatch 2.0, Schritt 12: Export als Menü, Datenmodus als schmale Zeile
+   ========================================================================== */
+/* ---- Datenmodus: eine schmale Zeile. Demo bleibt gelb (klar erkennbar), Echtdaten sind neutral. ---- */
+
+.modus-leiste .container { display: flex; flex-wrap: wrap; align-items: center; gap: 0 1.25rem; }
+.modus-zeile { margin: 0; flex: 1 1 auto; font-size: .875rem; line-height: 1.4; }
+.modus-titel { font-weight: 700; margin-right: .6rem; }
+.modus-kurz { font-weight: 400; }
+.modus-schalter { font-size: .875rem; font-weight: 600; }
+.modus-mehr { flex: 0 0 auto; font-size: .875rem; }
+.modus-mehr > summary { display: inline-flex; align-items: center; min-height: 2.75rem; cursor: pointer; font-weight: 600; text-decoration: underline; list-style: none; }
+.modus-mehr > summary::-webkit-details-marker { display: none; }
+.modus-mehr > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+.modus-mehr[open] { flex: 1 1 100%; }
+.modus-mehr .modus-text { flex: none; margin: 0 0 .5rem; max-width: 80ch; font-size: .875rem; line-height: 1.45; }
+.modus-demo { background: #fff4d6; border-bottom-color: #e6c870; color: #4d3500; }
+.modus-echt { background: var(--surface); border-bottom-color: var(--line); color: var(--text-soft); }
+.modus-echt .modus-schalter, .modus-echt .modus-titel { color: var(--text); }
+@media (max-width: 720px) {
+  .modus-zeile { flex: 1 1 100%; padding-top: .35rem; }
+  .modus-leiste .container { gap: 0 1rem; }
+}
+
+/* ---- Export: ein Knopf „Ergebnisse exportieren“, darunter ein aufklappbares Menü ---- */
+.export-leiste { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1rem; margin: 0 0 var(--abstand); padding: 0; }
+.export-leiste .export-toggle::after {
+  content: ""; width: .5rem; height: .5rem; margin-left: .6rem;
+  border-right: 2px solid var(--text-soft); border-bottom: 2px solid var(--text-soft); transform: translateY(-2px) rotate(45deg);
+}
+.export-leiste .export-toggle[aria-expanded="true"]::after { transform: translateY(2px) rotate(-135deg); }
+.export-leiste .hint { flex: 0 1 auto; margin: 0; }
+.export-menue {
+  flex: 1 1 100%; display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .75rem; margin-top: .1rem;
+}
+.export-menue[hidden] { display: none; }
+.export-eintrag { display: inline-flex; align-items: center; justify-content: center; min-height: 2.5rem; padding: .5rem 1rem; font: inherit; font-size: .9375rem; font-weight: 600; color: #fff; background: var(--text); border: 1px solid var(--text); cursor: pointer; }
+.export-eintrag:hover { background: #000; }
+.export-eintrag:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.export-eintrag[disabled] { background: #eceef0; color: #5c636a; border-color: var(--line); cursor: not-allowed; }
+.export-menue .export-erklaerung { flex: 1 1 100%; max-width: 80ch; }
+@media (max-width: 720px) {
+  .export-leiste .export-toggle { flex: 1 1 100%; }
+  .export-eintrag { flex: 1 1 100%; min-height: 2.75rem; }
+}
+@media print {
+  .export-leiste, .modus-mehr > summary { display: none !important; }
+  .modus-mehr .modus-text { font-size: 8.5pt; }
+}
+@media print {
+  /* Schritt 12: Bericht ohne Doppelungen und ohne Datenbank-Gesamtübersicht.
+     Der Berichtskopf nennt Datenmodus und Orientierungshinweis schon; die Kennwertmatrix, Produkt- und Quellenübersicht
+     der ganzen Datenbank gehören nicht zu den gewählten Materialien (Hinweis im Berichtskopf: stehen in der Anwendung und im Quellenbericht).
+     Datenstand, Produktliste und der Nachvollziehbarkeits-Check bleiben im Bericht. */
+  .modus-mehr { display: none !important; }
+  #orientierung { display: none !important; }
+  .nur-bildschirm { display: none !important; }
+}
+
+/* ==========================================================================
+   MaterialMatch 2.0, Schritt 14: einheitliche Breite der Hinweisboxen (gut lesbare Zeilenlänge)
+   ========================================================================== */
+.warn, .rec-confirm, .check-ok { max-width: 75ch; }
+.chart .warn, .kw-raster .warn { max-width: none; }
+

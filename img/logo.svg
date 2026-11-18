@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 48" width="250" height="48" role="img" aria-labelledby="t">
+  <title id="t">MaterialMatch</title>
+  <g stroke="#ffffff" stroke-width="2" stroke-linejoin="round">
+    <polygon points="14,27 44,27 34,44 4,44" fill="#b7cff0"/>
+    <polygon points="22,15 48,15 38,32 12,32" fill="#5b8fd6"/>
+    <polygon points="14,3 44,3 34,20 4,20" fill="#1f2530"/>
+  </g>
+  <!-- Wortmarke als Text: die Schriftart (Nunito, sonst Systemschrift) wird beim Öffnen der Datei vom Gerät gestellt -->
+  <text x="62" y="33" font-family="Nunito, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="27" font-weight="800" letter-spacing="-0.5" fill="#1f2530">MaterialMatch</text>
+</svg>

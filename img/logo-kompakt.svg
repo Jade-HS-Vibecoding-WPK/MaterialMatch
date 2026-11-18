@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-labelledby="t">
+  <title id="t">MaterialMatch</title>
+  <!-- Drei geometrische Materialschichten, versetzt wie ein Mauerverband; die weißen Fugen lassen sie ineinandergreifen -->
+  <g stroke="#ffffff" stroke-width="2" stroke-linejoin="round">
+    <polygon points="14,27 44,27 34,44 4,44" fill="#b7cff0"/>
+    <polygon points="22,15 48,15 38,32 12,32" fill="#5b8fd6"/>
+    <polygon points="14,3 44,3 34,20 4,20" fill="#1f2530"/>
+  </g>
+</svg>

@@ -1,0 +1,711 @@
+/* ==========================================================================
+   MaterialMatch – Bento-Grid-Gestaltung (Version 2.1)
+   --------------------------------------------------------------------------
+   Diese Datei liegt ÜBER css/style.css und ändert nur das Aussehen. Inhalte, Rechnungen,
+   Daten und Bewertungsfarben bleiben unverändert.
+
+   Farbkonzept (wichtig):
+   • GESTALTUNGSFARBEN kennzeichnen Bereiche: Weiß (Standard), Hellblau (hervorgehobene Ergebnisse), Hellviolett (Eingaben).
+   • BEWERTUNGSFARBEN (Dunkelgrün → Gelb → Orange → Dunkelrot, --score-1 … --score-5 in style.css) zeigen
+     ausschließlich die relative fachliche Bewertung (Balken, Punkte, Diagramme).
+   • Hellgrün, Gelb, Orange und Rot werden NICHT als Kachelfarbe benutzt; sie bleiben Bewertungen,
+     Warnungen und Hinweisen vorbehalten.
+
+   Aufbau:  1 Farben, Maße, Schriftskala   2 Grundlagen   3 Kopf und Reiter   4 Kachel-Grundform
+            5 Raster   6 Auswahl und Suche   7 Eingaben   8 Kennwert-Kacheln   9 Diagramme und Export
+            10 Alternativen und Quellen   11 Interaktion   12 Tablet   13 Handy   14 Druck
+   ========================================================================== */
+
+/* ---------- 1 Farben, Maße, Schriftskala (alle Werte an einer Stelle) ---------- */
+:root {
+  --breite: 1360px;              /* maximale Inhaltsbreite (große Bildschirme) */
+  --bg: #f5f6f8;                 /* Seitenhintergrund */
+  --bg-soft: #f5f6f8;            /* ruhige Innenflächen in weißen Kacheln */
+  --kachel-weiss: #ffffff;
+  --bild-klein: 3.5rem;            /* alle Materialkarten: gleiche Bildgröße (4:3) */
+  --karte-bg: var(--bg-soft);     /* alle Materialkarten: gleicher heller Hintergrund */
+  --karte-radius: 18px;
+  --karte-innen: .85rem 1rem;
+  --kachel-blau: #e7f0fa;        /* Hellblau: hervorgehobene Ergebnisse (Schwerpunkt-Marke, Match-Punkte) */
+  --kachel-violett: #eee9fa;     /* Hellviolett: Eingaben */
+  --hinweis-bg: #fff0df;         /* Hellorange: nur Hinweise und Warnungen */
+  --text: #1f2530;
+  --text-soft: #5f6773;
+  --line: rgba(31, 37, 48, .09);
+  --line-strong: rgba(31, 37, 48, .22);
+  --radius: 14px;
+  --radius-sm: 12px;
+  --radius-kachel: 22px;
+  --kachel-innen: 1.5rem;
+  --kachel-abstand: 1.25rem;
+  --schatten: 0 1px 2px rgba(31, 37, 48, .03), 0 4px 16px rgba(31, 37, 48, .04);
+  --schrift: "Nunito", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  /* Schriftgrößen: sieben Stufen statt vieler Einzelwerte */
+  --fs-xs: .75rem;               /* Kleingedrucktes, Achsen, Kürzel (12 px) */
+  --fs-s: .8125rem;              /* Zusatzinformationen (13 px) */
+  --fs-m: .875rem;               /* Materialnamen, Beschriftungen (14 px) */
+  --fs-text: .9375rem;           /* Fließtext (15 px) */
+  --fs-l: 1.0625rem;             /* Diagrammtitel (17 px) */
+  --fs-xl: 1.25rem;              /* Kachelüberschriften (20 px) */
+  --fs-zahl: 1.625rem;           /* Kennzahl in kompakten Kacheln (26 px) */
+}
+
+/* ---------- 2 Grundlagen ---------- */
+body { font-family: var(--schrift); background: var(--bg); color: var(--text); font-size: var(--fs-text); }
+button, input, select, textarea { font-family: inherit; }
+h1, h2, h3, h4 { font-family: var(--schrift); letter-spacing: -.01em; }
+.sr-only {
+  position: absolute !important; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+.ico { width: 1.15em; height: 1.15em; flex: none; vertical-align: -.2em; stroke: currentColor; fill: none; }
+/* Zahlen: tabellarische Ziffern (gleich breit), damit Werte sauber untereinander stehen */
+.kw-zahl, .kw-r, .chart-num, .chart-value, .chart-scale, td, th { font-variant-numeric: tabular-nums lining-nums; }
+
+/* ---------- 3 Kopf, Datenmodus und Reiter ---------- */
+/* Kopfbereich (MaterialMatch 3.0): Marke, Leitsatz, Untertitel und zwei Hauptaktionen in einer ruhigen Kachel */
+.site-header { background: none; border-bottom: 0; padding: 1rem 0 .4rem; }
+.kopf { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 1rem 2rem; padding: 1.25rem 1.75rem; overflow: hidden;
+  background: var(--kachel-weiss); border: 1px solid var(--line); border-radius: var(--radius-kachel); box-shadow: var(--schatten); }
+.kopf-text, .kopf-aktionen { position: relative; z-index: 1; }
+.site-header h1 { display: flex; align-items: center; gap: .6rem; margin: 0; font-size: 1.75rem; font-weight: 800; letter-spacing: -.02em; line-height: 1.2; }
+.marke { flex: none; width: 2.25rem; height: 2.25rem; }
+.site-header .tagline { margin: .35rem 0 0; font-size: var(--fs-xl); font-weight: 700; line-height: 1.3; color: var(--text); }
+.site-header .untertitel { margin: .15rem 0 0; max-width: 46rem; font-size: var(--fs-text); line-height: 1.45; color: var(--text-soft); }
+.kopf-aktionen { display: flex; flex-wrap: wrap; gap: .75rem; flex: none; }
+.kopf-knopf { display: inline-flex; align-items: center; gap: .5rem; min-height: 2.75rem; padding: .55rem 1.25rem; font-size: var(--fs-text); font-weight: 700; text-decoration: none; border-radius: 999px; }
+.kopf-knopf .ico { width: 1.15rem; height: 1.15rem; }
+.btn.kopf-knopf-haupt { color: #fff; background: var(--text); border: 1px solid var(--text); }
+.btn.kopf-knopf-haupt:hover { background: #000; }
+.btn.kopf-knopf-zweit { color: var(--text); background: var(--kachel-blau); border: 1px solid transparent; }
+.btn.kopf-knopf-zweit:hover { background: #d4e4f6; }
+
+.modus-leiste { border-bottom: 0; padding: .3rem 0; }
+.modus-leiste .container { background: rgba(255, 255, 255, .85); border: 1px solid var(--line); border-radius: 999px; padding: .15rem 1.1rem; max-width: calc(var(--breite) - 3rem); }
+@media (max-width: 900px) { .modus-leiste .container { max-width: calc(100% - 2rem); } }
+
+.tabs-leiste { background: none; border-bottom: 0; padding: .4rem 0 .2rem; }
+.tabs { display: inline-flex; gap: .25rem; padding: .3rem; background: var(--kachel-weiss); border: 1px solid var(--line); border-radius: 999px; box-shadow: var(--schatten); max-width: 100%; }
+.tab { padding: .55rem 1.15rem; font-size: var(--fs-text); font-weight: 700; color: var(--text-soft); border: 0; border-radius: 999px; }
+.tab:hover { color: var(--text); background: rgba(31, 37, 48, .05); }
+.tab[aria-selected="true"], .tab[aria-selected="true"]:hover { color: #fff; background: var(--text); border-bottom-color: transparent; }
+
+main.container { padding-top: 1rem; padding-bottom: 2.5rem; }
+
+/* ---------- 4 Kachel-Grundform ---------- */
+.kachel, .kennwert.kachel {
+  position: relative; min-width: 0; margin: 0; padding: var(--kachel-innen);
+  background: var(--kachel-weiss); border: 1px solid var(--line); border-radius: var(--radius-kachel); box-shadow: var(--schatten);
+}
+/* Kachel-Überschriften: Symbol + kurzer Titel */
+.kachel > h2, .kachel details > summary h2, .kachel-kopf h3 {
+  margin: 0; font-size: var(--fs-xl); font-weight: 800; line-height: 1.3; color: var(--text);
+}
+.kachel-kopf h3 { font-size: var(--fs-l); }
+.kachel > h2, .kachel details > summary h2 { display: flex; align-items: center; gap: .6rem; }
+.kachel > h2 .ico, .kachel details > summary h2 .ico, .kachel-symbol {
+  width: 2.1rem; height: 2.1rem; padding: .5rem; border-radius: 12px; background: var(--bg-soft); color: var(--text);
+}
+.kachel-kopf { display: flex; align-items: center; gap: .6rem; margin-bottom: 1rem; }
+.kachel-kopf h3 { flex: 1 1 auto; min-width: 0; }
+.kachel-kopf .kw-einheit { font-weight: 600; font-size: var(--fs-s); }
+
+/* Eingaben (violett) und technische Eigenschaften hatten in style.css eigene Regeln ohne Kasten: hier wieder volle Kachel */
+#bento .kachel.panel#eingaben, #bento .kachel.panel#ergebnisse, #bento .kachel.panel#auswahl {
+  padding: var(--kachel-innen); border: 1px solid var(--line); border-radius: var(--radius-kachel); box-shadow: var(--schatten); margin-bottom: 0;
+}
+#bento .kachel.panel#eingaben { background: var(--kachel-violett); border-color: transparent; }
+#bento .kachel.panel#eingaben > details > summary h2 .ico { background: rgba(255, 255, 255, .6); }
+#bento .kachel.panel#auswahl, #bento .kachel.panel#ergebnisse { background: var(--kachel-weiss); }
+#bento .kachel.panel details > summary { padding: 0; font-size: inherit; border-bottom: 0; min-height: 2.75rem; }
+#bento .kachel.panel details[open] > summary { border-bottom: 0; margin-bottom: 1rem; }
+#bento .kachel.panel .panel-body { padding: 0; }
+#bento .k-auswahl details > summary::after, #bento .k-eingaben details > summary::after { display: none; }
+#bento .k-auswahl details > summary, #bento .k-eingaben details > summary { cursor: default; }
+.panel details > summary::after { width: .5rem; height: .5rem; }
+
+/* Formularfelder */
+.field label, label { font-weight: 700; font-size: var(--fs-m); color: var(--text); }
+select, input[type="text"], input[type="number"], input[type="search"] {
+  min-height: 2.75rem; padding: .55rem .85rem; font-size: 1rem; color: var(--text);
+  background: #fff; border: 1px solid var(--line-strong); border-radius: var(--radius-sm);
+}
+select:disabled, input:disabled { background: var(--bg-soft); color: var(--text-soft); }
+.field-error { color: #9a1c27; }
+
+/* Buttons: eine Form für alle */
+.btn-option, .btn { border-radius: 999px; font-weight: 700; box-shadow: none; }
+.btn-option { background: #fff; border: 1px solid var(--line-strong); }
+.btn-option:hover { background: var(--bg-soft); border-color: var(--text); }
+.btn-option[aria-expanded="true"] { background: var(--text); color: #fff; border-color: var(--text); }
+.btn { background: var(--text); }
+.btn:hover:not([disabled]) { background: #000; }
+.btn[disabled], .btn:disabled { background: var(--bg-soft); color: var(--text-soft); border-color: var(--line); }
+
+/* ---------- 5 Raster: das Bento-Grid (12 Spalten) ---------- */
+.bento { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--kachel-abstand); align-items: stretch; }
+.bento > * { grid-column: span 12; min-width: 0; }
+/* Die Eltern der Kennwert-Kacheln sind Teilraster („subgrid“): echte Boxen, nutzen aber die 12 Spalten des Bento-Rasters */
+#dashboard, #dashboard-inhalt, .kw-raster { display: grid; grid-template-columns: subgrid; grid-column: 1 / -1; gap: var(--kachel-abstand); padding: 0; margin: 0; background: none; border: 0; box-shadow: none; }
+#dashboard > h2 { font-size: var(--fs-xl); position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Leserichtung: 1 Auswahl + Eingaben → 2 Kennwerte → 3 Diagramme → 4 Export und Details */
+#bento .k-auswahl { grid-column: span 8; }
+#bento .k-eingaben { grid-column: span 4; }
+/* Kennwert-Kacheln, Standard („Ausgewogener Vergleich“): vier gleich große Kacheln */
+#bento .kennwert { grid-column: span 6; }
+#bento .k-diagramme, #bento .k-export, #bento .k-ergebnisse, #bento #orientierung, #bento .kw-fuss, #bento #dashboard-inhalt > .empty-state { grid-column: 1 / -1; }
+@media (min-width: 1280px) { #bento .kw-raster[data-modus="gleich"] > .kennwert { grid-column: span 3; } }
+/* Hinweis „nur zur Orientierung“: eine ruhige Zeile; der volle Text steht darunter zum Aufklappen */
+#bento #orientierung { max-width: none; margin: 0; padding: .75rem 1.2rem; font-size: var(--fs-m); border-radius: 18px; background: var(--hinweis-bg); border: 1px solid var(--line); box-shadow: none; }
+#bento #orientierung[hidden] { display: none; }
+#bento #orientierung p { margin: 0; }
+.orient-mehr { margin-top: .35rem; }
+.orient-mehr > summary { font-weight: 700; color: var(--text-soft); }
+.orient-mehr p { margin-top: .35rem; }
+#bento #dashboard-inhalt > .empty-state { padding: 1.75rem 1.4rem; margin: 0; border: 1.5px dashed var(--line-strong); border-radius: var(--radius-kachel); background: rgba(255, 255, 255, .6); color: var(--text-soft); text-align: center; }
+.kw-leerzustand { display: flex; flex-direction: column; align-items: center; gap: .25rem; }
+.kw-leer-symbol { width: 2.25rem; height: 2.25rem; padding: .5rem; margin-bottom: .25rem; border-radius: 12px; background: #fff; color: var(--text); }
+.kw-leer-titel { margin: 0; font-size: var(--fs-l); font-weight: 800; color: var(--text); }
+.kw-leer-text { margin: 0; font-size: var(--fs-m); }
+#bento .kw-fuss { margin: -.4rem .4rem 0; font-size: var(--fs-s); color: var(--text-soft); }
+
+/* ---------- 6 Auswahl und Suche ---------- */
+.auswahl-kopf { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: .75rem 1rem; align-items: end; margin-bottom: 1rem; }
+.auswahl-kopf .field { margin: 0; }
+.suche { position: relative; }
+.suche input[type="search"] { width: 100%; padding-left: 2.75rem; min-height: 2.75rem; border-radius: 999px; background: var(--bg-soft); border-color: transparent; font-size: 1rem; }
+.suche input[type="search"]:hover { border-color: var(--line-strong); }
+.suche input[type="search"]:focus { background: #fff; border-color: var(--text); }
+.suche-icon { position: absolute; left: 1rem; top: 1.375rem; transform: translateY(-50%); width: 1.15rem; height: 1.15rem; color: var(--text-soft); pointer-events: none; }
+.suche-liste {
+  position: absolute; z-index: 30; left: 0; right: 0; top: calc(100% + .35rem); margin: 0; padding: .35rem; list-style: none;
+  max-height: 22rem; overflow-y: auto; background: #fff; border: 1px solid var(--line); border-radius: 18px; box-shadow: 0 12px 32px rgba(31, 37, 48, .14);
+}
+.suche-liste[hidden] { display: none; }
+.suche-treffer { display: flex; flex-direction: column; gap: .05rem; padding: .6rem .8rem; border-radius: 12px; cursor: pointer; }
+.suche-treffer:hover, .suche-treffer[aria-selected="true"] { background: var(--bg-soft); }
+.suche-titel { font-weight: 700; font-size: var(--fs-text); line-height: 1.3; }
+.suche-zusatz { font-size: var(--fs-s); color: var(--text-soft); line-height: 1.3; }
+.suche-leer { padding: .7rem .8rem; font-size: var(--fs-m); color: var(--text-soft); }
+
+.auswahl-kategorie { max-width: none; }
+.auswahl-grid { gap: 0 1rem; }
+.auswahl-grid .field { margin-bottom: .75rem; }
+.auswahl-grid.mit-c { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.auswahl-optionen { margin: .25rem 0 1rem; }
+
+/* Materialkarten: einheitlich, ruhig und neutral (keine Bewertungsfarben); je Karte ein Buchstabe A/B/C */
+#bento .cards { grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: .75rem 1rem; margin-top: 0; }
+#bento .card { padding: var(--karte-innen); background: var(--karte-bg); border: 0; border-radius: var(--karte-radius); box-shadow: none; }
+#bento .card .card-head { gap: .5rem; }
+#bento .card .card-head h3, .fav-name { font-size: var(--fs-text); font-weight: 800; line-height: 1.25; overflow-wrap: anywhere; hyphens: auto; }
+#bento .card .slot { width: 1.6rem; height: 1.6rem; font-size: var(--fs-s); background: var(--text); }
+#bento .card .card-sub { margin: .25rem 0 .35rem; font-size: var(--fs-s); }
+#bento .card .datenbadge { background: #fff; border-color: transparent; font-size: var(--fs-xs); }
+#bento .card-note { background: #fff; border: 0; }
+#bento .card-mehr { margin-top: .1rem; }
+#bento .card .card-facts dt { text-transform: none; letter-spacing: 0; font-size: var(--fs-s); }
+#bento #auswahl-karten > .empty-state { margin: 0; padding: 1rem; border: 1.5px dashed var(--line-strong); border-radius: 18px; background: none; color: var(--text-soft); font-size: var(--fs-m); text-align: center; }
+#eigenes-produkt-wrap .sub { border-radius: 18px; border: 0; background: var(--bg-soft); }
+
+/* ---------- 7 Eingaben: kompakt, kurze Beschriftungen ---------- */
+#bento .k-eingaben > details { height: 100%; display: flex; flex-direction: column; }
+#bento .k-eingaben .panel-body { flex: 1 1 auto; display: flex; flex-direction: column; }
+#bento .eingaben-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 1rem; flex: 1 1 auto; align-content: space-between; }
+#bento .eingaben-grid .field { margin-bottom: .5rem; }
+#bento .eingaben-grid .field:nth-child(n+3) { grid-column: 1 / -1; }
+#bento .k-eingaben input, #bento .k-eingaben select { background: rgba(255, 255, 255, .9); border-color: transparent; }
+#bento .k-eingaben input:hover, #bento .k-eingaben select:hover { border-color: var(--line-strong); }
+#bento .k-eingaben input:focus { background: #fff; }
+#bento .k-eingaben select:disabled, #bento .k-eingaben input:disabled { background: rgba(255, 255, 255, .5); }
+
+/* ---------- 8 Kennwert-Kacheln: Zahl zuerst ---------- */
+.kennwert { padding-top: var(--kachel-innen); display: flex; flex-direction: column; container-type: inline-size; container-name: kw; }
+.kennwert .kw-zeilen { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 1rem; flex: 0 0 auto; }
+/* Jedes Material: Zeile 1 = Buchstabe, Name, Bewertungspunkt · Zeile 2 = große Zahl mit kleiner Einheit · Zeile 3 = dünner Vergleichsbalken */
+.kennwert .kw-zeile { grid-template-columns: auto minmax(0, 1fr) auto; row-gap: .35rem; column-gap: .55rem; padding: 0; align-content: start; align-items: center; }
+.kennwert .kw-zeile > .slot { grid-row: 1; grid-column: 1; }
+.kennwert .kw-zeile > .kw-name { grid-row: 1; grid-column: 2; -webkit-line-clamp: 2; font-size: var(--fs-m); font-weight: 600; line-height: 1.25; color: var(--text-soft); }
+.kennwert .kw-zeile > .kw-punkt { grid-row: 1; grid-column: 3; }
+.kennwert .kw-zeile > .kw-wert { grid-row: 2; grid-column: 1 / -1; justify-content: flex-start; }
+.kennwert .kw-zeile > .kw-spur, .kennwert .kw-zeile > .kw-zusatz { grid-column: 1 / -1; }
+.kennwert .slot-small { width: 1.45rem; height: 1.45rem; font-size: var(--fs-xs); background: var(--text); color: #fff; }
+
+.kw-zahl { font-size: var(--fs-zahl); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; }
+.kw-einh { font-size: var(--fs-xs); font-weight: 700; color: var(--text-soft); white-space: nowrap; }
+.kw-wert { gap: .1rem .3rem; flex-wrap: wrap; align-items: baseline; }
+/* Bewertungspunkt, Datenart und Quelle: vorhanden, aber leise */
+.kw-punkt { width: .65rem; height: .65rem; border: 0; box-shadow: 0 0 0 1px rgba(31, 37, 48, .15); }
+.kw-punkt.leer { box-shadow: none; border: 1.5px dashed var(--line-strong); }
+.kennwert .art { margin: 0; background: transparent; border-color: var(--line); color: var(--text-soft); font-size: var(--fs-xs); padding: 0 .3rem; }
+.kw-spur { display: block; height: .4rem; border-radius: 999px; background: var(--bg-soft); overflow: hidden; }
+.kw-balken { display: block; height: 100%; min-width: .35rem; border-radius: 999px; background: var(--line-strong); }
+.kw-zusatz { font-size: var(--fs-s); color: var(--text-soft); }
+.kw-zusatz-name { margin-right: .35rem; font-weight: 700; color: var(--text-soft); }
+.kw-r { font-size: var(--fs-text); font-weight: 800; color: var(--text); }
+.kw-fehlt { font-style: normal; font-weight: 700; font-size: var(--fs-m); color: var(--text-soft); }
+.kw-leer { margin: 0; padding: .5rem 0 1rem; font-size: var(--fs-m); color: var(--text-soft); }
+.kw-unter { margin: -.5rem 0 .9rem; font-size: var(--fs-s); font-weight: 600; color: var(--text-soft); }
+.kw-status { margin: 1rem 0 0; font-size: var(--fs-s); font-weight: 600; color: var(--text-soft); }
+.kw-warn, .kw-mehr-warn { color: #7a4a00; }
+.kw-mehr { margin-top: auto; padding-top: .75rem; font-size: var(--fs-s); }
+.kw-mehr > summary { font-weight: 700; color: var(--text-soft); }
+.kw-status + .kw-mehr, .kw-zeilen + .kw-mehr { margin-top: .4rem; }
+
+/* Schwerpunkt (nur bei gewählter Priorität): gleiche Größe wie die anderen, nur ein dezenter hellblauer Rand und eine kleine Marke */
+.kennwert.kennwert-schwerpunkt { position: relative; border-color: #b7d0ec; box-shadow: 0 0 0 1px #b7d0ec; }
+.kw-schwerpunkt { position: absolute; top: -.65rem; left: 1.1rem; padding: .1rem .6rem; font-size: var(--fs-xs); font-weight: 700; color: #234a78; background: var(--kachel-blau); border: 1px solid #b7d0ec; border-radius: 999px; white-space: nowrap; }
+/* Schmale Kachel: die Einheit steht bei jeder Zahl, darum entfällt sie in der Überschrift */
+@container kw (max-width: 330px) { .kachel-kopf .kw-einheit { display: none; } }
+
+/* Info-Symbol (i) mit Quellenfenster */
+.info-knopf {
+  display: inline-flex; align-items: center; justify-content: center; flex: none; width: 2rem; height: 2rem; margin: 0; padding: 0;
+  color: var(--text-soft); background: transparent; border: 0; border-radius: 50%; cursor: pointer;
+}
+.info-knopf:hover { color: var(--text); background: rgba(31, 37, 48, .08); }
+.info-knopf[aria-expanded="true"] { color: #fff; background: var(--text); }
+.info-knopf .ico { width: 1.1rem; height: 1.1rem; }
+.kw-info { margin: 0 0 1rem; padding: .9rem 1rem; font-size: var(--fs-m); line-height: 1.4; background: var(--bg-soft); border-radius: 16px; }
+.kw-info[hidden] { display: none; }
+.kw-info-titel { margin: 0 0 .5rem; font-weight: 800; }
+.kw-info-liste { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: .5rem; }
+.kw-info-liste li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: .5rem; align-items: start; }
+.kw-info-text { overflow-wrap: anywhere; }
+.kw-qualitaet { grid-column: 2; margin-top: -.3rem; font-size: var(--fs-xs); font-weight: 700; color: var(--text-soft); }
+.sb-qualitaet { margin-top: .2rem; font-size: var(--fs-xs); font-weight: 700; color: var(--text-soft); }
+.kw-info-fuss { margin: .6rem 0 0; font-size: var(--fs-s); color: var(--text-soft); }
+
+/* ---------- 9 Diagramme (kompakt) und Export ---------- */
+#bento .k-diagramme { padding: 1.5rem; }
+#bento .k-diagramme > h2 { margin-bottom: 1rem; }
+.diagramme-bereich .chart-liste { gap: 0 2.5rem; }
+.chart { margin: 0 0 .75rem; }
+.chart-title { margin: 0 0 .1rem; font-size: var(--fs-l); font-weight: 800; }
+.chart-sub { margin: 0 0 .5rem; font-size: var(--fs-s); color: var(--text-soft); }
+.chart-grid { gap: .45rem; }
+/* Name | Balken | Zahl in EINER Zeile, auch in der halben Breite; alle Balken gleich hoch */
+.chart-liste .chart-row { grid-template-columns: minmax(8rem, 36%) 1fr minmax(5.5rem, 20%); gap: .1rem .7rem; }
+.chart-liste .chart-row .chart-label { grid-column: auto; font-size: var(--fs-s); }
+.chart-liste .chart-axis > div:first-child { display: block; }
+.chart-name { font-weight: 700; }
+.chart-detail { font-size: var(--fs-xs); line-height: 1.25; }
+.chart-track { height: 1.125rem; background: #e6e9ee; border-radius: 999px; }
+.chart-bar { border-radius: 999px; }
+.chart-value { font-size: var(--fs-m); }
+.chart-num { font-weight: 800; }
+.chart-unit { font-size: var(--fs-xs); }
+.chart-scale { font-size: var(--fs-xs); }
+.chart-axis { margin-top: -.25rem; }
+.chart-note { margin: .45rem 0 0; font-size: var(--fs-s); }
+.chart .warn { margin: .5rem 0 0; padding: .4rem .65rem; font-size: var(--fs-s); line-height: 1.4; }
+.chart-annahmen { margin-top: .35rem; font-size: var(--fs-s); }
+.chart-annahmen > summary { font-size: var(--fs-s); }
+.chart-mehr-knopf { margin: 0 0 .5rem; }
+#bento .k-diagramme .note, #bento .k-diagramme .warn { border: 0; border-radius: 14px; }
+#bento .k-diagramme > #diagramme-inhalt > .warn { margin: 0 0 .9rem; padding: .45rem .8rem; font-size: var(--fs-s); }
+#bento .k-diagramme .note { background: var(--bg-soft); }
+
+/* Große Bildschirme (ab 1280 px): alle vier Diagramme nebeneinander in EINER Reihe, Name über dem Balken. So bleibt der Abschnitt niedrig. */
+@media (min-width: 1280px) {
+  .diagramme-bereich .chart-liste { grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 1fr)); gap: 0 1.5rem; }
+  /* „Weitere Kennwerte anzeigen“ steht oben rechts neben der Überschrift (spart eine ganze Zeile) */
+  .k-diagramme .chart-mehr-knopf { position: absolute; top: 1.3rem; right: 1.5rem; margin: 0; }
+  .chart-liste .chart-row { grid-template-columns: minmax(0, 1fr) minmax(5.5rem, 40%); gap: .1rem .6rem; }
+  .chart-liste .chart-row .chart-label { grid-column: 1 / -1; }
+  .chart-liste .chart-axis > div:first-child { display: none; }
+  .chart-liste .chart-grid { gap: .7rem; }
+}
+.diagramme-bereich .warn, #bento .k-diagramme .warn { max-width: none; }
+
+/* Legende: kompakt in zwei Spalten */
+.legend { margin-top: .5rem; padding-top: .9rem; border-top: 1px solid var(--line); display: grid; grid-template-columns: minmax(12rem, 18rem) 1fr; gap: .15rem 2rem; align-items: start; }
+.legend-title { grid-column: 1; margin: 0; font-size: var(--fs-m); font-weight: 800; }
+.legend-scale { grid-column: 1; max-width: none; height: .7rem; border-radius: 999px; }
+.legend-labels { grid-column: 1; max-width: none; flex-wrap: wrap; justify-content: flex-start; gap: .2rem 1rem; font-size: var(--fs-xs); }
+.legend-labels > span { display: inline-flex; align-items: center; gap: .35rem; }
+.legend-farbe { display: inline-block; width: .7rem; height: .7rem; border-radius: 50%; box-shadow: 0 0 0 1px rgba(31, 37, 48, .15); }
+@media (min-width: 1100px) { .legend { grid-template-columns: 26rem 1fr; margin-top: .25rem; padding-top: .6rem; } }
+.legend-items { grid-column: 2; grid-row: 1 / span 3; margin: 0; display: flex; flex-wrap: wrap; gap: .25rem 1.5rem; align-content: flex-start; font-size: var(--fs-s); }
+.legend-items li { margin: 0; }
+.legend > .note { grid-column: 1 / -1; margin: .4rem 0 0; padding: 0; background: none; font-size: var(--fs-xs); color: var(--text-soft); }
+#bento .k-diagramme > #diagramme-inhalt ~ .note { margin: .15rem 0 0; padding: 0; background: none; font-size: var(--fs-xs); color: var(--text-soft); }
+
+#bento .k-export { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1rem; padding: .85rem 1.25rem; background: var(--kachel-weiss); }
+#bento .k-export .hint { margin: 0; flex: 1 1 14rem; font-size: var(--fs-m); }
+#bento .k-export .export-menue { flex: 1 1 100%; padding: .9rem 1rem; background: var(--bg-soft); border: 0; border-radius: 16px; }
+.export-eintrag { border-radius: 12px; }
+
+#bento .k-ergebnisse { padding: 1rem 1.5rem; }
+#bento .k-ergebnisse details[open] > summary { margin-bottom: 1rem; }
+#bento .k-ergebnisse .sub { border-top: 1px solid var(--line); }
+#bento .k-ergebnisse .sub > summary { font-weight: 800; }
+.table-wrap { background: #fff; border: 1px solid var(--line); border-radius: 16px; }
+
+/* ---------- 10 Alternativen und Quellen ---------- */
+.kachel.k-alternativen, .kachel.k-quellen, .kachel.k-match { padding: 1.75rem; }
+.kachel.k-match > h2 { margin-bottom: .6rem; }
+.kachel.k-match .bereich-intro { margin-bottom: 1.1rem; }
+.kachel.k-alternativen > h2, .kachel.k-quellen > h2 { margin-bottom: .6rem; }
+.kachel.k-alternativen .bereich-intro { margin-bottom: 1.1rem; }
+.kachel.k-alternativen .rec-card { display: flex; flex-direction: column; background: var(--karte-bg); border: 0; border-radius: var(--karte-radius); box-shadow: none; padding: 1rem 1.1rem; }
+.kachel.k-alternativen .rec-card .slot { background: #fff; color: var(--text); border: 2px solid var(--text); }
+.kachel.k-alternativen .card-note, .kachel.k-alternativen .rec-point { background: #fff; border: 0; border-radius: 12px; }
+.kachel.k-alternativen .rec-point { padding: .5rem .75rem; font-size: var(--fs-text); }
+.kachel.k-alternativen .rec-point .label { font-size: var(--fs-xs); text-transform: none; letter-spacing: 0; font-weight: 700; }
+.kachel.k-alternativen .rec-text { font-size: var(--fs-m); color: var(--text-soft); }
+.kachel.k-alternativen .rec-hinweise { font-size: var(--fs-s); }
+/* Button unten bündig: bei Karten unterschiedlicher Höhe stehen alle Buttons in einer Linie */
+.kachel.k-alternativen .rec-card > .btn { margin-top: auto; align-self: flex-start; }
+.kachel.k-alternativen .rec-card > .card-mehr { margin-top: .6rem; }
+.kachel.k-alternativen .rec-meta { font-size: var(--fs-m); }
+/* Quellen & Details: überwiegend weiß, dünne Trennlinien statt zusätzlicher Kachelebenen */
+.kachel.k-quellen details.sub { margin: 0; background: none; border: 0; border-top: 1px solid var(--line); border-radius: 0; }
+.kachel.k-quellen details.sub > summary { padding: .9rem 0; font-weight: 800; }
+.kachel.k-quellen details.sub > .sub-body { padding: 0 0 1.1rem; }
+.kachel.k-quellen #quellen-auswahl { margin-bottom: 1rem; }
+.kachel.k-quellen #quellen-auswahl h3 { margin: 1.25rem 0 .5rem; font-size: var(--fs-l); font-weight: 800; }
+.kachel.k-quellen #quellen-auswahl h3:first-child { margin-top: .5rem; }
+.kachel.k-quellen a { text-decoration-thickness: 1px; text-underline-offset: .2em; font-weight: 600; }
+.kachel.k-quellen a:hover { text-decoration-thickness: 2px; }
+.kachel.k-quellen .data-table th { font-size: var(--fs-s); font-weight: 700; color: var(--text-soft); background: var(--bg-soft); }
+.kachel.k-quellen .data-table td { font-size: var(--fs-m); }
+.kachel.k-quellen .src-note, .kachel.k-quellen .soft-text { font-size: var(--fs-s); }
+
+.site-footer { border-top: 0; padding-top: 1rem; }
+
+/* ---------- 10b Materialillustrationen und Steckbrief (MaterialMatch 3.0) ---------- */
+.mbild { margin: 0; flex: none; }
+.mbild img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; border: 1px solid var(--line); border-radius: 10px; background: #fafafa; object-fit: cover; }
+.mbild-klein { width: var(--bild-klein); }
+.mbild-klein img { border-radius: 8px; }
+.mbild-mittel { width: 100%; max-width: 14rem; }
+.mbild-gross { width: 100%; }
+.mbild-text { margin-top: .3rem; font-size: var(--fs-xs); line-height: 1.3; color: var(--text-soft); }
+.suche-treffer { flex-direction: row; align-items: center; gap: .75rem; }
+.suche-text { display: flex; flex-direction: column; min-width: 0; }
+.steckbrief-knopf { margin-top: .4rem; padding: .35rem 0; min-height: 2.75rem; font-size: var(--fs-m); font-weight: 700; color: var(--text); text-decoration: underline; text-underline-offset: .2em; }
+.steckbrief-knopf:hover { text-decoration-thickness: 2px; }
+
+dialog.steckbrief { width: min(58rem, calc(100vw - 2rem)); max-height: calc(100vh - 2rem); padding: 0; border: 0; border-radius: var(--radius-kachel); background: var(--kachel-weiss); color: var(--text); box-shadow: 0 24px 64px rgba(31, 37, 48, .28); overflow: hidden; }
+dialog.steckbrief::backdrop { background: rgba(31, 37, 48, .5); }
+.steckbrief-inhalt { max-height: calc(100vh - 2rem); overflow-y: auto; padding: 1.75rem; }
+.steckbrief-zu { position: absolute; z-index: 2; top: .75rem; right: .75rem; display: inline-flex; align-items: center; justify-content: center; width: 2.75rem; height: 2.75rem; padding: 0; color: var(--text); background: var(--bg-soft); border: 0; border-radius: 50%; cursor: pointer; }
+.steckbrief-zu:hover { background: #e4e7ec; }
+.steckbrief-zu .ico { width: 1.25rem; height: 1.25rem; }
+
+.sb-kopf { display: grid; grid-template-columns: minmax(0, 16rem) minmax(0, 1fr); gap: 1.5rem; align-items: start; padding-right: 3rem; }
+.sb-name { margin: 0; font-size: 1.5rem; font-weight: 800; line-height: 1.2; }
+.sb-kategorie { margin: .2rem 0 0; font-size: var(--fs-text); font-weight: 700; color: var(--text-soft); }
+.sb-produkt, .sb-einsatz { margin: .5rem 0 0; font-size: var(--fs-m); color: var(--text-soft); }
+.sb-chips { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; margin: .75rem 0 0; }
+.sb-chip { padding: .15rem .65rem; font-size: var(--fs-s); font-weight: 700; color: var(--text); background: var(--kachel-blau); border-radius: 999px; }
+.sb-chip-hinweis { font-size: var(--fs-xs); color: var(--text-soft); }
+.sb-kennwerte { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; margin: 1.5rem 0 0; }
+.sb-kennwert { display: flex; flex-direction: column; gap: .2rem; min-width: 0; padding: .85rem 1rem; background: var(--bg-soft); border-radius: 16px; }
+.sb-kennwert-titel { font-size: var(--fs-s); font-weight: 700; color: var(--text-soft); }
+.sb-kennwert-wert { display: flex; flex-wrap: wrap; align-items: baseline; gap: .1rem .35rem; }
+.sb-zahl { font-size: var(--fs-zahl); font-weight: 800; line-height: 1.15; letter-spacing: -.02em; font-variant-numeric: tabular-nums lining-nums; overflow-wrap: anywhere; }
+.sb-einheit { font-size: var(--fs-xs); font-weight: 700; color: var(--text-soft); }
+.sb-fehlt { font-size: var(--fs-m); font-weight: 700; color: var(--text-soft); }
+.sb-neben { font-size: var(--fs-xs); line-height: 1.35; color: var(--text-soft); }
+.sb-grund { font-size: var(--fs-s); }
+.sb-grund > summary { color: var(--text-soft); font-weight: 700; }
+.sb-grund p { margin: .3rem 0 0; }
+.sb-vn { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 1.5rem; margin: 1.5rem 0 0; }
+.sb-liste h4 { margin: 0 0 .35rem; font-size: var(--fs-m); font-weight: 800; }
+.sb-liste ul { margin: 0; padding-left: 1.1rem; font-size: var(--fs-m); }
+.sb-mehr { margin-top: 1.25rem; border-top: 1px solid var(--line); }
+.sb-mehr > summary { padding: .85rem 0; font-weight: 800; }
+.sb-mehr-inhalt h4 { margin: 1rem 0 .4rem; font-size: var(--fs-m); font-weight: 800; }
+.sb-quellen { margin: 0; padding-left: 1.1rem; font-size: var(--fs-m); }
+.sb-quelle-rest { color: var(--text-soft); }
+.sb-einordnung { margin: .9rem 0 0; font-size: var(--fs-m); }
+.sb-fuss { margin: 1rem 0 0; font-size: var(--fs-xs); color: var(--text-soft); }
+
+/* ---------- 10c Match finden: Interview, Swipe-Karten, Favoriten (MaterialMatch 3.0) ---------- */
+.match-bento .k-match { grid-column: span 8; }
+.match-bento .k-favoriten { grid-column: span 4; align-self: start; background: var(--kachel-violett); border-color: transparent; }
+.kachel.k-match > h2, .kachel.k-favoriten > h2 { margin-bottom: 1rem; }
+.fav-zaehler { display: inline-flex; align-items: center; justify-content: center; min-width: 1.75rem; height: 1.75rem; padding: 0 .5rem; font-size: var(--fs-m); font-weight: 800; background: rgba(255, 255, 255, .8); border-radius: 999px; }
+.kachel.k-favoriten > h2 .ico { background: rgba(255, 255, 255, .6); }
+
+/* Interview */
+.iv-kopf { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
+.iv-schritt { margin: 0; flex: none; font-size: var(--fs-m); font-weight: 700; color: var(--text-soft); }
+.iv-fortschritt { flex: 1 1 auto; height: .5rem; background: var(--bg-soft); border-radius: 999px; overflow: hidden; }
+.iv-fortschritt i { display: block; height: 100%; background: #5b8fd6; border-radius: 999px; }
+.iv-frage { margin: 0; padding: 0; border: 0; min-width: 0; }
+.iv-titel { padding: 0; margin: 0 0 .25rem; font-size: 1.375rem; font-weight: 800; line-height: 1.3; }
+.iv-titel:focus { outline: none; }
+.iv-hinweis { margin: 0 0 1rem; font-size: var(--fs-m); color: var(--text-soft); }
+.iv-optionen { display: grid; grid-template-columns: repeat(auto-fit, minmax(13.5rem, 1fr)); gap: .75rem; }
+.iv-option { position: relative; display: block; margin: 0; cursor: pointer; }
+.iv-eingabe { position: absolute; opacity: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+.iv-karte { display: flex; align-items: center; gap: .75rem; min-height: 3.75rem; padding: .85rem 1rem; background: var(--bg-soft); border: 2px solid transparent; border-radius: 16px; }
+.iv-option:hover .iv-karte { border-color: var(--line-strong); }
+.iv-eingabe:checked + .iv-karte { background: var(--kachel-blau); border-color: var(--text); }
+.iv-eingabe:focus-visible + .iv-karte { outline: 2px solid var(--text); outline-offset: 2px; }
+.iv-symbol { width: 1.5rem; height: 1.5rem; flex: none; }
+.iv-text { display: flex; flex-direction: column; min-width: 0; flex: 1 1 auto; }
+.iv-name { font-size: var(--fs-text); font-weight: 800; line-height: 1.3; }
+.iv-zusatz, .iv-sperre { font-size: var(--fs-s); line-height: 1.3; color: var(--text-soft); }
+.iv-haken { display: none; flex: none; width: 1.5rem; height: 1.5rem; align-items: center; justify-content: center; color: #fff; background: var(--text); border-radius: 50%; }
+.iv-haken .ico { width: .95rem; height: .95rem; }
+.iv-eingabe:checked + .iv-karte .iv-haken { display: inline-flex; }
+.iv-gesperrt { cursor: not-allowed; }
+.iv-gesperrt .iv-eingabe { cursor: not-allowed; }
+.iv-gesperrt .iv-karte { background: transparent; border: 2px dashed var(--line-strong); opacity: .7; }
+.iv-gesperrt:hover .iv-karte { border-color: var(--line-strong); }
+.iv-gesperrt .iv-name { color: var(--text-soft); }
+.iv-nav { display: flex; justify-content: space-between; gap: .75rem; margin-top: 1.5rem; }
+.iv-nav .btn, .iv-nav .btn-option { min-width: 8rem; min-height: 2.75rem; }
+.fav-vergleichen, .sw-ende .btn, .sw-ende .btn-option { min-height: 2.75rem; }
+
+/* Swipe-Karten */
+.sw { display: flex; flex-direction: column; gap: .85rem; }
+.sw-kopf { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.sw-zaehler { margin: 0; font-size: var(--fs-m); font-weight: 800; }
+.sw-aendern { font-size: var(--fs-m); font-weight: 700; color: var(--text); text-decoration: underline; text-underline-offset: .2em; }
+.sw-antworten { display: flex; flex-wrap: wrap; gap: .4rem; margin: 0; padding: 0; list-style: none; }
+.sw-antworten li { padding: .2rem .7rem; font-size: var(--fs-s); font-weight: 700; background: var(--bg-soft); border-radius: 999px; }
+.sw-hinweis { margin: 0; font-size: var(--fs-s); line-height: 1.4; color: var(--text-soft); }
+.sw-buehne { position: relative; display: grid; width: min(100%, 22rem); margin: .25rem auto 0; padding-bottom: .75rem; }
+.sw-buehne:focus-visible { outline: 2px solid var(--text); outline-offset: 6px; border-radius: 26px; }
+.sw-karte, .sw-karte-hinten { grid-area: 1 / 1; }
+.sw-karte { position: relative; display: flex; flex-direction: column; gap: .55rem; padding: 1rem; background: #fff; border: 1px solid var(--line); border-radius: var(--radius-kachel); box-shadow: 0 10px 30px rgba(31, 37, 48, .1); touch-action: pan-y; user-select: none; -webkit-user-select: none; cursor: grab; will-change: transform; }
+.sw-karte.sw-zieht { cursor: grabbing; }
+.sw-karte-hinten { margin: .9rem .9rem -.5rem; background: #fff; border: 1px solid var(--line); border-radius: var(--radius-kachel); box-shadow: 0 4px 14px rgba(31, 37, 48, .06); opacity: .8; }
+.sw-karte .mbild-gross img { border-radius: 14px; pointer-events: none; }
+.sw-eignung { align-self: flex-start; margin: 0; padding: .15rem .7rem; font-size: var(--fs-s); border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--line-strong); }
+.sw-eignung-label { color: var(--text-soft); font-weight: 600; }
+.sw-eignung strong { font-weight: 800; }
+.sw-eignung-bedingt, .sw-eignung-undokumentiert { background: var(--hinweis-bg); }
+.sw-vorteile { display: flex; flex-wrap: wrap; gap: .4rem; margin: 0; padding: 0; list-style: none; }
+.sw-vorteile li { padding: .2rem .7rem; font-size: var(--fs-m); font-weight: 700; background: var(--bg-soft); border-radius: 999px; }
+.sb-match { margin: 1rem 0; padding: .9rem 1rem; background: var(--kachel-blau); border-radius: 16px; }
+.sb-match h4 { margin: 0 0 .4rem; font-size: var(--fs-l); }
+.sb-match-zeile { margin: .35rem 0 0; font-size: var(--fs-m); line-height: 1.45; }
+.sb-match-warnung { margin: .35rem 0 0; padding: .4rem .7rem; font-size: var(--fs-s); background: var(--hinweis-bg); border-radius: 12px; }
+.sw-name { margin: 0; font-size: 1.375rem; font-weight: 800; line-height: 1.25; }
+.sw-kategorie { margin: -.35rem 0 0; font-size: var(--fs-m); font-weight: 700; color: var(--text-soft); }
+.sw-score { display: grid; grid-template-columns: auto 1fr; column-gap: .5rem; align-items: baseline; padding: .6rem .8rem; background: var(--kachel-blau); border-radius: 16px; }
+.sw-score-zahl { grid-row: 1; font-size: 2.5rem; font-weight: 800; line-height: 1; letter-spacing: -.03em; font-variant-numeric: tabular-nums lining-nums; }
+.sw-score-einheit { grid-row: 1; font-size: var(--fs-text); font-weight: 800; }
+.sw-score-text { grid-column: 1 / -1; grid-row: 2; margin-top: .25rem; display: flex; flex-direction: column; font-size: var(--fs-s); line-height: 1.3; color: var(--text-soft); }
+.sw-score-text strong { font-size: var(--fs-m); color: var(--text); }
+.sw-score-balken { grid-column: 1 / -1; grid-row: 3; display: block; height: .4rem; margin-top: .5rem; background: rgba(255, 255, 255, .8); border-radius: 999px; overflow: hidden; }
+.sw-score-balken i { display: block; height: 100%; background: #5b8fd6; border-radius: 999px; }
+.sw-score-leer { display: block; background: var(--bg-soft); }
+.sw-score-kein { font-size: var(--fs-m); font-weight: 800; color: var(--text-soft); }
+.sw-erklaerung { margin: 0; font-size: var(--fs-m); line-height: 1.4; }
+.sw-warnung { margin: 0; padding: .45rem .75rem; font-size: var(--fs-s); line-height: 1.4; background: var(--hinweis-bg); border-radius: 12px; }
+.sw-vn { display: grid; grid-template-columns: 1fr; gap: .1rem; margin: 0; font-size: var(--fs-m); }
+.sw-vn dt { margin-top: .35rem; font-size: var(--fs-xs); font-weight: 800; color: var(--text-soft); }
+.sw-vn dd { margin: 0; line-height: 1.35; }
+.sw-kennwerte { display: flex; flex-wrap: wrap; gap: .5rem; margin: .15rem 0 0; padding: 0; list-style: none; }
+.sw-kennwerte li { display: flex; flex-direction: column; min-width: 0; padding: .4rem .7rem; font-size: var(--fs-m); background: var(--bg-soft); border-radius: 12px; }
+.sw-kw-titel { font-size: var(--fs-xs); font-weight: 700; color: var(--text-soft); }
+.sw-kennwerte strong { font-variant-numeric: tabular-nums lining-nums; overflow-wrap: anywhere; }
+.sw-kennwerte li .art, .fav-kennwerte .art { align-self: flex-start; margin: .15rem 0 0; }
+.fav-kennwerte .art { margin: 0 0 0 .3rem; }
+.sw-kw-leer { font-size: var(--fs-s); color: var(--text-soft); }
+.sw-tipp { margin: .1rem 0 0; font-size: var(--fs-xs); text-align: center; color: var(--text-soft); }
+.sw-stempel { position: absolute; top: 1.1rem; padding: .25rem .8rem; font-size: 1.1rem; font-weight: 800; letter-spacing: .02em; text-transform: uppercase; background: rgba(255, 255, 255, .92); border: 3px solid; border-radius: 12px; opacity: 0; pointer-events: none; }
+.sw-stempel-ja { left: 1.1rem; color: #2f6cb3; transform: rotate(-8deg); }
+.sw-stempel-nein { right: 1.1rem; color: #5f6773; transform: rotate(8deg); }
+.sw-knoepfe { display: flex; justify-content: center; flex-wrap: wrap; gap: .6rem; }
+.sw-knopf { display: inline-flex; align-items: center; justify-content: center; gap: .45rem; min-height: 3rem; margin: 0; padding: .55rem 1.1rem; font-size: var(--fs-text); font-weight: 800; color: var(--text); background: #fff; border: 1px solid var(--line-strong); border-radius: 999px; cursor: pointer; }
+.sw-knopf:hover:not(:disabled) { background: var(--bg-soft); border-color: var(--text); }
+.sw-knopf:disabled { opacity: .45; cursor: not-allowed; }
+.sw-fav { color: #fff; background: var(--text); border-color: var(--text); }
+.sw-fav:hover:not(:disabled) { background: #000; }
+.sw-knopf .ico { width: 1.15rem; height: 1.15rem; }
+.sw-hilfe { margin: 0; font-size: var(--fs-xs); text-align: center; color: var(--text-soft); }
+.sw-ende { display: flex; flex-direction: column; align-items: center; gap: .6rem; padding: 2rem 1.25rem; text-align: center; background: var(--bg-soft); border-radius: var(--radius-kachel); grid-area: 1 / 1; }
+.sw-ende-titel { margin: 0; font-size: 1.25rem; font-weight: 800; }
+.sw-ende p { margin: 0; font-size: var(--fs-text); color: var(--text-soft); }
+.sw-ende-aktionen { display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem; margin-top: .5rem; }
+
+/* Favoriten */
+.fav-liste { display: flex; flex-direction: column; gap: .6rem; margin: 0; padding: 0; list-style: none; }
+.fav-karte { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: .4rem .75rem; align-items: start; padding: var(--karte-innen); background: var(--karte-bg); border-radius: var(--karte-radius); }
+.fav-name { margin: 0; font-size: var(--fs-text); font-weight: 800; line-height: 1.25; overflow-wrap: anywhere; }
+.fav-kategorie { margin: .1rem 0 0; font-size: var(--fs-s); color: var(--text-soft); }
+.fav-kennwerte { margin: .35rem 0 0; padding: 0; list-style: none; font-size: var(--fs-s); }
+.fav-kw-titel { color: var(--text-soft); }
+.fav-kw-leer { color: var(--text-soft); }
+.fav-aktionen { grid-column: 1 / -1; display: flex; align-items: center; gap: .25rem 1rem; padding-top: .25rem; border-top: 1px solid var(--line); }
+.fav-aktionen .fav-weg { margin-left: auto; }
+.fav-weg { display: inline-flex; align-items: center; justify-content: center; width: 2.75rem; height: 2.75rem; margin: 0; padding: 0; color: var(--text-soft); background: transparent; border: 0; border-radius: 50%; cursor: pointer; }
+.fav-weg:hover { color: var(--text); background: var(--bg-soft); }
+.fav-weg .ico { width: 1.1rem; height: 1.1rem; }
+.fav-wahl { display: inline-flex; align-items: center; gap: .4rem; min-height: 2.75rem; margin: 0; font-size: var(--fs-s); font-weight: 700; cursor: pointer; }
+.fav-haken { width: 1.25rem; height: 1.25rem; margin: 0; accent-color: var(--text); }
+.fav-aktionen .steckbrief-knopf { margin: 0; min-height: 2.75rem; font-size: var(--fs-s); }
+.fav-fuss { display: flex; flex-direction: column; gap: .6rem; margin-top: 1rem; }
+.fav-info { margin: 0; font-size: var(--fs-s); color: var(--text-soft); }
+.fav-vergleichen { align-self: stretch; }
+.fav-alle-weg { align-self: flex-start; font-size: var(--fs-s); font-weight: 700; color: var(--text-soft); text-decoration: underline; text-underline-offset: .2em; }
+.fav-speicher-hinweis { margin: 0; font-size: var(--fs-xs); color: var(--text-soft); }
+.fav-leer { padding: 1rem; background: rgba(255, 255, 255, .6); border-radius: 16px; }
+.fav-leer p { margin: 0; font-size: var(--fs-m); color: var(--text-soft); }
+.fav-leer-titel { font-weight: 800; color: var(--text) !important; margin-bottom: .2rem !important; }
+
+/* ---------- 11 Interaktion: ruhige Hover-, Fokus- und aktive Zustände ---------- */
+:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
+.tab:focus-visible { outline-offset: 0; }
+.panel details > summary:focus-visible { outline-offset: 4px; border-radius: 12px; }
+select:hover:not(:disabled), input:hover:not(:disabled) { border-color: var(--text-soft); }
+select:focus, input:focus { border-color: var(--text); }
+input.is-invalid, input[aria-invalid="true"] { border-color: #9a1c27; background: #fff7f7; }
+.btn-option:active, .btn:active, .tab:active { transform: translateY(1px); }
+summary { cursor: pointer; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+  .btn-option:active, .btn:active, .tab:active { transform: none; }
+}
+
+/* ---------- 12 Tablet (721–1099 px) und Laptop (bis 1279 px) ---------- */
+@media (max-width: 1099px) {
+  :root { --kachel-innen: 1.3rem; }
+  #bento .k-auswahl, #bento .k-eingaben { grid-column: 1 / -1; }
+  .match-bento .k-match, .match-bento .k-favoriten { grid-column: 1 / -1; }
+  #bento .eingaben-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  #bento .eingaben-grid .field:nth-child(n+3) { grid-column: span 2; }
+  .diagramme-bereich .chart-liste { gap: 0; }
+}
+@media (max-width: 820px) {
+  #bento .eingaben-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  #bento .eingaben-grid .field:nth-child(n+3) { grid-column: span 1; }
+}
+
+/* ---------- 13 Handy (bis 720 px): eine Spalte ---------- */
+@media (max-width: 720px) {
+  dialog.steckbrief { width: calc(100vw - 1rem); max-height: calc(100vh - 1rem); border-radius: 20px; }
+  .steckbrief-inhalt { max-height: calc(100vh - 1rem); padding: 1.1rem; }
+  .sb-kopf { grid-template-columns: 1fr; padding-right: 3rem; gap: 1rem; }
+  .sb-kopf .mbild-gross { max-width: 14rem; }
+  .sb-kennwerte { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sb-vn { grid-template-columns: 1fr; }
+  .steckbrief-knopf { min-height: 2.75rem; }
+  :root { --kachel-innen: 1.1rem; --kachel-abstand: .9rem; --radius-kachel: 20px; --fs-zahl: 1.5rem; }
+  #bento .kennwert, #bento .kw-raster[data-modus] > .kennwert { grid-column: 1 / -1; }
+  .auswahl-kopf { grid-template-columns: 1fr; }
+  #bento .eingaben-grid { grid-template-columns: 1fr; }
+  #bento .eingaben-grid .field:nth-child(n+3) { grid-column: auto; }
+  .tabs { display: flex; width: 100%; }
+  .tab { flex: 1 1 0; padding: .6rem .3rem; font-size: var(--fs-m); }
+  #bento .k-diagramme, .kachel.k-alternativen { padding: 1.1rem; }
+  .modus-leiste .container { max-width: none; border: 0; border-radius: 0; background: none; padding: 0 1rem; }
+  .info-knopf { width: 2.75rem; height: 2.75rem; }
+  .kachel.k-quellen { padding: 1rem .75rem; }
+  .kachel.k-quellen > h2 { padding: 0 .25rem; }
+  .kachel.k-quellen details.sub > summary { padding: .5rem .25rem; }
+  .kachel.k-quellen details.sub > .sub-body { padding: 0 0 .9rem; }
+  /* Diagramme am Handy: Name über dem Balken, darunter Balken und Zahl nebeneinander */
+  .chart-liste .chart-row { grid-template-columns: 1fr minmax(6.5rem, 36%); gap: .25rem .6rem; }
+  .chart-liste .chart-row .chart-label { grid-column: 1 / -1; }
+  .chart-liste .chart-axis > div:first-child { display: none; }
+  .kachel.k-quellen .data-table td, .kachel.k-quellen .data-table th { font-size: var(--fs-s); }
+  .legend { grid-template-columns: 1fr; }
+  .kachel.k-match { padding: 1.1rem; }
+  .iv-optionen { grid-template-columns: 1fr; }
+  .iv-nav .btn, .iv-nav .btn-option { flex: 1 1 0; min-width: 0; }
+  .sw-knopf { flex: 1 1 8rem; }
+  .sw-karte { padding: .85rem; }
+  .legend-items { grid-column: 1; grid-row: auto; margin-top: .6rem; }
+  .site-header { padding-top: .75rem; }
+  .kopf { flex-direction: column; align-items: stretch; padding: 1.1rem; }
+  .site-header h1 { font-size: 1.5rem; }
+  .marke { width: 2rem; height: 2rem; }
+  .site-header .tagline { font-size: var(--fs-l); }
+  .kopf-aktionen { flex-direction: column; }
+  .kopf-knopf { justify-content: center; }
+  .tab { padding: .5rem .15rem; font-size: var(--fs-s); line-height: 1.2; }
+}
+
+/* ---------- 14 Druck: ruhig und ohne Kachel-Optik ---------- */
+@media print {
+  body { background: #fff; color: #000; }
+  .kopf { padding: 0; border: 0; box-shadow: none; border-radius: 0; overflow: visible; }
+  .kopf-aktionen, .site-header .untertitel, #bereich-match, .steckbrief-knopf, dialog.steckbrief { display: none !important; }
+  .bento { display: block; }
+  .kachel, .kennwert.kachel, #bento .card, .kachel.k-alternativen .rec-card {
+    box-shadow: none !important; background: #fff !important; border-radius: 0; padding: 0; border: 0;
+  }
+  #bento .card, .kachel.k-alternativen .rec-card { border: 1px solid #999; padding: 3mm; border-radius: 0; }
+  #bento .k-export { display: none !important; }
+  .suche { display: none !important; }
+  .modus-leiste .container { box-shadow: none; border-radius: 0; border: 0; }
+  .legend { display: block; }
+
+  /* ----- Bericht (PDF): erste Seite mit Logo, Vergleich, Materialien, Eingaben, Kennzahlen, Hinweisen und Diagrammen ----- */
+  .site-header { display: none !important; }
+  .pk-marke { display: flex; align-items: center; gap: 2.5mm; margin: 0 0 2mm; }
+  .pk-logo { width: 9mm; height: 9mm; flex: none; }
+  .pk-name { font-size: 15pt; font-weight: 800; }
+  .pk-tag { margin-left: auto; font-size: 8.5pt; color: #444; }
+  .pk-vergleich { margin: 0 0 2mm; font-size: 11pt; font-weight: 700; }
+  .pk-materialien { display: grid; grid-template-columns: repeat(auto-fit, minmax(50mm, 1fr)); gap: 2.5mm; margin: 0 0 2mm; padding: 0; list-style: none; }
+  .pk-materialien li { display: flex; align-items: center; gap: 2mm; padding: 1.5mm; border: 0.5pt solid #aaa; border-radius: 2mm; }
+  .pk-materialien .mbild-klein { width: 14mm; }
+  .pk-materialien .mbild img { border-radius: 1mm; }
+  .pk-mat-text { display: flex; flex-direction: column; font-size: 8.5pt; line-height: 1.25; }
+  .pk-mat-produkt { font-size: 7.5pt; color: #444; }
+  .pk-eingaben { margin: 0 0 2mm; font-size: 9pt; }
+  .pk-kennzahlen { width: 100%; margin: 0 0 2mm; border-collapse: collapse; font-size: 9pt; }
+  .pk-kennzahlen th, .pk-kennzahlen td { padding: 1.2mm 1.5mm !important; text-align: left; border-bottom: 0.5pt solid #bbb; vertical-align: baseline; }
+  .pk-kennzahlen thead th { font-size: 8.5pt; border-bottom: 1pt solid #000; }
+  .pk-kennzahlen tbody th { font-weight: 600; }
+  .pk-zahl { font-size: 10.5pt; font-variant-numeric: tabular-nums lining-nums; }
+  .pk-spur { display: block; height: 1.6mm; margin-top: 0.8mm; background: #e6e9ee !important; border-radius: 1mm; overflow: hidden; }
+  .pk-balken { display: block; height: 100%; border-radius: 1mm; }
+  .pk-farbsatz { margin: 0 0 2mm; font-size: 7.5pt; color: #333; }
+  .pk-einheit { font-size: 7.5pt; font-weight: 400; color: #444; }
+  .pk-fehlt { font-size: 8.5pt; color: #444; font-style: italic; }
+  .pk-warn { margin: 0 0 2mm; padding: 1.8mm 3mm; font-size: 8.5pt; background: #fff4d6 !important; border: 0.75pt solid #b8860b; }
+  .pk-warn-titel { margin: 0 !important; font-weight: 800; }
+  .pk-warn ul { margin: 0.8mm 0 0; padding-left: 4mm; }
+  .pk-meta { margin: 0 0 1mm; font-size: 8pt; }
+  .chart-liste { display: grid !important; grid-template-columns: 1fr 1fr; gap: 1mm 6mm; align-items: start; }
+  .chart-liste[hidden] { display: grid !important; }
+  .chart-liste figure.chart { margin: 0 0 2mm; }
+  .chart-annahmen { display: none !important; }
+  .chart-title { font-size: 9.5pt; }
+  .chart-sub, .chart-note { font-size: 7.5pt; margin-bottom: 1mm; }
+  .chart .warn { font-size: 7.5pt; padding: 1mm 2mm; margin: 1mm 0; }
+  .chart-liste .chart-label { font-size: 8pt; }
+  .chart-liste .chart-detail { font-size: 6.5pt; }
+  .chart-liste .chart-value { font-size: 8pt; }
+  .chart-liste .chart-track { height: 3.2mm; }
+  .legend { margin-top: 1mm; padding-top: 1.5mm; }
+  .pk-annahmen h3 { font-size: 11pt; margin: 0 0 1mm; }
+  .pk-annahmen h4 { font-size: 9pt; margin: 2mm 0 0.5mm; }
+  .pk-annahmen ul { margin: 0; padding-left: 4mm; font-size: 8pt; }
+  .pk-kurz { margin: 0 0 2mm; font-size: 8.5pt; font-weight: 600; }
+  .pk-qualitaet th, .pk-qualitaet td { font-size: 7.5pt; color: #333; }
+  .pk-qualitaet-text { font-weight: 400; }
+}
+
+/* ---------- Match: Trefferliste, Fallback und Kennzeichnung (MaterialMatch 3.2) ---------- */
+.sw-top { margin: 0 0 1rem; padding: .9rem 1rem; background: var(--kachel-blau); border-radius: 18px; }
+.sw-top-titel { margin: 0 0 .6rem; font-size: var(--fs-l); font-weight: 800; }
+.sw-top-liste { display: flex; flex-direction: column; gap: .6rem; margin: 0; padding: 0; list-style: none; }
+.sw-top-eintrag { padding: .7rem .85rem; background: #fff; border-radius: 14px; }
+.sw-top-kopf { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem .6rem; }
+.sw-top-nr { display: inline-flex; align-items: center; justify-content: center; width: 1.6rem; height: 1.6rem; font-size: var(--fs-s); font-weight: 800; color: #fff; background: var(--text); border-radius: 50%; }
+.sw-top-name { font-size: var(--fs-text); }
+.sw-top-score { margin: .2rem 0 .3rem; font-size: var(--fs-m); font-weight: 700; }
+.sw-top-daten { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: .15rem .75rem; margin: 0; font-size: var(--fs-s); }
+.sw-top-daten dt { font-weight: 800; color: var(--text-soft); }
+.sw-top-daten dd { margin: 0; overflow-wrap: anywhere; }
+.sw-passung { display: inline-block; margin: 0; padding: .1rem .6rem; font-size: var(--fs-s); font-weight: 800; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--line-strong); }
+.sw-passung-voll { background: #fff; }
+.sw-passung-eingeschraenkt, .sw-passung-teilweise { background: var(--hinweis-bg); border-color: #e3c28a; color: #6b4300; }
+.sw-passung-nicht_erfuellt { background: #fbe9e9; border-color: #d9a3a3; color: #7a1f1f; }
+.sw-top-teilweise, .sw-top-nicht_erfuellt { border: 1px dashed var(--line-strong); }
+.sw-fallback { display: flex; flex-direction: column; align-items: flex-start; gap: .5rem; margin: 0 0 1rem; padding: .8rem 1rem; background: var(--hinweis-bg); border-radius: 16px; }
+.sw-fallback-titel { margin: 0; font-weight: 800; }
+.sw-fallback-liste { margin: 0; padding-left: 1.1rem; font-size: var(--fs-m); }
