@@ -34,7 +34,7 @@ const norm = s => s.replace(/−/g, '-');      // typografisches Minus
   const toolDateien = fs.readdirSync(path.join(PROJ, 'tools'));
   check('README nennt alle Werkzeuge in tools/', toolDateien.every(f => T['README.md'].includes('tools/' + f)), toolDateien.filter(f => !T['README.md'].includes('tools/' + f)));
   const testDateien = fs.readdirSync(path.join(PROJ, 'tests')).filter(f => /^test\d+\.js$/.test(f));
-  check('Die Dateien tests/test1.js … test52.js sind vollständig vorhanden (ohne test9, das es nie gab)', testDateien.length === 51, testDateien.length);
+  check('Die Dateien tests/test1.js … test53.js sind vollständig vorhanden (ohne test9, das es nie gab)', testDateien.length === 52, testDateien.length);
 
   // ================= 2. Pflichtabschnitte (Abschnitt 18 des Auftrags) =================
   const doku = T['PROJEKTDOKUMENTATION.md'];

@@ -104,6 +104,7 @@
       li.setAttribute("data-material", e.id);
       var kopf = el("div", null, "sw-top-kopf");
       kopf.appendChild(el("span", String(i + 1), "sw-top-nr"));
+      if (MM.materialbilder) kopf.appendChild(MM.materialbilder.element(e.id, { groesse: "klein" }));   // MaterialMatch 3.6: dasselbe Bild wie überall
       kopf.appendChild(el("strong", m.name, "sw-top-name"));
       var b = el("span", PASSUNG[e.passung].text, "sw-passung sw-passung-" + e.passung);
       b.setAttribute("title", PASSUNG[e.passung].titel);

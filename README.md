@@ -81,6 +81,8 @@ Es werden keine Installation, kein Internet, kein Login und keine API-Schlüssel
 | `tools/erzeuge_schraffuren.py` | Hilfsprogramm: zeichnet die schematischen Materialillustrationen (`img/schraffuren/*.svg`) neu; liefert immer dieselben Dateien |
 | `tools/oekobaudat_uebernehmen.py` | Hilfsprogramm: übernimmt Werte aus der ÖKOBAUDAT-CSV in die Datenbank |
 | `tools/pruefe_datenqualitaet.js` | Hilfsprogramm: prüft alle Baustoffdaten (fehlende und ungültige Kennwerte, Quellen, Einheiten, Größenordnungen, Duplikate, Verknüpfungen) und schreibt mit `--bericht` die Lückenliste `DATENLUECKEN.md` |
+| `tools/bilder_bauen.py` | Verarbeitet heruntergeladene Materialfotos (Zuschnitt 4:3, 800 × 600 px, WebP) und schreibt `data/bilder.js` |
+| `tools/bilder_quellen.json` | Urheber, Lizenz und Fundstelle jedes Materialfotos (Eingabe für `bilder_bauen.py`) |
 | `tools/pruefe_links.js` | Hilfsprogramm: ruft alle Quellenlinks ab (Internet nötig) |
 | `tools/quellenbericht.js` | Hilfsprogramm: erzeugt `QUELLENBERICHT.md` |
 | `QUELLENBERICHT.md` | Bericht: Datenqualität, belegte Kennwerte, Quellenkatalog (erzeugt) |
@@ -165,7 +167,7 @@ Alle automatischen Tests (Node.js und Playwright mit Chromium nötig):
 bash tests/alle.sh
 ```
 
-Rund 1.931 Prüfungen in 51 Dateien (`tests/test1.js` bis `tests/test52.js`; `test52` prüft den Reiter „Entdecken“ (Suche, Filter, Sortierung, Karten/Liste, Material in den Vergleich legen), die drei Hauptaktionen und den gegliederten Steckbrief; `test51` prüft die Händlerpreisspannen von bausep.de (jede Spanne wird aus den Einzelpreisen nachgerechnet) und das Feld „echt“, das belegte Preise nur im Echtdaten-Modus einsetzt; `test50` prüft die Match-Funktion mit Nutzerprofilen, den Fallback, Preisspannen und das Prüfskript; `test49` prüft Datenpaket 3: STEICO, Cirkel PORIT, KS-ORIGINAL; `test21` gehört zu Schritt 11, `test22` zu Schritt 13 und braucht für die PDF-Prüfung `pdftotext`, `pdfinfo` und `pdftoppm` aus dem Paket poppler-utils, `test23` zu Schritt 14 und nutzt `tests/referenzrechnung.py` als unabhängigen Referenzrechner; es braucht Python 3 und startet kurz einen lokalen Server). Ergebnis: `QUALITAETSBERICHT.md`. `tools/pruefe_gegen_csv.js` arbeitet mit dem Auszug im Projekt (`data/quellen/`).
+Rund 1.952 Prüfungen in 52 Dateien (`tests/test1.js` bis `tests/test53.js`; `test53` prüft die Materialfotos (Lizenzangaben, Dateien, 4:3, Laden aller 50 Bilder, gleiche Bildquelle in allen Bereichen, Umschalter Foto/Schraffur, mobil); `test52` prüft den Reiter „Entdecken“ (Suche, Filter, Sortierung, Karten/Liste, Material in den Vergleich legen), die drei Hauptaktionen und den gegliederten Steckbrief; `test51` prüft die Händlerpreisspannen von bausep.de (jede Spanne wird aus den Einzelpreisen nachgerechnet) und das Feld „echt“, das belegte Preise nur im Echtdaten-Modus einsetzt; `test50` prüft die Match-Funktion mit Nutzerprofilen, den Fallback, Preisspannen und das Prüfskript; `test49` prüft Datenpaket 3: STEICO, Cirkel PORIT, KS-ORIGINAL; `test21` gehört zu Schritt 11, `test22` zu Schritt 13 und braucht für die PDF-Prüfung `pdftotext`, `pdfinfo` und `pdftoppm` aus dem Paket poppler-utils, `test23` zu Schritt 14 und nutzt `tests/referenzrechnung.py` als unabhängigen Referenzrechner; es braucht Python 3 und startet kurz einen lokalen Server). Ergebnis: `QUALITAETSBERICHT.md`. `tools/pruefe_gegen_csv.js` arbeitet mit dem Auszug im Projekt (`data/quellen/`).
 Nur `test21` liest zusätzlich die ÖKOBAUDAT-Originaldatei und erwartet sie unter `/home/user/oekobaudat_original/`
 (Pfad oben in `tests/test21.js` anpassen, falls sie woanders liegt; ohne die Datei schlägt dieser Test fehl).
 
@@ -190,5 +192,6 @@ Nur `test21` liest zusätzlich die ÖKOBAUDAT-Originaldatei und erwartet sie unt
 - [x] Schritt 14 – Abschließende Qualitätskontrolle (`QUALITAETSBERICHT.md`)
 - [x] Schritt 15 – Projektdokumentation und Präsentationsmaterial (`PROJEKTDOKUMENTATION.md`, `PRAESENTATION.md`)
 - [x] MaterialMatch 3.5 – Navigation, Reiter „Entdecken“, gegliederter Steckbrief (`DESIGNSYSTEM.md`)
+- [x] MaterialMatch 3.6 – Materialfotos statt Schraffuren (`data/bilder.js`, `img/materialfotos/`, Bildnachweis in „Quellen & Details“, Schraffuren bleiben erhalten)
 
 Details und Entscheidungen: `FORTSCHRITT.md` und `PROJEKTDOKUMENTATION.md`.

@@ -1,15 +1,18 @@
 /* ==========================================================================
-   MaterialMatch – Materialillustrationen (MaterialMatch 3.0)
+   MaterialMatch – Materialbilder (MaterialMatch 3.0, Fotos seit 3.6)
    --------------------------------------------------------------------------
-   Liefert zu jedem Baustoff die „Schematische Materialillustration“: eine selbst gezeichnete
-   SVG-Schraffur im Stil von Architekturplänen (img/schraffuren/<Material-Kennung>.svg).
-   Es sind KEINE Fotos und keine Herstellerprodukte. Alles liegt lokal im Projekt und funktioniert offline.
+   Eine zentrale Stelle liefert zu jedem Baustoff das Bild, das ÜBERALL in der Anwendung gleich verwendet wird
+   (Materialkarten, Suche, Entdecken, Steckbrief, Vergleich, Match, Swipe, Alternativen, Favoriten, Export).
 
-   Fehlt zu einem Material die Zeichnung, erscheint ein einheitlicher neutraler Platzhalter
-   (img/schraffuren/platzhalter.svg).
+   Primäre Darstellung (seit 3.6): ein MATERIALFOTO aus img/materialfotos/<Kennung>.webp. Die Zuordnung Baustoff -> Foto
+   mit Urheber, Lizenz und Quelle steht in data/bilder.js. Fotos liegen lokal im Projekt (funktioniert offline und über GitHub Pages).
+   Gibt es zu einem Baustoff kein lizenzgeklärtes Foto, oder lädt das Foto nicht, erscheint stattdessen die technische SCHRAFFUR
+   (img/schraffuren/<Kennung>.svg, unverändert erhalten: selbst gezeichnet, einfarbig). Fehlt auch sie: neutraler Platzhalter.
+   Es gibt nie ein kaputtes Bild.
 
-   Benutzung:   MM.materialbilder.element("eps", { groesse: "klein" | "mittel" | "gross", beschriftung: true })
+   Benutzung:   MM.materialbilder.element("eps", { groesse: "klein" | "mittel" | "gross", beschriftung: true, variante: "foto" | "schraffur" })
    Das Element ist ein <figure> mit <img> (Lazy Loading, Alternativtext, festes Seitenverhältnis 4:3).
+   Mit beschriftung: true steht unter einem Foto der Bildnachweis (Urheber, Lizenz), unter einer Schraffur der Hinweis „Schematische Materialillustration“.
    ========================================================================== */
 
 (function (root) {
@@ -17,8 +20,21 @@
 
   var MM = root.MM = root.MM || {};
   var PFAD = "img/schraffuren/";
+  var FOTOPFAD = "img/materialfotos/";
   var HINWEIS = "Schematische Materialillustration";
   var daten = null;
+
+  // Zuordnung Baustoff -> Foto (data/bilder.js); ohne die Datei gibt es einfach keine Fotos
+  function fotos() { return (root.MATERIALMATCH_BILDER && root.MATERIALMATCH_BILDER.bilder) || {}; }
+  function foto(id) { return fotos()[id] || null; }
+  function hatFoto(id) { return !!foto(id); }
+  function fotoUrl(id) { var f = foto(id); return f ? FOTOPFAD + f.datei : null; }
+  // Bildnachweis als kurzer Text, z. B. „Foto: Max Muster, CC BY-SA 4.0 (Wikimedia Commons)“
+  function nachweis(id) {
+    var f = foto(id);
+    if (!f) return "";
+    return "Foto: " + f.urheber + ", " + f.lizenz + " (" + f.quelle_name + ")";
+  }
 
   function material(id) { return daten ? MM.finde(daten.baustoffe, id) : null; }
 
@@ -30,29 +46,42 @@
 
   function url(id) { return PFAD + (hat(id) ? id : "platzhalter") + ".svg"; }
 
-  function alt(id) {
+  function alt(id, variante) {
     var m = material(id);
+    if (variante === "foto" && hatFoto(id)) return foto(id).alt;   // der Alternativtext in data/bilder.js beginnt mit „Foto: …“
     return HINWEIS + ": " + (m ? m.name : "Baustoff") + (hat(id) ? " (Schraffur)" : " (keine Illustration vorhanden)");
   }
 
   function element(id, optionen) {
     optionen = optionen || {};
     var groesse = optionen.groesse || "klein";
+    var variante = optionen.variante === "schraffur" || !hatFoto(id) ? "schraffur" : "foto";
     var fig = document.createElement("figure");
-    fig.className = "mbild mbild-" + groesse + (hat(id) ? "" : " mbild-platzhalter");
+    fig.className = "mbild mbild-" + groesse + " mbild-" + variante + (variante === "schraffur" && !hat(id) ? " mbild-platzhalter" : "");
     fig.setAttribute("data-material", id);
+    fig.setAttribute("data-variante", variante);
     var img = document.createElement("img");
-    img.src = url(id);
-    img.alt = alt(id);
+    img.src = variante === "foto" ? fotoUrl(id) : url(id);
+    img.alt = alt(id, variante);
     img.width = 160;
     img.height = 120;
     img.loading = "lazy";
     img.decoding = "async";
     img.setAttribute("draggable", "false");
-    // Fehlt die Datei, zeigt derselbe Platzhalter wie bei Materialien ohne Zeichnung
+    // Lädt das Foto nicht (z. B. Datei fehlt), erscheint die Schraffur; fehlt auch sie, der neutrale Platzhalter. Nie ein kaputtes Bild.
     img.addEventListener("error", function () {
-      if (img.getAttribute("data-ersatz")) return;
-      img.setAttribute("data-ersatz", "1");
+      var stufe = img.getAttribute("data-ersatz") || "";
+      if (stufe === "platzhalter") return;
+      if (variante === "foto" && !stufe) {
+        img.setAttribute("data-ersatz", "schraffur");
+        fig.setAttribute("data-variante", "schraffur");
+        fig.classList.remove("mbild-foto"); fig.classList.add("mbild-schraffur");
+        img.alt = alt(id, "schraffur");
+        img.src = url(id);
+        var cap0 = fig.querySelector("figcaption"); if (cap0) cap0.textContent = HINWEIS;
+        return;
+      }
+      img.setAttribute("data-ersatz", "platzhalter");
       fig.classList.add("mbild-platzhalter");
       img.src = PFAD + "platzhalter.svg";
     });
@@ -60,7 +89,7 @@
     if (optionen.beschriftung) {
       var cap = document.createElement("figcaption");
       cap.className = "mbild-text";
-      cap.textContent = HINWEIS;
+      cap.textContent = variante === "foto" ? nachweis(id) : HINWEIS;
       fig.appendChild(cap);
     }
     return fig;
@@ -70,6 +99,11 @@
     PFAD: PFAD,
     HINWEIS: HINWEIS,
     hat: hat,
+    hatFoto: hatFoto,
+    foto: foto,
+    fotoUrl: fotoUrl,
+    nachweis: nachweis,
+    alleFotos: fotos,
     url: url,
     alt: alt,
     element: element,

@@ -19,7 +19,7 @@ MaterialMatch ist ein Baustoff-Vergleichsrechner für den frühen Entwurf. Man w
 | **21** konkrete Produkte zu 15 Materialien · **7** Preise (2 Händlerpreise, 2 deutsche Preislisten, 3 Preise einer österreichischen Preisliste) | Mit Hersteller und Quelle; Preislisten-Preise sind netto, nicht am Abrufdatum bestätigt und die österreichischen gelten nicht für Deutschland; wo keine Produktdaten vorliegen, gilt der generische Materialdatensatz; eigene Produkte lassen sich ergänzen |
 | **82** Beispieldaten · **257** „nicht verfügbar“ | Ehrlich gekennzeichnet statt erfunden; die Seite startet im Echtdaten-Modus, die Beispieldaten (gelb, „B“) lassen sich für Demos einschalten |
 | **15** Entwicklungsschritte mit Freigabe nach jedem Schritt | Feste Reihenfolge laut Auftrag |
-| **über 1.000** automatische Prüfungen in 51 Dateien, dazu mehrere Zehntausend Einzelvergleiche gegen unabhängige Referenzrechner | Qualitätskontrolle (Schritt 14) |
+| **über 1.000** automatische Prüfungen in 52 Dateien, dazu mehrere Zehntausend Einzelvergleiche gegen unabhängige Referenzrechner | Qualitätskontrolle (Schritt 14) |
 | **8** Mängel bei der Qualitätskontrolle gefunden, **0** davon in Berechnungen | Alle behoben |
 | **0** Programmzeilen von Hand geschrieben | Alles über Anweisungen an Claude Code |
 

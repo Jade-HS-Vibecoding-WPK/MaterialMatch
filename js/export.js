@@ -456,6 +456,7 @@
         var t = el("span", null, "pk-mat-text");
         t.appendChild(el("strong", "Material " + p.buchstabe + ": " + p.material.name));
         t.appendChild(el("span", pa ? (pa.generisch ? "generischer Materialdatensatz" : "Produkt " + pa.name + " (" + pa.hersteller + ")") : "", "pk-mat-produkt"));
+        if (MM.materialbilder && MM.materialbilder.hatFoto(p.material.id)) t.appendChild(el("span", MM.materialbilder.nachweis(p.material.id), "pk-mat-produkt pk-nachweis"));   // Bildnachweis direkt beim Foto
         li.appendChild(t);
         mats.appendChild(li);
       });

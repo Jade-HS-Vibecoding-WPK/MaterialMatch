@@ -245,13 +245,45 @@
   }
 
   // ---------- Der Steckbrief ----------
+  // Bild im Steckbrief: Materialfoto (Standard) mit dezenter Umschaltung auf die technische Schraffur.
+  // Gibt es kein Foto, steht nur die Schraffur da (ohne Umschalter).
+  function bildBox(materialId) {
+    var wrap = el("div", null, "sb-bild");
+    var B = MM.materialbilder;
+    var aktuell = B.hatFoto(materialId) ? "foto" : "schraffur";
+    function zeigen(variante) {
+      aktuell = variante;
+      var neu = B.element(materialId, { groesse: "gross", beschriftung: true, variante: variante });
+      var alt = wrap.querySelector("figure");
+      if (alt) wrap.replaceChild(neu, alt); else wrap.insertBefore(neu, wrap.firstChild);
+      if (schalter) [].forEach.call(schalter.querySelectorAll("button"), function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-variante") === variante ? "true" : "false"); });
+    }
+    var schalter = null;
+    wrap.appendChild(B.element(materialId, { groesse: "gross", beschriftung: true, variante: aktuell }));
+    if (B.hatFoto(materialId)) {
+      schalter = el("div", null, "sb-bild-schalter");
+      schalter.setAttribute("role", "group");
+      schalter.setAttribute("aria-label", "Darstellung des Materials");
+      [["foto", "Foto"], ["schraffur", "Schraffur"]].forEach(function (v) {
+        var b = el("button", v[1], "sb-bild-knopf");
+        b.type = "button";
+        b.setAttribute("data-variante", v[0]);
+        b.setAttribute("aria-pressed", v[0] === aktuell ? "true" : "false");
+        b.addEventListener("click", function () { zeigen(v[0]); });
+        schalter.appendChild(b);
+      });
+      wrap.appendChild(schalter);
+    }
+    return wrap;
+  }
+
   function baue(materialId, produktId, match) {
     var m = MM.produkte.wirksam(materialId, produktId || "");
     var art = el("article", null, "steckbrief-karte");
     art.setAttribute("data-material", materialId);
 
     var kopf = el("div", null, "sb-kopf");
-    kopf.appendChild(MM.materialbilder.element(materialId, { groesse: "gross", beschriftung: true }));
+    kopf.appendChild(bildBox(materialId));
     var info = el("div", null, "sb-info");
     var h = el("h3", m.name, "sb-name");
     h.id = "sb-titel-" + materialId;
@@ -408,8 +440,29 @@
     if (!box) return;
     box.textContent = "";
     var p = root.MATERIALMATCH_PROFIL;
-    box.appendChild(el("h4", "Materialillustrationen"));
-    box.appendChild(el("p", "Alle Bilder in MaterialMatch sind „" + MM.materialbilder.HINWEIS + "“: selbst gezeichnete Schraffuren im Stil von Architekturplänen (SVG-Dateien im Ordner img/schraffuren). Sie sind keine Fotos und zeigen keine Herstellerprodukte. Sie sind einfarbig (Schwarz, Weiß, Grau), stammen vom Projektteam, es gibt keine Rechte Dritter und keine Bildserver; alles funktioniert offline. Es sind keine normgerechten Schraffuren und keine Bewertung."));
+    box.appendChild(el("h4", "Materialbilder"));
+    var B = MM.materialbilder, nFoto = Object.keys(B.alleFotos()).length;
+    box.appendChild(el("p", "Die Bilder zeigen typische Baustoffe oder Bauprodukte der jeweiligen Materialart. Sie sind Beispielfotos aus Wikimedia Commons (" + nFoto + " von " + daten.baustoffe.length + " Baustoffen) und zeigen nicht zwingend das in den Berechnungen verwendete Herstellerprodukt. Bei Baustoffen ohne lizenzgeklärtes Foto steht die technische Schraffur: eine selbst gezeichnete, einfarbige „" + B.HINWEIS + "“ im Stil von Architekturplänen (SVG-Dateien im Ordner img/schraffuren, unverändert erhalten; im Steckbrief ist per Knopf zwischen Foto und Schraffur umschaltbar). Beides sind keine normgerechten Schraffuren und keine Bewertung."));
+    var fotoListe = daten.baustoffe.filter(function (m) { return B.hatFoto(m.id); });
+    var ohneFoto = daten.baustoffe.filter(function (m) { return !B.hatFoto(m.id); });
+    var nach = el("details", null, "sub bildnachweis-gesamt");
+    nach.appendChild(el("summary", "Bildnachweis der Materialfotos (" + fotoListe.length + ")"));
+    var nb = el("div", null, "sub-body");
+    nb.appendChild(el("p", "Alle Fotos wurden für MaterialMatch auf das Seitenverhältnis 4:3 zugeschnitten, verkleinert und als WebP gespeichert (Bearbeitung im Sinne der Lizenzen). Urheber, Lizenz und Fundstelle:", "soft-text"));
+    var ul = el("ul", null, "bildnachweis");
+    fotoListe.forEach(function (m) {
+      var f = B.foto(m.id), li = el("li");
+      li.appendChild(el("strong", m.name + ": "));
+      li.appendChild(document.createTextNode(f.urheber + ", "));
+      if (f.lizenz_url) { var al = el("a", f.lizenz); al.href = f.lizenz_url; al.target = "_blank"; al.rel = "noopener noreferrer"; li.appendChild(al); } else li.appendChild(document.createTextNode(f.lizenz));
+      li.appendChild(document.createTextNode(", "));
+      var aq = el("a", f.quelle_name + (f.titel ? ": " + f.titel : "")); aq.href = f.quelle_url; aq.target = "_blank"; aq.rel = "noopener noreferrer"; li.appendChild(aq);
+      ul.appendChild(li);
+    });
+    nb.appendChild(ul);
+    if (ohneFoto.length) nb.appendChild(el("p", "Ohne Foto (es wird die Schraffur gezeigt): " + ohneFoto.map(function (m) { return m.name; }).join("; ") + ".", "soft-text"));
+    nach.appendChild(nb);
+    box.appendChild(nach);
     if (p) {
       box.appendChild(el("h4", p.meta.titel));
       box.appendChild(el("p", p.meta.hinweis));

@@ -365,6 +365,20 @@ Die Siniat-EPD „Gipsplatte nach DIN EN 520 und DIN 18180“ (BVG, EPD-BVG-2021
 
 **Bilanz (Echtdaten-Modus):** Materialien mit belegtem Preis 19 → **20 von 50**; Produkte mit Preis 40 → **43**; belegte Kennwerte 156 → **157**; Produkte 82 → **85**; Quellen 168 → **173**. Technische Kennwerte: je 1 neuer Wert für 3 Produkte (λD ×2, Brandverhalten ×2, Rohdichte ×1). Ökologische Kennwerte: keine neuen. **Die Hauptlücken (λ, μ, c, Druckfestigkeit der allgemeinen Materialien, Recycling) bleiben, bis baubook/Normen/Hochschule freigegeben sind.** Alle Schritte für euch: `ANMELDUNGEN_UND_DOWNLOADS.md`.
 
+## 2l. Runde 11 (18.11.2026), MaterialMatch 3.6: Materialfotos statt Schraffuren (Bildrecherche und Lizenzprüfung)
+
+**Auftrag:** Echte Baustofffotos als primäre Darstellung; nur Bilder mit geklärten Nutzungsrechten; keine erfundenen Quellen; ohne passendes Bild neutrale Darstellung.
+
+**Quelle:** ausschließlich **Wikimedia Commons** (commons.wikimedia.org, Bilddateien von upload.wikimedia.org). Die Lizenz wurde je Datei über die Schnittstelle der Dateiseite (Feld `LicenseShortName`, Hinweis `Restrictions`) gelesen und danach gefiltert: erlaubt waren nur **CC0, gemeinfrei, CC BY und CC BY-SA** ohne Einschränkungshinweis; nicht übernommen wurden Bilder mit NC-/ND-Lizenz, GFDL-only, „nur redaktionelle Nutzung“ oder Wasserzeichen. Herstellerbilder (z. B. von STEICO, ISOVER, Ytong) wurden **nicht** genommen, weil die Webseiten Nutzung und Weitergabe der Bilder nicht ausdrücklich freigeben; Händlerfotos (Hornbach, OBI usw.) sind urheberrechtlich geschützt und blockieren automatische Abrufe.
+
+**Vorgehen:** Je Baustoff 2 bis 4 Suchanfragen (englisch und deutsch) und Kategorien bei Commons, danach Sichtprüfung der Kandidaten auf Kontaktbögen (fachlich passend? ein Material im Bild? keine Beschriftungen/Wasserzeichen? ruhige Darstellung?). Rechenweg der Aufnahme: Zuschnitt auf 4:3, 800 × 600 px, WebP (Qualität 72), `tools/bilder_bauen.py`. Der Abruf wurde gedrosselt (Wikimedia antwortete bei zu schnellen Anfragen mit HTTP 429).
+
+**Ergebnis: 41 von 50 Baustoffen haben ein Foto.** Lizenzen der 41 Fotos: CC BY-SA 3.0 (19), CC BY-SA 4.0 (9), CC0 (4), gemeinfrei (3), CC BY-SA 3.0 de (2), CC BY-SA 2.0 (2), CC BY-SA 2.5 (1), CC BY 4.0 (1). Jedes Foto trägt Urheber, Lizenz (mit Link), Fundstelle (Link auf die Commons-Dateiseite), Abrufdatum 18.11.2026 und den Vermerk der Bearbeitung in `data/bilder.js`; sichtbar ist der Nachweis unter dem Foto im Steckbrief und in der Swipe-Karte, im PDF-Bericht beim Material und gesammelt in „Quellen & Details“ → „Bildnachweis der Materialfotos“ (nach CC BY-SA gehört die Namensnennung zum Foto; die Bearbeitung ist angegeben).
+
+**Ohne Foto (9, es erscheint die Schraffur):** Leichtbetonstein (Naturbims), PUR-Hartschaum, Kork (expandiert), Schafwolle, Faserzementplatte, Fensterglas, Gipsfaserplatte, Zementestrich, Kalk-Gips-Innenputz. Grund: Bei Commons wurde kein fachlich eindeutiges Foto mit freier Lizenz gefunden (Treffer waren Verpackungen, Gebäudeansichten, Kunstgegenstände, Schmuckfliesen oder zeigten Fremdobjekte). Es wurde bewusst kein unpassendes Bild genommen.
+
+**Einschränkungen der Fotos (ehrlich):** Es sind **Beispielfotos typischer Baustoffe**, nicht die in den Berechnungen verwendeten Herstellerprodukte (Produkte in `data/produkte.js` haben kein eigenes Foto und zeigen das Foto des Materials). Weniger eindeutig sind: Konstruktionsvollholz (Balken mit Riss), Stahlblech (verzinkte graue Fläche), Naturstein weich (Sandsteinmauerwerk), Betondachstein (Dachgaube mit Betondachsteinen), Zinkblech (Giebel mit Zinkschindeln), PIR (Platten am Bau), Massivholz Laub (Eichenbretter im Freien) und **Blähton-Leichtbetonstein: das Foto zeigt den Ausgangsstoff Blähton-Granulat**, nicht den Stein (der Alternativtext sagt das). Wer bessere Fotos hat (eigene Aufnahmen sind am sichersten), legt sie ab und führt `tools/bilder_bauen.py` aus (Anleitung im Kopf der Datei).
+
 ## 3. Gelesen, aber bewusst nicht übernommen
 
 | Dokument | Grund |
