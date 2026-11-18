@@ -97,7 +97,7 @@ const URL = 'file://' + PROJ + '/index.html';
 
   // ================= Oberfläche: Interview
   p = await neu(1280, 'demo');
-  await p.click('#kopf-match');
+  await p.click('#reiter-match');
   const start = await p.evaluate(() => ({ frage: document.querySelector('.iv-titel').textContent, schritt: document.querySelector('.iv-schritt').textContent, opt: [...document.querySelectorAll('.iv-name')].map(x => x.textContent), prog: document.querySelector('.iv-fortschritt').getAttribute('aria-valuenow'), weiterOff: document.querySelector('.iv-weiter').disabled, zurueckOff: document.querySelector('.iv-zurueck').disabled, typ: document.querySelector('.iv-eingabe').type }));
   check('Frage 1 „Wo möchtest du den Baustoff einsetzen?“ mit den sieben Einsatzbereichen als Auswahlfelder (Radio), Fortschritt „Frage 1 von 5“, „Weiter“ gesperrt bis zur Antwort', start.frage === 'Wo möchtest du den Baustoff einsetzen?' && start.schritt === 'Frage 1 von 5' && JSON.stringify(start.opt) === '["Tragwerk","Außenwand","Innenwand","Dach","Dämmung","Fassade","Innenausbau"]' && start.prog === '1' && start.weiterOff && start.zurueckOff && start.typ === 'radio', start);
   await p.check('input[value="aussenwand"]', { force: true }); await p.click('.iv-weiter');
@@ -211,7 +211,7 @@ const URL = 'file://' + PROJ + '/index.html';
 
   // ================= Reduzierte Bewegung
   p = await neu(1280, 'demo', { reduziert: true });
-  await p.click('#kopf-match');
+  await p.click('#reiter-match');
   await p.evaluate(() => { localStorage.setItem('materialmatch.match.v1', JSON.stringify({ antworten: { einsatz: 'daemmung', prioritaeten: ['co2'], anforderungen: ['keine'], kosten: 'keine', materialart: 'keine' } })); }); await p.reload(); await p.waitForTimeout(300); await p.click('#reiter-match');
   const vorR = await p.evaluate(() => document.querySelector('.sw-zaehler').textContent);
   await p.click('.sw-fav');
@@ -221,7 +221,7 @@ const URL = 'file://' + PROJ + '/index.html';
 
   // ================= Speicher gesperrt (z. B. privates Fenster)
   p = await neu(1280, 'demo', { speicherKaputt: true });
-  await p.click('#kopf-match'); await p.evaluate(() => { MM.favoriten.hinzufuegen('eps'); });
+  await p.click('#reiter-match'); await p.evaluate(() => { MM.favoriten.hinzufuegen('eps'); });
   const sg = await p.evaluate(() => ({ favs: MM.favoriten.liste(), ok: MM.favoriten.speicherOk(), hinweis: !!document.querySelector('.fav-speicher-hinweis') }));
   check('Ist das Speichern im Browser nicht möglich, funktionieren die Favoriten trotzdem bis zum Schließen der Seite; ein Hinweis erklärt es', sg.favs.join() === 'eps' && !sg.ok && sg.hinweis, sg);
   await p.close();

@@ -28,7 +28,6 @@
   document.addEventListener("DOMContentLoaded", function () {
     var statusZeile = document.getElementById("status");
     if (window.MM.reiter) window.MM.reiter.init();   // MaterialMatch 2.0: Hauptreiter (auch bei Datenfehlern bedienbar)
-    if (window.MM.kopf) window.MM.kopf.init();        // MaterialMatch 3.0: Hauptaktionen im Kopf
     var daten = window.MATERIALMATCH_DATA;
     var pruefung = window.MM && window.MM.pruefeDaten ? window.MM.pruefeDaten(daten) : null;
 
@@ -90,5 +89,7 @@
         pruefung.warnungen.length + " Hinweise) · Seite geladen am " + heute;
       statusZeile.classList.add("ok");
     }
+    if (window.MM.hinweis) window.MM.hinweis.init();      // MaterialMatch 3.7: Hinweis „Kurz vorab“ beim ersten Besuch
+    if (window.MM.auftakt) window.MM.auftakt.bereit();    // MaterialMatch 3.7: Logo-Auftakt beenden, sobald die Seite bereit ist
   });
 })();

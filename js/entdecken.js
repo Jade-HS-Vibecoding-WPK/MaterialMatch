@@ -133,7 +133,7 @@
     f.feedback.appendChild(s);
     var link = el("button", "Zum Vergleich", "ent-link");
     link.type = "button";
-    link.addEventListener("click", function () { if (MM.kopf) MM.kopf.gehe("vergleich"); else MM.reiter.zeige("vergleich"); });
+    link.addEventListener("click", function () { MM.reiter.zeige("vergleich"); });
     f.feedback.appendChild(link);
     f.feedback.hidden = false;
   }

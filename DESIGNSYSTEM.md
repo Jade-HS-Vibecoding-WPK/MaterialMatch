@@ -40,9 +40,12 @@ Schriftstärken: 400 (Text), 600/700 (Beschriftungen, Knöpfe), 800 (Marke, Tite
 | `--score-1…5` | #17643a … #951f2b | nur Bewertungen |
 
 ## Form
-Rundungen: Kacheln 22 px (`--radius-kachel`), Karten und Felder 12–14 px, Knöpfe/Reiter vollständig rund (999 px). Abstand zwischen Kacheln 20 px (`--kachel-abstand`), Innenabstand 24 px (`--kachel-innen`, am Handy 17 px). Schatten nur `--schatten` (kaum sichtbar). Linien 1 px.
+Rundungen (seit 3.7 vier Stufen, alle als Variablen): Kachel 22 px (`--radius-kachel`), Karte 16 px (`--karte-radius`), Feld 12 px (`--radius`, `--radius-sm`), Knöpfe/Reiter vollständig rund (999 px). Abstand zwischen Kacheln 20 px (`--kachel-abstand`), Innenabstand 24 px (`--kachel-innen`, am Handy 17 px). Schatten nur `--schatten` (kaum sichtbar). Linien 1 px.
 
 ## Bausteine
+- **Kopf:** eine kompakte Kachel (rund 80 px) mit Marke, Leitsatz und Untertitel; keine Schaltflächen (die Reiter sind die Navigation).
+- **Vergleich in drei Ebenen:** kleine Wegweiser „1 Überblick · 2 Visuelle Auswertung · 3 Technische Details“ (`.ebene`).
+- **Hinweisfenster und Auftakt:** `dialog.hinweis` (Kachel-Stil, Logo oben) und `.auftakt` (Logo mittig, kurz, ohne Klickfang).
 - **Reiter:** Hauptbereiche *Entdecken, Vergleich, Match finden*; durch einen Trenner abgesetzt die weiteren Bereiche *Alternativen, Quellen & Details*. Am Handy zweizeilig (oben drei, unten zwei), Schrift mindestens 12 px, aktiver Reiter dunkel gefüllt.
 - **Knöpfe:** Hauptaktion dunkel gefüllt (`.btn`, `.ent-btn-haupt`), zweite Aktion weiß mit Rahmen, Textlink für leise Aktionen (Entfernen, Steckbrief). Mindesthöhe 44 px (in kompakten Umschaltern 40 px). Fokus: 2 px dunkler Rahmen mit Abstand.
 - **Materialkarte** (`.ent-karte`, Auswahlkarten, Match-Karten): Schraffur (4 : 3), Name, Kategorie, **zwei bis drei** Kennwerte, klare Aktion; weitere Werte im Steckbrief.
@@ -51,4 +54,4 @@ Rundungen: Kacheln 22 px (`--radius-kachel`), Karten und Felder 12–14 px, Knö
 - **Leerzustand:** gestrichelter Rahmen oder Kachel mit einem Satz, was fehlt, und einem Knopf, wie es weitergeht.
 
 ## Barrierefreiheit
-Alle Bedienelemente per Tastatur erreichbar (Reiter: Pfeile, Pos1, Ende), sichtbarer Fokus, Beschriftungen und `aria-label` an Symbolknöpfen, Kontrast ≥ 4,5 : 1 für Text, keine Information allein über Farbe (Datenart-Marken und Wörter wie „fehlt“).
+Bei „Bewegung reduzieren“ gibt es keine Übergänge und Animationen (globale Regel am Ende von `css/bento.css`). Alle Bedienelemente per Tastatur erreichbar (Reiter: Pfeile, Pos1, Ende), sichtbarer Fokus, Beschriftungen und `aria-label` an Symbolknöpfen, Kontrast ≥ 4,5 : 1 für Text, keine Information allein über Farbe (Datenart-Marken und Wörter wie „fehlt“).

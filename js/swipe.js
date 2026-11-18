@@ -111,16 +111,26 @@
       kopf.appendChild(b);
       li.appendChild(kopf);
       li.appendChild(el("p", MM.matching.scoreText(e) + (e.score !== null ? " · " + e.abdeckung.belegt + " von " + e.abdeckung.von + " Kriterien belegt" : ""), "sw-top-score"));
+      // MaterialMatch 3.7: Das Wichtigste (Vorteile, Nachteile, Preis) steht sofort da; Ökologie, Begründung und fehlende Daten sind aufklappbar
       var dl = el("dl", null, "sw-top-daten");
-      function zeile(k, v) { if (!v) return; dl.appendChild(el("dt", k)); dl.appendChild(el("dd", v)); }
+      var dl2 = el("dl", null, "sw-top-daten sw-top-mehr-daten");
+      var ziel = dl;
+      function zeile(k, v) { if (!v) return; ziel.appendChild(el("dt", k)); ziel.appendChild(el("dd", v)); }
       zeile("Vorteile", staerken(e).join(", "));
       var schwach = e.kriterien.filter(function (t) { return !t.gleich && t.score <= 0.33 && t.negativ; }).map(function (t) { return "Eher " + t.negativ.replace(/^höherer /, "höhere ").replace(/^höheren /, "höhere ").replace(/^geringerer /, "geringe ").replace(/^schwächerer /, "schwächere "); });
       zeile("Mögliche Nachteile", schwach.length ? schwach.join(", ") : (m.nachteile && m.nachteile[0]) || "");
       zeile("Preis", preisText(m));
+      ziel = dl2;
       zeile("Ökologie", co2Text(m));
       zeile("Begründung", e.erklaerung);
       if (e.fehlend.length || e.vorlaeufig) zeile("Fehlende Daten", (e.fehlend.length ? "Nicht bewertet: " + e.fehlend.join(", ") + ". " : "") + (e.vorlaeufig ? "Die Punkte sind vorläufig." : ""));
       li.appendChild(dl);
+      if (dl2.childNodes.length) {
+        var mehr = el("details", null, "sw-top-mehr");
+        mehr.appendChild(el("summary", "Begründung und weitere Details"));
+        mehr.appendChild(dl2);
+        li.appendChild(mehr);
+      }
       ol.appendChild(li);
     });
     sec.appendChild(ol);

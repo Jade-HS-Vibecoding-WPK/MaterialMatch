@@ -28,14 +28,19 @@
     var M = MM.matching;
     return [
       { id: "einsatz", titel: "Wo möchtest du den Baustoff einsetzen?", hinweis: "Wähle einen Einsatzbereich.", art: "radio",
+        kurz: "Einsatzbereich", rolle: "Pflichtangabe", warum: "Der Einsatzbereich bestimmt, welche Baustoffe überhaupt in Frage kommen und wie sie bewertet werden. Ohne diese Angabe ist kein Match möglich.",
         optionen: M.EINSAETZE.map(function (e) { return { id: e.id, name: e.name, hinweis: e.hinweis }; }) },
       { id: "prioritaeten", titel: "Was ist dir besonders wichtig?", hinweis: "Mehrfachauswahl möglich.", art: "checkbox",
+        kurz: "Prioritäten", rolle: "Persönliche Präferenz", warum: "Daraus berechnen wir die Match-Punkte. Das sind Wünsche, keine Ausschlüsse: Fehlt einem Baustoff ein Wert, scheidet er nicht aus, sondern wird vorsichtiger bewertet.",
         optionen: M.PRIORITAETEN.map(function (p) { return { id: p.id, name: p.name, gesperrt: !p.datenlage, symbol: SYMBOLE[p.id] }; }) },
       { id: "anforderungen", titel: "Welche weiteren Anforderungen hast du?", hinweis: "Mehrfachauswahl möglich.", art: "checkbox", exklusiv: "keine",
+        kurz: "Anforderungen", rolle: "Zwingend und Wunsch", warum: "Brandschutz ist zwingend: Ein Baustoff, der ihn nicht erfüllt, wird nie als passend gezeigt. „Natürliche Materialien“ ist ein Wunsch und lässt sich im Ergebnis lockern. Ausgegraute Punkte können wir mangels Daten nicht bewerten.",
         optionen: M.ANFORDERUNGEN.map(function (p) { return { id: p.id, name: p.name, hinweis: p.hinweis, gesperrt: !p.datenlage }; }) },
       { id: "kosten", titel: "Welchen Kostenrahmen bevorzugst du?", hinweis: "Der Preis zählt nur, wenn es vergleichbare Preise gibt.", art: "radio",
+        kurz: "Kosten", rolle: "Persönliche Präferenz", warum: "Der Kostenrahmen beeinflusst nur die Reihenfolge, nie die Eignung. Viele Baustoffe haben (noch) keinen belegten Preis; sie werden deshalb nicht aussortiert.",
         optionen: M.KOSTENRAHMEN.map(function (p) { return { id: p.id, name: p.name }; }) },
       { id: "materialart", titel: "Welche Art von Materialien bevorzugst du?", hinweis: "Einordnung durch das Projekt.", art: "radio",
+        kurz: "Materialart", rolle: "Persönliche Präferenz", warum: "Das ist ein Wunsch nach einer Materialfamilie (z. B. nachwachsend oder mineralisch). Passt kein Baustoff, zeigen wir die nächstbesten mit klar benannter Abweichung.",
         optionen: M.MATERIALARTEN.map(function (p) { return { id: p.id, name: p.name }; }) }
     ];
   }
@@ -76,7 +81,7 @@
       bar.setAttribute("aria-valuemin", "1");
       bar.setAttribute("aria-valuemax", String(F.length));
       bar.setAttribute("aria-valuenow", String(schritt + 1));
-      bar.setAttribute("aria-valuetext", "Frage " + (schritt + 1) + " von " + F.length);
+      bar.setAttribute("aria-valuetext", "Frage " + (schritt + 1) + " von " + F.length + (f.kurz ? ": " + f.kurz : ""));
       bar.setAttribute("aria-label", "Fortschritt des Interviews");
       var fuell = el("i");
       fuell.style.width = ((schritt + 1) / F.length * 100) + "%";
@@ -90,6 +95,12 @@
       lg.setAttribute("tabindex", "-1");
       fs.appendChild(lg);
       fs.appendChild(el("p", f.hinweis, "iv-hinweis"));
+      if (f.warum) {   // MaterialMatch 3.7: Warum fragen wir das? und ob es eine zwingende Angabe oder ein persönlicher Wunsch ist
+        var warum = el("div", null, "iv-warum");
+        warum.appendChild(el("span", (f.kurz ? f.kurz + " · " : "") + f.rolle, "iv-rolle iv-rolle-" + (f.rolle === "Persönliche Präferenz" ? "wunsch" : "pflicht")));
+        warum.appendChild(el("p", f.warum));
+        fs.appendChild(warum);
+      }
       var raster = el("div", null, "iv-optionen iv-optionen-" + f.id);
       var gewaehlt = wert(f, a);
       f.optionen.forEach(function (o, i) {

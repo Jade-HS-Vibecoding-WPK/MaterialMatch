@@ -26,9 +26,9 @@ const DB = ctx.window.MATERIALMATCH_DATA;
   // ---------- 1. Start und Navigation ----------
   let p = await neu('echt');
   check('Start: Reiter „Vergleich“ ist aktiv (bisheriges Verhalten), „Entdecken“ ist der erste Reiter und hat einen eigenen Bereich', await p.evaluate(() => MM.reiter.aktiv() === 'vergleich' && document.querySelector('[role=tab]').id === 'reiter-entdecken' && document.getElementById('bereich-entdecken').hidden === true));
-  check('Kopf: drei Hauptaktionen „Baustoffe entdecken“, „Baustoffe vergleichen“, „Match finden“', JSON.stringify(await p.$$eval('.kopf-knopf', k => k.map(x => x.textContent.trim()))) === '["Baustoffe entdecken","Baustoffe vergleichen","Match finden"]');
-  await p.click('#kopf-entdecken');
-  check('Die Aktion „Baustoffe entdecken“ öffnet den Reiter „Entdecken“ (Adresse #entdecken), der Fokus liegt im Bereich', await p.evaluate(() => MM.reiter.aktiv() === 'entdecken' && !document.getElementById('bereich-entdecken').hidden && location.hash === '#entdecken'));
+  check('Die drei Hauptbereiche stehen als Reiter mit Symbol (Entdecken, Vergleich, Match finden); keine doppelten Schaltflächen im Kopf', JSON.stringify(await p.$$eval('[role=tab]', t => t.slice(0, 3).map(x => x.textContent.trim() + (x.querySelector('svg') ? '+' : '')))) === '["Entdecken+","Vergleich+","Match finden+"]' && (await p.$$eval('.kopf a, .kopf button', k => k.length)) === 0);
+  await p.click('#reiter-entdecken');
+  check('Der Reiter „Entdecken“ öffnet den Bereich „Entdecken“ (Adresse #entdecken), ', await p.evaluate(() => MM.reiter.aktiv() === 'entdecken' && !document.getElementById('bereich-entdecken').hidden && location.hash === '#entdecken'));
   check('Die weiteren Bereiche (Alternativen, Quellen & Details) sind durch einen Trenner von den drei Hauptbereichen abgesetzt', await p.evaluate(() => { const t = document.querySelector('.tabs-trenner'); const prev = t.previousElementSibling, next = t.nextElementSibling; return prev.id === 'reiter-match' && next.id === 'reiter-alternativen'; }));
   check('Liste: alle 50 Baustoffe als Karten mit Anzeige „50 von 50 Baustoffen“, sortiert nach Name', (await p.$$eval('#ent-liste > li', l => l.length)) === 50 && (await anzahl(p)) === '50 von 50 Baustoffen' && await (async () => { const n = await namen(p); return JSON.stringify(n) === JSON.stringify(n.slice().sort((x, y) => x.localeCompare(y, 'de'))); })());
 

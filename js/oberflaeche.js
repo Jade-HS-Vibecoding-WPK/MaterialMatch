@@ -85,6 +85,13 @@
     // Für Tests und Aufrufe von außen
     istGestartet: function () { return gestartet; },
     init: function () {
+      // Wegweiser „1 Überblick · 2 Visuelle Auswertung · 3 Technische Details“ erst zeigen, wenn Materialien gewählt sind
+      function ebenenZeigen() {
+        var n = root.MM.auswahl ? root.MM.auswahl.holeAuswahl().plaetze.length : 0;
+        [].forEach.call(document.querySelectorAll(".ebene"), function (e) { e.hidden = n === 0; });
+      }
+      document.addEventListener("mm:auswahl", ebenenZeigen);
+      ebenenZeigen();
       document.addEventListener("mm:auswahl", function () { ersterStart(); tooltipsSetzen(); });
       document.addEventListener("mm:prioritaet", tooltipsSetzen);
       ["kategorie", "materialA", "materialB", "materialC", "anwendung", "prioritaet"].forEach(function (id) {

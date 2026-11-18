@@ -10,8 +10,10 @@ if (!chromium.__mmOffline) {
   chromium.launch = async (...a) => {
     const b = await launch(...a);
     const np = b.newPage.bind(b), nc = b.newContext.bind(b);
-    b.newPage = async (...x) => { const p = await np(...x); await leer(p.context()); return p; };
-    b.newContext = async (...x) => { const c = await nc(...x); await leer(c); return c; };
+    // MaterialMatch 3.7: Logo-Auftakt und Hinweis „Kurz vorab“ sind in den Tests aus (window.__MM_OHNE_START__); ?start=ja schaltet sie in test54 wieder ein
+    const ohneStart = ctx => ctx.addInitScript(() => { window.__MM_OHNE_START__ = true; });
+    b.newPage = async (...x) => { const p = await np(...x); await leer(p.context()); await ohneStart(p.context()); return p; };
+    b.newContext = async (...x) => { const c = await nc(...x); await leer(c); await ohneStart(c); return c; };
     return b;
   };
 }

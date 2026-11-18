@@ -57,7 +57,7 @@ window.MATERIALMATCH_BILDER = {
       "bearbeitung": "auf 4:3 zugeschnitten, auf 800 × 600 px verkleinert, als WebP gespeichert"
     },
     "brettschichtholz": {
-      "urheber": "メルビル (Wikimedia-Commons-Nutzer, „Own work“)",
+      "urheber": "メルビル",
       "lizenz": "CC BY-SA 3.0",
       "lizenz_url": "https://creativecommons.org/licenses/by-sa/3.0",
       "quelle_name": "Wikimedia Commons",
@@ -66,7 +66,8 @@ window.MATERIALMATCH_BILDER = {
       "abgerufen": "2026-11-18",
       "alt": "Foto: Stirnseite eines Brettschichtholz-Trägers mit verleimten Holzlamellen",
       "datei": "brettschichtholz.webp",
-      "bearbeitung": "auf 4:3 zugeschnitten, auf 800 × 600 px verkleinert, als WebP gespeichert"
+      "bearbeitung": "auf 4:3 zugeschnitten, auf 800 × 600 px verkleinert, als WebP gespeichert",
+      "hinweis": "Laut Dateiseite eigenes Werk der hochladenden Person (Wikimedia-Commons-Nutzer)."
     },
     "brettsperrholz": {
       "urheber": "Райн Александр Дмитриевич",
@@ -284,7 +285,7 @@ window.MATERIALMATCH_BILDER = {
       "bearbeitung": "auf 4:3 zugeschnitten, auf 800 × 600 px verkleinert, als WebP gespeichert"
     },
     "massivholz_nadel": {
-      "urheber": "Das Ohr (Wikimedia-Commons-Nutzer, Hochladender)",
+      "urheber": "Das Ohr",
       "lizenz": "CC BY-SA 3.0",
       "lizenz_url": "https://creativecommons.org/licenses/by-sa/3.0/",
       "quelle_name": "Wikimedia Commons",
@@ -294,7 +295,7 @@ window.MATERIALMATCH_BILDER = {
       "alt": "Foto: Brettoberfläche aus Fichtenholz mit feiner Maserung in warmem Orangeton",
       "datei": "massivholz_nadel.webp",
       "bearbeitung": "auf 4:3 zugeschnitten, auf 800 × 600 px verkleinert, als WebP gespeichert",
-      "hinweis": "Die Dateiseite nennt keinen Urheber ausdrücklich; angegeben ist der Hochladende."
+      "hinweis": "Die Dateiseite nennt keinen Urheber ausdrücklich; angegeben ist die hochladende Person (Wikimedia-Commons-Nutzer)."
     },
     "mineralwolle": {
       "urheber": "FMI Fachverband Mineralwolleindustrie",

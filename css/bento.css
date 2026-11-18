@@ -24,7 +24,7 @@
   --kachel-weiss: #ffffff;
   --bild-klein: 3.5rem;            /* alle Materialkarten: gleiche Bildgröße (4:3) */
   --karte-bg: var(--bg-soft);     /* alle Materialkarten: gleicher heller Hintergrund */
-  --karte-radius: 18px;
+  --karte-radius: 16px;       /* Karten in Kacheln, Bilder, Meldungen */
   --karte-innen: .85rem 1rem;
   --kachel-blau: #e7f0fa;        /* Hellblau: hervorgehobene Ergebnisse (Schwerpunkt-Marke, Match-Punkte) */
   --kachel-violett: #eee9fa;     /* Hellviolett: Eingaben */
@@ -33,7 +33,7 @@
   --text-soft: #5f6773;
   --line: rgba(31, 37, 48, .09);
   --line-strong: rgba(31, 37, 48, .22);
-  --radius: 14px;
+  --radius: 12px;
   --radius-sm: 12px;
   --radius-kachel: 22px;
   --kachel-innen: 1.5rem;
@@ -63,22 +63,16 @@ h1, h2, h3, h4 { font-family: var(--schrift); letter-spacing: -.01em; }
 .kw-zahl, .kw-r, .chart-num, .chart-value, .chart-scale, td, th { font-variant-numeric: tabular-nums lining-nums; }
 
 /* ---------- 3 Kopf, Datenmodus und Reiter ---------- */
-/* Kopfbereich (MaterialMatch 3.0): Marke, Leitsatz, Untertitel und zwei Hauptaktionen in einer ruhigen Kachel */
+/* Kopfbereich (MaterialMatch 3.7): kompakte Kachel mit Marke, Leitsatz und Untertitel. Die drei Hauptbereiche erreicht man über die Reiter darunter
+   (keine doppelten Schaltflächen im Kopf). */
 .site-header { background: none; border-bottom: 0; padding: 1rem 0 .4rem; }
-.kopf { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 1rem 2rem; padding: 1.25rem 1.75rem; overflow: hidden;
+.kopf { position: relative; padding: 1rem var(--kachel-innen); overflow: hidden;
   background: var(--kachel-weiss); border: 1px solid var(--line); border-radius: var(--radius-kachel); box-shadow: var(--schatten); }
-.kopf-text, .kopf-aktionen { position: relative; z-index: 1; }
-.site-header h1 { display: flex; align-items: center; gap: .6rem; margin: 0; font-size: 1.75rem; font-weight: 800; letter-spacing: -.02em; line-height: 1.2; }
+.kopf-text { position: relative; z-index: 1; display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-rows: auto auto; column-gap: 2rem; align-items: center; }
+.site-header h1 { grid-row: 1 / span 2; display: flex; align-items: center; gap: .6rem; margin: 0; font-size: 1.75rem; font-weight: 800; letter-spacing: -.02em; line-height: 1.2; }
 .marke { flex: none; width: 2.25rem; height: 2.25rem; }
-.site-header .tagline { margin: .35rem 0 0; font-size: var(--fs-xl); font-weight: 700; line-height: 1.3; color: var(--text); }
-.site-header .untertitel { margin: .15rem 0 0; max-width: 46rem; font-size: var(--fs-text); line-height: 1.45; color: var(--text-soft); }
-.kopf-aktionen { display: flex; flex-wrap: wrap; gap: .5rem; flex: none; }
-.kopf-knopf { display: inline-flex; align-items: center; gap: .45rem; min-height: 2.75rem; padding: .55rem 1rem; font-size: var(--fs-text); font-weight: 700; text-decoration: none; border-radius: 999px; }
-.kopf-knopf .ico { width: 1.15rem; height: 1.15rem; }
-.btn.kopf-knopf-haupt { color: #fff; background: var(--text); border: 1px solid var(--text); }
-.btn.kopf-knopf-haupt:hover { background: #000; }
-.btn.kopf-knopf-zweit { color: var(--text); background: var(--kachel-blau); border: 1px solid transparent; }
-.btn.kopf-knopf-zweit:hover { background: #d4e4f6; }
+.site-header .tagline { grid-column: 2; margin: 0; font-size: var(--fs-xl); font-weight: 700; line-height: 1.3; color: var(--text); }
+.site-header .untertitel { grid-column: 2; margin: 0; max-width: 46rem; font-size: var(--fs-text); line-height: 1.4; color: var(--text-soft); }
 
 .modus-leiste { border-bottom: 0; padding: .3rem 0; }
 .modus-leiste .container { background: rgba(255, 255, 255, .85); border: 1px solid var(--line); border-radius: 999px; padding: .15rem 1.1rem; max-width: calc(var(--breite) - 3rem); }
@@ -86,7 +80,8 @@ h1, h2, h3, h4 { font-family: var(--schrift); letter-spacing: -.01em; }
 
 .tabs-leiste { background: none; border-bottom: 0; padding: .4rem 0 .2rem; }
 .tabs { display: inline-flex; gap: .25rem; padding: .3rem; background: var(--kachel-weiss); border: 1px solid var(--line); border-radius: 999px; box-shadow: var(--schatten); max-width: 100%; }
-.tab { padding: .55rem 1.15rem; font-size: var(--fs-text); font-weight: 700; color: var(--text-soft); border: 0; border-radius: 999px; }
+.tab { display: inline-flex; align-items: center; justify-content: center; gap: .4rem; min-height: 2.75rem; padding: .35rem 1.15rem; line-height: 1.2; font-size: var(--fs-text); font-weight: 700; color: var(--text-soft); border: 0; border-radius: 999px; }
+.tab .ico { width: 1.05em; height: 1.05em; }
 .tab:hover { color: var(--text); background: rgba(31, 37, 48, .05); }
 .tab[aria-selected="true"], .tab[aria-selected="true"]:hover { color: #fff; background: var(--text); border-bottom-color: transparent; }
 
@@ -104,7 +99,7 @@ main.container { padding-top: 1rem; padding-bottom: 2.5rem; }
 .kachel-kopf h3 { font-size: var(--fs-l); }
 .kachel > h2, .kachel details > summary h2 { display: flex; align-items: center; gap: .6rem; }
 .kachel > h2 .ico, .kachel details > summary h2 .ico, .kachel-symbol {
-  width: 2.1rem; height: 2.1rem; padding: .5rem; border-radius: 12px; background: var(--bg-soft); color: var(--text);
+  width: 2.1rem; height: 2.1rem; padding: .5rem; border-radius: var(--radius-sm); background: var(--bg-soft); color: var(--text);
 }
 .kachel-kopf { display: flex; align-items: center; gap: .6rem; margin-bottom: 1rem; }
 .kachel-kopf h3 { flex: 1 1 auto; min-width: 0; }
@@ -157,7 +152,7 @@ select:disabled, input:disabled { background: var(--bg-soft); color: var(--text-
 #bento .k-diagramme, #bento .k-export, #bento .k-ergebnisse, #bento #orientierung, #bento .kw-fuss, #bento #dashboard-inhalt > .empty-state { grid-column: 1 / -1; }
 @media (min-width: 1280px) { #bento .kw-raster[data-modus="gleich"] > .kennwert { grid-column: span 3; } }
 /* Hinweis „nur zur Orientierung“: eine ruhige Zeile; der volle Text steht darunter zum Aufklappen */
-#bento #orientierung { max-width: none; margin: 0; padding: .75rem 1.2rem; font-size: var(--fs-m); border-radius: 18px; background: var(--hinweis-bg); border: 1px solid var(--line); box-shadow: none; }
+#bento #orientierung { max-width: none; margin: 0; padding: .75rem 1.2rem; font-size: var(--fs-m); border-radius: var(--karte-radius); background: var(--hinweis-bg); border: 1px solid var(--line); box-shadow: none; }
 #bento #orientierung[hidden] { display: none; }
 #bento #orientierung p { margin: 0; }
 .orient-mehr { margin-top: .35rem; }
@@ -165,7 +160,7 @@ select:disabled, input:disabled { background: var(--bg-soft); color: var(--text-
 .orient-mehr p { margin-top: .35rem; }
 #bento #dashboard-inhalt > .empty-state { padding: 1.75rem 1.4rem; margin: 0; border: 1.5px dashed var(--line-strong); border-radius: var(--radius-kachel); background: rgba(255, 255, 255, .6); color: var(--text-soft); text-align: center; }
 .kw-leerzustand { display: flex; flex-direction: column; align-items: center; gap: .25rem; }
-.kw-leer-symbol { width: 2.25rem; height: 2.25rem; padding: .5rem; margin-bottom: .25rem; border-radius: 12px; background: #fff; color: var(--text); }
+.kw-leer-symbol { width: 2.25rem; height: 2.25rem; padding: .5rem; margin-bottom: .25rem; border-radius: var(--radius-sm); background: #fff; color: var(--text); }
 .kw-leer-titel { margin: 0; font-size: var(--fs-l); font-weight: 800; color: var(--text); }
 .kw-leer-text { margin: 0; font-size: var(--fs-m); }
 #bento .kw-fuss { margin: -.4rem .4rem 0; font-size: var(--fs-s); color: var(--text-soft); }
@@ -180,10 +175,10 @@ select:disabled, input:disabled { background: var(--bg-soft); color: var(--text-
 .suche-icon { position: absolute; left: 1rem; top: 1.375rem; transform: translateY(-50%); width: 1.15rem; height: 1.15rem; color: var(--text-soft); pointer-events: none; }
 .suche-liste {
   position: absolute; z-index: 30; left: 0; right: 0; top: calc(100% + .35rem); margin: 0; padding: .35rem; list-style: none;
-  max-height: 22rem; overflow-y: auto; background: #fff; border: 1px solid var(--line); border-radius: 18px; box-shadow: 0 12px 32px rgba(31, 37, 48, .14);
+  max-height: 22rem; overflow-y: auto; background: #fff; border: 1px solid var(--line); border-radius: var(--karte-radius); box-shadow: 0 12px 32px rgba(31, 37, 48, .14);
 }
 .suche-liste[hidden] { display: none; }
-.suche-treffer { display: flex; flex-direction: column; gap: .05rem; padding: .6rem .8rem; border-radius: 12px; cursor: pointer; }
+.suche-treffer { display: flex; flex-direction: column; gap: .05rem; padding: .6rem .8rem; border-radius: var(--radius-sm); cursor: pointer; }
 .suche-treffer:hover, .suche-treffer[aria-selected="true"] { background: var(--bg-soft); }
 .suche-titel { font-weight: 700; font-size: var(--fs-text); line-height: 1.3; }
 .suche-zusatz { font-size: var(--fs-s); color: var(--text-soft); line-height: 1.3; }
@@ -206,8 +201,8 @@ select:disabled, input:disabled { background: var(--bg-soft); color: var(--text-
 #bento .card-note { background: #fff; border: 0; }
 #bento .card-mehr { margin-top: .1rem; }
 #bento .card .card-facts dt { text-transform: none; letter-spacing: 0; font-size: var(--fs-s); }
-#bento #auswahl-karten > .empty-state { margin: 0; padding: 1rem; border: 1.5px dashed var(--line-strong); border-radius: 18px; background: none; color: var(--text-soft); font-size: var(--fs-m); text-align: center; }
-#eigenes-produkt-wrap .sub { border-radius: 18px; border: 0; background: var(--bg-soft); }
+#bento #auswahl-karten > .empty-state { margin: 0; padding: 1rem; border: 1.5px dashed var(--line-strong); border-radius: var(--karte-radius); background: none; color: var(--text-soft); font-size: var(--fs-m); text-align: center; }
+#eigenes-produkt-wrap .sub { border-radius: var(--karte-radius); border: 0; background: var(--bg-soft); }
 
 /* ---------- 7 Eingaben: kompakt, kurze Beschriftungen ---------- */
 #bento .k-eingaben > details { height: 100%; display: flex; flex-direction: column; }
@@ -267,7 +262,7 @@ select:disabled, input:disabled { background: var(--bg-soft); color: var(--text-
 .info-knopf:hover { color: var(--text); background: rgba(31, 37, 48, .08); }
 .info-knopf[aria-expanded="true"] { color: #fff; background: var(--text); }
 .info-knopf .ico { width: 1.1rem; height: 1.1rem; }
-.kw-info { margin: 0 0 1rem; padding: .9rem 1rem; font-size: var(--fs-m); line-height: 1.4; background: var(--bg-soft); border-radius: 16px; }
+.kw-info { margin: 0 0 1rem; padding: .9rem 1rem; font-size: var(--fs-m); line-height: 1.4; background: var(--bg-soft); border-radius: var(--karte-radius); }
 .kw-info[hidden] { display: none; }
 .kw-info-titel { margin: 0 0 .5rem; font-weight: 800; }
 .kw-info-liste { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: .5rem; }
@@ -278,8 +273,8 @@ select:disabled, input:disabled { background: var(--bg-soft); color: var(--text-
 .kw-info-fuss { margin: .6rem 0 0; font-size: var(--fs-s); color: var(--text-soft); }
 
 /* ---------- 9 Diagramme (kompakt) und Export ---------- */
-#bento .k-diagramme { padding: 1.5rem; }
-#bento .k-diagramme > h2 { margin-bottom: 1rem; }
+#bento .k-diagramme { padding: 1.25rem 1.5rem 1.5rem; }
+#bento .k-diagramme > h2 { margin-bottom: .6rem; }
 .diagramme-bereich .chart-liste { gap: 0 2.5rem; }
 .chart { margin: 0 0 .75rem; }
 .chart-title { margin: 0 0 .1rem; font-size: var(--fs-l); font-weight: 800; }
@@ -303,7 +298,7 @@ select:disabled, input:disabled { background: var(--bg-soft); color: var(--text-
 .chart-annahmen { margin-top: .35rem; font-size: var(--fs-s); }
 .chart-annahmen > summary { font-size: var(--fs-s); }
 .chart-mehr-knopf { margin: 0 0 .5rem; }
-#bento .k-diagramme .note, #bento .k-diagramme .warn { border: 0; border-radius: 14px; }
+#bento .k-diagramme .note, #bento .k-diagramme .warn { border: 0; border-radius: var(--radius-sm); }
 #bento .k-diagramme > #diagramme-inhalt > .warn { margin: 0 0 .9rem; padding: .45rem .8rem; font-size: var(--fs-s); }
 #bento .k-diagramme .note { background: var(--bg-soft); }
 
@@ -334,14 +329,14 @@ select:disabled, input:disabled { background: var(--bg-soft); color: var(--text-
 
 #bento .k-export { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1rem; padding: .85rem 1.25rem; background: var(--kachel-weiss); }
 #bento .k-export .hint { margin: 0; flex: 1 1 14rem; font-size: var(--fs-m); }
-#bento .k-export .export-menue { flex: 1 1 100%; padding: .9rem 1rem; background: var(--bg-soft); border: 0; border-radius: 16px; }
-.export-eintrag { border-radius: 12px; }
+#bento .k-export .export-menue { flex: 1 1 100%; padding: .9rem 1rem; background: var(--bg-soft); border: 0; border-radius: var(--karte-radius); }
+.export-eintrag { border-radius: var(--radius-sm); }
 
 #bento .k-ergebnisse { padding: 1rem 1.5rem; }
 #bento .k-ergebnisse details[open] > summary { margin-bottom: 1rem; }
 #bento .k-ergebnisse .sub { border-top: 1px solid var(--line); }
 #bento .k-ergebnisse .sub > summary { font-weight: 800; }
-.table-wrap { background: #fff; border: 1px solid var(--line); border-radius: 16px; }
+.table-wrap { background: #fff; border: 1px solid var(--line); border-radius: var(--karte-radius); }
 
 /* ---------- 10 Alternativen und Quellen ---------- */
 .kachel.k-alternativen, .kachel.k-quellen, .kachel.k-match { padding: 1.75rem; }
@@ -351,7 +346,7 @@ select:disabled, input:disabled { background: var(--bg-soft); color: var(--text-
 .kachel.k-alternativen .bereich-intro { margin-bottom: 1.1rem; }
 .kachel.k-alternativen .rec-card { display: flex; flex-direction: column; background: var(--karte-bg); border: 0; border-radius: var(--karte-radius); box-shadow: none; padding: 1rem 1.1rem; }
 .kachel.k-alternativen .rec-card .slot { background: #fff; color: var(--text); border: 2px solid var(--text); }
-.kachel.k-alternativen .card-note, .kachel.k-alternativen .rec-point { background: #fff; border: 0; border-radius: 12px; }
+.kachel.k-alternativen .card-note, .kachel.k-alternativen .rec-point { background: #fff; border: 0; border-radius: var(--radius-sm); }
 .kachel.k-alternativen .rec-point { padding: .5rem .75rem; font-size: var(--fs-text); }
 .kachel.k-alternativen .rec-point .label { font-size: var(--fs-xs); text-transform: none; letter-spacing: 0; font-weight: 700; }
 .kachel.k-alternativen .rec-text { font-size: var(--fs-m); color: var(--text-soft); }
@@ -377,7 +372,7 @@ select:disabled, input:disabled { background: var(--bg-soft); color: var(--text-
 
 /* ---------- 10b Materialillustrationen und Steckbrief (MaterialMatch 3.0) ---------- */
 .mbild { margin: 0; flex: none; }
-.mbild img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; border: 1px solid var(--line); border-radius: 10px; background: #fafafa; object-fit: cover; }
+.mbild img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; border: 1px solid var(--line); border-radius: var(--radius-sm); background: #fafafa; object-fit: cover; }
 .mbild-klein { width: var(--bild-klein); }
 .mbild-klein img { border-radius: 8px; }
 .mbild-mittel { width: 100%; max-width: 14rem; }
@@ -410,7 +405,7 @@ dialog.steckbrief::backdrop { background: rgba(31, 37, 48, .5); }
 .sb-chip { padding: .15rem .65rem; font-size: var(--fs-s); font-weight: 700; color: var(--text); background: var(--kachel-blau); border-radius: 999px; }
 .sb-chip-hinweis { font-size: var(--fs-xs); color: var(--text-soft); }
 .sb-kennwerte { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; margin: 1.5rem 0 0; }
-.sb-kennwert { display: flex; flex-direction: column; gap: .2rem; min-width: 0; padding: .85rem 1rem; background: var(--bg-soft); border-radius: 16px; }
+.sb-kennwert { display: flex; flex-direction: column; gap: .2rem; min-width: 0; padding: .85rem 1rem; background: var(--bg-soft); border-radius: var(--karte-radius); }
 .sb-kennwert-titel { font-size: var(--fs-s); font-weight: 700; color: var(--text-soft); }
 .sb-kennwert-wert { display: flex; flex-wrap: wrap; align-items: baseline; gap: .1rem .35rem; }
 .sb-zahl { font-size: var(--fs-zahl); font-weight: 800; line-height: 1.15; letter-spacing: -.02em; font-variant-numeric: tabular-nums lining-nums; overflow-wrap: anywhere; }
@@ -450,7 +445,7 @@ dialog.steckbrief::backdrop { background: rgba(31, 37, 48, .5); }
 .iv-optionen { display: grid; grid-template-columns: repeat(auto-fit, minmax(13.5rem, 1fr)); gap: .75rem; }
 .iv-option { position: relative; display: block; margin: 0; cursor: pointer; }
 .iv-eingabe { position: absolute; opacity: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
-.iv-karte { display: flex; align-items: center; gap: .75rem; min-height: 3.75rem; padding: .85rem 1rem; background: var(--bg-soft); border: 2px solid transparent; border-radius: 16px; }
+.iv-karte { display: flex; align-items: center; gap: .75rem; min-height: 3.75rem; padding: .85rem 1rem; background: var(--bg-soft); border: 2px solid transparent; border-radius: var(--karte-radius); }
 .iv-option:hover .iv-karte { border-color: var(--line-strong); }
 .iv-eingabe:checked + .iv-karte { background: var(--kachel-blau); border-color: var(--text); }
 .iv-eingabe:focus-visible + .iv-karte { outline: 2px solid var(--text); outline-offset: 2px; }
@@ -484,20 +479,20 @@ dialog.steckbrief::backdrop { background: rgba(31, 37, 48, .5); }
 .sw-karte { position: relative; display: flex; flex-direction: column; gap: .55rem; padding: 1rem; background: #fff; border: 1px solid var(--line); border-radius: var(--radius-kachel); box-shadow: 0 10px 30px rgba(31, 37, 48, .1); touch-action: pan-y; user-select: none; -webkit-user-select: none; cursor: grab; will-change: transform; }
 .sw-karte.sw-zieht { cursor: grabbing; }
 .sw-karte-hinten { margin: .9rem .9rem -.5rem; background: #fff; border: 1px solid var(--line); border-radius: var(--radius-kachel); box-shadow: 0 4px 14px rgba(31, 37, 48, .06); opacity: .8; }
-.sw-karte .mbild-gross img { border-radius: 14px; pointer-events: none; }
+.sw-karte .mbild-gross img { border-radius: var(--radius-sm); pointer-events: none; }
 .sw-eignung { align-self: flex-start; margin: 0; padding: .15rem .7rem; font-size: var(--fs-s); border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--line-strong); }
 .sw-eignung-label { color: var(--text-soft); font-weight: 600; }
 .sw-eignung strong { font-weight: 800; }
 .sw-eignung-bedingt, .sw-eignung-undokumentiert { background: var(--hinweis-bg); }
 .sw-vorteile { display: flex; flex-wrap: wrap; gap: .4rem; margin: 0; padding: 0; list-style: none; }
 .sw-vorteile li { padding: .2rem .7rem; font-size: var(--fs-m); font-weight: 700; background: var(--bg-soft); border-radius: 999px; }
-.sb-match { margin: 1rem 0; padding: .9rem 1rem; background: var(--kachel-blau); border-radius: 16px; }
+.sb-match { margin: 1rem 0; padding: .9rem 1rem; background: var(--kachel-blau); border-radius: var(--karte-radius); }
 .sb-match h4 { margin: 0 0 .4rem; font-size: var(--fs-l); }
 .sb-match-zeile { margin: .35rem 0 0; font-size: var(--fs-m); line-height: 1.45; }
-.sb-match-warnung { margin: .35rem 0 0; padding: .4rem .7rem; font-size: var(--fs-s); background: var(--hinweis-bg); border-radius: 12px; }
+.sb-match-warnung { margin: .35rem 0 0; padding: .4rem .7rem; font-size: var(--fs-s); background: var(--hinweis-bg); border-radius: var(--radius-sm); }
 .sw-name { margin: 0; font-size: 1.375rem; font-weight: 800; line-height: 1.25; }
 .sw-kategorie { margin: -.35rem 0 0; font-size: var(--fs-m); font-weight: 700; color: var(--text-soft); }
-.sw-score { display: grid; grid-template-columns: auto 1fr; column-gap: .5rem; align-items: baseline; padding: .6rem .8rem; background: var(--kachel-blau); border-radius: 16px; }
+.sw-score { display: grid; grid-template-columns: auto 1fr; column-gap: .5rem; align-items: baseline; padding: .6rem .8rem; background: var(--kachel-blau); border-radius: var(--karte-radius); }
 .sw-score-zahl { grid-row: 1; font-size: 2.5rem; font-weight: 800; line-height: 1; letter-spacing: -.03em; font-variant-numeric: tabular-nums lining-nums; }
 .sw-score-einheit { grid-row: 1; font-size: var(--fs-text); font-weight: 800; }
 .sw-score-text { grid-column: 1 / -1; grid-row: 2; margin-top: .25rem; display: flex; flex-direction: column; font-size: var(--fs-s); line-height: 1.3; color: var(--text-soft); }
@@ -507,19 +502,19 @@ dialog.steckbrief::backdrop { background: rgba(31, 37, 48, .5); }
 .sw-score-leer { display: block; background: var(--bg-soft); }
 .sw-score-kein { font-size: var(--fs-m); font-weight: 800; color: var(--text-soft); }
 .sw-erklaerung { margin: 0; font-size: var(--fs-m); line-height: 1.4; }
-.sw-warnung { margin: 0; padding: .45rem .75rem; font-size: var(--fs-s); line-height: 1.4; background: var(--hinweis-bg); border-radius: 12px; }
+.sw-warnung { margin: 0; padding: .45rem .75rem; font-size: var(--fs-s); line-height: 1.4; background: var(--hinweis-bg); border-radius: var(--radius-sm); }
 .sw-vn { display: grid; grid-template-columns: 1fr; gap: .1rem; margin: 0; font-size: var(--fs-m); }
 .sw-vn dt { margin-top: .35rem; font-size: var(--fs-xs); font-weight: 800; color: var(--text-soft); }
 .sw-vn dd { margin: 0; line-height: 1.35; }
 .sw-kennwerte { display: flex; flex-wrap: wrap; gap: .5rem; margin: .15rem 0 0; padding: 0; list-style: none; }
-.sw-kennwerte li { display: flex; flex-direction: column; min-width: 0; padding: .4rem .7rem; font-size: var(--fs-m); background: var(--bg-soft); border-radius: 12px; }
+.sw-kennwerte li { display: flex; flex-direction: column; min-width: 0; padding: .4rem .7rem; font-size: var(--fs-m); background: var(--bg-soft); border-radius: var(--radius-sm); }
 .sw-kw-titel { font-size: var(--fs-xs); font-weight: 700; color: var(--text-soft); }
 .sw-kennwerte strong { font-variant-numeric: tabular-nums lining-nums; overflow-wrap: anywhere; }
 .sw-kennwerte li .art, .fav-kennwerte .art { align-self: flex-start; margin: .15rem 0 0; }
 .fav-kennwerte .art { margin: 0 0 0 .3rem; }
 .sw-kw-leer { font-size: var(--fs-s); color: var(--text-soft); }
 .sw-tipp { margin: .1rem 0 0; font-size: var(--fs-xs); text-align: center; color: var(--text-soft); }
-.sw-stempel { position: absolute; top: 1.1rem; padding: .25rem .8rem; font-size: 1.1rem; font-weight: 800; letter-spacing: .02em; text-transform: uppercase; background: rgba(255, 255, 255, .92); border: 3px solid; border-radius: 12px; opacity: 0; pointer-events: none; }
+.sw-stempel { position: absolute; top: 1.1rem; padding: .25rem .8rem; font-size: 1.1rem; font-weight: 800; letter-spacing: .02em; text-transform: uppercase; background: rgba(255, 255, 255, .92); border: 3px solid; border-radius: var(--radius-sm); opacity: 0; pointer-events: none; }
 .sw-stempel-ja { left: 1.1rem; color: #2f6cb3; transform: rotate(-8deg); }
 .sw-stempel-nein { right: 1.1rem; color: #5f6773; transform: rotate(8deg); }
 .sw-knoepfe { display: flex; justify-content: center; flex-wrap: wrap; gap: .6rem; }
@@ -556,14 +551,14 @@ dialog.steckbrief::backdrop { background: rgba(31, 37, 48, .5); }
 .fav-vergleichen { align-self: stretch; }
 .fav-alle-weg { align-self: flex-start; font-size: var(--fs-s); font-weight: 700; color: var(--text-soft); text-decoration: underline; text-underline-offset: .2em; }
 .fav-speicher-hinweis { margin: 0; font-size: var(--fs-xs); color: var(--text-soft); }
-.fav-leer { padding: 1rem; background: rgba(255, 255, 255, .6); border-radius: 16px; }
+.fav-leer { padding: 1rem; background: rgba(255, 255, 255, .6); border-radius: var(--karte-radius); }
 .fav-leer p { margin: 0; font-size: var(--fs-m); color: var(--text-soft); }
 .fav-leer-titel { font-weight: 800; color: var(--text) !important; margin-bottom: .2rem !important; }
 
 /* ---------- 11 Interaktion: ruhige Hover-, Fokus- und aktive Zustände ---------- */
 :focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
 .tab:focus-visible { outline-offset: 0; }
-.panel details > summary:focus-visible { outline-offset: 4px; border-radius: 12px; }
+.panel details > summary:focus-visible { outline-offset: 4px; border-radius: var(--radius-sm); }
 select:hover:not(:disabled), input:hover:not(:disabled) { border-color: var(--text-soft); }
 select:focus, input:focus { border-color: var(--text); }
 input.is-invalid, input[aria-invalid="true"] { border-color: #9a1c27; background: #fff7f7; }
@@ -624,20 +619,19 @@ summary { cursor: pointer; }
   .sw-karte { padding: .85rem; }
   .legend-items { grid-column: 1; grid-row: auto; margin-top: .6rem; }
   .site-header { padding-top: .75rem; }
-  .kopf { flex-direction: column; align-items: stretch; padding: 1.1rem; }
+  .kopf { padding: .9rem 1.1rem; }
+  .kopf-text { grid-template-columns: 1fr; row-gap: .15rem; }
+  .site-header h1 { grid-row: auto; }
+  .site-header .tagline, .site-header .untertitel { grid-column: 1; }
   .site-header h1 { font-size: 1.5rem; }
   .marke { width: 2rem; height: 2rem; }
   .site-header .tagline { font-size: var(--fs-l); }
-  .kopf-aktionen { flex-direction: column; }
-  .kopf-knopf { justify-content: center; }
   .tab { padding: .5rem .15rem; font-size: var(--fs-s); line-height: 1.2; }
 }
 
 /* ---------- 13b Reiter „Entdecken“ (MaterialMatch 3.5) und Navigation mit Haupt- und weiteren Bereichen ---------- */
 .tabs-trenner { align-self: center; flex: none; width: 1px; height: 1.4rem; margin: 0 .35rem; background: var(--line-strong); }
 .tab-weitere { font-weight: 600; font-size: var(--fs-m); }
-.btn.kopf-knopf-erst { color: var(--text); background: var(--kachel-weiss); border: 1px solid var(--line-strong); }
-.btn.kopf-knopf-erst:hover { background: #f0f2f5; }
 
 .ent-kopf h2 { margin: 0 0 .25rem; }
 .ent-intro { margin: 0 0 1rem; max-width: 60ch; color: var(--text-soft); }
@@ -697,12 +691,8 @@ summary { cursor: pointer; }
 .ent-leer { margin-top: var(--kachel-abstand); text-align: center; }
 .ent-leer p { margin: .3rem auto .8rem; max-width: 46ch; }
 
-@media (min-width: 901px) and (max-width: 1100px) { .site-header .untertitel { display: none; } }   /* schmaler Laptop: Kopf bleibt niedrig, der Leitsatz genügt */
 @media (max-width: 900px) {
   /* Tablet: Kopf einspaltig, die drei Hauptaktionen unter dem Text in einer Reihe */
-  .kopf { flex-direction: column; align-items: stretch; gap: .75rem; }
-  .kopf-aktionen { flex-wrap: nowrap; }
-  .kopf-knopf { flex: 1 1 0; min-width: 0; justify-content: center; }
   .ent-filter, .ent-filter-weitere { grid-template-columns: 1fr 1fr; }
   .ent-ansicht { grid-column: 1 / -1; justify-self: start; }
   .ent-liste.ent-liste:not(.ent-karten) .ent-karte { grid-template-columns: 4rem minmax(0, 1fr); }
@@ -717,11 +707,9 @@ summary { cursor: pointer; }
   .ent-liste.ent-karten { grid-template-columns: 1fr; }
   /* Reiter am Handy zweizeilig: oben die drei Hauptbereiche, darunter die weiteren Bereiche; Schrift mindestens 12 px */
   .tabs { flex-wrap: wrap; gap: .15rem; padding: .25rem; border-radius: 24px; }
-  .tab { flex: 1 1 28%; min-width: 0; padding: .5rem .2rem; font-size: var(--fs-s); line-height: 1.2; overflow-wrap: normal; hyphens: manual; }
+  .tab { flex: 1 1 28%; min-width: 0; height: 2.75rem; padding: 0 .2rem; font-size: var(--fs-s); line-height: 1.2; overflow-wrap: normal; hyphens: manual; }
   .tab-weitere { flex: 1 1 44%; font-weight: 600; }
   /* Kopf am Handy niedrig halten: drei Hauptaktionen nebeneinander (Symbol über der Beschriftung) */
-  .kopf-aktionen { flex-direction: row; gap: .4rem; }
-  .kopf-knopf { flex: 1 1 0; min-width: 0; flex-direction: column; gap: .2rem; padding: .5rem .25rem; font-size: .72rem; line-height: 1.2; text-align: center; border-radius: 16px; }
   .site-header .untertitel { display: none; }
 }
 @media print { #bereich-entdecken, .bildnachweis-gesamt { display: none !important; } .pk-nachweis { display: block; font-size: 7pt; color: #444; } }
@@ -733,11 +721,56 @@ summary { cursor: pointer; }
 .sb-gruppe > h4 { margin: 0 0 .4rem; font-size: var(--fs-m); font-weight: 700; letter-spacing: .01em; }
 .sb-dq { margin: 0 0 .5rem; font-size: var(--fs-m); color: var(--text-soft); }
 
+/* Match-Trefferliste: weitere Details aufklappbar (3.7) */
+.sw-top-mehr { margin-top: .5rem; }
+.sw-top-mehr > summary { display: inline-block; padding: .35rem 0; font-size: var(--fs-m); font-weight: 700; color: var(--text-soft); cursor: pointer; }
+.sw-top-mehr > summary:hover { color: var(--text); }
+.sw-top-mehr > summary:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; border-radius: 4px; }
+.sw-top-mehr .sw-top-daten { margin-top: .35rem; }
+
+/* Drei Ebenen im Vergleich (3.7): kleine Wegweiser über Überblick, Auswertung und Details */
+.ebene { display: flex; align-items: center; gap: .6rem; margin: 0 0 .75rem; font-size: var(--fs-s); font-weight: 800; letter-spacing: .02em; color: var(--text-soft); }
+.ebene[hidden] { display: none; }
+#bento .k-diagramme > .ebene { margin: -.4rem 0 -.2rem; }
+.ebene span { display: inline-grid; place-items: center; width: 1.4rem; height: 1.4rem; font-size: var(--fs-xs); color: #fff; background: var(--text); border-radius: 50%; }
+@media print { .ebene { display: none !important; } }
+
+/* Match-Interview: Hilfe „Warum fragen wir das?“ und Rolle der Frage (3.7) */
+.iv-warum { display: flex; flex-wrap: wrap; align-items: flex-start; gap: .4rem .75rem; margin: 0 0 1rem; padding: .7rem .9rem; background: var(--bg-soft); border-radius: var(--karte-radius); }
+.iv-warum p { flex: 1 1 18rem; margin: 0; font-size: var(--fs-m); line-height: 1.5; color: var(--text-soft); }
+.iv-rolle { flex: none; padding: .15rem .6rem; font-size: var(--fs-xs); font-weight: 800; letter-spacing: .02em; border-radius: 999px; border: 1px solid var(--line-strong); color: var(--text); background: #fff; }
+.iv-rolle-pflicht { background: var(--text); border-color: var(--text); color: #fff; }
+
+/* ---------- 13c Logo-Auftakt und Hinweis „Kurz vorab“ (MaterialMatch 3.7) ---------- */
+.auftakt { position: fixed; inset: 0; z-index: 2000; display: flex; align-items: center; justify-content: center; background: var(--bg); opacity: 1; transition: opacity .2s ease; pointer-events: none; }
+.auftakt img { width: min(15.6rem, 62vw); height: auto; animation: auftakt-ein .25s ease both; }
+.auftakt.weg { opacity: 0; }
+.auftakt[hidden] { display: none; }
+@keyframes auftakt-ein { from { opacity: 0; transform: translateY(.25rem); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .auftakt, .auftakt img { transition: none; animation: none; } }
+
+dialog.hinweis { width: min(30rem, calc(100vw - 2rem)); max-height: calc(100vh - 2rem); padding: 2rem var(--kachel-innen) 1.75rem; border: 0; border-radius: var(--radius-kachel); background: var(--kachel-weiss); color: var(--text); text-align: center; box-shadow: 0 24px 64px rgba(31, 37, 48, .28); overflow: auto; }
+dialog.hinweis::backdrop { background: rgba(31, 37, 48, .5); }
+.hinweis-logo { display: block; width: min(13rem, 70%); height: auto; margin: 0 auto 1.25rem; }
+dialog.hinweis h2 { margin: 0 0 .75rem; font-size: var(--fs-xl); font-weight: 800; letter-spacing: -.01em; }
+.hinweis-text p { margin: 0 0 .75rem; font-size: var(--fs-text); line-height: 1.55; color: var(--text); text-align: left; }
+.hinweis-text p:last-child { margin-bottom: 1.25rem; font-weight: 700; text-align: center; }
+.hinweis-knopf { min-height: 2.75rem; padding: .6rem 1.5rem; font-size: var(--fs-text); font-weight: 700; color: #fff; background: var(--text); border: 1px solid var(--text); border-radius: 999px; cursor: pointer; }
+.hinweis-knopf:hover { background: #000; }
+.hinweis-knopf:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
+@media (max-width: 520px) { dialog.hinweis { padding: 1.5rem 1.1rem 1.25rem; } .hinweis-knopf { width: 100%; } }
+@media print { .auftakt, dialog.hinweis { display: none !important; } }
+
+/* Weniger Bewegung (3.7): Wer „Bewegung reduzieren“ eingestellt hat, bekommt keine Übergänge und Animationen */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+
 /* ---------- 14 Druck: ruhig und ohne Kachel-Optik ---------- */
 @media print {
   body { background: #fff; color: #000; }
   .kopf { padding: 0; border: 0; box-shadow: none; border-radius: 0; overflow: visible; }
-  .kopf-aktionen, .site-header .untertitel, #bereich-match, .steckbrief-knopf, dialog.steckbrief { display: none !important; }
+  .site-header .untertitel, #bereich-match, .steckbrief-knopf, dialog.steckbrief { display: none !important; }
   .bento { display: block; }
   .kachel, .kennwert.kachel, #bento .card, .kachel.k-alternativen .rec-card {
     box-shadow: none !important; background: #fff !important; border-radius: 0; padding: 0; border: 0;
@@ -797,10 +830,10 @@ summary { cursor: pointer; }
 }
 
 /* ---------- Match: Trefferliste, Fallback und Kennzeichnung (MaterialMatch 3.2) ---------- */
-.sw-top { margin: 0 0 1rem; padding: .9rem 1rem; background: var(--kachel-blau); border-radius: 18px; }
+.sw-top { margin: 0 0 1rem; padding: .9rem 1rem; background: var(--kachel-blau); border-radius: var(--karte-radius); }
 .sw-top-titel { margin: 0 0 .6rem; font-size: var(--fs-l); font-weight: 800; }
 .sw-top-liste { display: flex; flex-direction: column; gap: .6rem; margin: 0; padding: 0; list-style: none; }
-.sw-top-eintrag { padding: .7rem .85rem; background: #fff; border-radius: 14px; }
+.sw-top-eintrag { padding: .7rem .85rem; background: #fff; border-radius: var(--radius-sm); }
 .sw-top-kopf { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem .6rem; }
 .sw-top-nr { display: inline-flex; align-items: center; justify-content: center; width: 1.6rem; height: 1.6rem; font-size: var(--fs-s); font-weight: 800; color: #fff; background: var(--text); border-radius: 50%; }
 .sw-top-name { font-size: var(--fs-text); }
@@ -813,6 +846,6 @@ summary { cursor: pointer; }
 .sw-passung-eingeschraenkt, .sw-passung-teilweise { background: var(--hinweis-bg); border-color: #e3c28a; color: #6b4300; }
 .sw-passung-nicht_erfuellt { background: #fbe9e9; border-color: #d9a3a3; color: #7a1f1f; }
 .sw-top-teilweise, .sw-top-nicht_erfuellt { border: 1px dashed var(--line-strong); }
-.sw-fallback { display: flex; flex-direction: column; align-items: flex-start; gap: .5rem; margin: 0 0 1rem; padding: .8rem 1rem; background: var(--hinweis-bg); border-radius: 16px; }
+.sw-fallback { display: flex; flex-direction: column; align-items: flex-start; gap: .5rem; margin: 0 0 1rem; padding: .8rem 1rem; background: var(--hinweis-bg); border-radius: var(--karte-radius); }
 .sw-fallback-titel { margin: 0; font-weight: 800; }
 .sw-fallback-liste { margin: 0; padding-left: 1.1rem; font-size: var(--fs-m); }

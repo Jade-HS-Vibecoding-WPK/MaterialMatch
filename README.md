@@ -62,9 +62,10 @@ Es werden keine Installation, kein Internet, kein Login und keine API-Schlüssel
 | `js/swipe.js` | Swipe-Karten: Wischen mit Maus und Finger, Knöpfe, Tastatur, Rückgängig, Steckbrief per Tippen |
 | `js/favoriten.js` | Favoritenliste (localStorage), Auswahl von zwei oder drei Favoriten und Übernahme in den Vergleich |
 | `js/match.js` | Steuerung des Reiters „Match finden“ (Interview ↔ Karten, Speichern der Antworten) |
-| `js/kopf.js` | Die zwei Hauptaktionen im Kopf („Baustoffe vergleichen“, „Match finden“): Reiter wechseln, scrollen, Fokus setzen |
 | `js/dashboard.js` | „Vergleich auf einen Blick“: vier gleich große Kennwert-Kacheln (Kosten, CO₂, Gewicht, Wärmedämmung mit R-Wert) mit großen Zahlen, Vergleichsbalken, Quellen-Info mit Datenqualität und dezenter Marke „Dein Schwerpunkt“; zeigen die Ergebnisse der Diagramme (rechnet nichts selbst) |
 | `js/entdecken.js` | Reiter „Entdecken“: Baustoffe durchsuchen, filtern, sortieren (Karten- und Listenansicht), Material in den Vergleich legen |
+| `js/auftakt.js` | Logo-Auftakt beim Laden (höchstens 1 Sekunde, keine künstliche Wartezeit) |
+| `js/hinweis.js` | Hinweis „Kurz vorab“ beim ersten Besuch (Bestätigung im Browser, später erneut aufrufbar) |
 | `js/suche.js` | Suchfeld in der Materialauswahl: findet Baustoffe und Herstellerprodukte und legt sie auf den nächsten freien Platz (Bento-Redesign) |
 | `js/reiter.js` | Die drei Hauptreiter (Vergleich, Alternativen, Quellen & Details): Wechsel, Tastatur, ARIA |
 | `js/datenmodus.js` | Demo-Modus (Beispieldaten) und Echtdaten-Modus (Beispieldaten gelten als „nicht verfügbar“) |
@@ -167,7 +168,7 @@ Alle automatischen Tests (Node.js und Playwright mit Chromium nötig):
 bash tests/alle.sh
 ```
 
-Rund 1.952 Prüfungen in 52 Dateien (`tests/test1.js` bis `tests/test53.js`; `test53` (braucht Python 3 mit Pillow) prüft die Materialfotos (Lizenzangaben, Dateien, 4:3, Laden aller 50 Bilder, gleiche Bildquelle in allen Bereichen, Umschalter Foto/Schraffur, mobil); `test52` prüft den Reiter „Entdecken“ (Suche, Filter, Sortierung, Karten/Liste, Material in den Vergleich legen), die drei Hauptaktionen und den gegliederten Steckbrief; `test51` prüft die Händlerpreisspannen von bausep.de (jede Spanne wird aus den Einzelpreisen nachgerechnet) und das Feld „echt“, das belegte Preise nur im Echtdaten-Modus einsetzt; `test50` prüft die Match-Funktion mit Nutzerprofilen, den Fallback, Preisspannen und das Prüfskript; `test49` prüft Datenpaket 3: STEICO, Cirkel PORIT, KS-ORIGINAL; `test21` gehört zu Schritt 11, `test22` zu Schritt 13 und braucht für die PDF-Prüfung `pdftotext`, `pdfinfo` und `pdftoppm` aus dem Paket poppler-utils, `test23` zu Schritt 14 und nutzt `tests/referenzrechnung.py` als unabhängigen Referenzrechner; es braucht Python 3 und startet kurz einen lokalen Server). Ergebnis: `QUALITAETSBERICHT.md`. `tools/pruefe_gegen_csv.js` arbeitet mit dem Auszug im Projekt (`data/quellen/`).
+Rund 1.973 Prüfungen in 53 Dateien (`tests/test1.js` bis `tests/test54.js`; `test54` prüft den Hinweis „Kurz vorab“, den Logo-Auftakt, den kompakten Kopf, die einheitlichen Eckenradien, die drei Ebenen im Vergleich und die Hilfen im Match-Interview; `test53` (braucht Python 3 mit Pillow) prüft die Materialfotos (Lizenzangaben, Dateien, 4:3, Laden aller 50 Bilder, gleiche Bildquelle in allen Bereichen, Umschalter Foto/Schraffur, mobil); `test52` prüft den Reiter „Entdecken“ (Suche, Filter, Sortierung, Karten/Liste, Material in den Vergleich legen), die drei Hauptaktionen und den gegliederten Steckbrief; `test51` prüft die Händlerpreisspannen von bausep.de (jede Spanne wird aus den Einzelpreisen nachgerechnet) und das Feld „echt“, das belegte Preise nur im Echtdaten-Modus einsetzt; `test50` prüft die Match-Funktion mit Nutzerprofilen, den Fallback, Preisspannen und das Prüfskript; `test49` prüft Datenpaket 3: STEICO, Cirkel PORIT, KS-ORIGINAL; `test21` gehört zu Schritt 11, `test22` zu Schritt 13 und braucht für die PDF-Prüfung `pdftotext`, `pdfinfo` und `pdftoppm` aus dem Paket poppler-utils, `test23` zu Schritt 14 und nutzt `tests/referenzrechnung.py` als unabhängigen Referenzrechner; es braucht Python 3 und startet kurz einen lokalen Server). Ergebnis: `QUALITAETSBERICHT.md`. `tools/pruefe_gegen_csv.js` arbeitet mit dem Auszug im Projekt (`data/quellen/`).
 Nur `test21` liest zusätzlich die ÖKOBAUDAT-Originaldatei und erwartet sie unter `/home/user/oekobaudat_original/`
 (Pfad oben in `tests/test21.js` anpassen, falls sie woanders liegt; ohne die Datei schlägt dieser Test fehl).
 
@@ -192,6 +193,7 @@ Nur `test21` liest zusätzlich die ÖKOBAUDAT-Originaldatei und erwartet sie unt
 - [x] Schritt 14 – Abschließende Qualitätskontrolle (`QUALITAETSBERICHT.md`)
 - [x] Schritt 15 – Projektdokumentation und Präsentationsmaterial (`PROJEKTDOKUMENTATION.md`, `PRAESENTATION.md`)
 - [x] MaterialMatch 3.5 – Navigation, Reiter „Entdecken“, gegliederter Steckbrief (`DESIGNSYSTEM.md`)
+- [x] MaterialMatch 3.7 – Design-Feinschliff (kompakter Kopf ohne doppelte Knöpfe, einheitliche Radien, Ebenen im Vergleich, Match-Hilfen), Hinweis „Kurz vorab“ und Logo-Auftakt
 - [x] MaterialMatch 3.6 – Materialfotos statt Schraffuren (`data/bilder.js`, `img/materialfotos/`, Bildnachweis in „Quellen & Details“, Schraffuren bleiben erhalten)
 
 Details und Entscheidungen: `FORTSCHRITT.md` und `PROJEKTDOKUMENTATION.md`.

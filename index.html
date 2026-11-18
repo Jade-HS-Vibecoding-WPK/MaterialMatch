@@ -17,6 +17,9 @@
   <link rel="stylesheet" href="css/bento.css">
 </head>
 <body>
+  <!-- Logo-Auftakt (js/auftakt.js): erscheint sanft und verschwindet, sobald die Seite bereit ist (höchstens 1 Sekunde, keine künstliche Wartezeit) -->
+  <div id="auftakt" class="auftakt" aria-hidden="true"><img src="img/logo.svg" alt="" width="250" height="48"></div>
+  <noscript><style>#auftakt { display: none; }</style></noscript>
 
 <!-- Symbole: Lucide (lucide.dev, Lizenz ISC), als Inline-SVG eingebettet; funktioniert offline -->
 <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -63,12 +66,6 @@
         <p class="tagline">Der richtige Baustoff. Für deine Idee.</p>
         <p class="untertitel">Vergleiche Materialien, entdecke nachhaltige Alternativen und finde dein persönliches Match.</p>
       </div>
-      <!-- Zwei Hauptaktionen (js/kopf.js): wechseln in den Bereich und setzen den Fokus dorthin -->
-      <div class="kopf-aktionen" role="group" aria-label="Hauptaktionen">
-        <a class="btn kopf-knopf kopf-knopf-erst" id="kopf-entdecken" href="#entdecken" data-ziel="entdecken"><svg class="ico" aria-hidden="true"><use href="#i-search"/></svg>Baustoffe entdecken</a>
-        <a class="btn kopf-knopf kopf-knopf-haupt" id="kopf-vergleichen" href="#vergleich" data-ziel="vergleich"><svg class="ico" aria-hidden="true"><use href="#i-scale"/></svg>Baustoffe vergleichen</a>
-        <a class="btn kopf-knopf kopf-knopf-zweit" id="kopf-match" href="#match" data-ziel="match"><svg class="ico" aria-hidden="true"><use href="#i-sparkles"/></svg>Match finden</a>
-      </div>
     </div>
     </div>
   </header>
@@ -95,9 +92,9 @@
   <nav class="tabs-leiste" aria-label="Hauptbereiche">
     <div class="container">
       <div class="tabs" role="tablist" aria-label="Hauptbereiche">
-        <button type="button" role="tab" id="reiter-entdecken" class="tab" aria-controls="bereich-entdecken" aria-selected="false" tabindex="-1">Entdecken</button>
-        <button type="button" role="tab" id="reiter-vergleich" class="tab" aria-controls="bereich-vergleich" aria-selected="true">Vergleich</button>
-        <button type="button" role="tab" id="reiter-match" class="tab" aria-controls="bereich-match" aria-selected="false" tabindex="-1">Match finden</button>
+        <button type="button" role="tab" id="reiter-entdecken" class="tab" aria-controls="bereich-entdecken" aria-selected="false" tabindex="-1"><svg class="ico" aria-hidden="true"><use href="#i-search"/></svg>Entdecken</button>
+        <button type="button" role="tab" id="reiter-vergleich" class="tab" aria-controls="bereich-vergleich" aria-selected="true"><svg class="ico" aria-hidden="true"><use href="#i-scale"/></svg>Vergleich</button>
+        <button type="button" role="tab" id="reiter-match" class="tab" aria-controls="bereich-match" aria-selected="false" tabindex="-1"><svg class="ico" aria-hidden="true"><use href="#i-sparkles"/></svg>Match finden</button>
         <span class="tabs-trenner" aria-hidden="true"></span>
         <button type="button" role="tab" id="reiter-alternativen" class="tab tab-weitere" aria-controls="bereich-alternativen" aria-selected="false" tabindex="-1">Alternativen</button>
         <button type="button" role="tab" id="reiter-quellen" class="tab tab-weitere" aria-controls="bereich-quellen" aria-selected="false" tabindex="-1">Quellen &amp; Details</button>
@@ -266,6 +263,7 @@
 
     <!-- ============ DASHBOARD: VERGLEICH AUF EINEN BLICK (js/dashboard.js) ============ -->
     <section class="dashboard k-dashboard" id="dashboard" aria-labelledby="dashboard-titel">
+      <p class="ebene" aria-hidden="true"><span>1</span>Überblick: die wichtigsten Kennwerte nebeneinander</p>
       <h2 id="dashboard-titel">Vergleich auf einen Blick</h2>
       <div id="dashboard-inhalt" aria-live="polite"></div>
     </section>
@@ -275,6 +273,7 @@
 
     <!-- ============ DIAGRAMME: MATERIALIEN IM VERGLEICH (kein eigener Hauptbereich mehr) ============ -->
     <section class="diagramme-bereich kachel k-diagramme" id="diagramme" aria-labelledby="diagramme-titel">
+      <p class="ebene" aria-hidden="true"><span>2</span>Visuelle Auswertung: Unterschiede auf einen Blick</p>
       <h2 id="diagramme-titel"><svg class="ico" aria-hidden="true"><use href="#i-scale"/></svg>Materialien im Vergleich</h2>
       <!-- Hier zeichnet js/diagramme.js die Balkendiagramme und die Legende -->
       <div id="diagramme-inhalt" aria-live="polite"></div>
@@ -298,6 +297,7 @@
 
     <!-- ============ BEREICH 4: ALLE TECHNISCHEN EIGENSCHAFTEN (standardmäßig zugeklappt) ============ -->
     <section class="panel kachel k-ergebnisse" id="ergebnisse">
+      <p class="ebene" aria-hidden="true"><span>3</span>Technische Details: alle weiteren Kennwerte</p>
       <details>
         <summary><h2><svg class="ico" aria-hidden="true"><use href="#i-file-text"/></svg>Alle technischen Eigenschaften anzeigen</h2></summary>
         <div class="panel-body">
@@ -469,10 +469,22 @@
 
   </main>
 
+  <!-- Hinweis „Kurz vorab“ (js/hinweis.js): erscheint nur beim ersten Besuch, die Bestätigung steht im Browser (localStorage) -->
+  <dialog id="hinweis" class="hinweis" aria-labelledby="hinweis-titel" aria-describedby="hinweis-text">
+    <img class="hinweis-logo" src="img/logo.svg" alt="MaterialMatch" width="250" height="48">
+    <h2 id="hinweis-titel">Kurz vorab</h2>
+    <div class="hinweis-text" id="hinweis-text">
+      <p>MaterialMatch ist ein studentisches Projekt, das mit Unterstützung von KI entwickelt wurde. Die angezeigten Baustoffdaten, Preise und Vergleiche dienen der ersten Orientierung. Bitte prüfe wichtige Angaben anhand der verlinkten Quellen und aktuellen Herstellerinformationen.</p>
+      <p>Danke, dass du MaterialMatch ausprobierst!</p>
+    </div>
+    <button type="button" class="btn hinweis-knopf" id="hinweis-ok">Verstanden – MaterialMatch öffnen</button>
+  </dialog>
+
   <footer class="site-footer">
     <div class="container">
       <p>MaterialMatch · Hochschulprojekt, Jade Hochschule Oldenburg · Kurs „Vibecoding KI-Werkstatt“</p>
       <p class="fussnote">Orientierungshilfe für frühe Entwurfsentscheidungen, kein Nachweis. Hinweise unter „Quellen &amp; Details“.</p>
+      <p class="fussnote"><button type="button" class="btn-link" id="hinweis-erneut">Hinweis „Kurz vorab“ erneut anzeigen</button></p>
       <p class="status" id="datenstand"></p>
       <p class="status" id="status">Systemcheck: wird geprüft …</p>
     </div>
@@ -518,7 +530,8 @@
   <script src="js/match.js"></script>
   <script src="js/entdecken.js"></script>
   <script src="js/reiter.js"></script>
-  <script src="js/kopf.js"></script>
+  <script src="js/auftakt.js"></script>
+  <script src="js/hinweis.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

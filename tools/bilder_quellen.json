@@ -51,13 +51,14 @@
  },
  "brettschichtholz": {
   "titel": "Laminated wood.jpg",
-  "urheber": "メルビル (Wikimedia-Commons-Nutzer, „Own work“)",
+  "urheber": "メルビル",
   "lizenz": "CC BY-SA 3.0",
   "lizenz_url": "https://creativecommons.org/licenses/by-sa/3.0",
   "quelle_name": "Wikimedia Commons",
   "quelle_url": "https://commons.wikimedia.org/wiki/File:Laminated_wood.jpg",
   "abgerufen": "2026-11-18",
-  "alt": "Foto: Stirnseite eines Brettschichtholz-Trägers mit verleimten Holzlamellen"
+  "alt": "Foto: Stirnseite eines Brettschichtholz-Trägers mit verleimten Holzlamellen",
+  "hinweis": "Laut Dateiseite eigenes Werk der hochladenden Person (Wikimedia-Commons-Nutzer)."
  },
  "konstruktionsvollholz": {
   "titel": "Holzbalken.jpg",
@@ -181,14 +182,14 @@
  },
  "massivholz_nadel": {
   "titel": "Fichte Holz.JPG",
-  "urheber": "Das Ohr (Wikimedia-Commons-Nutzer, Hochladender)",
+  "urheber": "Das Ohr",
   "lizenz": "CC BY-SA 3.0",
   "lizenz_url": "http://creativecommons.org/licenses/by-sa/3.0/",
   "quelle_name": "Wikimedia Commons",
   "quelle_url": "https://commons.wikimedia.org/wiki/File:Fichte_Holz.JPG",
   "abgerufen": "2026-11-18",
   "alt": "Foto: Brettoberfläche aus Fichtenholz mit feiner Maserung in warmem Orangeton",
-  "hinweis": "Die Dateiseite nennt keinen Urheber ausdrücklich; angegeben ist der Hochladende."
+  "hinweis": "Die Dateiseite nennt keinen Urheber ausdrücklich; angegeben ist die hochladende Person (Wikimedia-Commons-Nutzer)."
  },
  "massivholz_laub": {
   "titel": "Dąb europejski- tarcica.jpg",
