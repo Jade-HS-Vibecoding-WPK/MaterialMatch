@@ -6,7 +6,7 @@ const path = require('path');
 const fs = require('fs');
 const vm = require('vm');
 const crypto = require('crypto');
-const { spawnSync } = require('child_process');
+const { spawnSync } = require('child_process');   // (Python/Pillow nur für die Bildmaße)
 
 let fails = 0;
 function check(name, cond, extra) { if (!cond) fails++; console.log((cond ? 'OK   ' : 'FAIL ') + name + (cond || extra === undefined ? '' : ' -> ' + JSON.stringify(extra).slice(0, 600))); }
@@ -34,15 +34,11 @@ const ERLAUBT = /^(CC0|Public domain|CC BY(-SA)? [\d.]+( de)?)$/;
   check('Alternativtexte sind verschieden und nicht leer (mindestens 25 Zeichen)', new Set(MIT.map(i => BILDER[i].alt)).size === MIT.length && MIT.every(i => BILDER[i].alt.length >= 25));
 
   // ---------- 2. Schraffuren unverändert ----------
-  const tar = fs.readdirSync(path.join(PROJ, 'sicherungen')).filter(f => /_ui-3-5\.tar\.gz$/.test(f))[0];
-  if (tar) {
-    const tmp = fs.mkdtempSync(path.join(require('os').tmpdir(), 'mm-'));
-    spawnSync('tar', ['-xzf', path.join(PROJ, 'sicherungen', tar), '-C', tmp, 'MaterialMatch/img/schraffuren']);
-    const alt = path.join(tmp, 'MaterialMatch', 'img', 'schraffuren');
-    const h = f => crypto.createHash('sha256').update(fs.readFileSync(f)).digest('hex');
-    const dateienAlt = fs.readdirSync(alt);
-    check(`Alle ${dateienAlt.length} Schraffuren (inkl. Platzhalter) sind unverändert gegenüber der Sicherung vor den Fotos (Prüfsumme je Datei)`, dateienAlt.length >= 51 && dateienAlt.every(f => fs.existsSync(path.join(PROJ, 'img', 'schraffuren', f)) && h(path.join(alt, f)) === h(path.join(PROJ, 'img', 'schraffuren', f))));
-  } else check('Sicherung …_ui-3-5.tar.gz für den Schraffur-Vergleich vorhanden', false);
+  // Prüfsummen der Schraffuren, aufgenommen aus der Sicherung vor den Fotos (tests/schraffuren_sha256.json)
+  const soll = JSON.parse(fs.readFileSync(path.join(__dirname, 'schraffuren_sha256.json'), 'utf8'));
+  const hash = f => crypto.createHash('sha256').update(fs.readFileSync(f)).digest('hex');
+  const abw = Object.keys(soll).filter(f => !fs.existsSync(path.join(PROJ, 'img', 'schraffuren', f)) || hash(path.join(PROJ, 'img', 'schraffuren', f)) !== soll[f]);
+  check(`Alle ${Object.keys(soll).length} Schraffuren (inkl. Platzhalter) sind unverändert gegenüber dem Stand vor den Fotos (Prüfsumme je Datei)`, Object.keys(soll).length >= 51 && abw.length === 0, abw);
   check('Alle 50 Schraffuren und der Platzhalter liegen weiter im Projekt', IDS.every(i => fs.existsSync(path.join(PROJ, 'img', 'schraffuren', i + '.svg'))) && fs.existsSync(path.join(PROJ, 'img', 'schraffuren', 'platzhalter.svg')));
 
   // ---------- 3. Im Browser ----------
