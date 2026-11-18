@@ -70,6 +70,7 @@
     window.MM.favoriten.init(daten);       // MaterialMatch 3.0: Favoriten (im Browser gespeichert)
     window.MM.match.init();                // MaterialMatch 3.0: Bereich „Match finden“ (Interview, Karten)
     window.MM.suche.init(daten);           // Bento-Redesign: Suche in der Materialauswahl
+    if (window.MM.entdecken) window.MM.entdecken.init(daten); // MaterialMatch 3.5: Reiter „Entdecken“ (Suche, Filter, Karten)
     window.MM.eingaben.init();       // Schritt 4: Eingabefelder aktivieren
     window.MM.mengen.init();         // Schritt 4: Ergebnistabelle Menge und Gewicht
     window.MM.eigenschaften.init(daten); // Schritt 5: Vergleich der Eigenschaften

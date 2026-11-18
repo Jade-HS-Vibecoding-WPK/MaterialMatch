@@ -112,7 +112,7 @@ const nah = (a, b, t = 0.011) => typeof a === 'number' && Math.abs(a - b) <= t;
   // ================= 8. Qualitätsprüfskript =================
   const lauf = (extra = []) => spawnSync('node', [path.join(PROJ, 'tools', 'pruefe_datenqualitaet.js'), ...extra], { encoding: 'utf8' });
   const ok = lauf();
-  check('Prüfskript tools/pruefe_datenqualitaet.js: der aktuelle Datenbestand hat 0 Fehler; es nennt Baustoffe, Produkte, Quellen und die Zahl der fehlenden Kennwerte', ok.status === 0 && /FEHLER: 0/.test(ok.stdout) && /50 Baustoffe, 82 Produkte, 168 Quellen/.test(ok.stdout) && /nicht belegt \d+/.test(ok.stdout), ok.stdout.slice(0, 400));
+  check('Prüfskript tools/pruefe_datenqualitaet.js: der aktuelle Datenbestand hat 0 Fehler; es nennt Baustoffe, Produkte, Quellen und die Zahl der fehlenden Kennwerte', ok.status === 0 && /FEHLER: 0/.test(ok.stdout) && /50 Baustoffe, 85 Produkte, 173 Quellen/.test(ok.stdout) && /nicht belegt \d+/.test(ok.stdout), ok.stdout.slice(0, 400));
   // Mutationstests: absichtlich kaputte Daten müssen erkannt werden
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'mm-daten-'));
   const kopie = f => fs.copyFileSync(path.join(PROJ, 'data', f), path.join(tmp, f));

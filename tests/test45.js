@@ -35,7 +35,7 @@ const lum = hex => { const c = [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 
   // ---------- Kopfbereich
   const kopf = await p.evaluate(() => { const h = document.querySelector('.site-header'); const r = h.getBoundingClientRect(); const m = document.querySelector('.site-header h1 .marke'); const sym = document.getElementById('i-marke'); return { h1: document.querySelectorAll('h1').length, h1Text: h.querySelector('h1').textContent, tag: h.querySelector('.tagline').textContent, untertitel: h.querySelector('.untertitel').textContent, hoehe: Math.round(r.height), marke: m && Math.round(m.getBoundingClientRect().width), symbol: !!sym && sym.querySelectorAll('polygon').length, knoepfe: [...h.querySelectorAll('.kopf-knopf')].map(k => k.textContent.trim()) }; });
   check('Kopf: genau eine Seitenüberschrift „MaterialMatch“ mit Logo-Marke (Symbol mit drei Schichten, mindestens 28 px), Leitsatz und Untertitel im Wortlaut des Auftrags', kopf.h1 === 1 && kopf.h1Text === 'MaterialMatch' && kopf.marke >= 28 && kopf.symbol === 3 && kopf.tag === 'Der richtige Baustoff. Für deine Idee.' && kopf.untertitel === 'Vergleiche Materialien, entdecke nachhaltige Alternativen und finde dein persönliches Match.', kopf);
-  check('Kopf: zwei Hauptaktionen „Baustoffe vergleichen“ und „Match finden“, der Kopf bleibt niedrig (unter 190 px)', JSON.stringify(kopf.knoepfe) === '["Baustoffe vergleichen","Match finden"]' && kopf.hoehe < 190, kopf);
+  check('Kopf: drei Hauptaktionen „Baustoffe entdecken“, „Baustoffe vergleichen“ und „Match finden“, der Kopf bleibt niedrig (unter 190 px)', JSON.stringify(kopf.knoepfe) === '["Baustoffe entdecken","Baustoffe vergleichen","Match finden"]' && kopf.hoehe < 190, kopf);
 
   // ---------- Hauptaktionen funktionieren (Maus und Tastatur), Eingaben bleiben erhalten
   await p.evaluate(() => MM.auswahl.setzeAuswahl({ a: 'mineralwolle', b: 'eps', c: '' })); await p.fill('#flaeche', '123'); await p.fill('#dicke', '17');
@@ -49,7 +49,7 @@ const lum = hex => { const c = [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 
   await p.click('#reiter-alternativen'); await p.focus('#kopf-match'); await p.keyboard.press('Enter');
   check('„Match finden“ (Tastatur: Enter auf dem fokussierten Link) wechselt ebenfalls in den Bereich', await p.evaluate(() => MM.reiter.aktiv() === 'match'));
   check('Ohne JavaScript bleiben es echte Links (#vergleich, #match); ein Wechsel über die Adresse funktioniert', await p.evaluate(() => document.getElementById('kopf-vergleichen').getAttribute('href') === '#vergleich' && document.getElementById('kopf-match').getAttribute('href') === '#match') && await (async () => { const q = await neu(1280, URL + '#match'); return q.evaluate(() => MM.reiter.aktiv() === 'match'); })());
-  check('Navigation: vier Reiter in der Reihenfolge Vergleich, Match finden, Alternativen, Quellen & Details; der Reiter „Match finden“ hat eine Überschrift der Ebene 2', JSON.stringify(await p.$$eval('[role=tablist] [role=tab]', t => t.map(x => x.textContent.trim()))) === '["Vergleich","Match finden","Alternativen","Quellen & Details"]' && await p.$eval('#bereich-match h2', e => e.textContent.trim()) === 'Match finden');
+  check('Navigation: fünf Reiter in der Reihenfolge Entdecken, Vergleich, Match finden, Alternativen, Quellen & Details; der Reiter „Match finden“ hat eine Überschrift der Ebene 2', JSON.stringify(await p.$$eval('[role=tablist] [role=tab]', t => t.map(x => x.textContent.trim()))) === '["Entdecken","Vergleich","Match finden","Alternativen","Quellen & Details"]' && await p.$eval('#bereich-match h2', e => e.textContent.trim()) === 'Match finden');
 
   // ---------- ruhiges Bento: Rundung 20–24 px, sehr dezente Schatten, Pastell nur Hellblau und Hellviolett
   await p.click('#reiter-vergleich');
@@ -68,9 +68,9 @@ const lum = hex => { const c = [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 
     if (w >= 768 && r.kopfH > (w >= 1024 ? 190 : 215)) probleme.push([w, 'Kopf zu hoch', r.kopfH]);
     await q.close();
   }
-  check('Kopf und Reiter bei 320, 375, 430, 768, 820, 1024, 1280 und 1920 px: kein seitliches Scrollen, Aktionen mindestens 44 px hoch, alle vier Reiter im Fenster; ab Laptop unter 190 px, am Tablet unter 215 px hoch', probleme.length === 0, probleme);
+  check('Kopf und Reiter bei 320, 375, 430, 768, 820, 1024, 1280 und 1920 px: kein seitliches Scrollen, Aktionen mindestens 44 px hoch, alle fünf Reiter im Fenster; ab Laptop unter 190 px, am Tablet unter 215 px hoch', probleme.length === 0, probleme);
   const ph = await neu(375);
-  check('Handy 375 px: die beiden Aktionen stehen untereinander über die volle Kachelbreite', await ph.evaluate(() => { const k = [...document.querySelectorAll('.kopf-knopf')].map(x => x.getBoundingClientRect()); const kopf = document.querySelector('.kopf').getBoundingClientRect(); return k.length === 2 && Math.abs(k[0].left - k[1].left) < 2 && k[1].top > k[0].bottom - 1 && k[0].width > kopf.width * .8; }));
+  check('Handy 375 px: die drei Aktionen stehen nebeneinander (Symbol über der Beschriftung) und füllen zusammen die Kachelbreite; der Kopf bleibt niedrig', await ph.evaluate(() => { const k = [...document.querySelectorAll('.kopf-knopf')].map(x => x.getBoundingClientRect()); const kopf = document.querySelector('.kopf').getBoundingClientRect(); return k.length === 3 && Math.abs(k[0].top - k[1].top) < 2 && Math.abs(k[1].top - k[2].top) < 2 && k[2].right - k[0].left > kopf.width * .85 && k.every(x => x.height >= 44) && kopf.height < 230; }));
   await ph.close();
 
   // ---------- Druck

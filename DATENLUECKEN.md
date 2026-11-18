@@ -9,21 +9,21 @@ Erzeugt am 2026-11-18 mit `node tools/pruefe_datenqualitaet.js --bericht` (Daten
 | | Anzahl |
 |---|---|
 | Baustoffe | 50 |
-| Produkte | 82 |
-| Quellen | 168 |
+| Produkte | 85 |
+| Quellen | 173 |
 | Kennwert-Felder (50 × 10) | 500 |
-| belegt | 156 |
+| belegt | 157 |
 | nur Beispiel | 76 |
-| fehlt | 249 |
+| fehlt | 248 |
 | nicht anwendbar | 19 |
-| Materialien mit belegtem Preis | 19 von 50 |
-| Produkte mit Preis | 40 |
+| Materialien mit belegtem Preis | 20 von 50 |
+| Produkte mit Preis | 43 |
 
 ## Je Kennwert
 
 | Kennwert | belegt | nur Beispiel | fehlt | n. a. | Grund, weshalb Lücken bleiben |
 |---|---|---|---|---|---|
-| Preis | 19 | 9 | 22 | 0 | Kein frei abrufbarer deutscher Händler- oder Herstellerpreis gefunden (BKI-Baupreise kostenpflichtig; HORNBACH, BAUHAUS, OBI, Baustoffshop, benz24 und Contorion blockieren automatische Abrufe, das wurde nicht umgangen; Heinze verbietet automatisches Auslesen). Preise stehen bei Produkten mit Preisliste und als Preisspanne bei allgemeinen Baustoffen mit mindestens zwei belegten Produktpreisen (Händlerpreise von bausep.de seit MaterialMatch 3.3). |
+| Preis | 20 | 9 | 21 | 0 | Kein frei abrufbarer deutscher Händler- oder Herstellerpreis gefunden (BKI-Baupreise kostenpflichtig; HORNBACH, BAUHAUS, OBI, Baustoffshop, benz24 und Contorion blockieren automatische Abrufe, das wurde nicht umgangen; Heinze verbietet automatisches Auslesen). Preise stehen bei Produkten mit Preisliste und als Preisspanne bei allgemeinen Baustoffen mit mindestens zwei belegten Produktpreisen (Händlerpreise von bausep.de seit MaterialMatch 3.3). |
 | Rohdichte | 38 | 3 | 9 | 0 | Der ÖKOBAUDAT-Datensatz nennt für dieses Material keine Rohdichte. |
 | Wärmeleitfähigkeit λ (Nennwert) | 9 | 9 | 32 | 0 | Bemessungs- und Nennwerte stehen in kostenpflichtigen Normen (DIN 4108-4, DIN EN ISO 10456); für das allgemeine Material liegt kein frei zugänglicher, passender Herstellerwert vor. Produkte mit Herstellerangabe tragen ihre eigenen Werte. |
 | Bemessungswert λB | 2 | 0 | 48 | 0 | Der Bemessungswert nach DIN 4108-4 bzw. Zulassung ist kostenpflichtig oder produktspezifisch; ein Wert wird nur bei Produkten mit Herstellerangabe für Deutschland geführt. |
@@ -54,7 +54,7 @@ Erzeugt am 2026-11-18 mit `node tools/pruefe_datenqualitaet.js --bericht` (Daten
 | Klinker (Fassadenklinker) | nur Beispiel | belegt | nur Beispiel | FEHLT | nur Beispiel | nur Beispiel | belegt | nur Beispiel | belegt | nur Beispiel |
 | Gipsplatte (nach DIN EN 520 / DIN 18180) | nur Beispiel | nur Beispiel | nur Beispiel | FEHLT | nur Beispiel | n. a. | nur Beispiel | nur Beispiel | belegt | nur Beispiel |
 | OSB-Platte | belegt | belegt | belegt | FEHLT | nur Beispiel | n. a. | belegt | nur Beispiel | belegt | nur Beispiel |
-| Dachziegel (Tonziegel) | FEHLT | nur Beispiel | FEHLT | FEHLT | FEHLT | n. a. | belegt | FEHLT | belegt | nur Beispiel |
+| Dachziegel (Tonziegel) | belegt | nur Beispiel | FEHLT | FEHLT | FEHLT | n. a. | belegt | FEHLT | belegt | nur Beispiel |
 | Leichtbetonstein (Naturbims) | FEHLT | belegt | FEHLT | FEHLT | FEHLT | FEHLT | belegt | FEHLT | belegt | FEHLT |
 | Leichtbetonstein (Blähton, Planstein Außenwand) | FEHLT | belegt | FEHLT | FEHLT | FEHLT | FEHLT | belegt | FEHLT | belegt | FEHLT |
 | Kalksandstein | belegt | belegt | FEHLT | FEHLT | FEHLT | FEHLT | belegt | FEHLT | belegt | FEHLT |
@@ -230,7 +230,6 @@ Erzeugt am 2026-11-18 mit `node tools/pruefe_datenqualitaet.js --bericht` (Daten
 
 ### Dachziegel (Tonziegel) (`dachziegel`)
 
-- **Preis:** Noch nicht recherchiert. Kennwert fehlt.
 - **Rohdichte:** Nur Demonstrationswert ohne Quelle (im Echtdaten-Modus ausgeblendet). Der ÖKOBAUDAT-Datensatz nennt für dieses Material keine Rohdichte.
 - **Wärmeleitfähigkeit λ (Nennwert):** Noch nicht recherchiert. Kennwert fehlt.
 - **Bemessungswert λB:** Nicht verfügbar: Ein Bemessungswert der Wärmeleitfähigkeit (z. B. nach DIN 4108-4) liegt nicht vor. Die Norm ist kostenpflichtig und wurde nicht eingesehen; ein Herstellerwert wurde nicht gefunden. Es wurde kein Wert angenommen.

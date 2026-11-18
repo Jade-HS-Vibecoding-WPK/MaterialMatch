@@ -1,11 +1,11 @@
 # MaterialMatch – Qualitätsbericht (Schritt 14)
 
-Stand: 18.11.2026 · Datenbank-Version 0.4.0 · **50 Testdateien, 1.897 Prüfungen, alle bestanden** (davon Schritt 14: `test23`; Schritt 15: `test24` prüft die Dokumente; Entscheidungen vom 16.11.2026: `test25`, `test26` und `test27`) (`bash tests/alle.sh`)
+Stand: 18.11.2026 · Datenbank-Version 0.4.0 · **51 Testdateien, 1.931 Prüfungen, alle bestanden** (davon Schritt 14: `test23`; Schritt 15: `test24` prüft die Dokumente; Entscheidungen vom 16.11.2026: `test25`, `test26` und `test27`) (`bash tests/alle.sh`)
 
 Dieser Bericht beantwortet: *Was wurde geprüft, wie, mit welchem Ergebnis – und was konnte nicht geprüft werden?*
 Grundsatz aus dem Auftrag: **Es wird nicht behauptet, etwas getestet zu haben, was nicht überprüft werden konnte.**
 
-**Stand MaterialMatch 3.3 (18.11.2026):** Gesamtlauf `bash tests/alle.sh` mit 50 Testdateien und 1.897 Prüfungen bestanden. Neu: `test51` (14 Händlerpreisspannen aus bausep.de aus den Einzelpreisen nachgerechnet; Feld `echt` wirkt nur im Echtdaten-Modus; Demo-Modus unverändert). Die Datenprüfung `node tools/pruefe_datenqualitaet.js` meldet 0 Fehler und 0 Warnungen; offene Lücken: `DATENLUECKEN.md`.
+**Stand MaterialMatch 3.5 (18.11.2026):** Gesamtlauf `bash tests/alle.sh` mit 51 Testdateien bestanden (3.3: `test51` Händlerpreisspannen; 3.4: Datenpaket 4; 3.5: `test52` Reiter „Entdecken“, Navigation, Steckbrief). Neu: `test51` (14 Händlerpreisspannen aus bausep.de aus den Einzelpreisen nachgerechnet; Feld `echt` wirkt nur im Echtdaten-Modus; Demo-Modus unverändert). Die Datenprüfung `node tools/pruefe_datenqualitaet.js` meldet 0 Fehler und 0 Warnungen; offene Lücken: `DATENLUECKEN.md`.
 
 ## 1. Prüfplan (Abschnitt 17 des Auftrags) und Ergebnis
 

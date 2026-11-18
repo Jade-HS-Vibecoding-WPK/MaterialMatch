@@ -72,8 +72,8 @@ h1, h2, h3, h4 { font-family: var(--schrift); letter-spacing: -.01em; }
 .marke { flex: none; width: 2.25rem; height: 2.25rem; }
 .site-header .tagline { margin: .35rem 0 0; font-size: var(--fs-xl); font-weight: 700; line-height: 1.3; color: var(--text); }
 .site-header .untertitel { margin: .15rem 0 0; max-width: 46rem; font-size: var(--fs-text); line-height: 1.45; color: var(--text-soft); }
-.kopf-aktionen { display: flex; flex-wrap: wrap; gap: .75rem; flex: none; }
-.kopf-knopf { display: inline-flex; align-items: center; gap: .5rem; min-height: 2.75rem; padding: .55rem 1.25rem; font-size: var(--fs-text); font-weight: 700; text-decoration: none; border-radius: 999px; }
+.kopf-aktionen { display: flex; flex-wrap: wrap; gap: .5rem; flex: none; }
+.kopf-knopf { display: inline-flex; align-items: center; gap: .45rem; min-height: 2.75rem; padding: .55rem 1rem; font-size: var(--fs-text); font-weight: 700; text-decoration: none; border-radius: 999px; }
 .kopf-knopf .ico { width: 1.15rem; height: 1.15rem; }
 .btn.kopf-knopf-haupt { color: #fff; background: var(--text); border: 1px solid var(--text); }
 .btn.kopf-knopf-haupt:hover { background: #000; }
@@ -625,6 +625,106 @@ summary { cursor: pointer; }
   .kopf-knopf { justify-content: center; }
   .tab { padding: .5rem .15rem; font-size: var(--fs-s); line-height: 1.2; }
 }
+
+/* ---------- 13b Reiter „Entdecken“ (MaterialMatch 3.5) und Navigation mit Haupt- und weiteren Bereichen ---------- */
+.tabs-trenner { align-self: center; flex: none; width: 1px; height: 1.4rem; margin: 0 .35rem; background: var(--line-strong); }
+.tab-weitere { font-weight: 600; font-size: var(--fs-m); }
+.btn.kopf-knopf-erst { color: var(--text); background: var(--kachel-weiss); border: 1px solid var(--line-strong); }
+.btn.kopf-knopf-erst:hover { background: #f0f2f5; }
+
+.ent-kopf h2 { margin: 0 0 .25rem; }
+.ent-intro { margin: 0 0 1rem; max-width: 60ch; color: var(--text-soft); }
+.ent-suchzeile { position: relative; margin-bottom: .9rem; }
+.ent-suchzeile .suche-icon { position: absolute; left: 1.1rem; top: 50%; width: 1.25rem; height: 1.25rem; transform: translateY(-50%); color: var(--text-soft); pointer-events: none; }
+.ent-suchzeile input { width: 100%; min-height: 3.5rem; padding: .8rem 1.1rem .8rem 3.1rem; font-size: var(--fs-l); background: var(--bg-soft); border: 1px solid var(--line); border-radius: 999px; }
+.ent-suchzeile input:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; background: #fff; }
+.ent-filter { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto; gap: .75rem 1rem; align-items: end; }
+.ent-filter-weitere { margin-top: .75rem; grid-template-columns: minmax(0, 1fr) auto auto; }
+.ent-weitere-knopf::after { content: ""; display: inline-block; width: .45rem; height: .45rem; margin-left: .5rem; border: solid currentColor; border-width: 0 2px 2px 0; transform: translateY(-.15rem) rotate(45deg); }
+.ent-weitere-knopf[aria-expanded="true"]::after { transform: translateY(.1rem) rotate(-135deg); }
+.ent-weitere { margin-top: .5rem; }
+.ent-weitere-box[hidden] { display: none; }
+.ent-weitere-knopf { display: inline-flex; align-items: center; min-height: 2.75rem; padding: .3rem 0; font: inherit; font-size: var(--fs-m); font-weight: 700; color: var(--text); background: none; border: 0; cursor: pointer; }
+.ent-weitere-knopf:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; border-radius: 6px; }
+.ent-btn[hidden], .ent-status [hidden] { display: none; }
+.ent-check { display: inline-flex; align-items: center; gap: .5rem; min-height: 2.75rem; font-size: var(--fs-m); font-weight: 600; cursor: pointer; }
+.ent-check input { width: 1.2rem; height: 1.2rem; accent-color: var(--text); }
+.ent-ansicht { display: inline-flex; gap: .25rem; padding: .2rem; border: 1px solid var(--line); border-radius: 999px; background: var(--bg-soft); }
+.ent-btn { min-height: 2.75rem; padding: .45rem 1rem; font-size: var(--fs-m); font-weight: 700; border-radius: 999px; border: 1px solid var(--line-strong); background: #fff; color: var(--text); }
+.btn.ent-btn:hover:not([disabled]) { background: #eceff3; color: var(--text); }
+.ent-btn:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
+.ent-btn-haupt { color: #fff; background: var(--text); border-color: var(--text); }
+.btn.ent-btn-haupt:hover:not([disabled]) { background: #000; color: #fff; }
+.ent-ansicht .ent-btn { border-color: transparent; background: transparent; min-height: 2.5rem; }
+.ent-ansicht .ent-btn[aria-pressed="true"], .btn.ent-ansicht .ent-btn[aria-pressed="true"]:hover:not([disabled]), .ent-ansicht .btn.ent-btn[aria-pressed="true"]:hover:not([disabled]) { background: var(--text); color: #fff; }
+.ent-status { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 1rem; margin-top: .9rem; }
+.ent-anzahl { margin: 0; font-weight: 700; font-size: var(--fs-m); }
+.ent-feedback { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .9rem; margin: .75rem 0 0; padding: .6rem .9rem; background: var(--kachel-blau); border-radius: var(--radius); font-size: var(--fs-m); font-weight: 600; }
+.ent-feedback[hidden] { display: none; }
+.ent-link { padding: .2rem .1rem; font: inherit; font-weight: 800; color: var(--text); text-decoration: underline; background: none; border: 0; cursor: pointer; min-height: 2.75rem; }
+.ent-link:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
+
+.ent-liste { list-style: none; margin: var(--kachel-abstand) 0 0; padding: 0; }
+.ent-liste.ent-karten { display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: var(--kachel-abstand); }
+.ent-karte { display: flex; flex-direction: column; gap: .75rem; padding: 1rem; background: var(--kachel-weiss); border: 1px solid var(--line); border-radius: var(--radius-kachel); box-shadow: var(--schatten); }
+.ent-karte .mbild { margin: 0; width: 100%; }
+.ent-karte .mbild img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius); background: var(--bg-soft); }
+.ent-name { margin: 0; font-size: var(--fs-l); font-weight: 700; line-height: 1.3; }
+.ent-kat { margin: .1rem 0 .6rem; font-size: var(--fs-s); color: var(--text-soft); }
+.ent-kennwerte { list-style: none; margin: 0; padding: 0; display: grid; gap: .3rem; }
+.ent-kw { display: flex; justify-content: space-between; gap: .75rem; font-size: var(--fs-m); border-top: 1px solid var(--line); padding-top: .3rem; }
+.ent-kw-label { color: var(--text-soft); flex: none; }
+.ent-kw-wert { text-align: right; font-weight: 700; overflow-wrap: anywhere; }
+.ent-fehlt { font-weight: 500; color: var(--text-soft); font-style: italic; }
+.ent-aktionen { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: auto; }
+.ent-aktionen .ent-btn { flex: 1 1 auto; text-align: center; }
+/* kompakte Listenansicht: eine Zeile je Baustoff */
+.ent-liste.ent-liste .ent-karte { }
+.ent-liste.ent-liste:not(.ent-karten) { display: grid; gap: .5rem; }
+.ent-liste.ent-liste:not(.ent-karten) .ent-karte { display: grid; grid-template-columns: 4rem minmax(0, 1fr) auto; align-items: center; gap: .5rem 1rem; padding: .6rem .9rem; border-radius: var(--radius); }
+.ent-liste.ent-liste:not(.ent-karten) .ent-karte .mbild { width: 4rem; }
+.ent-liste.ent-liste:not(.ent-karten) .ent-kat { margin: 0 0 .25rem; }
+.ent-liste.ent-liste:not(.ent-karten) .ent-kennwerte { grid-template-columns: repeat(3, minmax(0, auto)); gap: .2rem 1.25rem; justify-content: start; }
+.ent-liste.ent-liste:not(.ent-karten) .ent-kw { border-top: 0; padding-top: 0; gap: .4rem; }
+.ent-liste.ent-liste:not(.ent-karten) .ent-aktionen { margin: 0; flex-wrap: nowrap; }
+.ent-leer { margin-top: var(--kachel-abstand); text-align: center; }
+.ent-leer p { margin: .3rem auto .8rem; max-width: 46ch; }
+
+@media (min-width: 901px) and (max-width: 1100px) { .site-header .untertitel { display: none; } }   /* schmaler Laptop: Kopf bleibt niedrig, der Leitsatz genügt */
+@media (max-width: 900px) {
+  /* Tablet: Kopf einspaltig, die drei Hauptaktionen unter dem Text in einer Reihe */
+  .kopf { flex-direction: column; align-items: stretch; gap: .75rem; }
+  .kopf-aktionen { flex-wrap: nowrap; }
+  .kopf-knopf { flex: 1 1 0; min-width: 0; justify-content: center; }
+  .ent-filter, .ent-filter-weitere { grid-template-columns: 1fr 1fr; }
+  .ent-ansicht { grid-column: 1 / -1; justify-self: start; }
+  .ent-liste.ent-liste:not(.ent-karten) .ent-karte { grid-template-columns: 4rem minmax(0, 1fr); }
+  .ent-liste.ent-liste:not(.ent-karten) .ent-aktionen { grid-column: 1 / -1; }
+  .ent-liste.ent-liste:not(.ent-karten) .ent-kennwerte { grid-template-columns: 1fr; }
+  /* fünf Reiter am Handy: gleich breit, Beschriftung darf umbrechen, kein Abschneiden */
+  .tabs-trenner { display: none; }
+  .tab-weitere { font-weight: 700; }
+}
+@media (max-width: 520px) {
+  .ent-filter, .ent-filter-weitere { grid-template-columns: 1fr; }
+  .ent-liste.ent-karten { grid-template-columns: 1fr; }
+  /* Reiter am Handy zweizeilig: oben die drei Hauptbereiche, darunter die weiteren Bereiche; Schrift mindestens 12 px */
+  .tabs { flex-wrap: wrap; gap: .15rem; padding: .25rem; border-radius: 24px; }
+  .tab { flex: 1 1 28%; min-width: 0; padding: .5rem .2rem; font-size: var(--fs-s); line-height: 1.2; overflow-wrap: normal; hyphens: manual; }
+  .tab-weitere { flex: 1 1 44%; font-weight: 600; }
+  /* Kopf am Handy niedrig halten: drei Hauptaktionen nebeneinander (Symbol über der Beschriftung) */
+  .kopf-aktionen { flex-direction: row; gap: .4rem; }
+  .kopf-knopf { flex: 1 1 0; min-width: 0; flex-direction: column; gap: .2rem; padding: .5rem .25rem; font-size: .72rem; line-height: 1.2; text-align: center; border-radius: 16px; }
+  .site-header .untertitel { display: none; }
+}
+@media print { #bereich-entdecken { display: none !important; } }
+.card-aktionen { display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; margin-top: auto; }
+.card-entfernen { min-height: 2.75rem; padding: .3rem 0; font: inherit; font-weight: 600; color: var(--text-soft); background: none; border: 0; text-decoration: underline; cursor: pointer; }
+.card-entfernen:hover { color: var(--text); }
+.card-entfernen:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; border-radius: 4px; }
+.sb-gruppe { margin: 0 0 1.1rem; }
+.sb-gruppe > h4 { margin: 0 0 .4rem; font-size: var(--fs-m); font-weight: 700; letter-spacing: .01em; }
+.sb-dq { margin: 0 0 .5rem; font-size: var(--fs-m); color: var(--text-soft); }
 
 /* ---------- 14 Druck: ruhig und ohne Kachel-Optik ---------- */
 @media print {

@@ -3220,5 +3220,100 @@ window.MATERIALMATCH_PRODUKTE = [
         "hinweis": "Preisliste Profibaustoffe Austria 2026 für Österreich (unverbindliche Preisempfehlung, gültig ab 01.01.2026 in Wien, Niederösterreich und im nördlichen Burgenland): PROFI ALPHAFLIESSESTRICH 2 MM CA-C20-F4 (E225) 512,50 €/t netto, umgerechnet mit dem Verbrauch der Liste (ca. 19 kg/m²/cm = 973,75 €/m³ Volumen des Auftrags). Kein aktuell abgerufener Händlerpreis, kein Preis für Deutschland; Zustellung, Wasser und Einbau kommen hinzu."
       }
     }
+  },
+  {
+    "id": "superglass-klemmfilz-kf4-032",
+    "material": "glaswolle",
+    "name": "SUPERGLASS Klemmfilz KF 4 – WLS 032 (Hochbau-Preisliste)",
+    "hersteller": "SUPERGLASS Dämmstoffe GmbH",
+    "standard": false,
+    "datenblatt": "hersteller-superglass-hochbau-preisliste-2026",
+    "beschreibung": "Glaswolle-Klemmfilz für die Steildachdämmung zwischen den Sparren; nur Angaben aus der Hochbau-Preisliste 02/2026 (Wärmeleitfähigkeitsstufe, Euroklasse, Listenpreis), das Datenblatt wurde nicht eingesehen.",
+    "eigenschaften": {
+      "waermeleitfaehigkeit": {
+        "wert": 0.032,
+        "einheit": "W/(m·K)",
+        "art": "richtwert",
+        "quelle": "hersteller-superglass-hochbau-preisliste-2026",
+        "hinweis": "Wärmeleitfähigkeitsstufe WLS 032 laut Preisliste; als Nennwert λD übernommen (Stufe = Nennwert in W/(m·K) × 1000). Das Datenblatt bzw. die Zulassung ist maßgeblich und wurde nicht eingesehen."
+      },
+      "brandverhalten": {
+        "wert": "A1",
+        "art": "richtwert",
+        "quelle": "hersteller-superglass-hochbau-preisliste-2026",
+        "hinweis": "Euroklasse A1 (nichtbrennbar, EN 13501) laut Preisliste. Euroklasse des Baustoffs, nicht Feuerwiderstand eines Bauteils."
+      },
+      "preis": {
+        "wert": 231.3,
+        "einheit": "€/m³",
+        "art": "richtwert",
+        "quelle": "preisliste-superglass-2026-kf4-032",
+        "mwst": "exkl. MwSt.",
+        "umfang": "Material, Herstellerliste (ohne Transport und Einbau)",
+        "bezugsdicke_m": 0.1,
+        "hinweis": "Herstellerpreisliste SUPERGLASS 02/2026 (gültig ab 11.05.2026, netto): 23,13 €/m² bei 100 mm Dicke ÷ 0,1 m = 231,3 €/m³. Preis gilt für 100 mm; je Dicke ändert sich der Preis je m³ leicht. Zustellung, Mengenkonditionen und Einbau kommen hinzu."
+      }
+    }
+  },
+  {
+    "id": "superglass-klemmfilz-kf2-035",
+    "material": "glaswolle",
+    "name": "SUPERGLASS Klemmfilz KF 2 – WLG 035 (Hochbau-Preisliste)",
+    "hersteller": "SUPERGLASS Dämmstoffe GmbH",
+    "standard": false,
+    "datenblatt": "hersteller-superglass-hochbau-preisliste-2026",
+    "beschreibung": "Glaswolle-Klemmfilz für die Steildachdämmung zwischen den Sparren; nur Angaben aus der Hochbau-Preisliste 02/2026 (Wärmeleitfähigkeitsstufe, Euroklasse, Listenpreis), das Datenblatt wurde nicht eingesehen.",
+    "eigenschaften": {
+      "waermeleitfaehigkeit": {
+        "wert": 0.035,
+        "einheit": "W/(m·K)",
+        "art": "richtwert",
+        "quelle": "hersteller-superglass-hochbau-preisliste-2026",
+        "hinweis": "Wärmeleitfähigkeitsstufe WLG 035 laut Preisliste; als Nennwert λD übernommen (Stufe = Nennwert in W/(m·K) × 1000). Das Datenblatt bzw. die Zulassung ist maßgeblich und wurde nicht eingesehen."
+      },
+      "brandverhalten": {
+        "wert": "A1",
+        "art": "richtwert",
+        "quelle": "hersteller-superglass-hochbau-preisliste-2026",
+        "hinweis": "Euroklasse A1 (nichtbrennbar, EN 13501) laut Preisliste. Euroklasse des Baustoffs, nicht Feuerwiderstand eines Bauteils."
+      },
+      "preis": {
+        "wert": 157.5,
+        "einheit": "€/m³",
+        "art": "richtwert",
+        "quelle": "preisliste-superglass-2026-kf2-035",
+        "mwst": "exkl. MwSt.",
+        "umfang": "Material, Herstellerliste (ohne Transport und Einbau)",
+        "bezugsdicke_m": 0.1,
+        "hinweis": "Herstellerpreisliste SUPERGLASS 02/2026 (gültig ab 11.05.2026, netto): 15,75 €/m² bei 100 mm Dicke ÷ 0,1 m = 157,5 €/m³. Preis gilt für 100 mm; je Dicke ändert sich der Preis je m³ leicht. Zustellung, Mengenkonditionen und Einbau kommen hinzu."
+      }
+    }
+  },
+  {
+    "id": "rigips-rigidur-h-12-5",
+    "material": "gipsfaserplatte",
+    "name": "Rigips Rigidur H 12,5 Gipsfaserplatte (Preisliste)",
+    "hersteller": "Saint-Gobain Rigips GmbH",
+    "standard": false,
+    "datenblatt": "preisliste-rigips-rigidur-2026-h125",
+    "beschreibung": "Homogene Gipsfaserplatte, Dicke 12,5 mm, ETA-08/0147; nur Listenpreis und Flächengewicht aus der Rigidur-Preisliste 2026, keine weiteren Technikwerte.",
+    "eigenschaften": {
+      "rohdichte": {
+        "wert": 1264.0,
+        "einheit": "kg/m³",
+        "art": "richtwert",
+        "quelle": "preisliste-rigips-rigidur-2026-h125",
+        "hinweis": "Aus der Preisliste berechnet: 15,8 kg/m² ÷ 0,0125 m = 1264 kg/m³ (Rohdichte-Näherung aus Flächengewicht und Nenndicke)."
+      },
+      "preis": {
+        "wert": 16.25,
+        "einheit": "€/m²",
+        "art": "richtwert",
+        "quelle": "preisliste-rigips-rigidur-2026-h125",
+        "mwst": "exkl. MwSt.",
+        "umfang": "Material, Herstellerliste (ohne Transport und Einbau)",
+        "hinweis": "Herstellerpreisliste Rigips Rigidur (gültig ab 11.05.2026, 2. Auflage, netto, Seite 19): 16,25 € je m² für Rigidur H 12,5 in Spachtelfugentechnik (Längen 2.000 bis 3.000 mm). Mengenrabatte, Fracht und Zuschläge separat; kein Händlerpreis."
+      }
+    }
   }
 ];

@@ -340,6 +340,31 @@ Die Siniat-EPD „Gipsplatte nach DIN EN 520 und DIN 18180“ (BVG, EPD-BVG-2021
 
 **Bilanz (Echtdaten-Modus):** belegt 142 → **156**, nicht belegt 257 → **249** (82 Beispielwerte, davon 6 jetzt durch belegte Preise ersetzt, 76 bleiben unsichtbar), Materialien mit belegtem Preis 5 → **19 von 50**, Produkte mit Preis 40 (unverändert). **Technische Kennwerte** (λ, λB, Rohdichte, Brandverhalten, Druckfestigkeit, μ, Wärmekapazität) und **GWP** wurden in dieser Runde **nicht** ergänzt: Es gab keine frei und rechtlich sicher nutzbare, maschinenlesbare Quelle (Normen kostenpflichtig, Herstellerseiten und Portale gesperrt oder anmeldepflichtig). Jede einzelne Lücke mit Grund: `DATENLUECKEN.md`.
 
+## 2k. Runde 10 (18.11.2026), MaterialMatch 3.4: Dateiimporte, Hersteller-Preislisten (PDF) und Registrierungen
+
+**Anlass:** Auftrag „Vollständige Baustoffdatenbank durch Dateiimporte ergänzen“: bevorzugt herunterladbare Dateien (PDF, XML, CSV, ZIP) und offizielle Schnittstellen; Nutzungsrechte vor der Übernahme prüfen. Sicherung vorher: `…_vor-dateiimport-dp4.tar.gz`.
+
+**Geprüfte Download-Quellen für Kennwerte:**
+| Quelle | Ergebnis | Folge |
+|---|---|---|
+| **baubook** (Richtwerte, XML) | Kostenloser XML-Download nach Registrierung (baubook.at/registrieren). **AGB Punkt 3:** Den Nutzer:innen ist es „untersagt, die abgefragten Daten in eine eigene Datenbank einzubringen“; dafür gibt es „gesonderte Kooperationsvereinbarungen“. Werte sind österreichische Richtwerte (Energieausweis, Wohnbauförderung), für Diffusionsberechnungen „nur bedingt geeignet“. | **Nichts heruntergeladen, nichts übernommen.** Erst Anfrage an baubook (Textvorschlag in `ANMELDUNGEN_UND_DOWNLOADS.md`). |
+| **IBU.data** (EPD als XML/ILCD) | Kostenlose Registrierung (ibu-epd.com/ibu-data-registrierung). FAQ: kostenfrei für „Endanwender zum Zweck der Information und Verwendung zur Gebäudeökobilanzierung“, **für andere Nutzungen gesonderte Lizenzvereinbarung**. Die Seite `ibu-data-start` antwortete direkt mit HTTP 503; der Text wurde über die öffentliche WordPress-Schnittstelle der Seite gelesen. | Lizenzfrage per E-Mail klären, dann registrieren. Nutzen gering (GWP ist über ÖKOBAUDAT zu 49 von 50 belegt). |
+| **WECOBIS** (myWECOBIS) | Kein Sammel-Download; „Export als ZIP“ betrifft nur eigene Projektdaten registrierter Nutzer. Impressum: Vervielfältigung „nur mit Genehmigung“ der Bayerischen Architektenkammer. | Genehmigung erfragen (Textvorschlag in der Übersicht); bis dahin nichts übernommen. |
+| **ÖKOBAUDAT** | Lokaler Datenstand (2024-II, CSV im Projekt und Originaldatei) zuerst geprüft; nichts neu geladen. GWP 49 von 50 belegt; für Stahlbeton gibt es keinen passenden Datensatz. | unverändert |
+
+**Hersteller-Preislisten als PDF (öffentlich herunterladbar, netto, mit Gültigkeitsdatum):**
+| Liste | Inhalt / Ergebnis |
+|---|---|
+| **SUPERGLASS Hochbau-Preisliste 02/2026** (gültig ab 11.05.2026, Festland Deutschland, ohne MwSt.; PDF beim Händler von Guttenberg) | **Übernommen:** Klemmfilz KF 4 – WLS 032 (23,13 €/m² bei 100 mm = 231,30 €/m³) und KF 2 – WLG 035 (15,75 €/m² = 157,50 €/m³), je mit λD (Wärmeleitfähigkeitsstufe) und Euroklasse A1 laut Liste. Datenblatt/Zulassung nicht eingesehen. |
+| **Rigips Rigidur Preisliste** (gültig ab 11.05.2026, 2. Auflage, ohne MwSt.) | **Übernommen:** Rigidur H 12,5 Gipsfaserplatte, 16,25 €/m² (alle fünf Längen gleich), Flächengewicht 15,8 kg/m² ⇒ Rohdichte-Näherung 1.264 kg/m³. Hinweis: Die bausep-Spanne für Gipsfaserplatte (8,28 bis 8,40 €/m²) liegt deutlich darunter; es sind verschiedene Produkte und Händler gegenüber Herstellerliste, beide bleiben mit Quelle sichtbar. |
+| **Wienerberger/Koramic Preisliste 2026** (Österreich, gültig ab 01.01.2026, exkl. 20 % MwSt.) | **Übernommen:** Preisspanne Dachziegel aus 12 Flächenziegeln in Naturrot: Median 35,31 €/m², Spanne 34,02 bis 47,57 €/m² (Preis je Stück × mittlerer Bedarf je m²). Nur im Echtdaten-Modus; **Österreich**, ohne First, Ortgang, Zubehör. |
+| **ROCKWOOL Haustechnik-Preisliste 2/2026** | Gelesen, nicht übernommen: Haustechnik und Brandschutz (Rohrschalen, Lamellen), kein Bauteil-Dämmstoff im Sinne der Datenbank. |
+| Holz (KVH, BSH, BSP), Stahl, Betonstahl, Klinker, Fliesen, Aluminium, Zink | Keine öffentlich herunterladbare, nutzbare Preisliste gefunden (nur Schweizer Listen in CHF, Händlerseiten oder Preisberichte ohne Produktbezug). |
+
+**Händler und Portale (Zugriff am 18.11.2026):** Hornbach, Bauhaus, OBI, Baustoffshop, benz24, Contorion blockieren automatische Abrufe bzw. liefern keine Preise; BayWa, Holzland, MEGA, Raab Karcher haben keine herunterladbaren Preislisten oder Datenfeeds. Nicht umgangen. Die Freigaben für Hornbach, Bauhaus, Baustoffshop, benz24 und Contorion wurden aus der Netzwerkliste der Umgebung entfernt, um Platz für `vonguttenberg.de`, `rigips.de` und `wienerberger.at` zu schaffen (die Umgebung erlaubt höchstens 20 Hosts).
+
+**Bilanz (Echtdaten-Modus):** Materialien mit belegtem Preis 19 → **20 von 50**; Produkte mit Preis 40 → **43**; belegte Kennwerte 156 → **157**; Produkte 82 → **85**; Quellen 168 → **173**. Technische Kennwerte: je 1 neuer Wert für 3 Produkte (λD ×2, Brandverhalten ×2, Rohdichte ×1). Ökologische Kennwerte: keine neuen. **Die Hauptlücken (λ, μ, c, Druckfestigkeit der allgemeinen Materialien, Recycling) bleiben, bis baubook/Normen/Hochschule freigegeben sind.** Alle Schritte für euch: `ANMELDUNGEN_UND_DOWNLOADS.md`.
+
 ## 3. Gelesen, aber bewusst nicht übernommen
 
 | Dokument | Grund |

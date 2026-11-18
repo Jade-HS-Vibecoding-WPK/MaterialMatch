@@ -151,14 +151,21 @@
     return ul;
   }
 
-  function alleEigenschaften(m) {
+  // MaterialMatch 3.5: Die ausführlichen Eigenschaften stehen in klar beschrifteten Abschnitten statt in einer langen Liste
+  var GRUPPEN = [
+    { titel: "Technische Eigenschaften", schluessel: ["waermeleitfaehigkeit_bemessung", "waermeleitfaehigkeit", "rohdichte", "flaechengewicht", "druckfestigkeit", "brandverhalten", "wasserdampf_mu", "waermekapazitaet"] },
+    { titel: "Ökologische Eigenschaften", schluessel: ["gwp", "recycling"] },
+    { titel: "Preise", schluessel: ["preis"] }
+  ];
+
+  function eigenschaftenTabelle(m, schluessel) {
     var wrap = el("div", null, "table-wrap");
     var t = el("table", null, "data-table kompakt");
     var th = el("thead"), tr = el("tr");
     ["Eigenschaft", "Wert", "Datenart"].forEach(function (h) { var c = el("th", h); c.setAttribute("scope", "col"); tr.appendChild(c); });
     th.appendChild(tr); t.appendChild(th);
     var tb = el("tbody");
-    REIHENFOLGE.forEach(function (k) {
+    schluessel.forEach(function (k) {
       var e = m.eigenschaften[k];
       if (!e) return;
       var zeile = el("tr");
@@ -167,7 +174,9 @@
       var w = wertVon(k, e);
       var td = el("td");
       if (w && w.text !== undefined) {
-        td.appendChild(document.createTextNode(w.text + (w.einheit ? " " + w.einheit : "")));
+        var text = w.text + (w.einheit ? " " + w.einheit : "");
+        if (k === "preis" && e.spanne && istZahl(e.spanne.min) && istZahl(e.spanne.max)) text += " (Spanne " + zahl(e.spanne.min) + " bis " + zahl(e.spanne.max) + " " + (e.einheit || "") + ", Median)";
+        td.appendChild(document.createTextNode(text));
         if (k === "gwp" && e.werte) {
           var zusatz = [];
           if (istZahl(e.werte.gesamt)) zusatz.push("gesamt " + zahl(e.werte.gesamt));
@@ -187,6 +196,35 @@
     t.appendChild(tb);
     wrap.appendChild(t);
     return wrap;
+  }
+
+  function alleEigenschaften(m) {
+    var box = el("div", null, "sb-gruppen");
+    GRUPPEN.forEach(function (g) {
+      var vorhanden = g.schluessel.filter(function (k) { return m.eigenschaften[k]; });
+      if (!vorhanden.length) return;
+      var sec = el("section", null, "sb-gruppe");
+      sec.appendChild(el("h4", g.titel));
+      sec.appendChild(eigenschaftenTabelle(m, vorhanden));
+      box.appendChild(sec);
+    });
+    return box;
+  }
+
+  // Kurzbilanz der Datenqualität: wie viele der zehn Kennwerte sind belegt, wie viele fehlen?
+  function datenqualitaetText(m) {
+    var schl = ["preis", "gwp", "waermeleitfaehigkeit", "waermeleitfaehigkeit_bemessung", "rohdichte", "brandverhalten", "druckfestigkeit", "wasserdampf_mu", "waermekapazitaet", "recycling"];
+    var belegt = 0, beispiel = 0, fehlt = 0, na = 0;
+    schl.forEach(function (k) {
+      var e = m.eigenschaften[k];
+      if (e && e.nicht_anwendbar) { na++; return; }
+      var hat = e && (k === "gwp" ? !!e.werte : (e.wert !== null && e.wert !== undefined && e.wert !== ""));
+      if (!hat) fehlt++; else if (e.art === "beispiel") beispiel++; else belegt++;
+    });
+    var t = belegt + " von " + schl.length + " Kennwerten sind belegt (Richtwert oder verifiziert, mit Quelle)";
+    if (beispiel) t += ", " + beispiel + " sind Beispielwerte (Demo)";
+    t += ", " + fehlt + " fehlen" + (na ? ", " + na + " sind für dieses Material nicht anwendbar" : "") + ". Fehlende Werte sind keine Null und kein schlechter Wert.";
+    return t;
   }
 
   // ---------- Abschnitt „Warum dieses Match?“ (nur wenn der Steckbrief aus dem Match-Bereich geöffnet wird) ----------
@@ -261,14 +299,21 @@
     mehr.appendChild(el("summary", "Alle Eigenschaften und Quellen"));
     var inhalt = el("div", null, "sb-mehr-inhalt");
     inhalt.appendChild(alleEigenschaften(m));
+    var einsatzSec = el("section", null, "sb-gruppe");
+    einsatzSec.appendChild(el("h4", "Einsatzbereiche"));
+    einsatzSec.appendChild(el("p", MM.namenAusIds(m.anwendungen, daten.anwendungsbereiche) + "."));
     if (profil) {
       var p = el("p", null, "sb-einordnung");
       p.appendChild(el("strong", root.MATERIALMATCH_PROFIL.meta.titel + ": "));
       p.appendChild(document.createTextNode(profil.begruendung));
-      inhalt.appendChild(p);
+      einsatzSec.appendChild(p);
     }
-    inhalt.appendChild(el("h4", "Quellen der Kennwerte"));
-    inhalt.appendChild(quellenListe(m));
+    inhalt.appendChild(einsatzSec);
+    var quSec = el("section", null, "sb-gruppe");
+    quSec.appendChild(el("h4", "Quellen und Datenqualität"));
+    quSec.appendChild(el("p", datenqualitaetText(m), "sb-dq"));
+    quSec.appendChild(quellenListe(m));
+    inhalt.appendChild(quSec);
     mehr.appendChild(inhalt);
     art.appendChild(mehr);
 

@@ -1,13 +1,14 @@
 /* ==========================================================================
    MaterialMatch – Hauptreiter (MaterialMatch 2.0, Schritt 2)
    --------------------------------------------------------------------------
-   Vier Reiter: Vergleich, Match finden, Alternativen, Quellen & Details.
+   Fünf Reiter: Entdecken, Vergleich, Match finden (Hauptbereiche) sowie Alternativen und Quellen & Details (weitere Bereiche).
+   Beim Start ist „Vergleich“ geöffnet (Adresse #entdecken öffnet das Entdecken).
    Ein Reiterwechsel blendet nur Bereiche ein oder aus (Attribut "hidden").
    Nichts wird gelöscht oder neu geladen: Auswahl, Eingaben und Berechnungen
    bleiben erhalten, und alle Bereiche werden weiter aktualisiert.
 
    Bedienung: Klick, Pfeil links/rechts (mit Umlauf), Pos1 und Ende.
-   Adresse: #vergleich, #match, #alternativen oder #quellen öffnet den Reiter direkt.
+   Adresse: #entdecken, #vergleich, #match, #alternativen oder #quellen öffnet den Reiter direkt.
    Im Ausdruck zeigt css/style.css die Bereiche Vergleich, Alternativen und Quellen (der Match-Bereich ist eine Bildschirmfunktion).
    ========================================================================== */
 
@@ -15,7 +16,7 @@
   "use strict";
 
   var MM = root.MM = root.MM || {};
-  var IDS = ["vergleich", "match", "alternativen", "quellen"];
+  var IDS = ["entdecken", "vergleich", "match", "alternativen", "quellen"];
   var aktiv = "vergleich";
   var knoepfe = {};
   var bereiche = {};

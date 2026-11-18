@@ -65,6 +65,7 @@
       </div>
       <!-- Zwei Hauptaktionen (js/kopf.js): wechseln in den Bereich und setzen den Fokus dorthin -->
       <div class="kopf-aktionen" role="group" aria-label="Hauptaktionen">
+        <a class="btn kopf-knopf kopf-knopf-erst" id="kopf-entdecken" href="#entdecken" data-ziel="entdecken"><svg class="ico" aria-hidden="true"><use href="#i-search"/></svg>Baustoffe entdecken</a>
         <a class="btn kopf-knopf kopf-knopf-haupt" id="kopf-vergleichen" href="#vergleich" data-ziel="vergleich"><svg class="ico" aria-hidden="true"><use href="#i-scale"/></svg>Baustoffe vergleichen</a>
         <a class="btn kopf-knopf kopf-knopf-zweit" id="kopf-match" href="#match" data-ziel="match"><svg class="ico" aria-hidden="true"><use href="#i-sparkles"/></svg>Match finden</a>
       </div>
@@ -94,15 +95,60 @@
   <nav class="tabs-leiste" aria-label="Hauptbereiche">
     <div class="container">
       <div class="tabs" role="tablist" aria-label="Hauptbereiche">
+        <button type="button" role="tab" id="reiter-entdecken" class="tab" aria-controls="bereich-entdecken" aria-selected="false" tabindex="-1">Entdecken</button>
         <button type="button" role="tab" id="reiter-vergleich" class="tab" aria-controls="bereich-vergleich" aria-selected="true">Vergleich</button>
         <button type="button" role="tab" id="reiter-match" class="tab" aria-controls="bereich-match" aria-selected="false" tabindex="-1">Match finden</button>
-        <button type="button" role="tab" id="reiter-alternativen" class="tab" aria-controls="bereich-alternativen" aria-selected="false" tabindex="-1">Alternativen</button>
-        <button type="button" role="tab" id="reiter-quellen" class="tab" aria-controls="bereich-quellen" aria-selected="false" tabindex="-1">Quellen &amp; Details</button>
+        <span class="tabs-trenner" aria-hidden="true"></span>
+        <button type="button" role="tab" id="reiter-alternativen" class="tab tab-weitere" aria-controls="bereich-alternativen" aria-selected="false" tabindex="-1">Alternativen</button>
+        <button type="button" role="tab" id="reiter-quellen" class="tab tab-weitere" aria-controls="bereich-quellen" aria-selected="false" tabindex="-1">Quellen &amp; Details</button>
       </div>
     </div>
   </nav>
 
   <main class="container">
+
+  <!-- ====== REITER: ENTDECKEN (js/entdecken.js) ====== -->
+  <div role="tabpanel" id="bereich-entdecken" class="tab-bereich" aria-labelledby="reiter-entdecken" tabindex="-1" hidden>
+    <section class="kachel ent-kopf" id="entdecken-kopf">
+      <h2>Baustoffe entdecken</h2>
+      <p class="ent-intro">Suche nach Baustoffen, filtere nach Kategorie oder Einsatzbereich und lege Materialien mit einem Klick in den Vergleich.</p>
+      <div class="ent-suchzeile">
+        <label for="ent-suche" class="sr-only">Baustoffe durchsuchen</label>
+        <svg class="ico suche-icon" aria-hidden="true"><use href="#i-search"/></svg>
+        <input id="ent-suche" type="search" autocomplete="off" placeholder="Baustoff suchen, z. B. Holz, Styropor oder Beton" aria-describedby="ent-anzahl">
+      </div>
+      <div class="ent-filter">
+        <div class="field"><label for="ent-kategorie">Kategorie</label><select id="ent-kategorie"></select></div>
+        <div class="field"><label for="ent-sortierung">Sortieren nach</label>
+          <select id="ent-sortierung">
+            <option value="name">Name</option><option value="preis">Preis (niedrig zuerst)</option><option value="co2">CO₂ (niedrig zuerst)</option><option value="lambda">Wärmeleitfähigkeit (niedrig zuerst)</option>
+          </select></div>
+        <div class="ent-ansicht" role="group" aria-label="Ansicht">
+          <button type="button" id="ent-ansicht-karten" class="btn ent-btn" aria-pressed="true">Karten</button>
+          <button type="button" id="ent-ansicht-liste" class="btn ent-btn" aria-pressed="false">Liste</button>
+        </div>
+      </div>
+      <div class="ent-weitere">
+        <button type="button" id="ent-weitere-knopf" class="ent-weitere-knopf" aria-expanded="false" aria-controls="ent-weitere-box">Weitere Filter<span id="ent-weitere-zaehler"></span></button>
+        <div class="ent-filter ent-filter-weitere ent-weitere-box" id="ent-weitere-box" hidden>
+          <div class="field"><label for="ent-anwendung">Einsatzbereich</label><select id="ent-anwendung"></select></div>
+          <label class="ent-check"><input type="checkbox" id="ent-nurpreis"> Nur mit belegtem Preis</label>
+          <label class="ent-check"><input type="checkbox" id="ent-nurco2"> Nur mit belegtem CO₂-Wert</label>
+        </div>
+      </div>
+      <div class="ent-status">
+        <p id="ent-anzahl" role="status" aria-live="polite" class="ent-anzahl"></p>
+        <button type="button" id="ent-reset" class="btn ent-btn" hidden>Alle Filter zurücksetzen</button>
+      </div>
+      <p id="ent-feedback" class="ent-feedback" role="status" aria-live="polite" hidden></p>
+    </section>
+    <ul id="ent-liste" class="ent-liste ent-karten" aria-label="Baustoffe"></ul>
+    <div id="ent-leer" class="kachel ent-leer" hidden>
+      <p><strong>Keine passenden Baustoffe gefunden.</strong></p>
+      <p>Probiere einen anderen Suchbegriff oder entferne einen Filter. Fehlende Kennwerte schließen keinen Baustoff aus, außer ihr verlangt ausdrücklich „belegter Preis“ oder „belegter CO₂-Wert“.</p>
+      <button type="button" id="ent-leer-reset" class="btn ent-btn ent-btn-haupt">Alle Filter zurücksetzen</button>
+    </div>
+  </div>
 
   <!-- ====== REITER 1: VERGLEICH ====== -->
   <div role="tabpanel" id="bereich-vergleich" class="tab-bereich" aria-labelledby="reiter-vergleich" tabindex="-1">
@@ -469,6 +515,7 @@
   <script src="js/favoriten.js"></script>
   <script src="js/swipe.js"></script>
   <script src="js/match.js"></script>
+  <script src="js/entdecken.js"></script>
   <script src="js/reiter.js"></script>
   <script src="js/kopf.js"></script>
   <script src="js/app.js"></script>

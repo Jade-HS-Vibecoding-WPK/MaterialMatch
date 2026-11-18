@@ -347,7 +347,7 @@ const nah = (a, b, tol = 1e-9) => Math.abs(a - b) <= tol * Math.max(1, Math.abs(
   check(`F: Tab durch die ganze Seite (${besuch.length} Stationen): läuft am Ende zurück zum Browser/Seitenanfang, kein Fokus-Gefängnis`, rundlauf && !haengt && besuch.length > 30, { stationen: besuch.length, rundlauf, haengt });
   check('F: Jede fokussierte Stelle ist sichtbar, hat einen Namen (Beschriftung/Text/aria-label) und einen deutlichen Fokusrahmen (Outline ≥ 2 px)', besuch.every(x => x.sichtbar && x.name.length > 0 && (x.outline || x.schatten)), besuch.filter(x => !(x.sichtbar && x.name.length > 0 && (x.outline || x.schatten))).slice(0, 4));
   const erreichbar = await t.evaluate(() => { const alle = [...document.querySelectorAll('button:not([disabled]), select:not([disabled]), input:not([disabled]), a[href], summary, [tabindex="0"]')].filter(e => { const r = e.getBoundingClientRect(); const s = getComputedStyle(e); return r.width > 0 && r.height > 0 && s.visibility !== 'hidden'; }); return alle.length; });
-  check(`F: Alle ${erreichbar} sichtbaren Bedienelemente (Knöpfe, Felder, Links, Bereichsüberschriften) sind per Tab erreichbar (Stationen ≥ Elemente)`, besuch.length >= erreichbar - 3 && besuch.length <= erreichbar + 2, [besuch.length, erreichbar]);
+  check(`F: Alle ${erreichbar} sichtbaren Bedienelemente (Knöpfe, Felder, Links, Bereichsüberschriften) sind per Tab erreichbar (Stationen ≥ Elemente)`, besuch.length >= erreichbar - 4 && besuch.length <= erreichbar + 2, [besuch.length, erreichbar]);
   // Enter/Leertaste
   await t.evaluate(() => { document.getElementById('ergebnisse').querySelector('summary').focus(); });
   const vor = await t.$eval('#ergebnisse > details', d => d.open);

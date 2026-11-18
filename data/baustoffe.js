@@ -2213,6 +2213,279 @@ window.MATERIALMATCH_DATA = {
       verwendung: "Flächengewicht und CO₂-Kennwerte (A1–A3) für epdm."
     },
     // <<OEBD-QUELLEN-ENDE>>
+    // ---- Datenpaket 4: Herstellerpreislisten als PDF (18.11.2026, MaterialMatch 3.4) ----
+    {
+      "id": "hersteller-superglass-hochbau-preisliste-2026",
+      "titel": "SUPERGLASS Hochbau-Preisliste 02/2026 (Seite 4: Klemmfilz KF 4 – WLS 032 und KF 2 – WLG 035; Euroklasse A1)",
+      "produkt": "SUPERGLASS Klemmfilz KF 4 – WLS 032 und KF 2 – WLG 035 (Glaswolle)",
+      "geltung": "produktspezifisch",
+      "geprueft": true,
+      "verwendung": "Wärmeleitfähigkeitsstufe (WLS 032 bzw. WLG 035) und Euroklasse A1 der Klemmfilze laut Herstellerliste. Die Liste verweist für die technischen Eigenschaften auf das Datenblatt bzw. die Zulassung; diese wurden nicht eingesehen.",
+      "herausgeber": "SUPERGLASS Dämmstoffe GmbH (Preisliste als PDF über den Baustoffhändler von Guttenberg veröffentlicht)",
+      "url": "https://www.vonguttenberg.de/wp-content/uploads/2026/06/Superglass-Preisliste-ab-11.05.2026.pdf",
+      "datum": "2026-05-11",
+      "datum_hinweis": "Titelseite: „Hochbau-Preisliste 02/2026, gültig ab 11.05.2026“. Ob die Liste am Abrufdatum noch gilt, wurde nicht geprüft.",
+      "abgerufen": "2026-11-18",
+      "quellenart": "Preisliste (Hersteller)",
+      "region": "Festland Deutschland, Lieferung frei Bestimmungsort (laut Konditionen der Liste)"
+    },
+    {
+      "id": "preisliste-superglass-2026-kf4-032",
+      "titel": "SUPERGLASS Hochbau-Preisliste 02/2026 (Seite 4: KLEMMFILZ KF 4 – WLS 032, 100 mm, Bestell-Nr. 9803200)",
+      "produkt": "KLEMMFILZ KF 4 – WLS 032, 100 mm",
+      "geltung": "produktspezifisch",
+      "preisangabe": {
+        "haendler": "SUPERGLASS Dämmstoffe GmbH (Herstellerpreisliste, Verkauf über den Fachhandel)",
+        "produktname": "KLEMMFILZ KF 4 – WLS 032",
+        "hersteller": "SUPERGLASS Dämmstoffe GmbH",
+        "variante": "Dicke 100 mm, Preisgruppe V2 der Liste; Preis in Euro je m² (ohne Mehrwertsteuer)",
+        "preis": 23.13,
+        "einheit": "€/m²",
+        "mwst": "exkl. MwSt.",
+        "region": "Festland Deutschland, frei Bestimmungsort laut Liste",
+        "verfuegbarkeit": "laut Liste; Paletten- und Paketeinheiten, Logistikzuschläge und Mengenkonditionen separat",
+        "status": "preisliste",
+        "umrechnung": {
+          "art": "flaeche_dicke",
+          "ziel": "€/m³",
+          "dicke_m": 0.1
+        }
+      },
+      "geprueft": true,
+      "verwendung": "Listenpreis netto des Produkts in 100 mm Dicke.",
+      "herausgeber": "SUPERGLASS Dämmstoffe GmbH (Preisliste als PDF über den Baustoffhändler von Guttenberg veröffentlicht)",
+      "url": "https://www.vonguttenberg.de/wp-content/uploads/2026/06/Superglass-Preisliste-ab-11.05.2026.pdf",
+      "datum": "2026-05-11",
+      "datum_hinweis": "Titelseite: „Hochbau-Preisliste 02/2026, gültig ab 11.05.2026“. Ob die Liste am Abrufdatum noch gilt, wurde nicht geprüft.",
+      "abgerufen": "2026-11-18",
+      "quellenart": "Preisliste (Hersteller)",
+      "region": "Festland Deutschland, Lieferung frei Bestimmungsort (laut Konditionen der Liste)"
+    },
+    {
+      "id": "preisliste-superglass-2026-kf2-035",
+      "titel": "SUPERGLASS Hochbau-Preisliste 02/2026 (Seite 4: KLEMMFILZ KF 2 – WLG 035, 100 mm, Bestell-Nr. 9803600)",
+      "produkt": "KLEMMFILZ KF 2 – WLG 035, 100 mm",
+      "geltung": "produktspezifisch",
+      "preisangabe": {
+        "haendler": "SUPERGLASS Dämmstoffe GmbH (Herstellerpreisliste, Verkauf über den Fachhandel)",
+        "produktname": "KLEMMFILZ KF 2 – WLG 035",
+        "hersteller": "SUPERGLASS Dämmstoffe GmbH",
+        "variante": "Dicke 100 mm, Preisgruppe VF der Liste; Preis in Euro je m² (ohne Mehrwertsteuer)",
+        "preis": 15.75,
+        "einheit": "€/m²",
+        "mwst": "exkl. MwSt.",
+        "region": "Festland Deutschland, frei Bestimmungsort laut Liste",
+        "verfuegbarkeit": "laut Liste; Paletten- und Paketeinheiten, Logistikzuschläge und Mengenkonditionen separat",
+        "status": "preisliste",
+        "umrechnung": {
+          "art": "flaeche_dicke",
+          "ziel": "€/m³",
+          "dicke_m": 0.1
+        }
+      },
+      "geprueft": true,
+      "verwendung": "Listenpreis netto des Produkts in 100 mm Dicke.",
+      "herausgeber": "SUPERGLASS Dämmstoffe GmbH (Preisliste als PDF über den Baustoffhändler von Guttenberg veröffentlicht)",
+      "url": "https://www.vonguttenberg.de/wp-content/uploads/2026/06/Superglass-Preisliste-ab-11.05.2026.pdf",
+      "datum": "2026-05-11",
+      "datum_hinweis": "Titelseite: „Hochbau-Preisliste 02/2026, gültig ab 11.05.2026“. Ob die Liste am Abrufdatum noch gilt, wurde nicht geprüft.",
+      "abgerufen": "2026-11-18",
+      "quellenart": "Preisliste (Hersteller)",
+      "region": "Festland Deutschland, Lieferung frei Bestimmungsort (laut Konditionen der Liste)"
+    },
+    {
+      "id": "preisliste-rigips-rigidur-2026-h125",
+      "titel": "Rigips Rigidur Preisliste ab 11.05.2026 (Seite 19: Rigidur H 12,5 in Spachtelfugentechnik, Großformatplatte)",
+      "produkt": "Rigidur H 12,5 Gipsfaserplatte, 1.245 mm breit, Längen 2.000 bis 3.000 mm",
+      "geltung": "produktspezifisch",
+      "preisangabe": {
+        "haendler": "Saint-Gobain Rigips GmbH (Herstellerpreisliste)",
+        "produktname": "Rigidur H 12,5 in Spachtelfugentechnik – Großformatplatte",
+        "hersteller": "Saint-Gobain Rigips GmbH",
+        "variante": "Dicke 12,5 mm, Breite 1.245 mm, Längen 2.000 bis 3.000 mm (alle fünf Artikel mit demselben Preis), Gewicht 15,8 kg/m², Zulassung ETA-08/0147",
+        "preis": 16.25,
+        "einheit": "€/m²",
+        "mwst": "exkl. MwSt.",
+        "region": "Deutschland",
+        "verfuegbarkeit": "laut Liste: Palettenware; Frachtfreiliefermenge 8 t bzw. 5.500 € Netto-Warenwert, Mengenrabatte und Zuschläge separat",
+        "status": "preisliste",
+        "umrechnung": {
+          "art": "direkt",
+          "ziel": "€/m²"
+        }
+      },
+      "geprueft": true,
+      "verwendung": "Listenpreis netto und Flächengewicht der Platte Rigidur H 12,5.",
+      "herausgeber": "Saint-Gobain Rigips GmbH",
+      "url": "https://www.rigips.de/media/51326/download",
+      "datum": "2026-05-11",
+      "datum_hinweis": "Titelseite: „Rigidur Preisliste, gültig ab 11. Mai 2026 – 2. Auflage“. Ob die Liste am Abrufdatum noch gilt, wurde nicht geprüft.",
+      "abgerufen": "2026-11-18",
+      "quellenart": "Preisliste (Hersteller)",
+      "region": "Deutschland (Herstellerliste, Lieferservice deutschlandweit)"
+    },
+    {
+      "id": "haendlerspanne-wienerberger-koramic-dachziegel",
+      "titel": "Preisspanne Dachziegel (Tondach): berechnet aus 12 Flächenziegeln der Wienerberger/Koramic-Preisliste Österreich 2026 (34,02 bis 47,57 €/m² netto, Median 35,31)",
+      "herausgeber": "MaterialMatch (berechnet aus der Preisliste von Wienerberger Österreich)",
+      "url": "https://www.wienerberger.at/content/dam/wienerberger/austria/marketing/documents-magazines/technical/WBO_Preisliste_Koramic_2026.pdf",
+      "datum": "2026-01-01",
+      "datum_hinweis": "Titelseite: „Preise gültig ab 1. Jänner 2026“.",
+      "abgerufen": "2026-11-18",
+      "quellenart": "Preisspanne (berechnet aus Herstellerliste)",
+      "produkt": "12 Flächenziegel (Doppelmulden-, Falz- und Romanische Ziegel) in Naturrot",
+      "region": "Österreich (Lieferungen im Inland, exkl. 20 % MwSt.)",
+      "geltung": "generisch",
+      "qualitaet": "Berechnete Kennzahl (Minimum, Maximum, Median) aus Listenpreisen des österreichischen Herstellers. Umrechnung: Preis je Stück × mittlerer Bedarf je m² Dachfläche (laut Liste, ca.). Kein Marktpreis, kein Preis für Deutschland, nur die günstigste Farbe (Naturrot) und ohne Formziegel, First, Ortgang und Zubehör.",
+      "geprueft": true,
+      "verwendung": "Preisspanne und Median für das allgemeine Material dachziegel; jeder Einzelpreis steht mit Seitenangabe in „einzelpreise“.",
+      "einzelpreise": [
+        {
+          "produkt": "Koramic Universo 10, Naturrot (Seite 12)",
+          "url": "https://www.wienerberger.at/content/dam/wienerberger/austria/marketing/documents-magazines/technical/WBO_Preisliste_Koramic_2026.pdf",
+          "punkte": [
+            {
+              "variante": "Naturrot, 10,50 Stück/m² (Mittel von 10,2 bis 10,8), 3.240,00 € je 1.000 Stück",
+              "eur_m2": 34.02,
+              "preis_je_1000": 3240,
+              "bedarf_je_m2": 10.5
+            }
+          ]
+        },
+        {
+          "produkt": "Koramic Alegra 12, Naturrot (Seite 14)",
+          "url": "https://www.wienerberger.at/content/dam/wienerberger/austria/marketing/documents-magazines/technical/WBO_Preisliste_Koramic_2026.pdf",
+          "punkte": [
+            {
+              "variante": "Naturrot, 12,95 Stück/m² (Mittel von 12,4 bis 13,5), 2.630,00 € je 1.000 Stück",
+              "eur_m2": 34.06,
+              "preis_je_1000": 2630,
+              "bedarf_je_m2": 12.95
+            }
+          ]
+        },
+        {
+          "produkt": "Koramic Alegra 15, Naturrot (Seite 16)",
+          "url": "https://www.wienerberger.at/content/dam/wienerberger/austria/marketing/documents-magazines/technical/WBO_Preisliste_Koramic_2026.pdf",
+          "punkte": [
+            {
+              "variante": "Naturrot, 14,60 Stück/m² (Mittel von 13,7 bis 15,5), 2.480,00 € je 1.000 Stück",
+              "eur_m2": 36.21,
+              "preis_je_1000": 2480,
+              "bedarf_je_m2": 14.6
+            }
+          ]
+        },
+        {
+          "produkt": "Koramic Universo 14, Naturrot (Seite 18)",
+          "url": "https://www.wienerberger.at/content/dam/wienerberger/austria/marketing/documents-magazines/technical/WBO_Preisliste_Koramic_2026.pdf",
+          "punkte": [
+            {
+              "variante": "Naturrot, 14,00 Stück/m² (Mittel von 13,6 bis 14,4), 2.480,00 € je 1.000 Stück",
+              "eur_m2": 34.72,
+              "preis_je_1000": 2480,
+              "bedarf_je_m2": 14.0
+            }
+          ]
+        },
+        {
+          "produkt": "Koramic Cosmo 11, Naturrot (Seite 20)",
+          "url": "https://www.wienerberger.at/content/dam/wienerberger/austria/marketing/documents-magazines/technical/WBO_Preisliste_Koramic_2026.pdf",
+          "punkte": [
+            {
+              "variante": "Naturrot, 11,20 Stück/m² (Mittel von 10,9 bis 11,5), 3.130,00 € je 1.000 Stück",
+              "eur_m2": 35.06,
+              "preis_je_1000": 3130,
+              "bedarf_je_m2": 11.2
+            }
+          ]
+        },
+        {
+          "produkt": "Koramic Plano 11, Naturrot (Seite 22)",
+          "url": "https://www.wienerberger.at/content/dam/wienerberger/austria/marketing/documents-magazines/technical/WBO_Preisliste_Koramic_2026.pdf",
+          "punkte": [
+            {
+              "variante": "Naturrot, 11,30 Stück/m² (Mittel von 11,0 bis 11,6), 4.210,00 € je 1.000 Stück",
+              "eur_m2": 47.57,
+              "preis_je_1000": 4210,
+              "bedarf_je_m2": 11.3
+            }
+          ]
+        },
+        {
+          "produkt": "Koramic Mondo 11, Naturrot (Seite 24)",
+          "url": "https://www.wienerberger.at/content/dam/wienerberger/austria/marketing/documents-magazines/technical/WBO_Preisliste_Koramic_2026.pdf",
+          "punkte": [
+            {
+              "variante": "Naturrot, 11,20 Stück/m² (Mittel von 10,9 bis 11,5), 3.130,00 € je 1.000 Stück",
+              "eur_m2": 35.06,
+              "preis_je_1000": 3130,
+              "bedarf_je_m2": 11.2
+            }
+          ]
+        },
+        {
+          "produkt": "Koramic Tradi 12, Naturrot (Seite 26)",
+          "url": "https://www.wienerberger.at/content/dam/wienerberger/austria/marketing/documents-magazines/technical/WBO_Preisliste_Koramic_2026.pdf",
+          "punkte": [
+            {
+              "variante": "Naturrot, 12,40 Stück/m² (Mittel von 11,9 bis 12,9), 2.790,00 € je 1.000 Stück",
+              "eur_m2": 34.6,
+              "preis_je_1000": 2790,
+              "bedarf_je_m2": 12.4
+            }
+          ]
+        },
+        {
+          "produkt": "Koramic Mondo 15, Naturrot (Seite 28)",
+          "url": "https://www.wienerberger.at/content/dam/wienerberger/austria/marketing/documents-magazines/technical/WBO_Preisliste_Koramic_2026.pdf",
+          "punkte": [
+            {
+              "variante": "Naturrot, 14,80 Stück/m² (Mittel von 14,4 bis 15,2), 2.630,00 € je 1.000 Stück",
+              "eur_m2": 38.92,
+              "preis_je_1000": 2630,
+              "bedarf_je_m2": 14.8
+            }
+          ]
+        },
+        {
+          "produkt": "Koramic Euro 2000, Naturrot (Seite 30)",
+          "url": "https://www.wienerberger.at/content/dam/wienerberger/austria/marketing/documents-magazines/technical/WBO_Preisliste_Koramic_2026.pdf",
+          "punkte": [
+            {
+              "variante": "Naturrot, 12,70 Stück/m² (Mittel von 11,8 bis 13,6), 3.130,00 € je 1.000 Stück",
+              "eur_m2": 39.75,
+              "preis_je_1000": 3130,
+              "bedarf_je_m2": 12.7
+            }
+          ]
+        },
+        {
+          "produkt": "Koramic Karthago 14, Naturrot (Seite 32)",
+          "url": "https://www.wienerberger.at/content/dam/wienerberger/austria/marketing/documents-magazines/technical/WBO_Preisliste_Koramic_2026.pdf",
+          "punkte": [
+            {
+              "variante": "Naturrot, 14,20 Stück/m² (Mittel von 13,9 bis 14,5), 3.320,00 € je 1.000 Stück",
+              "eur_m2": 47.14,
+              "preis_je_1000": 3320,
+              "bedarf_je_m2": 14.2
+            }
+          ]
+        },
+        {
+          "produkt": "Koramic Herzziegel, Naturrot (Seite 34)",
+          "url": "https://www.wienerberger.at/content/dam/wienerberger/austria/marketing/documents-magazines/technical/WBO_Preisliste_Koramic_2026.pdf",
+          "punkte": [
+            {
+              "variante": "Naturrot, 12,35 Stück/m² (Mittel von 11,9 bis 12,8), 2.880,00 € je 1.000 Stück",
+              "eur_m2": 35.57,
+              "preis_je_1000": 2880,
+              "bedarf_je_m2": 12.35
+            }
+          ]
+        }
+      ]
+    },
     // ---- Händlerpreise bausep.de, Preisspannen (18.11.2026, MaterialMatch 3.3) ----
     {
       "id": "haendlerspanne-bausep-osb",
@@ -7075,7 +7348,7 @@ window.MATERIALMATCH_DATA = {
         waermeleitfaehigkeit:  { wert: null, einheit: "W/(m·K)", art: null, quelle: null, hinweis: "Noch nicht recherchiert. Kennwert fehlt." },
         waermeleitfaehigkeit_bemessung: { wert: null, einheit: "W/(m·K)", art: null, quelle: null, hinweis: "Nicht verfügbar: Ein Bemessungswert der Wärmeleitfähigkeit (z. B. nach DIN 4108-4) liegt nicht vor. Die Norm ist kostenpflichtig und wurde nicht eingesehen; ein Herstellerwert wurde nicht gefunden. Es wurde kein Wert angenommen." },
         druckfestigkeit:       { wert: null, einheit: "N/mm²", art: null, quelle: null, nicht_anwendbar: true, hinweis: "Bei Dachziegeln ist die Biegebruchlast maßgebend." },
-        preis:                 { wert: null, einheit: "€/m²", art: null, quelle: null, mwst: null, umfang: null, hinweis: "Noch nicht recherchiert. Kennwert fehlt." },
+        preis:                 { wert: null, einheit: "€/m²", art: null, quelle: null, mwst: null, umfang: null, hinweis: "Noch nicht recherchiert. Kennwert fehlt.", echt: {"wert": 35.31, "einheit": "€/m²", "art": "richtwert", "quelle": "haendlerspanne-wienerberger-koramic-dachziegel", "mwst": "exkl. MwSt.", "umfang": "Material (Preisspanne aus Herstellerpreislisten, Österreich, ohne Lieferung, Unterkonstruktion und Verlegung)", "spanne": {"min": 34.02, "max": 47.57, "anzahl": 12, "punkte": 12, "mittel": "Median"}, "hinweis": "Preisspanne, kein einzelner Marktpreis: berechnet am 18.11.2026 aus 12 Flächenziegeln (Naturrot) der Preisliste Wienerberger/Koramic Österreich, gültig ab 01.01.2026 (34,02 bis 47,57 €/m² netto; gerechnet wird mit dem Median der Produktpreise 35,31 €/m²). €/m² = Preis je Stück × mittlerer Bedarf je m² laut Liste. Achtung: Österreich, nicht der deutsche Markt; günstigste Farbe, ohne First, Ortgang und Zubehör; Eindeckung und Unterkonstruktion kommen hinzu."} },
         gwp:                   { werte: { gesamt: 16.5883394466559, fossil: 16.5489002530916, biogen: 0.0248854261725355, luluc: 0.0145537673917617 }, einheit: "kg CO2e", deklarierte_einheit: "1 m²", module: "A1-A3", art: "richtwert", quelle: "oebd-592ffe6e", hinweis: "Generischer Datensatz (generic dataset) „Dachziegel“, Sphera Solutions GmbH, Bezugsjahr 2023, Land DE. Gilt nicht für ein bestimmtes Produkt. Generische Datensätze enthalten laut BBSR Sicherheitszuschläge (konservative Annahmen, 10/20/30 %) und wurden nicht extern geprüft." },
         brandverhalten:        { wert: "A1", art: "richtwert", quelle: "eu-entscheidung-96-603", hinweis: "Ohne Prüfung als A1 eingestuft nach Entscheidung 96/603/EG (Anhang: „Toneinheiten“ (umfasst Ziegelsteine, Platten)), sofern deren Voraussetzungen erfüllt sind (u. a. höchstens 1 % homogen verteiltes organisches Material). Generische Einstufung des Materials, kein Produktnachweis; für ein konkretes Produkt gilt dessen Leistungserklärung. Euroklasse des Baustoffs, nicht Feuerwiderstand eines Bauteils." },
         recycling:             { wert: "Intakte Ziegel sind gut wiederverwendbar, Bruch ist als Recyclingmaterial nutzbar.", art: "beispiel", quelle: null }

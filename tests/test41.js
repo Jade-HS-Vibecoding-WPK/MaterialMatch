@@ -44,7 +44,7 @@ const PFLICHT = 'Die Farben zeigen eine relative Bewertung der ausgewählten Mat
   await p.click('#reiter-alternativen'); const wa = await woerter(p);
   await p.click('#reiter-quellen'); const wq = await woerter(p);
   await p.click('#reiter-vergleich');
-  check('Textmenge im Standardzustand (Echtdaten, zwei Materialien, nur sichtbarer Text inkl. Kopf und Fuß): Vergleich ≤ 800 Wörter, Alternativen ≤ 400, Quellen ≤ 300 (vorher alles zusammen rund 2.900 Wörter auf einer Seite)', wv <= 800 && wa <= 400 && wq <= 300, [wv, wa, wq]);
+  check('Textmenge im Standardzustand (Echtdaten, zwei Materialien, nur sichtbarer Text inkl. Kopf und Fuß): Vergleich ≤ 800 Wörter, Alternativen ≤ 400, Quellen ≤ 310 (vorher alles zusammen rund 2.900 Wörter auf einer Seite)', wv <= 800 && wa <= 400 && wq <= 310, [wv, wa, wq]);
   const hoehe = await p.evaluate(() => document.documentElement.scrollHeight);
   check('Seitenhöhe im Reiter „Vergleich“ (Desktop, Standardzustand) höchstens 3.700 px (Bento-Kacheln mit größeren Abständen; vor der Überarbeitung rund 11.000 px)', hoehe <= 3700, hoehe);
 

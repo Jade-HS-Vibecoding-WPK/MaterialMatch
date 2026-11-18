@@ -279,7 +279,15 @@
     if (m.vorteile && m.vorteile.length) mehr.appendChild(liste("Vorteile", m.vorteile));
     if (m.nachteile && m.nachteile.length) mehr.appendChild(liste("Nachteile", m.nachteile));
     karte.appendChild(mehr);
-    if (MM.steckbrief) karte.appendChild(MM.steckbrief.knopf(m.id, zustand[produktSchluessel(platz)]));
+    // MaterialMatch 3.5: Steckbrief und „Entfernen“ nebeneinander; Entfernen räumt nur diesen Platz, die anderen Materialien bleiben
+    var aktionen = el("div", null, "card-aktionen");
+    if (MM.steckbrief) aktionen.appendChild(MM.steckbrief.knopf(m.id, zustand[produktSchluessel(platz)]));
+    var weg = el("button", "Entfernen", "btn-link card-entfernen");
+    weg.type = "button";
+    weg.setAttribute("aria-label", "Material " + platz.buchstabe + " entfernen: " + m.name);
+    weg.addEventListener("click", function () { var neu = {}; neu[platz.schluessel] = ""; MM.auswahl.setzeAuswahl(neu); });
+    aktionen.appendChild(weg);
+    karte.appendChild(aktionen);
 
     // Hinweis zur Mengenberechnung bleibt sichtbar (betrifft die Berechnung)
     if (m.mengenmodell === "keine_schicht") {

@@ -64,6 +64,7 @@ Es werden keine Installation, kein Internet, kein Login und keine API-Schlüssel
 | `js/match.js` | Steuerung des Reiters „Match finden“ (Interview ↔ Karten, Speichern der Antworten) |
 | `js/kopf.js` | Die zwei Hauptaktionen im Kopf („Baustoffe vergleichen“, „Match finden“): Reiter wechseln, scrollen, Fokus setzen |
 | `js/dashboard.js` | „Vergleich auf einen Blick“: vier gleich große Kennwert-Kacheln (Kosten, CO₂, Gewicht, Wärmedämmung mit R-Wert) mit großen Zahlen, Vergleichsbalken, Quellen-Info mit Datenqualität und dezenter Marke „Dein Schwerpunkt“; zeigen die Ergebnisse der Diagramme (rechnet nichts selbst) |
+| `js/entdecken.js` | Reiter „Entdecken“: Baustoffe durchsuchen, filtern, sortieren (Karten- und Listenansicht), Material in den Vergleich legen |
 | `js/suche.js` | Suchfeld in der Materialauswahl: findet Baustoffe und Herstellerprodukte und legt sie auf den nächsten freien Platz (Bento-Redesign) |
 | `js/reiter.js` | Die drei Hauptreiter (Vergleich, Alternativen, Quellen & Details): Wechsel, Tastatur, ARIA |
 | `js/datenmodus.js` | Demo-Modus (Beispieldaten) und Echtdaten-Modus (Beispieldaten gelten als „nicht verfügbar“) |
@@ -164,7 +165,7 @@ Alle automatischen Tests (Node.js und Playwright mit Chromium nötig):
 bash tests/alle.sh
 ```
 
-Rund 1.897 Prüfungen in 50 Dateien (`tests/test1.js` bis `tests/test51.js`; `test51` prüft die Händlerpreisspannen von bausep.de (jede Spanne wird aus den Einzelpreisen nachgerechnet) und das Feld „echt“, das belegte Preise nur im Echtdaten-Modus einsetzt; `test50` prüft die Match-Funktion mit Nutzerprofilen, den Fallback, Preisspannen und das Prüfskript; `test49` prüft Datenpaket 3: STEICO, Cirkel PORIT, KS-ORIGINAL; `test21` gehört zu Schritt 11, `test22` zu Schritt 13 und braucht für die PDF-Prüfung `pdftotext`, `pdfinfo` und `pdftoppm` aus dem Paket poppler-utils, `test23` zu Schritt 14 und nutzt `tests/referenzrechnung.py` als unabhängigen Referenzrechner; es braucht Python 3 und startet kurz einen lokalen Server). Ergebnis: `QUALITAETSBERICHT.md`. `tools/pruefe_gegen_csv.js` arbeitet mit dem Auszug im Projekt (`data/quellen/`).
+Rund 1.931 Prüfungen in 51 Dateien (`tests/test1.js` bis `tests/test52.js`; `test52` prüft den Reiter „Entdecken“ (Suche, Filter, Sortierung, Karten/Liste, Material in den Vergleich legen), die drei Hauptaktionen und den gegliederten Steckbrief; `test51` prüft die Händlerpreisspannen von bausep.de (jede Spanne wird aus den Einzelpreisen nachgerechnet) und das Feld „echt“, das belegte Preise nur im Echtdaten-Modus einsetzt; `test50` prüft die Match-Funktion mit Nutzerprofilen, den Fallback, Preisspannen und das Prüfskript; `test49` prüft Datenpaket 3: STEICO, Cirkel PORIT, KS-ORIGINAL; `test21` gehört zu Schritt 11, `test22` zu Schritt 13 und braucht für die PDF-Prüfung `pdftotext`, `pdfinfo` und `pdftoppm` aus dem Paket poppler-utils, `test23` zu Schritt 14 und nutzt `tests/referenzrechnung.py` als unabhängigen Referenzrechner; es braucht Python 3 und startet kurz einen lokalen Server). Ergebnis: `QUALITAETSBERICHT.md`. `tools/pruefe_gegen_csv.js` arbeitet mit dem Auszug im Projekt (`data/quellen/`).
 Nur `test21` liest zusätzlich die ÖKOBAUDAT-Originaldatei und erwartet sie unter `/home/user/oekobaudat_original/`
 (Pfad oben in `tests/test21.js` anpassen, falls sie woanders liegt; ohne die Datei schlägt dieser Test fehl).
 
@@ -184,9 +185,10 @@ Nur `test21` liest zusätzlich die ÖKOBAUDAT-Originaldatei und erwartet sie unt
 - [x] Schritt 10 – Quellen und Datentransparenz
 - [x] Schritt 12 – Benutzeroberfläche und Bedienung (Erklärknöpfe, Akkordeon, eine Legende; zuerst ausgeführt)
 - [x] Schritt 11 – Erweiterung der Baustoffdatenbank (50 Baustoffe, 49 ÖKOBAUDAT-Quellen; nachträglich ausgeführt)
-- [ ] Quellenrecherche für technische Kennwerte und Preise (fortlaufend; Stand MaterialMatch 3.3: 19 von 50 Materialien mit belegtem Preis, Lücken in `DATENLUECKEN.md`)
+- [ ] Quellenrecherche für technische Kennwerte und Preise (fortlaufend; Stand MaterialMatch 3.4: 20 von 50 Materialien mit belegtem Preis, Lücken in `DATENLUECKEN.md`, nötige Anmeldungen und Downloads in `ANMELDUNGEN_UND_DOWNLOADS.md`, Übergabeordner `data/eingang/`)
 - [x] Schritt 13 – Exportfunktion (Druckansicht/PDF, CSV)
 - [x] Schritt 14 – Abschließende Qualitätskontrolle (`QUALITAETSBERICHT.md`)
 - [x] Schritt 15 – Projektdokumentation und Präsentationsmaterial (`PROJEKTDOKUMENTATION.md`, `PRAESENTATION.md`)
+- [x] MaterialMatch 3.5 – Navigation, Reiter „Entdecken“, gegliederter Steckbrief (`DESIGNSYSTEM.md`)
 
 Details und Entscheidungen: `FORTSCHRITT.md` und `PROJEKTDOKUMENTATION.md`.
