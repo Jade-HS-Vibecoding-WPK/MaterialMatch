@@ -33,7 +33,7 @@
   // Hinweis „nur zur Orientierung“ für die gewählten Materialien (leer, wenn nichts auszusagen ist)
   var ORIENT_RICHTWERT = "Nur zur Orientierung: Mit R gekennzeichnete Werte sind Richtwerte, also generische Datensätze oder Angaben für ein bestimmtes Produkt. " +
     "Sie erlauben keine verlässliche Produkt- oder Kostenberechnung.";
-  var ORIENT_EIGEN = "Eigene Angaben: Mit E gekennzeichnete Werte stammen von Ihnen und sind nicht geprüft. Sie erlauben keine verlässliche Produkt- oder Kostenberechnung.";
+  var ORIENT_EIGEN = "Eigene Angaben: Mit E gekennzeichnete Werte stammen von dir und sind nicht geprüft. Sie erlauben keine verlässliche Produkt- oder Kostenberechnung.";
   var ORIENT_PREIS = "Kosten: Für die gewählten Materialien liegt kein belegter Preis vor (Preisquellen wie BKI oder Händlerangebote sind nicht frei zugänglich). " +
     "Kostenergebnisse sind deshalb nicht verlässlich oder nicht berechenbar.";
 

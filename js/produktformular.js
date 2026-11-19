@@ -98,7 +98,7 @@
     if (!r.ok) {
       var ul = el("ul");
       r.fehler.forEach(function (t) { ul.appendChild(el("li", t)); });
-      fehlerBox.appendChild(el("p", "Bitte korrigieren Sie die folgenden Angaben:", "warn"));
+      fehlerBox.appendChild(el("p", "Bitte korrigiere die folgenden Angaben:", "warn"));
       fehlerBox.appendChild(ul);
       return;
     }
@@ -161,7 +161,7 @@
       meldung = el("p", null, "note");
       meldung.setAttribute("role", "status");
       box.appendChild(meldung);
-      box.appendChild(el("h3", "Ihre eigenen Produkte"));
+      box.appendChild(el("h3", "Deine eigenen Produkte"));
       listeBox = el("div");
       box.appendChild(listeBox);
       listeZeichnen();

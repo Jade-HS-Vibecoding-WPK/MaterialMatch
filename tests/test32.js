@@ -49,7 +49,7 @@ const URL = 'file://' + PROJ + '/index.html?modus=demo';
 
   let p = await neu();
   check('Der Bereich „Vergleich auf einen Blick“ steht im Reiter „Vergleich“ zwischen den Eingaben und den Diagrammen, mit Überschrift (h2)', await p.evaluate(() => { const d = document.getElementById('dashboard'); return d.tagName === 'SECTION' && d.querySelector('h2').textContent === 'Vergleich auf einen Blick' && document.getElementById('bereich-vergleich').contains(d) && d.previousElementSibling.id === 'eingaben' && d.nextElementSibling.id === 'orientierung' && d.nextElementSibling.nextElementSibling.id === 'diagramme'; }));
-  check('Ohne Auswahl: kurzer Hinweis, keine Karten', await p.$eval('#dashboard-inhalt', e => /Wählen Sie Material A und Material B/.test(e.textContent) && !e.querySelector('.kennwert')));
+  check('Ohne Auswahl: kurzer Hinweis, keine Karten', await p.$eval('#dashboard-inhalt', e => /Wähle Material A und Material B/.test(e.textContent) && !e.querySelector('.kennwert')));
 
   // ---- Zwei Materialien ohne Eingabe
   await setze(p, { a: 'mineralwolle', b: 'eps', c: '' });

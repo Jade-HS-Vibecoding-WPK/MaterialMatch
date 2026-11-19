@@ -29,9 +29,9 @@ function check(name, cond, extra) { if (!cond) fails++; console.log((cond ? 'OK 
 
   // ================= Dämmstoffe, 100 m² × 20 cm =================
   await waehle('mineralwolle', 'eps', 'holzfaserdaemmung');
-  check('Ohne Eingaben: Hinweis in Kosten, CO₂ und R-Wert', (await txt('rechnung-kosten')).includes('Geben Sie Bauteilfläche und Materialdicke ein') && (await txt('rechnung-co2')).includes('Geben Sie Bauteilfläche und Materialdicke ein') && (await txt('rechnung-r')).includes('Geben Sie die Materialdicke ein'));
+  check('Ohne Eingaben: Hinweis in Kosten, CO₂ und R-Wert', (await txt('rechnung-kosten')).includes('Gib Bauteilfläche und Materialdicke ein') && (await txt('rechnung-co2')).includes('Gib Bauteilfläche und Materialdicke ein') && (await txt('rechnung-r')).includes('Gib die Materialdicke ein'));
   await p.fill('#flaeche', '100');
-  check('Nur Fläche: R-Wert verlangt weiterhin die Dicke, Kosten die Dicke', (await txt('rechnung-r')).includes('Geben Sie die Materialdicke ein') && (await txt('rechnung-kosten')).includes('Geben Sie Bauteilfläche'));
+  check('Nur Fläche: R-Wert verlangt weiterhin die Dicke, Kosten die Dicke', (await txt('rechnung-r')).includes('Gib die Materialdicke ein') && (await txt('rechnung-kosten')).includes('Gib Bauteilfläche'));
   await p.fill('#flaeche', ''); await p.fill('#dicke', '20');
   check('Nur Dicke: R-Wert wird berechnet', (await tab('rechnung-r')).length > 1);
   await eingabe('100', '20');
@@ -98,13 +98,13 @@ function check(name, cond, extra) { if (!cond) fails++; console.log((cond ? 'OK 
   for (const [wert, teil] of [['0', 'größer als 0'], ['-2', 'negativ'], ['abc', 'Zahl'], ['1.500', 'Unklar'], ['51', 'unplausibel']]) {
     await p.fill('#rZiel', wert);
     const fehler = await p.$eval('#rziel-fehler', e => e.textContent);
-    check(`Zielwert "${wert}": Fehlermeldung am Feld (${teil}), Feld rot, keine Tabelle`, fehler.includes(teil) && await p.$eval('#rZiel', e => e.classList.contains('is-invalid') && e.getAttribute('aria-invalid') === 'true') && (await tab('rechnung-rziel')).length === 0 && (await txt('rechnung-rziel')).includes('korrigieren'), fehler);
+    check(`Zielwert "${wert}": Fehlermeldung am Feld (${teil}), Feld rot, keine Tabelle`, fehler.includes(teil) && await p.$eval('#rZiel', e => e.classList.contains('is-invalid') && e.getAttribute('aria-invalid') === 'true') && (await tab('rechnung-rziel')).length === 0 && (await txt('rechnung-rziel')).includes('korrigier'), fehler);
   }
   await p.fill('#rZiel', '');
   check('Zielwert geleert: Fehler weg', (await p.$eval('#rziel-fehler', e => e.textContent)) === '' && await p.$eval('#rZiel', e => !e.classList.contains('is-invalid')));
   await p.fill('#rZiel', '5'); await p.fill('#flaeche', '');
   erf = await zeile('rechnung-rziel', 'Erforderliche Dicke');
-  check('Ohne Fläche: nur Dicke, keine Kosten, Hinweis zur Fläche', !!erf && !(await zeile('rechnung-rziel', 'Materialkosten')) && (await txt('rechnung-rziel')).includes('Geben Sie die Bauteilfläche ein'));
+  check('Ohne Fläche: nur Dicke, keine Kosten, Hinweis zur Fläche', !!erf && !(await zeile('rechnung-rziel', 'Materialkosten')) && (await txt('rechnung-rziel')).includes('Gib die Bauteilfläche ein'));
   await p.fill('#flaeche', '100');
   await p.fill('#flaeche', '50');
   check('Fläche 100 -> 50: Kosten der Zielwert-Tabelle halbieren sich', (await zeile('rechnung-rziel', 'Materialkosten'))[1] === await fe(50 * 5 * lam[0] * mw.preis.wert));
@@ -157,9 +157,9 @@ function check(name, cond, extra) { if (!cond) fails++; console.log((cond ? 'OK 
   // ================= Eingabefehler =================
   await p.reload(); await p.evaluate(() => { const d = document.querySelector('#ergebnisse > details'); if (d) d.open = true; }); await waehle('mineralwolle', 'eps');
   await p.fill('#flaeche', '-3'); await p.fill('#dicke', '20');
-  check('Fehlerhafte Fläche: Kosten/CO₂ bitten um Korrektur, R-Wert läuft (Dicke gültig)', (await txt('rechnung-kosten')).includes('korrigieren') && (await txt('rechnung-co2')).includes('korrigieren') && (await tab('rechnung-r')).length > 1);
+  check('Fehlerhafte Fläche: Kosten/CO₂ bitten um Korrektur, R-Wert läuft (Dicke gültig)', (await txt('rechnung-kosten')).includes('korrigier') && (await txt('rechnung-co2')).includes('korrigier') && (await tab('rechnung-r')).length > 1);
   await p.fill('#flaeche', '100'); await p.fill('#dicke', 'abc');
-  check('Fehlerhafte Dicke: R-Wert bittet um Korrektur', (await txt('rechnung-r')).includes('korrigieren'));
+  check('Fehlerhafte Dicke: R-Wert bittet um Korrektur', (await txt('rechnung-r')).includes('korrigier'));
   await p.fill('#dicke', '20');
 
   // ================= Sicherheit =================

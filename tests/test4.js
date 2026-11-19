@@ -33,14 +33,14 @@ function check(name, cond, extra) { if (!cond) fails++; console.log((cond ? 'OK 
   check('A: Platzhalter + 14 Dämmstoffe (5 bisherige + 9 ergänzte)', a.length === 15, a.map(x=>x.t));
   check('C: Platzhalter heißt "Kein drittes Material"', (await opts('#materialC'))[0].t === 'Kein drittes Material');
   check('Nur Dämmstoffe in der Liste', a.slice(1).every(x => ['mineralwolle','eps','holzfaserdaemmung','zellulose','hanfdaemmung','glaswolle','steinwolle','xps','pur','pir','flachsdaemmung','kork','schaumglas','schafwolle'].includes(x.v)), a);
-  check('Hinweis „Wählen Sie Material A und Material B“', (await emptyText()).includes('Material A und Material B'));
+  check('Hinweis „Wähle Material A und Material B“', (await emptyText()).includes('Material A und Material B'));
 
   // 3 A und B wählen
   await p.selectOption('#materialA', 'mineralwolle');
   check('Nach A: noch Hinweis, 1 Karte', (await cards()).length === 1 && (await emptyText()).includes('Material A und Material B'));
   await p.selectOption('#materialB', 'eps');
   check('Zwei Karten A,B', JSON.stringify(await cards()) === JSON.stringify(['Mineralwolle (Fassadendämmung)', 'EPS (expandiertes Polystyrol)']), await cards());
-  check('Hinweis „Wählen Sie Material A und Material B“ verschwindet', !(await emptyText()).includes('Material A und Material B'));
+  check('Hinweis „Wähle Material A und Material B“ verschwindet', !(await emptyText()).includes('Material A und Material B'));
   const bOpts = await opts('#materialB'), aOpts = await opts('#materialA');
   check('In B ist Mineralwolle weiter wählbar (andere Produkte frei: Fixrock 033, Klemmrock 035, generisch), aber nur mit einem anderen Produkt als in A', bOpts.find(x => x.v==='mineralwolle').d === false && (await p.evaluate(() => MM.auswahl.holeAuswahl().plaetze.map(x => x.material.id + '|' + x.produkt.id))).join() === 'mineralwolle|rockwool-fixrock-035,eps|bachl-eps-035-wdv');
   check('Ein Material ohne Produkte (Steinwolle) lässt sich nicht zweimal wählen: in B gesperrt, sobald es in A gewählt ist', await (async () => { await p.evaluate(() => MM.auswahl.setzeAuswahl({ a: 'steinwolle', b: '', c: '' })); const o = await opts('#materialB'); await p.evaluate(() => MM.auswahl.setzeAuswahl({ a: 'mineralwolle', b: 'eps', c: '' })); return o.find(x => x.v === 'steinwolle').d === true; })());

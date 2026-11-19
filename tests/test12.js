@@ -35,7 +35,7 @@ const nied = (v, all) => { const mx = Math.max(...all), mn = Math.min(...all); r
   const hex = s => { const m = s.match(/rgb\((\d+), (\d+), (\d+)\)/); return m ? '#' + [1,2,3].map(i => Number(m[i]).toString(16).padStart(2,'0')).join('').toUpperCase() : s.toUpperCase(); };
 
   // ---- Grundzustand
-  check('Ohne Auswahl: Hinweis statt Diagramme', (await p.$eval('#diagramme-inhalt', e => e.innerText)).includes('Wählen Sie Materialien aus'));
+  check('Ohne Auswahl: Hinweis statt Diagramme', (await p.$eval('#diagramme-inhalt', e => e.innerText)).includes('Wähle Materialien aus'));
   check('Pflichtsatz zur relativen Bewertung steht im Bereich', (await p.$eval('#diagramme', e => e.innerText.replace(/\s+/g, ' '))).includes('Die Farben zeigen eine relative Bewertung der ausgewählten Materialien und stellen keine allgemeingültige Aussage über deren Qualität dar.'));
 
   // ---- Fall 1: Dämmstoffe, drei Materialien

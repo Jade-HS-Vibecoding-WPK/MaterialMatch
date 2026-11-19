@@ -11,8 +11,9 @@ function check(name, cond, extra) { if (!cond) fails++; console.log((cond ? 'OK 
 
 const PROJ = path.resolve(__dirname, '..');
 const URL = 'file://' + PROJ + '/index.html';
-const TEXT1 = 'MaterialMatch ist ein studentisches Projekt, das mit Unterstützung von KI entwickelt wurde. Die angezeigten Baustoffdaten, Preise und Vergleiche dienen der ersten Orientierung. Bitte prüfe wichtige Angaben anhand der verlinkten Quellen und aktuellen Herstellerinformationen.';
-const TEXT2 = 'Danke, dass du MaterialMatch ausprobierst!';
+const TEXT1 = 'MaterialMatch ist ein studentisches Projekt und wurde mit Unterstützung von KI entwickelt.';
+const TEXT2 = 'Die Baustoffdaten, Preise und Vergleiche geben dir eine erste Orientierung. Prüfe wichtige Angaben bitte anhand der verlinkten Quellen und der aktuellen Herstellerinformationen.';
+const TEXT3 = 'Danke, dass du MaterialMatch ausprobierst!';
 
 (async () => {
   const b = await chromium.launch();
@@ -24,7 +25,7 @@ const TEXT2 = 'Danke, dass du MaterialMatch ausprobierst!';
   let p = await neu('&start=ja');
   await p.waitForSelector('#hinweis[open]', { timeout: 4000 });
   const h = await p.evaluate(() => { const d = document.getElementById('hinweis'); const logo = d.querySelector('.hinweis-logo'); return { offen: d.open, modal: d.matches(':modal'), logo: logo.getAttribute('src'), logoAlt: logo.alt, logoZuerst: d.firstElementChild === logo, titel: d.querySelector('h2').textContent, absaetze: [...d.querySelectorAll('.hinweis-text p')].map(x => x.textContent.trim()), knopf: d.querySelector('#hinweis-ok').textContent.trim(), knopfNach: d.lastElementChild.id, fokus: document.activeElement.id, labelledby: d.getAttribute('aria-labelledby'), titelId: d.querySelector('h2').id }; });
-  check('Beim ersten Besuch erscheint das Fenster: oben das vorhandene Logo (img/logo.svg), darunter „Kurz vorab“, der Text im Wortlaut und der Knopf „Verstanden – MaterialMatch öffnen“', h.offen && h.modal && h.logo === 'img/logo.svg' && h.logoAlt === 'MaterialMatch' && h.logoZuerst && h.titel === 'Kurz vorab' && h.absaetze[0] === TEXT1 && h.absaetze[1] === TEXT2 && h.knopf === 'Verstanden – MaterialMatch öffnen' && h.knopfNach === 'hinweis-ok', h);
+  check('Beim ersten Besuch erscheint das Fenster: oben das vorhandene Logo (img/logo.svg), darunter „Kurz vorab“, der kurze, verständliche Text (studentisches Projekt, KI-Unterstützung, Grenzen der Daten) und der Knopf „Verstanden – MaterialMatch öffnen“', h.offen && h.modal && h.logo === 'img/logo.svg' && h.logoAlt === 'MaterialMatch' && h.logoZuerst && h.titel === 'Kurz vorab' && h.absaetze[0] === TEXT1 && h.absaetze[1] === TEXT2 && h.absaetze[2] === TEXT3 && h.knopf === 'Verstanden – MaterialMatch öffnen' && h.knopfNach === 'hinweis-ok', h);
   check('Das Logo-Datei ist das einzige im Projekt vorhandene Logo (img/logo.svg liegt vor und ist unverändert das Logo mit den drei Materialschichten)', fs.existsSync(path.join(PROJ, 'img', 'logo.svg')) && (fs.readFileSync(path.join(PROJ, 'img', 'logo.svg'), 'utf8').match(/<polygon/g) || []).length === 3);
   check('Zugänglich: Dialog mit Titel (aria-labelledby), Fokus liegt auf dem Knopf, der Rest der Seite ist gesperrt (modal)', h.labelledby === h.titelId && h.fokus === 'hinweis-ok');
   const gesperrt = await p.evaluate(() => { const e = document.elementFromPoint(40, 200); return !!e.closest('dialog') || e.tagName === 'DIALOG' || e.tagName === 'HTML'; });
@@ -61,10 +62,20 @@ const TEXT2 = 'Danke, dass du MaterialMatch ausprobierst!';
   check('Der Auftakt zeigt das vorhandene Logo (img/logo.svg) mittig auf ruhigem Hintergrund, ist für Hilfsprogramme verborgen und fängt keine Klicks ab', a0.logo === 'img/logo.svg' && a0.mittig && a0.pos === 'fixed' && a0.klicks === 'none' && a0.hidden === 'true' && /^rgb\(24[0-9], 24[0-9], 24[0-9]\)$/.test(a0.bg), a0);
   await p.waitForFunction(() => MM.auftakt && MM.auftakt.beendet() && document.getElementById('auftakt').hidden, null, { timeout: 3000 });
   await p.close();
-  // Zeitgrenzen: Auftakt endet, sobald die Seite bereit ist (keine künstliche Wartezeit) und nie später als 1 Sekunde, auch bei langsamem Laden
-  const messen = async (verzoegerung) => { const c = await b.newContext({ viewport: { width: 1280, height: 800 } }); if (verzoegerung) await c.route('**/js/app.js', async r => { await new Promise(x => setTimeout(x, verzoegerung)); r.continue(); }); const q = await c.newPage(); const t0 = Date.now(); await q.goto(URL + '?modus=echt&start=ja', { waitUntil: 'commit' }); await q.waitForFunction(() => window.MM && MM.auftakt && MM.auftakt.beendet() && document.getElementById('auftakt').hidden, null, { timeout: 4000, polling: 20 }); const ms = Date.now() - t0; await c.close(); return ms; };
+  // Zeitgrenzen: der Auftakt dauert etwa 1,3 s ab Seitenstart (Logo bleibt wahrnehmbar), verzögert den Seitenaufbau aber nicht
+  const messen = async (verzoegerung) => { const c = await b.newContext({ viewport: { width: 1280, height: 800 } }); if (verzoegerung) await c.route('**/js/app.js', async r => { await new Promise(x => setTimeout(x, verzoegerung)); r.continue(); }); const q = await c.newPage(); const t0 = Date.now(); await q.goto(URL + '?modus=echt&start=ja', { waitUntil: 'commit' }); await q.waitForFunction(() => window.MM && MM.auftakt && MM.auftakt.beendet() && document.getElementById('auftakt').hidden, null, { timeout: 4000, polling: 20 }); const ms = Date.now() - t0; const bereit = await q.evaluate(() => !!document.querySelector('#bereich-vergleich') && document.querySelectorAll('.tab').length >= 3); await c.close(); return { ms, bereit }; };
   const schnell = await messen(0), langsam = await messen(1500);
-  check(`Schnelles Laden: der Auftakt endet, sobald die Seite bereit ist (${schnell} ms, ohne künstliche Wartezeit); sehr langsames Laden: spätestens nach 1 Sekunde (${langsam} ms)`, schnell < 900 && langsam <= 1150 && langsam >= 700, [schnell, langsam]);
+  check(`Dauer des Auftakts: etwa 1,2–1,5 Sekunden (gemessen ${schnell.ms} ms inkl. Start des Browsers); auch bei sehr langsamem Laden endet er nach spätestens ~1,6 s (${langsam.ms} ms)`, schnell.ms >= 1100 && schnell.ms <= 1700 && langsam.ms >= 1100 && langsam.ms <= 1800, [schnell, langsam]);
+  // Innerhalb derselben Browser-Sitzung: nur einmal
+  const cs = await b.newContext({ viewport: { width: 1280, height: 800 } }); const ps = await cs.newPage();
+  await ps.goto(URL + '?modus=echt&start=ja&x=7'); await ps.waitForFunction(() => MM.auftakt && MM.auftakt.beendet() && document.getElementById('auftakt').hidden, null, { timeout: 4000 });
+  const sitz1 = await ps.evaluate(() => sessionStorage.getItem('materialmatch.auftakt.v1'));
+  await ps.goto(URL + '?modus=echt&x=7');   // ohne ?start=ja: normale Seite, Sitzung kennt den Auftakt schon
+  const sitz2 = await ps.evaluate(() => { const e = document.getElementById('auftakt'); return !e || e.hidden; });
+  await ps.goto(URL + '?modus=echt&start=ja&x=8');
+  const sitz3 = await ps.evaluate(() => { const e = document.getElementById('auftakt'); return { sichtbar: !!e && !e.hidden }; });
+  check('Innerhalb derselben Browser-Sitzung läuft der Auftakt nicht erneut (sessionStorage); ?start=ja erzwingt ihn zum Ansehen', sitz1 === '1' && sitz2 && sitz3.sichtbar, [sitz1, sitz2, sitz3]);
+  await cs.close();
   // Bedienbar während des Auftakts
   const c3 = await b.newContext({ viewport: { width: 1280, height: 800 } }); await c3.route('**/js/app.js', async r => { await new Promise(x => setTimeout(x, 400)); r.continue(); });
   p = await c3.newPage(); await p.goto(URL + '?modus=echt&start=ja&x=1', { waitUntil: 'domcontentloaded' });

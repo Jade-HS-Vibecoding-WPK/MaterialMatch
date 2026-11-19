@@ -29,7 +29,7 @@
     mu: { name: "Diffusionswiderstandszahl μ", text: "Sie gibt an, wie viel stärker ein Material Wasserdampf bremst als ruhende Luft. Je größer μ, desto dichter ist das Material für Wasserdampf." },
     waermekapazitaet: { name: "Wärmekapazität", text: "Wie viel Wärme ein Material je kg und Kelvin speichern kann (J/(kg·K)). Sie spielt für den sommerlichen Wärmeschutz eine Rolle." },
     preis: { name: "Einheitspreis", text: "Der Preis je Mengeneinheit (m³, kg oder m²). Für einen fairen Vergleich müssen Mehrwertsteuer und Leistungsumfang (Material, Transport, Einbau) gleich sein." },
-    bezugsgroesse: { name: "Bezugsgröße", text: "Die Menge, auf die sich ein Wert bezieht, zum Beispiel 1 m³ oder 1 kg. Werte mit verschiedenen Bezugsgrößen lassen sich nicht direkt vergleichen; MaterialMatch rechnet sie auf eure Fläche und Dicke um." },
+    bezugsgroesse: { name: "Bezugsgröße", text: "Die Menge, auf die sich ein Wert bezieht, zum Beispiel 1 m³ oder 1 kg. Werte mit verschiedenen Bezugsgrößen lassen sich nicht direkt vergleichen; MaterialMatch rechnet sie auf deine Fläche und Dicke um." },
     module: { name: "Lebenszyklusmodule", text: "Abschnitte im Leben eines Bauprodukts. A1–A3 ist die Herstellung (Rohstoffe, Transport, Fertigung). Nutzung, Rückbau und Gutschriften sind andere Module." },
     gwp: { name: "GWP", text: "Global Warming Potential, das Treibhauspotenzial in kg CO₂-Äquivalenten (CO₂e). Es fasst verschiedene Treibhausgase in einer Zahl zusammen. „Gesamt“ ist die Summe aus fossilem, biogenem und luluc-Anteil." },
     fossil: { name: "GWP fossil", text: "Der Teil des Treibhauspotenzials, der aus fossilen Quellen stammt, etwa aus Energie und Rohstoffen aus Kohle, Öl und Gas." },

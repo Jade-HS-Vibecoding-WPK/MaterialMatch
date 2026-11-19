@@ -161,7 +161,7 @@
     var ref = referenzMaterial && referenzMaterial.id === referenzId ? referenzMaterial : finde(daten.baustoffe, referenzId);
     var leer = { meldung: null, bereich: null, referenz: ref, prioritaet: prio, kriterien: [], empfehlungen: [], nichtEmpfohlen: [] };
 
-    if (!ref) { leer.meldung = "Wählen Sie ein Material (Material A) als Ausgangspunkt für die Empfehlung."; return leer; }
+    if (!ref) { leer.meldung = "Wähle ein Material (Material A) als Ausgangspunkt für die Empfehlung."; return leer; }
     var bereich = bereichId || ref.anwendungen[0];
     leer.bereich = bereich;
     if (ref.anwendungen.indexOf(bereich) === -1) {

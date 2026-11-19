@@ -24,7 +24,7 @@ function check(name, cond, extra) { if (!cond) fails++; console.log((cond ? 'OK 
   const opts = () => p.$$eval('#anwendung option', o => o.map(x => ({ t: x.textContent, v: x.value })));
 
   // ---- Leerzustand
-  check('Ohne Material: Aufforderung, Anwendungsfeld gesperrt', (await txt()).includes('Wählen Sie ein Material (Material A)') && await p.$eval('#anwendung', s => s.disabled));
+  check('Ohne Material: Aufforderung, Anwendungsfeld gesperrt', (await txt()).includes('Wähle ein Material (Material A)') && await p.$eval('#anwendung', s => s.disabled));
   check('Ohne Material: keine Karten', (await karten()).length === 0);
 
   // ---- Dämmstoffe

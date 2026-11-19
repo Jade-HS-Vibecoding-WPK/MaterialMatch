@@ -73,7 +73,7 @@
     window.MM.eingaben.init();       // Schritt 4: Eingabefelder aktivieren
     window.MM.mengen.init();         // Schritt 4: Ergebnistabelle Menge und Gewicht
     window.MM.eigenschaften.init(daten); // Schritt 5: Vergleich der Eigenschaften
-    window.MM.prioritaet.init();         // Schritt 9: Auswahl „Was ist Ihnen besonders wichtig?“
+    window.MM.prioritaet.init();         // Schritt 9: Auswahl „Was ist dir besonders wichtig?“
     window.MM.diagramme.init(daten);     // Schritt 6: farbige Vergleichsdiagramme
     window.MM.dashboard.init();          // MaterialMatch 2.0: „Vergleich auf einen Blick“ (liest die Ergebnisse der Diagramme)
     window.MM.rechnen.init(daten);       // Schritt 7: Kosten, CO₂-Menge und R-Wert berechnen

@@ -37,7 +37,7 @@ function check(name, cond, extra) { if (!cond) fails++; console.log((cond ? 'OK 
   check('"Weitere Eigenschaften" lässt sich aufklappen', await p.isVisible('#ergebnis-weitere'));
 
   // ---- Ohne Auswahl
-  for (const id of BOXEN.slice(1)) check('Ohne Auswahl: Hinweis in ' + id, (await txt(id)).includes('Wählen Sie Materialien aus'));
+  for (const id of BOXEN.slice(1)) check('Ohne Auswahl: Hinweis in ' + id, (await txt(id)).includes('Wähle Materialien aus'));
 
   // ---- Mix Beton / BSH / Baustahl
   const nb = await E('normalbeton'), bsh = await E('brettschichtholz'), st = await E('baustahl');

@@ -107,7 +107,7 @@
     d.annahmen.push(mengenSatz(eingabe));
     d.annahmen.push("Materialkosten = Menge × Einheitspreis. Die Menge richtet sich nach der Preiseinheit: €/m³ → Volumen, €/kg → Gewicht (Volumen × Rohdichte), €/m² → Fläche.");
     if (mitWert.length) d.annahmen.push("Preisbasis: Mehrwertsteuer " + mwst.join(" / ") + "; Leistungsumfang (Material, Transport, Einbau) " + umfang.join(" / ") + ".");
-    d.annahmen.push("Nicht berechenbar sind Materialien ohne belegten Preis oder ohne Möglichkeit, die Preiseinheit auf eure Menge zu beziehen (dann steht der Grund im Tooltip der Zeile).");
+    d.annahmen.push("Nicht berechenbar sind Materialien ohne belegten Preis oder ohne Möglichkeit, die Preiseinheit auf deine Menge zu beziehen (dann steht der Grund im Tooltip der Zeile).");
     return d;
   }
 
@@ -464,7 +464,7 @@
     letzte = { anzahl: plaetze.length, mitEingabe: false, prioritaet: prioritaet(), diagramme: {} };
 
     if (!plaetze.length) {
-      box.appendChild(el("div", "Wählen Sie Materialien aus, um Diagramme zu sehen.", "empty-state"));
+      box.appendChild(el("div", "Wähle Materialien aus, um Diagramme zu sehen.", "empty-state"));
       meldeErgebnisse();
       return;
     }

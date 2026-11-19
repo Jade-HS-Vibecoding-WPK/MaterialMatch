@@ -25,15 +25,15 @@
     var e = MM.eingaben.hole();
 
     if (!auswahl.plaetze.length) {
-      hinweis("Wählen Sie zuerst Materialien aus, um Volumen und Gewicht zu berechnen.");
+      hinweis("Wähle zuerst Materialien aus, um Volumen und Gewicht zu berechnen.");
       return;
     }
     if (e.status === "fehler") {
-      hinweis("Bitte korrigieren Sie die markierten Eingaben (Fläche und Dicke).");
+      hinweis("Bitte korrigiere die markierten Eingaben (Fläche und Dicke).");
       return;
     }
     if (e.status !== "ok") {
-      hinweis("Geben Sie Bauteilfläche und Materialdicke ein, um Volumen und Gewicht zu berechnen.");
+      hinweis("Gib Bauteilfläche und Materialdicke ein, um Volumen und Gewicht zu berechnen.");
       return;
     }
 

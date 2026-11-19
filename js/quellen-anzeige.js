@@ -312,7 +312,7 @@
     var box = el("div");
     var plaetze = MM.auswahl.holeAuswahl().plaetze;
     if (!plaetze.length) {
-      box.appendChild(el("div", "Wählen Sie Materialien im Reiter „Vergleich“, um deren Quellen zu sehen.", "empty-state"));
+      box.appendChild(el("div", "Wähle Materialien im Reiter „Vergleich“, um deren Quellen zu sehen.", "empty-state"));
       return box;
     }
     plaetze.forEach(function (p) {

@@ -121,7 +121,7 @@
         "„fossil“ zeigt die fossilen Emissionen der Herstellung. Pauschale Aussagen wie „Holz ist immer klimafreundlicher“ sind nicht zulässig."));
     }
     box.appendChild(notiz("Berücksichtigt sind nur die angegebenen Lebenszyklusmodule (A1–A3 = Herstellung). " +
-      "Die berechnete CO₂-Menge für Ihre Fläche und Dicke steht im Abschnitt darüber."));
+      "Die berechnete CO₂-Menge für deine Fläche und Dicke steht im Abschnitt darüber."));
     return box;
   }
 
@@ -130,7 +130,7 @@
   function abschnitt(box, plaetze, bauer) {
     box.textContent = "";
     if (!plaetze.length) {
-      box.appendChild(el("div", "Wählen Sie Materialien aus, um die Kennwerte zu vergleichen.", "empty-state"));
+      box.appendChild(el("div", "Wähle Materialien aus, um die Kennwerte zu vergleichen.", "empty-state"));
       return;
     }
     bauer(box);

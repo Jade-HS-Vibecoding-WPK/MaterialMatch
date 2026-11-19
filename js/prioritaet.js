@@ -1,7 +1,7 @@
 /* ==========================================================================
    MaterialMatch – Vergleichspriorität (Schritt 9)
    --------------------------------------------------------------------------
-   Der eine zentrale Ort für die Auswahl "Was ist Ihnen besonders wichtig?".
+   Der eine zentrale Ort für die Auswahl "Was ist dir besonders wichtig?".
    Diagramme und Empfehlungen lesen die Priorität von hier und aktualisieren
    sich bei der Nachricht "mm:prioritaet".
 

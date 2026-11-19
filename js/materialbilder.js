@@ -12,7 +12,7 @@
 
    Benutzung:   MM.materialbilder.element("eps", { groesse: "klein" | "mittel" | "gross", beschriftung: true, variante: "foto" | "schraffur" })
    Das Element ist ein <figure> mit <img> (Lazy Loading, Alternativtext, festes Seitenverhältnis 4:3).
-   Mit beschriftung: true steht unter einem Foto der Bildnachweis (Urheber, Lizenz), unter einer Schraffur der Hinweis „Schematische Materialillustration“.
+   Mit beschriftung: true steht unter einem Foto der Bildnachweis (Urheber, Lizenz), unter einer Schraffur die Gruppe (z. B. „Schraffur: Dämmstoff, schematisch“).
    ========================================================================== */
 
 (function (root) {
@@ -21,7 +21,7 @@
   var MM = root.MM = root.MM || {};
   var PFAD = "img/schraffuren/";
   var FOTOPFAD = "img/materialfotos/";
-  var HINWEIS = "Schematische Materialillustration";
+  var HINWEIS = "Technische Schraffur (schematisch)";
   var daten = null;
 
   // Zuordnung Baustoff -> Foto (data/bilder.js); ohne die Datei gibt es einfach keine Fotos
@@ -38,6 +38,19 @@
 
   function material(id) { return daten ? MM.finde(daten.baustoffe, id) : null; }
 
+  // Zuordnung Baustoff -> Schraffurgruppe aus data/schraffuren.js (Gruppe, Muster, Bezug zur Quelle); siehe SCHRAFFUREN_PRUEFUNG.md
+  function schraffurInfo(id) {
+    var s = root.MATERIALMATCH_SCHRAFFUREN;
+    return (s && s.materialien && s.materialien[id]) || null;
+  }
+  // Kurzer Text unter der Schraffur: Gruppe und – bei Zuordnung durch das Projekt – der Hinweis darauf
+  function schraffurText(id) {
+    var i = schraffurInfo(id);
+    if (!i) return HINWEIS;
+    if (i.bezug === "keiner") return "Keine belegte Schraffur vorhanden";
+    return "Schraffur: " + i.gruppe + (i.bezug === "gruppe" ? " (Gruppenzuordnung)" : "") + ", schematisch";
+  }
+
   // Hat dieses Material eine eigene Zeichnung? (Alle Materialien mit Einordnung in data/materialprofil.js haben eine.)
   function hat(id) {
     var p = root.MATERIALMATCH_PROFIL;
@@ -49,7 +62,10 @@
   function alt(id, variante) {
     var m = material(id);
     if (variante === "foto" && hatFoto(id)) return foto(id).alt;   // der Alternativtext in data/bilder.js beginnt mit „Foto: …“
-    return HINWEIS + ": " + (m ? m.name : "Baustoff") + (hat(id) ? " (Schraffur)" : " (keine Illustration vorhanden)");
+    var i = schraffurInfo(id);
+    var name = m ? m.name : "Baustoff";
+    if (i && i.bezug === "keiner") return "Keine belegte Schraffur vorhanden: " + name;
+    return "Technische Schraffur (schematisch): " + name + (i && i.gruppe ? " – " + i.gruppe : "") + (hat(id) ? "" : " (nicht vorhanden)");
   }
 
   function element(id, optionen) {
@@ -57,7 +73,8 @@
     var groesse = optionen.groesse || "klein";
     var variante = optionen.variante === "schraffur" || !hatFoto(id) ? "schraffur" : "foto";
     var fig = document.createElement("figure");
-    fig.className = "mbild mbild-" + groesse + " mbild-" + variante + (variante === "schraffur" && !hat(id) ? " mbild-platzhalter" : "");
+    var keinMuster = variante === "schraffur" && (!hat(id) || (schraffurInfo(id) && schraffurInfo(id).bezug === "keiner"));
+    fig.className = "mbild mbild-" + groesse + " mbild-" + variante + (keinMuster ? " mbild-platzhalter" : "");
     fig.setAttribute("data-material", id);
     fig.setAttribute("data-variante", variante);
     var img = document.createElement("img");
@@ -78,7 +95,7 @@
         fig.classList.remove("mbild-foto"); fig.classList.add("mbild-schraffur");
         img.alt = alt(id, "schraffur");
         img.src = url(id);
-        var cap0 = fig.querySelector("figcaption"); if (cap0) cap0.textContent = HINWEIS;
+        var cap0 = fig.querySelector("figcaption"); if (cap0) cap0.textContent = schraffurText(id);
         return;
       }
       img.setAttribute("data-ersatz", "platzhalter");
@@ -89,7 +106,7 @@
     if (optionen.beschriftung) {
       var cap = document.createElement("figcaption");
       cap.className = "mbild-text";
-      cap.textContent = variante === "foto" ? nachweis(id) : HINWEIS;
+      cap.textContent = variante === "foto" ? nachweis(id) : schraffurText(id);
       fig.appendChild(cap);
     }
     return fig;
@@ -106,6 +123,8 @@
     alleFotos: fotos,
     url: url,
     alt: alt,
+    schraffurInfo: schraffurInfo,
+    schraffurText: schraffurText,
     element: element,
     init: function (baustoffdaten) { daten = baustoffdaten; }
   };

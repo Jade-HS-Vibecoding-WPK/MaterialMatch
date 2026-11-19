@@ -89,7 +89,14 @@
       function ebenenZeigen() {
         var n = root.MM.auswahl ? root.MM.auswahl.holeAuswahl().plaetze.length : 0;
         [].forEach.call(document.querySelectorAll(".ebene"), function (e) { e.hidden = n === 0; });
+        var weiter = document.getElementById("vergleich-weiter");
+        if (weiter) weiter.hidden = n === 0;
       }
+      // „Wie geht es weiter?“: die Auswahl bleibt erhalten, es wird nur der Bereich gewechselt
+      [["weiter-alternativen", "alternativen"], ["weiter-entdecken", "entdecken"], ["weiter-match", "match"]].forEach(function (p) {
+        var b = document.getElementById(p[0]);
+        if (b) b.addEventListener("click", function () { if (root.MM.reiter) root.MM.reiter.zeige(p[1]); });
+      });
       document.addEventListener("mm:auswahl", ebenenZeigen);
       ebenenZeigen();
       document.addEventListener("mm:auswahl", function () { ersterStart(); tooltipsSetzen(); });

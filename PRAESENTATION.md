@@ -19,7 +19,7 @@ MaterialMatch ist ein Baustoff-Vergleichsrechner für den frühen Entwurf. Man w
 | **21** konkrete Produkte zu 15 Materialien · **7** Preise (2 Händlerpreise, 2 deutsche Preislisten, 3 Preise einer österreichischen Preisliste) | Mit Hersteller und Quelle; Preislisten-Preise sind netto, nicht am Abrufdatum bestätigt und die österreichischen gelten nicht für Deutschland; wo keine Produktdaten vorliegen, gilt der generische Materialdatensatz; eigene Produkte lassen sich ergänzen |
 | **82** Beispieldaten · **257** „nicht verfügbar“ | Ehrlich gekennzeichnet statt erfunden; die Seite startet im Echtdaten-Modus, die Beispieldaten (gelb, „B“) lassen sich für Demos einschalten |
 | **15** Entwicklungsschritte mit Freigabe nach jedem Schritt | Feste Reihenfolge laut Auftrag |
-| **über 1.000** automatische Prüfungen in 53 Dateien, dazu mehrere Zehntausend Einzelvergleiche gegen unabhängige Referenzrechner | Qualitätskontrolle (Schritt 14) |
+| **über 1.000** automatische Prüfungen in 54 Dateien, dazu mehrere Zehntausend Einzelvergleiche gegen unabhängige Referenzrechner | Qualitätskontrolle (Schritt 14) |
 | **8** Mängel bei der Qualitätskontrolle gefunden, **0** davon in Berechnungen | Alle behoben |
 | **0** Programmzeilen von Hand geschrieben | Alles über Anweisungen an Claude Code |
 
@@ -120,7 +120,7 @@ Dämmstoffe: **Mineralwolle** und **Kork**: bei Kork steht λ „fehlt“ mit Be
 
 ## Neu in Version 3.0 (Kurzfassung für die Präsentation)
 - **Marke:** Logo aus drei ineinandergreifenden Materialschichten, Leitsatz „Der richtige Baustoff. Für deine Idee.“, zwei Hauptaktionen: „Baustoffe vergleichen“ und „Match finden“.
-- **Materialillustrationen:** Für alle 50 Baustoffe eigene schematische Schraffuren im Stil von Architekturplänen (keine Fotos, keine fremden Rechte, offline), dazu ein Steckbrief je Material.
+- **Materialbilder:** Fotos aus Wikimedia Commons (freie Lizenzen, Bildnachweis) als Standard; daneben technische Schraffuren je Baustoffgruppe nach einer Lehrbuchquelle zu DIN 1356-1/DIN ISO 128-50 (nicht normgeprüft, siehe `SCHRAFFUREN_PRUEFUNG.md`); ohne belegte Darstellung ein neutraler Platzhalter. Dazu ein Steckbrief je Material.
 - **Match finden:** Fünf Fragen → passende Baustoffe als Swipe-Karten (rechts = Favorit, links = nicht interessant, Tippen = Steckbrief; auch mit Knöpfen und Tastatur) → Favoriten → „Favoriten vergleichen“ übernimmt sie in den bestehenden Vergleich.
 - **Ehrlicher Score:** 0–100 Punkte als relative Orientierung; Eignung wird zuerst geprüft; fehlende Daten zählen nie als gut, bei zu wenigen Daten gibt es keinen Score. Schallschutz, Feuchteschutz und Recycling sind ausgegraut, bis belegte Daten vorliegen.
 - **PDF-Bericht:** Seite 1 mit Logo, Vergleich, Materialien, Eingaben, Kennzahlen und Warnhinweisen; Diagramme auf Seite 2; Annahmen und Quellen danach.

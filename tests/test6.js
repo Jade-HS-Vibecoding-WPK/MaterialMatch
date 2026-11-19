@@ -37,9 +37,9 @@ function check(name, cond, extra) { if (!cond) fails++; console.log((cond ? 'OK 
   // --- Materialien wählen, aber noch keine Eingabe
   await p.selectOption('#kategorie', 'tragend');
   await p.selectOption('#materialA', 'normalbeton'); await p.selectOption('#materialB', 'porenbeton');
-  check('Ohne Eingabe: Aufforderung', (await res()).includes('Geben Sie Bauteilfläche und Materialdicke ein'));
+  check('Ohne Eingabe: Aufforderung', (await res()).includes('Gib Bauteilfläche und Materialdicke ein'));
   await p.fill('#flaeche', '100');
-  check('Nur Fläche: Aufforderung, keine Tabelle', (await res()).includes('Geben Sie') && (await tab()).length === 0);
+  check('Nur Fläche: Aufforderung, keine Tabelle', (await res()).includes('Gib') && (await tab()).length === 0);
 
   // --- Beispiel aus dem Prompt: 100 m², 20 cm
   await p.fill('#dicke', '20');
@@ -85,7 +85,7 @@ function check(name, cond, extra) { if (!cond) fails++; console.log((cond ? 'OK 
   await typ('-5', '20', 'cm');
   check('Negative Fläche: Meldung am Feld', (await fehler('flaeche-fehler')) === 'Die Fläche darf nicht negativ sein.');
   check('Negative Fläche: Feld rot markiert', await p.$eval('#flaeche', e => e.classList.contains('is-invalid') && e.getAttribute('aria-invalid') === 'true'));
-  check('Negative Fläche: keine Tabelle, Hinweis', (await tab()).length === 0 && (await res()).includes('korrigieren'));
+  check('Negative Fläche: keine Tabelle, Hinweis', (await tab()).length === 0 && (await res()).includes('korrigier'));
   await typ('100', '0');
   check('Dicke 0: Meldung', (await fehler('dicke-fehler')) === 'Die Dicke muss größer als 0 sein.');
   await typ('100', 'abc');
@@ -102,7 +102,7 @@ function check(name, cond, extra) { if (!cond) fails++; console.log((cond ? 'OK 
   check('Korrektur: Feldmarkierung weg', await p.$eval('#flaeche', e => !e.classList.contains('is-invalid') && !e.hasAttribute('aria-invalid')));
   check('Korrektur: Tabelle wieder da', (await tab()).length === 7);
   await p.fill('#flaeche', '');
-  check('Feld geleert: keine Fehlermeldung, Aufforderung', (await fehler('flaeche-fehler')) === '' && (await res()).includes('Geben Sie'));
+  check('Feld geleert: keine Fehlermeldung, Aufforderung', (await fehler('flaeche-fehler')) === '' && (await res()).includes('Gib'));
 
   // --- Dämmstoffe mit drei Materialien
   await typ('100', '20', 'cm');

@@ -234,7 +234,7 @@
     if (!e.anzahl) {
       var leer = el("div", null, "empty-state kw-leerzustand");
       leer.appendChild(symbol("scale", "kw-leer-symbol"));
-      leer.appendChild(el("p", "Wählen Sie Material A und Material B.", "kw-leer-titel"));
+      leer.appendChild(el("p", "Wähle Material A und Material B.", "kw-leer-titel"));
       leer.appendChild(el("p", "Dann erscheinen hier Kosten, CO₂, Gewicht und Wärmedämmung.", "kw-leer-text"));
       box.appendChild(leer);
       return;

@@ -142,7 +142,7 @@ const nah = (a, b, t = 1e-9) => Math.abs(a - b) <= t * Math.max(1, Math.abs(b));
   const kEig = await zeile(p, '#rechnung-kosten', 'Materialkosten');
   check('Kosten des eigenen Produkts: 10 m³ × 99,50 = 995 €', /^995/.test(kEig[0]), kEig);
   const orient = await p.$eval('#orientierung', e => e.textContent);
-  check('Orientierungshinweis nennt eigene Angaben („E … nicht geprüft“, keine verlässliche Produkt- oder Kostenberechnung)', /Eigene Angaben: Mit E gekennzeichnete Werte stammen von Ihnen und sind nicht geprüft/.test(orient), orient);
+  check('Orientierungshinweis nennt eigene Angaben („E … nicht geprüft“, keine verlässliche Produkt- oder Kostenberechnung)', /Eigene Angaben: Mit E gekennzeichnete Werte stammen von dir und sind nicht geprüft/.test(orient), orient);
   const quelleEig = await p.$$eval('#ergebnis-technisch .fn-source', f => f.map(x => x.textContent));
   check('Die Quelle des eigenen Produkts wird angezeigt (Titel, Händler/Quelle, Abrufdatum, „Eigene Angabe der Nutzer:in (nicht geprüft)“)', quelleEig.some(t => /Datenblatt 03\/2026/.test(t) && /Eigene Angabe der Nutzer:in \(nicht geprüft\)/.test(t) && /2026-11-16/.test(t)), quelleEig);
   const csv = await p.evaluate(() => MM.exportieren.baueCsv({ daten: MATERIALMATCH_DATA, plaetze: MM.auswahl.holeAuswahl().plaetze, eingaben: MM.eingaben.hole(), modus: MM.datenmodus.name(), anwendung: 'Wärmedämmung', prioritaet: 'x', empfehlung: null, datum: new Date() }));

@@ -1,10 +1,11 @@
 /* ==========================================================================
-   MaterialMatch 3.7 – Logo-Auftakt
+   MaterialMatch 3.8 – Logo-Auftakt
    --------------------------------------------------------------------------
-   Beim Laden steht das vorhandene MaterialMatch-Logo (img/logo.svg) mittig auf ruhigem Hintergrund und blendet sanft ein.
-   Sobald die Seite bereit ist, blendet es aus. Es gibt KEINE künstliche Wartezeit: Der Auftakt endet, wenn die Seite fertig
-   geladen ist, spätestens nach 0,8 Sekunden (plus 0,2 Sekunden Ausblenden = höchstens 1 Sekunde). Kein Ton.
-   • Die Anwendung ist währenddessen schon bedienbar (der Auftakt fängt keine Klicks ab: pointer-events: none).
+   Beim ersten Laden einer Browser-Sitzung steht das vorhandene MaterialMatch-Logo (img/logo.svg) mittig auf ruhigem Hintergrund:
+   es blendet sanft ein (0,35 s), bleibt kurz voll sichtbar und blendet dann aus (0,3 s). Gesamtdauer etwa 1,3 Sekunden, gerechnet ab Seitenstart.
+   • Der Seitenaufbau wird dadurch NICHT verzögert: Die Anwendung wird im Hintergrund aufgebaut und ist während des Auftakts bedienbar
+     (der Auftakt fängt keine Klicks ab: pointer-events: none). Er läuft nur deshalb etwas länger, damit das Logo wahrgenommen wird.
+   • Innerhalb derselben Browser-Sitzung (sessionStorage) läuft er nur einmal; ein kleines Skript in index.html blendet ihn sonst sofort aus.
    • Bei „Bewegung reduzieren“ (prefers-reduced-motion) gibt es kein Ein- und Ausblenden: der Auftakt verschwindet sofort.
    • Ohne JavaScript wird der Auftakt per CSS ausgeblendet (<noscript> in index.html).
    • Die Tests schalten ihn aus (tests/_offline.js setzt window.__MM_OHNE_START__); die Adresse ?start=ja erzwingt ihn.
@@ -14,7 +15,8 @@
   "use strict";
 
   var MM = root.MM = root.MM || {};
-  var MAX_MS = 800, AUS_MS = 200;
+  var HALTEN_BIS = 1000, AUS_MS = 300;   // Logo bleibt bis 1,0 s nach Seitenstart voll sichtbar, dann 0,3 s Ausblenden = 1,3 s
+  var SCHLUESSEL = "materialmatch.auftakt.v1";
   var el = null, fertig = false, timer = null, rueckrufe = [];
 
   function ohneStart() {
@@ -37,23 +39,21 @@
   }
 
   MM.auftakt = {
-    MAX_MS: MAX_MS + AUS_MS,
-    // wird von js/app.js aufgerufen, wenn alles aufgebaut ist; wartet nur noch auf das Ladeereignis der Seite
-    bereit: function () {
-      if (fertig) return;
-      if (document.readyState === "complete") ende();
-      else root.addEventListener("load", ende);
-    },
+    GESAMT_MS: HALTEN_BIS + AUS_MS,
+    // wird von js/app.js aufgerufen, wenn alles aufgebaut ist; der Auftakt endet trotzdem erst nach der festen Zeit (siehe oben)
+    bereit: function () {},
     beiEnde: function (f) { if (fertig && (!el || el.hidden)) f(); else rueckrufe.push(f); },
     beendet: function () { return fertig; }
   };
 
   el = document.getElementById("auftakt");
-  if (ohneStart()) {
+  if (ohneStart() || (el && el.hidden)) {   // ausgeschaltet oder in dieser Sitzung schon gezeigt
     if (el && el.parentNode) el.parentNode.removeChild(el);
     el = null; fertig = true;
   } else {
-    timer = setTimeout(ende, MAX_MS);   // Sicherung: nie länger als 1 Sekunde (auch wenn die Seite sehr langsam lädt oder ein Fehler auftritt)
+    try { root.sessionStorage.setItem(SCHLUESSEL, "1"); } catch (e) { /* ohne Speicher läuft er eben jedes Mal */ }
+    var seit = (root.performance && root.performance.now) ? root.performance.now() : 0;
+    timer = setTimeout(ende, Math.max(HALTEN_BIS - seit, 250));   // feste Zeit ab Seitenstart, danach Ausblenden
   }
 
 })(typeof window !== "undefined" ? window : globalThis);

@@ -229,9 +229,9 @@
     }
     if (bezug === "1 m²") {
       if (!schicht) return { moeglich: true, menge: flaeche_m2, einheit: "m²", weg: "Fläche" };
-      if (!(bezugsdicke_m > 0)) return nein("Der Wert gilt je m² für eine nicht angegebene Dicke und lässt sich nicht auf eure Dicke übertragen.");
+      if (!(bezugsdicke_m > 0)) return nein("Der Wert gilt je m² für eine nicht angegebene Dicke und lässt sich nicht auf deine Dicke übertragen.");
       if (Math.abs(dicke_m - bezugsdicke_m) > 1e-9 * Math.max(1, bezugsdicke_m)) {
-        return nein("Der Wert gilt je m² für eine Dicke von " + formatEingabe(bezugsdicke_m * 1000) + " mm. Ihre Dicke weicht ab (" +
+        return nein("Der Wert gilt je m² für eine Dicke von " + formatEingabe(bezugsdicke_m * 1000) + " mm. Deine Dicke weicht ab (" +
           formatEingabe(dicke_m * 1000) + " mm), eine Umrechnung wäre eine Annahme.");
       }
       return { moeglich: true, menge: flaeche_m2, einheit: "m²", weg: "Fläche" };

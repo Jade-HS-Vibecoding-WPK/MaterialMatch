@@ -31,7 +31,7 @@ const URL = 'file://' + PROJ + '/index.html?modus=demo';
   const kopf = await p.evaluate(() => ({ h2: document.querySelector('#quellen > h2').textContent, kinder: [...document.querySelectorAll('#quellen > *')].map(e => e.tagName + (e.id ? '#' + e.id : '')), panel: !!document.querySelector('#quellen > details:not(.sub)') }));
   check('Der Reiter beginnt mit „Quellen der ausgewählten Materialien“ (h2), danach vier einklappbare Bereiche; kein aufklappbarer Hauptbereich mehr', kopf.h2 === 'Quellen der ausgewählten Materialien' && kopf.kinder.join() === 'H2#quellen-titel,DIV#quellen-auswahl,DETAILS#quellen-qualitaet,DETAILS#quellen-methode,DETAILS#quellen-datenbank,DETAILS#quellen-hinweise' && !kopf.panel, kopf);
   check('Die vier Bereiche heißen: Datenqualität und Kennzeichnungen; Wie berechnet MaterialMatch die Ergebnisse?; Erweiterte Datenbankinformationen; Rechtliche und fachliche Hinweise – und sind standardmäßig zugeklappt', JSON.stringify(await p.$$eval('#quellen > details > summary', s => s.map(x => x.textContent.trim()))) === JSON.stringify(['Datenqualität und Kennzeichnungen', 'Wie berechnet MaterialMatch die Ergebnisse?', 'Erweiterte Datenbankinformationen', 'Rechtliche und fachliche Hinweise']) && await p.$$eval('#quellen > details', d => d.every(x => !x.open)));
-  check('Ohne Auswahl: kurzer Hinweis statt Quellenliste', /Wählen Sie Materialien im Reiter „Vergleich“/.test(await p.$eval('#quellen-auswahl', e => e.textContent)));
+  check('Ohne Auswahl: kurzer Hinweis statt Quellenliste', /Wähle Materialien im Reiter „Vergleich“/.test(await p.$eval('#quellen-auswahl', e => e.textContent)));
   check('Das lange Material (Katalog der 50 Baustoffe, Kennwertmatrix, Quellenübersicht, Datenprüfung) steckt unter „Erweiterte Datenbankinformationen“, nicht in der Hauptansicht', await p.evaluate(() => { const d = document.getElementById('quellen-datenbank'); return ['quellen-inhalt', 'katalog', 'datenuebersicht'].every(i => d.contains(document.getElementById(i))) && !!d.querySelector('.matrix-table') && !!d.querySelector('.check-list'); }));
 
   // ---- Quellen der ausgewählten Materialien
@@ -60,7 +60,7 @@ const URL = 'file://' + PROJ + '/index.html?modus=demo';
   check('Echtdaten-Modus: Beispielwerte zählen als „nicht verfügbar“; die Listen folgen den Daten des Modus (keine „Ohne Quelle (Beispieldaten)“-Zeile mehr)', ist.every(g => !g.notizen.some(n => /Beispieldaten/.test(n))) && ist.every((g, i) => g.zeilen.length === Object.keys(soll[i].q).length) && ist.some(g => g.notizen.some(n => /Nicht verfügbar:.*Preis/.test(n))), ist.map(g => g.notizen));
   await p.evaluate(() => MM.datenmodus.setze(true));
   await setze(p, { a: '', b: '', c: '' });
-  check('Wird die Auswahl geleert, erscheint wieder der Hinweis', /Wählen Sie Materialien/.test(await p.$eval('#quellen-auswahl', e => e.textContent)));
+  check('Wird die Auswahl geleert, erscheint wieder der Hinweis', /Wähle Materialien/.test(await p.$eval('#quellen-auswahl', e => e.textContent)));
 
   // ---- Inhalte der einklappbaren Bereiche
   await setze(p, { a: 'mineralwolle', b: 'eps', c: '' });

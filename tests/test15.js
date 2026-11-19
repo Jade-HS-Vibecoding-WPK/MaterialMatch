@@ -130,7 +130,7 @@ const ohne = E.empfehle(daten([KQ[0], mk('k', ['tragwerk'], { preis: P(80), gwp:
 ok('Fehlende Kennwerte: "nicht verfügbar"', ohne.kennwerte[0].text === 'nicht verfügbar' && ohne.kennwerte[3].text === 'nicht verfügbar');
 
 console.log('--- Keine Alternative / Fehlerfälle ---');
-ok('Kein Ausgangsmaterial: Meldung', E.empfehle(daten(T), null, null, 'ausgewogen').meldung.includes('Wählen Sie ein Material'));
+ok('Kein Ausgangsmaterial: Meldung', E.empfehle(daten(T), null, null, 'ausgewogen').meldung.includes('Wähle ein Material'));
 ok('Unbekanntes Material: Meldung', E.empfehle(daten(T), 'gibtsnicht', null, 'ausgewogen').meldung !== null);
 ok('Bereich passt nicht zu Material A: Meldung', E.empfehle(daten(T), 'ref', 'waermedaemmung', 'ausgewogen').meldung.includes('nicht vorgesehen'));
 ok('Keine weiteren Materialien im Bereich: Meldung', E.empfehle(daten([T[0]]), 'ref', 'tragwerk', 'ausgewogen').meldung.includes('keine weiteren Materialien'));

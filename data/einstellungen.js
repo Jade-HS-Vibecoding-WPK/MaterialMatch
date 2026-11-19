@@ -6,7 +6,7 @@
    „Alternative Baustoffe → So wird bewertet“. Ungültige Werte werden durch die
    Standardwerte ersetzt (Meldung in der Browser-Konsole).
 
-   prioritaetFaktor     Wie oft zählt das bei „Was ist Ihnen besonders wichtig?“ gewählte Kriterium
+   prioritaetFaktor     Wie oft zählt das bei „Was ist dir besonders wichtig?“ gewählte Kriterium
                         bei der Empfehlung im Vergleich zu den anderen (1 = gleich viel, 3 = dreifach).
                         Erlaubt: 1 bis 10. Standard: 3 (Festlegung der Nutzer:innen, 16.11.2026).
    gleichSchwelle       Unterschiede unterhalb dieser Schwelle gelten als „praktisch gleich“

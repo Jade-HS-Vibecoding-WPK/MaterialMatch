@@ -9,7 +9,7 @@ Neue Bausteine nutzen nur diese Werte. Es wurde **kein neues Framework** eingef�
 - **Zwei Farbwelten, die sich nie mischen:** *Gestaltungsfarben* (Weiß, Hellblau, Hellviolett, Hellorange für Hinweise) kennzeichnen Bereiche; *Bewertungsfarben* (Dunkelgrün → Neutral/Gelb → Dunkelrot, `--score-1` … `--score-5`) erscheinen **nur**, wo eine fachliche, relative Bewertung möglich ist. Fehlende Werte sind grau/„fehlt“, nie null und nie „schlecht“.
 - Pflichtsatz bei relativen Farben bleibt sichtbar: „Die Farben zeigen eine relative Bewertung der ausgewählten Materialien und stellen keine allgemeingültige Aussage über deren Qualität dar.“
 - Demonstrationswerte bleiben gelb mit „B“ gekennzeichnet; Datenarten: **V** verifiziert, **R** Richtwert, **B** Beispieldaten, **E** eigene Angabe.
-- Materialbilder sind **einfarbige Schraffuren** (Schwarz/Weiß/Grau, `img/schraffuren/*.svg`), keine Fotos.
+- Materialbilder: das **Foto** ist die Standarddarstellung; die **technische Schraffur** (einfarbig, `img/schraffuren/*.svg`, je Baustoffgruppe ein Muster nach Lehrbuchquelle, siehe `SCHRAFFUREN_PRUEFUNG.md`) ist die Alternative; ohne belegte Darstellung steht ein neutraler Platzhalter.
 
 ## Typografie
 Schrift: **Nunito** (mit Systemschrift als Rückfallebene, die Seite funktioniert auch offline). Nunito wurde geprüft und beibehalten: sie ist gut lesbar, freundlich und passt zum Charakter eines Lernwerkzeugs; ein Wechsel auf eine strengere Groteskschrift hätte den Eindruck kaum verbessert, aber alle Maße verschoben.

@@ -310,12 +310,12 @@
     });
 
     if (!zustand.kategorie) {
-      kartenBox.appendChild(el("div", "Wählen Sie zuerst eine Baustoffkategorie.", "empty-state"));
+      kartenBox.appendChild(el("div", "Wähle zuerst eine Baustoffkategorie.", "empty-state"));
       return;
     }
     if (gewaehlt.length < 2) {
       kartenBox.appendChild(el("div",
-        "Wählen Sie Material A und Material B.",
+        "Wähle Material A und Material B.",
         "empty-state"));
     }
     if (gewaehlt.length >= 2 && !gemeinsamerBereich(gewaehlt.map(function (x) { return x.m; }))) {

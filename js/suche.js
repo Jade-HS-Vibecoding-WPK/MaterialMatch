@@ -81,7 +81,7 @@
     liste.hidden = false;
     eingabe.setAttribute("aria-expanded", "true");
     if (!treffer.length) {
-      liste.appendChild(el("li", "Kein Treffer. Versuchen Sie einen Teil des Namens, z. B. „Holz“ oder „Wolle“.", "suche-leer"));
+      liste.appendChild(el("li", "Kein Treffer. Versuche einen Teil des Namens, z. B. „Holz“ oder „Wolle“.", "suche-leer"));
       status.textContent = "Kein Treffer";
       return;
     }

@@ -64,7 +64,7 @@ function abschnitte(rows) {
   const menue = async pg => { if (await pg.$eval('#export-menue', e => e.hidden)) await pg.click('#export-menue-knopf'); };
   const knoepfe = async () => p.$$eval('#druck-knopf, #csv-knopf', k => k.map(x => ({ id: x.id, aus: x.disabled, text: x.textContent.trim() })));
   let k = await knoepfe();
-  check('Ohne Material: beide Export-Schaltflächen deaktiviert, Hinweis "Wählen Sie zuerst mindestens ein Material" sichtbar', k.length === 2 && k.every(x => x.aus) && await p.$eval('#export-hinweis', e => !e.hidden && e.textContent.includes('mindestens ein Material')), k);
+  check('Ohne Material: beide Export-Schaltflächen deaktiviert, Hinweis "Wähle zuerst mindestens ein Material" sichtbar', k.length === 2 && k.every(x => x.aus) && await p.$eval('#export-hinweis', e => !e.hidden && e.textContent.includes('mindestens ein Material')), k);
   await waehle(p, 'mineralwolle', 'xps', 'eps'); await eingabe(p, 100, 20);
   k = await knoepfe();
   check('Mit Material: beide aktiv und beschriftet ("Als PDF speichern", "Als CSV herunterladen"), Hinweis verborgen', k.every(x => !x.aus) && k.find(x => x.id === 'druck-knopf').text === 'Als PDF speichern' && k.find(x => x.id === 'csv-knopf').text === 'Als CSV herunterladen' && await p.$eval('#export-hinweis', e => e.hidden), k);

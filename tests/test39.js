@@ -64,7 +64,7 @@ const TMP = fs.mkdtempSync(path.join(os.tmpdir(), 'mm39-'));
   // =============== Export ===============
   p = await neu('demo', 1280, () => { window.__druck = 0; window.print = function () { window.__druck++; }; });
   const leer = await p.evaluate(() => ({ aus: document.getElementById('export-menue-knopf').disabled, hinweis: !document.getElementById('export-hinweis').hidden && /mindestens ein Material/.test(document.getElementById('export-hinweis').textContent), menue: document.getElementById('export-menue').hidden, expanded: document.getElementById('export-menue-knopf').getAttribute('aria-expanded') }));
-  check('Ohne Material: „Ergebnisse exportieren“ ist deaktiviert, der Hinweis „Wählen Sie zuerst mindestens ein Material“ steht daneben, das Menü ist zu', leer.aus && leer.hinweis && leer.menue && leer.expanded === 'false', leer);
+  check('Ohne Material: „Ergebnisse exportieren“ ist deaktiviert, der Hinweis „Wähle zuerst mindestens ein Material“ steht daneben, das Menü ist zu', leer.aus && leer.hinweis && leer.menue && leer.expanded === 'false', leer);
   await waehle(p, 'mineralwolle', 'eps');
   const mit = await p.evaluate(() => ({ text: document.getElementById('export-menue-knopf').textContent, aus: document.getElementById('export-menue-knopf').disabled, hinweis: document.getElementById('export-hinweis').hidden, menue: document.getElementById('export-menue').hidden, controls: document.getElementById('export-menue-knopf').getAttribute('aria-controls') }));
   check('Mit Material: Knopf „Ergebnisse exportieren“ aktiv (aria-controls auf das Menü), Menü zunächst zugeklappt, Hinweis verborgen', mit.text === 'Ergebnisse exportieren' && !mit.aus && mit.hinweis && mit.menue && mit.controls === 'export-menue', mit);

@@ -55,7 +55,7 @@ Es werden keine Installation, kein Internet, kein Login und keine API-Schlüssel
 | `js/begriffe.js` | Erklärungen zu Fachbegriffen („i“-Knöpfe) |
 | `js/oberflaeche.js` | Auf- und Zuklappen der Bereiche, Tooltips |
 | `js/auswahl-optionen.js` | Die optionalen Auswahlfelder (drittes Material, Herstellerprodukt, eigenes Produkt) per Schaltfläche ein- und ausblenden |
-| `js/materialbilder.js` | Schematische Materialillustrationen (SVG-Schraffuren) als Bildbaustein: Lazy Loading, Alternativtext, Platzhalter |
+| `js/materialbilder.js` | Zentraler Bildbaustein: Materialfoto, technische Schraffur (mit Gruppe und Beschriftung) oder neutraler Platzhalter; Lazy Loading, Alternativtext |
 | `js/steckbrief.js` | Material-Steckbrief als Dialog: Illustration, Kennwerte, Vorteile, Nachteile, aufklappbare Eigenschaften und Quellen |
 | `js/matching.js` | Matching-Logik für „Match finden“: Einsatzbereiche, Eignung in vier Stufen, harte Anforderungen, Match-Score 0–100 mit Erklärung (nutzt `MM.empfehlung` und `MM.bewertung`, rechnet nichts Neues) |
 | `js/interview.js` | Das Interview mit fünf Fragen (große Auswahlflächen, Fortschrittsanzeige, ausgegraute Optionen ohne Datenlage) |
@@ -79,7 +79,9 @@ Es werden keine Installation, kein Internet, kein Login und keine API-Schlüssel
 | `FUNKTIONSPRUEFUNG.md` | Prüfliste der 24 Funktionen (MaterialMatch 2.0, Schritt 13): wie geprüft, Ergebnis, Grenzen, Selbsttest |
 | `FORTSCHRITT.md` | **Aktueller Stand, Entscheidungen, nächster Schritt** (zum Weiterarbeiten nach einer Pause) |
 | `data/quellen/oekobaudat_2024-II_auszug.csv` | Auszug: alle Originalzeilen der verwendeten ÖKOBAUDAT-Datensätze |
-| `tools/erzeuge_schraffuren.py` | Hilfsprogramm: zeichnet die schematischen Materialillustrationen (`img/schraffuren/*.svg`) neu; liefert immer dieselben Dateien |
+| `tools/erzeuge_schraffuren.py` | Hilfsprogramm: zeichnet die technischen Schraffuren (`img/schraffuren/*.svg`, je Baustoffgruppe ein Muster) und schreibt `data/schraffuren.js`; liefert immer dieselben Dateien |
+| `data/schraffuren.js` | Zuordnung Baustoff → Schraffurgruppe, Muster, Bezug zur Quelle (erzeugt, nicht von Hand ändern); Prüfung und Quellen: `SCHRAFFUREN_PRUEFUNG.md` |
+| `SCHRAFFUREN_PRUEFUNG.md` | Fachliche Prüfung aller Schraffuren: Quellen, Gruppen, Status je Baustoff, Grenzen, offene Punkte |
 | `tools/oekobaudat_uebernehmen.py` | Hilfsprogramm: übernimmt Werte aus der ÖKOBAUDAT-CSV in die Datenbank |
 | `tools/pruefe_datenqualitaet.js` | Hilfsprogramm: prüft alle Baustoffdaten (fehlende und ungültige Kennwerte, Quellen, Einheiten, Größenordnungen, Duplikate, Verknüpfungen) und schreibt mit `--bericht` die Lückenliste `DATENLUECKEN.md` |
 | `tools/bilder_bauen.py` | Verarbeitet heruntergeladene Materialfotos (Zuschnitt 4:3, 800 × 600 px, WebP) und schreibt `data/bilder.js` |
@@ -168,7 +170,7 @@ Alle automatischen Tests (Node.js und Playwright mit Chromium nötig):
 bash tests/alle.sh
 ```
 
-Rund 1.973 Prüfungen in 53 Dateien (`tests/test1.js` bis `tests/test54.js`; `test54` prüft den Hinweis „Kurz vorab“, den Logo-Auftakt, den kompakten Kopf, die einheitlichen Eckenradien, die drei Ebenen im Vergleich und die Hilfen im Match-Interview; `test53` (braucht Python 3 mit Pillow) prüft die Materialfotos (Lizenzangaben, Dateien, 4:3, Laden aller 50 Bilder, gleiche Bildquelle in allen Bereichen, Umschalter Foto/Schraffur, mobil); `test52` prüft den Reiter „Entdecken“ (Suche, Filter, Sortierung, Karten/Liste, Material in den Vergleich legen), die drei Hauptaktionen und den gegliederten Steckbrief; `test51` prüft die Händlerpreisspannen von bausep.de (jede Spanne wird aus den Einzelpreisen nachgerechnet) und das Feld „echt“, das belegte Preise nur im Echtdaten-Modus einsetzt; `test50` prüft die Match-Funktion mit Nutzerprofilen, den Fallback, Preisspannen und das Prüfskript; `test49` prüft Datenpaket 3: STEICO, Cirkel PORIT, KS-ORIGINAL; `test21` gehört zu Schritt 11, `test22` zu Schritt 13 und braucht für die PDF-Prüfung `pdftotext`, `pdfinfo` und `pdftoppm` aus dem Paket poppler-utils, `test23` zu Schritt 14 und nutzt `tests/referenzrechnung.py` als unabhängigen Referenzrechner; es braucht Python 3 und startet kurz einen lokalen Server). Ergebnis: `QUALITAETSBERICHT.md`. `tools/pruefe_gegen_csv.js` arbeitet mit dem Auszug im Projekt (`data/quellen/`).
+Rund 1.993 Prüfungen in 54 Dateien (`tests/test1.js` bis `tests/test55.js`; `test55` prüft die Schraffur-Zuordnung, die Du-Ansprache, „Wie geht es weiter?“ und das mittige Hinweisfenster; `test54` prüft den Hinweis „Kurz vorab“, den Logo-Auftakt, den kompakten Kopf, die einheitlichen Eckenradien, die drei Ebenen im Vergleich und die Hilfen im Match-Interview; `test53` (braucht Python 3 mit Pillow) prüft die Materialfotos (Lizenzangaben, Dateien, 4:3, Laden aller 50 Bilder, gleiche Bildquelle in allen Bereichen, Umschalter Foto/Schraffur, mobil); `test52` prüft den Reiter „Entdecken“ (Suche, Filter, Sortierung, Karten/Liste, Material in den Vergleich legen), die drei Hauptaktionen und den gegliederten Steckbrief; `test51` prüft die Händlerpreisspannen von bausep.de (jede Spanne wird aus den Einzelpreisen nachgerechnet) und das Feld „echt“, das belegte Preise nur im Echtdaten-Modus einsetzt; `test50` prüft die Match-Funktion mit Nutzerprofilen, den Fallback, Preisspannen und das Prüfskript; `test49` prüft Datenpaket 3: STEICO, Cirkel PORIT, KS-ORIGINAL; `test21` gehört zu Schritt 11, `test22` zu Schritt 13 und braucht für die PDF-Prüfung `pdftotext`, `pdfinfo` und `pdftoppm` aus dem Paket poppler-utils, `test23` zu Schritt 14 und nutzt `tests/referenzrechnung.py` als unabhängigen Referenzrechner; es braucht Python 3 und startet kurz einen lokalen Server). Ergebnis: `QUALITAETSBERICHT.md`. `tools/pruefe_gegen_csv.js` arbeitet mit dem Auszug im Projekt (`data/quellen/`).
 Nur `test21` liest zusätzlich die ÖKOBAUDAT-Originaldatei und erwartet sie unter `/home/user/oekobaudat_original/`
 (Pfad oben in `tests/test21.js` anpassen, falls sie woanders liegt; ohne die Datei schlägt dieser Test fehl).
 
@@ -194,6 +196,7 @@ Nur `test21` liest zusätzlich die ÖKOBAUDAT-Originaldatei und erwartet sie unt
 - [x] Schritt 15 – Projektdokumentation und Präsentationsmaterial (`PROJEKTDOKUMENTATION.md`, `PRAESENTATION.md`)
 - [x] MaterialMatch 3.5 – Navigation, Reiter „Entdecken“, gegliederter Steckbrief (`DESIGNSYSTEM.md`)
 - [x] MaterialMatch 3.7 – Design-Feinschliff (kompakter Kopf ohne doppelte Knöpfe, einheitliche Radien, Ebenen im Vergleich, Match-Hilfen), Hinweis „Kurz vorab“ und Logo-Auftakt
+- [x] MaterialMatch 3.8 – fachlich geprüfte Schraffuren (`SCHRAFFUREN_PRUEFUNG.md`), Logo-Auftakt 1,3 s, mittiger Hinweis, einheitliche Du-Ansprache, „Wie geht es weiter?“ im Vergleich
 - [x] MaterialMatch 3.6 – Materialfotos statt Schraffuren (`data/bilder.js`, `img/materialfotos/`, Bildnachweis in „Quellen & Details“, Schraffuren bleiben erhalten)
 
 Details und Entscheidungen: `FORTSCHRITT.md` und `PROJEKTDOKUMENTATION.md`.

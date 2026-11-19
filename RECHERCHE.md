@@ -420,3 +420,6 @@ Die Siniat-EPD „Gipsplatte nach DIN EN 520 und DIN 18180“ (BVG, EPD-BVG-2021
   `index.html?modus=demo`), dort gelb mit „B“.
 - Ein gelber Hinweis „Nur zur Orientierung …“ erklärt, dass Richtwerte keine verlässliche Produkt- oder Kostenberechnung erlauben.
 - Erreichbarkeit der Links: `node tools/pruefe_links.js` (siehe README).
+
+## 2m. Schraffuren (19.11.2026)
+Frage: Welche Darstellung geschnittener Baustoffe ist belegbar? Normtexte (DIN 1356-1:2024-04, DIN EN ISO 128-3, früher DIN ISO 128-50, DIN 201) sind kostenpflichtig und wurden nicht gelesen; Status laut DIN-Seiten (Suchergebnis). Gelesen und angesehen: Europa-Fachbuchreihe Bautechnik „Technisches Zeichnen“, 6. Aufl., Abschnitt 2.6 (frei abrufbare Leseprobe, https://www.bauberufe.eu/images/doks/zeichnen_414156.pdf, abgerufen 19.11.2026) mit der Tabelle „Schraffuren und Farben DIN 1356-1“ und „Schraffuren DIN ISO 128-50“. Nicht abrufbar (Netzsperre): Uni Hamburg „Bauzeichnen I“, Uni Wuppertal „Übung Bauzeichnen“ (nur Suchauszug). Nicht verwendet: Forenbeiträge, CAD-Bibliotheken ohne Normangabe. Ergebnis und Grenzen: `SCHRAFFUREN_PRUEFUNG.md`.

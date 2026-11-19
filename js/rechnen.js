@@ -32,9 +32,9 @@
 
   // Meldung, wenn Fläche und Dicke noch nicht für die Rechnung reichen. true = es kann gerechnet werden.
   function eingabenPruefen(box, L, was) {
-    if (!L.plaetze.length) { hinweis(box, "Wählen Sie zuerst Materialien aus, um " + was + " zu berechnen."); return false; }
-    if (L.e.status === "fehler") { hinweis(box, "Bitte korrigieren Sie die markierten Eingaben (Fläche und Dicke)."); return false; }
-    if (L.e.status !== "ok") { hinweis(box, "Geben Sie Bauteilfläche und Materialdicke ein, um " + was + " zu berechnen."); return false; }
+    if (!L.plaetze.length) { hinweis(box, "Wähle zuerst Materialien aus, um " + was + " zu berechnen."); return false; }
+    if (L.e.status === "fehler") { hinweis(box, "Bitte korrigiere die markierten Eingaben (Fläche und Dicke)."); return false; }
+    if (L.e.status !== "ok") { hinweis(box, "Gib Bauteilfläche und Materialdicke ein, um " + was + " zu berechnen."); return false; }
     return true;
   }
 
@@ -232,9 +232,9 @@
   function rWert(L) {
     var box = boxen.r;
     box.textContent = "";
-    if (!L.plaetze.length) { hinweis(box, "Wählen Sie zuerst Materialien aus, um den R-Wert zu berechnen."); return; }
+    if (!L.plaetze.length) { hinweis(box, "Wähle zuerst Materialien aus, um den R-Wert zu berechnen."); return; }
     if (L.e.dicke_gueltig_m === null) {
-      hinweis(box, L.e.fehler.dicke ? "Bitte korrigieren Sie die markierte Materialdicke." : "Geben Sie die Materialdicke ein, um den R-Wert zu berechnen.");
+      hinweis(box, L.e.fehler.dicke ? "Bitte korrigiere die markierte Materialdicke." : "Gib die Materialdicke ein, um den R-Wert zu berechnen.");
       return;
     }
     var B = MM.berechnung;
@@ -297,12 +297,12 @@
     var box = boxen.rziel;
     box.textContent = "";
     if (z.status === "leer") {
-      box.appendChild(notiz("Geben Sie einen gewünschten R-Wert ein (z. B. 5), dann sehen Sie, welche Dicke jedes Material dafür braucht. " +
+      box.appendChild(notiz("Gib einen gewünschten R-Wert ein (z. B. 5), dann siehst du, welche Dicke jedes Material dafür braucht. " +
         "So lassen sich Dämmstoffe nach gleicher Dämmwirkung vergleichen, nicht nach gleicher Dicke."));
       return;
     }
-    if (z.status === "fehler") { hinweis(box, "Bitte korrigieren Sie den gewünschten R-Wert."); return; }
-    if (!L.plaetze.length) { hinweis(box, "Wählen Sie zuerst Materialien aus."); return; }
+    if (z.status === "fehler") { hinweis(box, "Bitte korrigiere den gewünschten R-Wert."); return; }
+    if (!L.plaetze.length) { hinweis(box, "Wähle zuerst Materialien aus."); return; }
 
     var B = MM.berechnung;
     var f = B.formatZahl;
@@ -351,7 +351,7 @@
 
     nichtBerechenbar(box, L.plaetze, erf);
     if (flaeche === null) {
-      box.appendChild(notiz("Geben Sie die Bauteilfläche ein, um auch Kosten und CO₂ für diese Dicke zu sehen."));
+      box.appendChild(notiz("Gib die Bauteilfläche ein, um auch Kosten und CO₂ für diese Dicke zu sehen."));
     } else {
       var preise = L.plaetze.map(function (p) { return p.material.eigenschaften.preis; });
       var pr = MM.bewertung.pruefePreis(preise);

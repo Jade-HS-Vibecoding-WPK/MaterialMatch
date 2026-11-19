@@ -349,7 +349,7 @@
     mehr.appendChild(inhalt);
     art.appendChild(mehr);
 
-    art.appendChild(el("p", "Die Illustration ist eine schematische Zeichnung, kein Foto und kein Herstellerprodukt. Alle Werte sind Orientierungswerte für frühe Entwurfsentscheidungen.", "sb-fuss"));
+    art.appendChild(el("p", "Foto und Schraffur zeigen die Materialart, nicht ein bestimmtes Herstellerprodukt. Die Schraffur ist eine schematische Zeichnung. Alle Werte sind Orientierungswerte für frühe Entwurfsentscheidungen.", "sb-fuss"));
     return art;
   }
 
@@ -463,6 +463,28 @@
     if (ohneFoto.length) nb.appendChild(el("p", "Ohne Foto (es wird die Schraffur gezeigt): " + ohneFoto.map(function (m) { return m.name; }).join("; ") + ".", "soft-text"));
     nach.appendChild(nb);
     box.appendChild(nach);
+    // Schraffuren: woher die Muster stammen und wie belastbar die Zuordnung ist (data/schraffuren.js, SCHRAFFUREN_PRUEFUNG.md)
+    var SH = root.MATERIALMATCH_SCHRAFFUREN;
+    if (SH) {
+      box.appendChild(el("h4", "Schraffuren"));
+      box.appendChild(el("p", "Die Schraffuren sind einfache Zeichnungen in Anlehnung an die übliche Darstellung geschnittener Baustoffe in Bauzeichnungen. Sie sind schematisch, nicht normgerecht und nicht an den Normtexten geprüft. Wo es für einen Baustoff keine belegbare Darstellung gibt, steht ein neutraler Platzhalter. Ein Foto ist keine Schraffur: Das Foto zeigt das Material, die Schraffur kennzeichnet es im Plan."));
+      var sd = el("details", null, "sub");
+      sd.appendChild(el("summary", "Schraffur je Baustoff und Quelle"));
+      var sb = el("div", null, "sub-body");
+      sb.appendChild(el("p", "Quelle der Muster: " + SH.quelle + ". Stand: " + SH.stand + ".", "soft-text"));
+      var sl = el("ul", null, "schraffur-liste");
+      daten.baustoffe.forEach(function (m) {
+        var i = SH.materialien[m.id];
+        if (!i) return;
+        var li = el("li");
+        li.appendChild(el("strong", m.name + ": "));
+        li.appendChild(document.createTextNode(i.bezug === "keiner" ? "keine belegte Schraffur. " + (i.hinweis || "") : i.gruppe + " (" + i.muster + ")" + (i.bezug === "gruppe" ? ", Gruppenzuordnung durch das Projekt." : ".")));
+        sl.appendChild(li);
+      });
+      sb.appendChild(sl);
+      sd.appendChild(sb);
+      box.appendChild(sd);
+    }
     if (p) {
       box.appendChild(el("h4", p.meta.titel));
       box.appendChild(el("p", p.meta.hinweis));
