@@ -171,14 +171,22 @@
   "alt": "Foto: Gestapelte glasierte und unglasierte Tondachziegel"
  },
  "leichtbetonstein_blaehton": {
-  "titel": "Hydroton.jpg",
-  "urheber": "Lucis",
-  "lizenz": "CC BY-SA 3.0",
-  "lizenz_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "titel": "Beton-Leichtstein 02 Oberfläche.jpg",
+  "urheber": "Patrick Oberdörfer",
+  "lizenz": "CC BY-SA 4.0",
+  "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "aufnahmedatum": "2022-08-23",
+  "alt": "Foto: Mauerwerk aus Leichtbetonsteinen mit poröser Oberfläche (Leichtbetonstein)",
+  "fokus": [
+   0.15,
+   0.5
+  ],
+  "hinweis": "Fertiger Beton-Leichtstein im Mauerwerk, Oberfläche und Steinformat sichtbar. Die Dateibeschreibung nennt „Beton-Leichtstein“, die Art des Leichtzuschlags (z. B. Blähton) steht dort nicht.",
   "quelle_name": "Wikimedia Commons",
-  "quelle_url": "https://commons.wikimedia.org/wiki/File:Hydroton.jpg",
-  "abgerufen": "2026-11-18",
-  "alt": "Foto: Blähton-Granulat, der Leichtzuschlag für Blähton-Leichtbetonsteine, in Nahaufnahme"
+  "quelle_url": "https://commons.wikimedia.org/wiki/File:Beton-Leichtstein_02_Oberfl%C3%A4che.jpg",
+  "original_url": "https://upload.wikimedia.org/wikipedia/commons/1/19/Beton-Leichtstein_02_Oberfl%C3%A4che.jpg",
+  "abgerufen": "2026-11-19",
+  "version": "8"
  },
  "massivholz_nadel": {
   "titel": "Fichte Holz.JPG",
@@ -232,14 +240,21 @@
   "alt": "Foto: Stapel grauer XPS-Dämmplatten"
  },
  "pir": {
-  "titel": "Polyisocyanurate insulation boards.jpg",
-  "urheber": "thingermejig",
-  "lizenz": "CC BY-SA 2.0",
-  "lizenz_url": "https://creativecommons.org/licenses/by-sa/2.0",
+  "titel": "PIR Panels 04.JPG",
+  "urheber": "Sealle",
+  "lizenz": "CC BY-SA 4.0",
+  "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "aufnahmedatum": "2016-04-05",
+  "alt": "Foto: PIR-Dämmplatte mit Aluminiumkaschierung auf einem Stapel gleicher Platten",
+  "fokus": [
+   0.5,
+   0.5
+  ],
   "quelle_name": "Wikimedia Commons",
-  "quelle_url": "https://commons.wikimedia.org/wiki/File:Polyisocyanurate_insulation_boards.jpg",
-  "abgerufen": "2026-11-18",
-  "alt": "Foto: PIR-Dämmplatten mit Aluminiumkaschierung an einem Holzrahmenbau"
+  "quelle_url": "https://commons.wikimedia.org/wiki/File:PIR_Panels_04.JPG",
+  "original_url": "https://upload.wikimedia.org/wikipedia/commons/3/3f/PIR_Panels_04.JPG",
+  "abgerufen": "2026-11-19",
+  "version": "8"
  },
  "flachsdaemmung": {
   "titel": "Linfiberisolasjon i himling.JPG",
@@ -342,14 +357,22 @@
   "alt": "Foto: Verlegen von Bitumenbahnen auf einem Flachdach, Rollen mit schwarzer Oberfläche"
  },
  "zinkblech": {
-  "titel": "Fassadenschindeln Zinkblech, Osthofenstraße 8, 59494 Soest, Germany.jpg",
-  "urheber": "KaiKemmann",
-  "lizenz": "CC BY-SA 4.0",
-  "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "titel": "Zintek-naturale.jpg",
+  "urheber": "Zintek Srl",
+  "lizenz": "CC BY 4.0",
+  "lizenz_url": "https://creativecommons.org/licenses/by/4.0",
+  "aufnahmedatum": "2020-06-01",
+  "alt": "Foto: aufgerollte Bänder (Coils) aus Titanzink mit blanker, natürlicher Oberfläche",
+  "fokus": [
+   0.0,
+   0.5
+  ],
+  "hinweis": "Zinkblech als Band (Coil) mit natürlicher Oberfläche (Titanzink, Hersteller Zintek), vom Hersteller selbst unter CC BY 4.0 veröffentlicht. Der Hintergrund ist ein Stollen.",
   "quelle_name": "Wikimedia Commons",
-  "quelle_url": "https://commons.wikimedia.org/wiki/File:Fassadenschindeln_Zinkblech,_Osthofenstra%C3%9Fe_8,_59494_Soest,_Germany.jpg",
-  "abgerufen": "2026-11-18",
-  "alt": "Foto: Hausgiebel mit Fassadenschindeln aus Zinkblech"
+  "quelle_url": "https://commons.wikimedia.org/wiki/File:Zintek-naturale.jpg",
+  "original_url": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Zintek-naturale.jpg",
+  "abgerufen": "2026-11-19",
+  "version": "8"
  },
  "keramikfliese": {
   "titel": "Feinsteinzeug.jpg",
@@ -392,14 +415,22 @@
   "alt": "Foto: Verzinktes Stahlblech mit grauer, glatter Oberfläche"
  },
  "betondachstein": {
-  "titel": "Concrete tile re-roof with UPVC dormer.jpg",
-  "urheber": "Crownbuild",
+  "titel": "Harzer Pfanne - Gesamtbild.jpg",
+  "urheber": "Richard Huber",
   "lizenz": "CC BY-SA 3.0",
   "lizenz_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "aufnahmedatum": "2008-08",
+  "alt": "Foto: Dachfläche aus Betondachsteinen (Modell „Harzer Pfanne“)",
+  "fokus": [
+   0.5,
+   0.5
+  ],
+  "hinweis": "Die Dateibeschreibung nennt „Dachstein“ (Betondachstein); die farbige Beschichtung kann Tonziegeln ähneln. Form und Format sind die einer Betondachpfanne.",
   "quelle_name": "Wikimedia Commons",
-  "quelle_url": "https://commons.wikimedia.org/wiki/File:Concrete_tile_re-roof_with_UPVC_dormer.jpg",
-  "abgerufen": "2026-11-18",
-  "alt": "Foto: Dachgaube mit Dachdeckung aus dunklen Betondachsteinen"
+  "quelle_url": "https://commons.wikimedia.org/wiki/File:Harzer_Pfanne_-_Gesamtbild.jpg",
+  "original_url": "https://upload.wikimedia.org/wikipedia/commons/3/38/Harzer_Pfanne_-_Gesamtbild.jpg",
+  "abgerufen": "2026-11-19",
+  "version": "8"
  },
  "naturstein_weich": {
   "titel": "Sandsteinplatte Kalteneber.JPG",

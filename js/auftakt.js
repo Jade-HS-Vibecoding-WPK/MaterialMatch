@@ -1,22 +1,26 @@
 /* ==========================================================================
-   MaterialMatch 3.8 – Logo-Auftakt
+   MaterialMatch (Version 8) – Logo-Auftakt
    --------------------------------------------------------------------------
-   Beim ersten Laden einer Browser-Sitzung steht das vorhandene MaterialMatch-Logo (img/logo.svg) mittig auf ruhigem Hintergrund:
-   es blendet sanft ein (0,35 s), bleibt kurz voll sichtbar und blendet dann aus (0,3 s). Gesamtdauer etwa 1,3 Sekunden, gerechnet ab Seitenstart.
-   • Der Seitenaufbau wird dadurch NICHT verzögert: Die Anwendung wird im Hintergrund aufgebaut und ist während des Auftakts bedienbar
-     (der Auftakt fängt keine Klicks ab: pointer-events: none). Er läuft nur deshalb etwas länger, damit das Logo wahrgenommen wird.
-   • Innerhalb derselben Browser-Sitzung (sessionStorage) läuft er nur einmal; ein kleines Skript in index.html blendet ihn sonst sofort aus.
-   • Bei „Bewegung reduzieren“ (prefers-reduced-motion) gibt es kein Ein- und Ausblenden: der Auftakt verschwindet sofort.
+   Bei JEDEM Seitenaufruf (neuer Tab, Neuladen, erneuter Besuch, GitHub Pages) steht zuerst ein reinweißer Bildschirm (#FFFFFF) mit dem
+   vorhandenen MaterialMatch-Logo (img/logo.svg) exakt in der Mitte. Ablauf, gerechnet ab dem ersten sichtbaren Bild:
+       Logo blendet ein 0,3 s  ·  voll sichtbar 1,6 s  ·  Bildschirm blendet aus 0,4 s  =  2,3 s.
+   Der Ablauf selbst steht als CSS-Animation im <style id="auftakt-css"> im Kopf von index.html (er läuft damit auch dann zeitrichtig,
+   wenn die Skripte langsam laden). Dieses Skript wartet nur auf das Ende der Animation und meldet es weiter (MM.auftakt.beiEnde),
+   damit das Fenster „Kurz vorab“ erst DANACH erscheint.
+   • Es wird nichts gespeichert: weder sessionStorage noch localStorage. Favoriten, Match-Antworten und Einstellungen bleiben unberührt.
+   • Die Anwendung wird im Hintergrund aufgebaut und ist nach dem Auftakt sofort da (der Auftakt fängt keine Klicks ab).
+   • „Bewegung reduzieren“ (prefers-reduced-motion): kein Ein- und Ausblenden; das Logo steht 1,6 s still und verschwindet dann.
+     Das Fenster „Kurz vorab“ erscheint auch dann.
    • Ohne JavaScript wird der Auftakt per CSS ausgeblendet (<noscript> in index.html).
-   • Die Tests schalten ihn aus (tests/_offline.js setzt window.__MM_OHNE_START__); die Adresse ?start=ja erzwingt ihn.
+   • Die Tests schalten ihn aus (tests/_offline.js setzt window.__MM_OHNE_START__); die Adresse ?start=ja erzwingt ihn, ?start=nein schaltet ihn aus.
    ========================================================================== */
 
 (function (root) {
   "use strict";
 
   var MM = root.MM = root.MM || {};
-  var HALTEN_BIS = 1000, AUS_MS = 300;   // Logo bleibt bis 1,0 s nach Seitenstart voll sichtbar, dann 0,3 s Ausblenden = 1,3 s
-  var SCHLUESSEL = "materialmatch.auftakt.v1";
+  var ZEIT_RUHIG_MS = 1600;   // nur für „Bewegung reduzieren“: so lange steht das Logo still
+  var SICHERUNG_MS = 4000;    // falls die Animation nie meldet (z. B. Seite im Hintergrund-Tab): spätestens dann weiter
   var el = null, fertig = false, timer = null, rueckrufe = [];
 
   function ohneStart() {
@@ -31,29 +35,33 @@
     if (fertig) return;
     fertig = true;
     if (timer) { clearTimeout(timer); timer = null; }
-    if (!el) { rufen(); return; }
-    var ruhig = root.matchMedia && root.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (ruhig) { el.hidden = true; rufen(); return; }
-    el.classList.add("weg");
-    setTimeout(function () { el.hidden = true; rufen(); }, AUS_MS);
+    if (el) el.hidden = true;
+    rufen();
   }
 
+  function ruhig() { return !!(root.matchMedia && root.matchMedia("(prefers-reduced-motion: reduce)").matches); }
+
   MM.auftakt = {
-    GESAMT_MS: HALTEN_BIS + AUS_MS,
-    // wird von js/app.js aufgerufen, wenn alles aufgebaut ist; der Auftakt endet trotzdem erst nach der festen Zeit (siehe oben)
+    GESAMT_MS: 2300,
+    // wird von js/app.js aufgerufen, wenn die Anwendung aufgebaut ist; der Auftakt endet trotzdem erst nach der festen Zeit
     bereit: function () {},
-    beiEnde: function (f) { if (fertig && (!el || el.hidden)) f(); else rueckrufe.push(f); },
+    // Rückruf, sobald der Auftakt vollständig beendet ist (sofort, wenn er schon beendet oder ausgeschaltet ist)
+    beiEnde: function (f) { if (fertig) f(); else rueckrufe.push(f); },
     beendet: function () { return fertig; }
   };
 
   el = document.getElementById("auftakt");
-  if (ohneStart() || (el && el.hidden)) {   // ausgeschaltet oder in dieser Sitzung schon gezeigt
+  if (ohneStart() || !el) {
     if (el && el.parentNode) el.parentNode.removeChild(el);
     el = null; fertig = true;
-  } else {
-    try { root.sessionStorage.setItem(SCHLUESSEL, "1"); } catch (e) { /* ohne Speicher läuft er eben jedes Mal */ }
+  } else if (ruhig()) {
     var seit = (root.performance && root.performance.now) ? root.performance.now() : 0;
-    timer = setTimeout(ende, Math.max(HALTEN_BIS - seit, 250));   // feste Zeit ab Seitenstart, danach Ausblenden
+    timer = setTimeout(ende, Math.max(ZEIT_RUHIG_MS - seit, 300));
+  } else {
+    el.addEventListener("animationend", function (e) { if (e.target === el && e.animationName === "auftakt-aus") ende(); });
+    var laufend = el.getAnimations ? el.getAnimations() : null;   // Skripte langsam geladen und Animation schon vorbei?
+    if (laufend && laufend.length && laufend.every(function (a) { return a.playState === "finished"; })) ende();
+    else timer = setTimeout(ende, SICHERUNG_MS);
   }
 
 })(typeof window !== "undefined" ? window : globalThis);

@@ -750,12 +750,7 @@ summary { cursor: pointer; }
 @media (max-width: 520px) { .weiter-knoepfe, .weiter-knoepfe .btn { width: 100%; } }
 
 /* ---------- 13c Logo-Auftakt und Hinweis „Kurz vorab“ (MaterialMatch 3.7) ---------- */
-.auftakt { position: fixed; inset: 0; z-index: 2000; display: flex; align-items: center; justify-content: center; background: var(--bg); opacity: 1; transition: opacity .3s ease; pointer-events: none; }
-.auftakt img { width: min(15.6rem, 62vw); height: auto; animation: auftakt-ein .35s ease both; }
-.auftakt.weg { opacity: 0; }
-.auftakt[hidden] { display: none; }
-@keyframes auftakt-ein { from { opacity: 0; transform: translateY(.25rem); } to { opacity: 1; transform: none; } }
-@media (prefers-reduced-motion: reduce) { .auftakt, .auftakt img { transition: none; animation: none; } }
+/* Der Logo-Auftakt steht als Kopf-Stil in index.html (#auftakt-css). */
 
 dialog.hinweis { width: min(28rem, calc(100vw - 2rem)); max-height: calc(100vh - 2rem); padding: 2rem var(--kachel-innen) 1.75rem; border: 0; border-radius: var(--radius-kachel); background: var(--kachel-weiss); color: var(--text); text-align: center; box-shadow: 0 24px 64px rgba(31, 37, 48, .28); overflow: auto; }
 dialog.hinweis::backdrop { background: rgba(31, 37, 48, .5); }
@@ -768,7 +763,7 @@ dialog.hinweis h2 { margin: 0 0 .75rem; font-size: var(--fs-xl); font-weight: 80
 .hinweis-knopf:hover { background: #000; }
 .hinweis-knopf:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
 @media (max-width: 520px) { dialog.hinweis { padding: 1.5rem 1.1rem 1.25rem; } .hinweis-knopf { width: 100%; } }
-@media print { .auftakt, dialog.hinweis { display: none !important; } }
+@media print { dialog.hinweis { display: none !important; } }
 
 /* Weniger Bewegung (3.7): Wer „Bewegung reduzieren“ eingestellt hat, bekommt keine Übergänge und Animationen */
 @media (prefers-reduced-motion: reduce) {

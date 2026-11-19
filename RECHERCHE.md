@@ -423,3 +423,14 @@ Die Siniat-EPD „Gipsplatte nach DIN EN 520 und DIN 18180“ (BVG, EPD-BVG-2021
 
 ## 2m. Schraffuren (19.11.2026)
 Frage: Welche Darstellung geschnittener Baustoffe ist belegbar? Normtexte (DIN 1356-1:2024-04, DIN EN ISO 128-3, früher DIN ISO 128-50, DIN 201) sind kostenpflichtig und wurden nicht gelesen; Status laut DIN-Seiten (Suchergebnis). Gelesen und angesehen: Europa-Fachbuchreihe Bautechnik „Technisches Zeichnen“, 6. Aufl., Abschnitt 2.6 (frei abrufbare Leseprobe, https://www.bauberufe.eu/images/doks/zeichnen_414156.pdf, abgerufen 19.11.2026) mit der Tabelle „Schraffuren und Farben DIN 1356-1“ und „Schraffuren DIN ISO 128-50“. Nicht abrufbar (Netzsperre): Uni Hamburg „Bauzeichnen I“, Uni Wuppertal „Übung Bauzeichnen“ (nur Suchauszug). Nicht verwendet: Forenbeiträge, CAD-Bibliotheken ohne Normangabe. Ergebnis und Grenzen: `SCHRAFFUREN_PRUEFUNG.md`.
+
+## 2n. Vier Materialfotos ersetzt (19.11.2026)
+Vorgehen: Suche auf Wikimedia Commons (Rechte pro Datei prüfbar); Hersteller- und Händlerseiten wurden **nicht** verwendet, weil dort keine ausdrückliche Erlaubnis zur Nutzung auf einer eigenen Website erkennbar ist (ein öffentlich erreichbares Foto ist nicht automatisch frei verwendbar). Abruf der Dateiseiten am 19.11.2026; Bearbeitung: auf 4:3 zugeschnitten, auf 800 × 600 px verkleinert, WebP.
+| Baustoff | Datei (Commons) | Urheber | Lizenz | Aufnahme | Original-Adresse |
+|---|---|---|---|---|---|
+| Leichtbetonstein | Beton-Leichtstein 02 Oberfläche.jpg | Patrick Oberdörfer | CC BY-SA 4.0 | 23.08.2022 | https://upload.wikimedia.org/wikipedia/commons/1/19/Beton-Leichtstein_02_Oberfl%C3%A4che.jpg |
+| PIR | PIR Panels 04.JPG | Sealle | CC BY-SA 4.0 | 05.04.2016 | https://upload.wikimedia.org/wikipedia/commons/3/3f/PIR_Panels_04.JPG |
+| Zinkblech | Zintek-naturale.jpg | Zintek Srl (Hersteller, selbst unter CC BY 4.0 veröffentlicht) | CC BY 4.0 | 01.06.2020 | https://upload.wikimedia.org/wikipedia/commons/c/cf/Zintek-naturale.jpg |
+| Betondachstein | Harzer Pfanne - Gesamtbild.jpg | Richard Huber | CC BY-SA 3.0 | 08.2008 | https://upload.wikimedia.org/wikipedia/commons/3/38/Harzer_Pfanne_-_Gesamtbild.jpg |
+Vollständige Adressen, Dateiseiten und Hinweise stehen in `tools/bilder_quellen.json` und `data/bilder.js`. **Verworfen:** Hydroton/Leca-Granulat und „Lecablock“ (nur Oberfläche), PIR-Baustellenfotos, „Hig Fassade“ (Beschreibung unsicher: „Zink?“ bzw. verzinkt), „Zinc-sheet.jpg“ (Laborprobe 1 × 2,5 cm, Urheber unbekannt), Fotos gebrauchter Dachziegel im Garten.
+**Grenzen (ehrlich):** Es gibt auf Commons kein Produktfoto eines Blähton-Mauersteins; das Foto zeigt Mauerwerk aus Beton-Leichtsteinen (Art des Leichtzuschlags in der Dateibeschreibung nicht genannt). Das Zinkblech-Foto zeigt Titanzink-Bänder (Coils) vor einem Stollen-Hintergrund, nicht neutral. Der Betondachstein ist farbig beschichtet und kann Tonziegeln ähneln (Dateibeschreibung: „Dachstein“).

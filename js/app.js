@@ -89,7 +89,7 @@
         pruefung.warnungen.length + " Hinweise) · Seite geladen am " + heute;
       statusZeile.classList.add("ok");
     }
-    if (window.MM.hinweis) window.MM.hinweis.init();      // MaterialMatch 3.7: Hinweis „Kurz vorab“ beim ersten Besuch
+    if (window.MM.hinweis) window.MM.hinweis.init();      // MaterialMatch 3.7: Hinweis „Kurz vorab“ bei jedem Seitenaufruf (nach dem Logo-Auftakt)
     if (window.MM.auftakt) window.MM.auftakt.bereit();    // MaterialMatch 3.7: Logo-Auftakt beenden, sobald die Seite bereit ist
   });
 })();

@@ -3,7 +3,7 @@
 window.MATERIALMATCH_BILDER = {
   "meta": {
     "titel": "Materialfotos",
-    "stand": "2026-11-18",
+    "stand": "2026-11-19",
     "format": "WebP 800 × 600 (4:3)",
     "hinweis": "Beispielfotos typischer Baustoffe aus Wikimedia Commons mit freier Lizenz (CC0, gemeinfrei, CC BY, CC BY-SA); sie zeigen nicht zwingend das in den Berechnungen verwendete Herstellerprodukt."
   },
@@ -33,16 +33,20 @@ window.MATERIALMATCH_BILDER = {
       "bearbeitung": "auf 4:3 zugeschnitten, auf 800 × 600 px verkleinert, als WebP gespeichert"
     },
     "betondachstein": {
-      "urheber": "Crownbuild",
+      "urheber": "Richard Huber",
       "lizenz": "CC BY-SA 3.0",
       "lizenz_url": "https://creativecommons.org/licenses/by-sa/3.0",
       "quelle_name": "Wikimedia Commons",
-      "quelle_url": "https://commons.wikimedia.org/wiki/File:Concrete_tile_re-roof_with_UPVC_dormer.jpg",
-      "titel": "Concrete tile re-roof with UPVC dormer.jpg",
-      "abgerufen": "2026-11-18",
-      "alt": "Foto: Dachgaube mit Dachdeckung aus dunklen Betondachsteinen",
+      "quelle_url": "https://commons.wikimedia.org/wiki/File:Harzer_Pfanne_-_Gesamtbild.jpg",
+      "titel": "Harzer Pfanne - Gesamtbild.jpg",
+      "abgerufen": "2026-11-19",
+      "alt": "Foto: Dachfläche aus Betondachsteinen (Modell „Harzer Pfanne“)",
+      "version": "8",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/3/38/Harzer_Pfanne_-_Gesamtbild.jpg",
+      "aufnahmedatum": "2008-08",
       "datei": "betondachstein.webp",
-      "bearbeitung": "auf 4:3 zugeschnitten, auf 800 × 600 px verkleinert, als WebP gespeichert"
+      "bearbeitung": "auf 4:3 zugeschnitten, auf 800 × 600 px verkleinert, als WebP gespeichert",
+      "hinweis": "Die Dateibeschreibung nennt „Dachstein“ (Betondachstein); die farbige Beschichtung kann Tonziegeln ähneln. Form und Format sind die einer Betondachpfanne."
     },
     "bitumenbahn": {
       "urheber": "böhringer friedrich",
@@ -261,16 +265,20 @@ window.MATERIALMATCH_BILDER = {
       "bearbeitung": "auf 4:3 zugeschnitten, auf 800 × 600 px verkleinert, als WebP gespeichert"
     },
     "leichtbetonstein_blaehton": {
-      "urheber": "Lucis",
-      "lizenz": "CC BY-SA 3.0",
-      "lizenz_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "urheber": "Patrick Oberdörfer",
+      "lizenz": "CC BY-SA 4.0",
+      "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0",
       "quelle_name": "Wikimedia Commons",
-      "quelle_url": "https://commons.wikimedia.org/wiki/File:Hydroton.jpg",
-      "titel": "Hydroton.jpg",
-      "abgerufen": "2026-11-18",
-      "alt": "Foto: Blähton-Granulat, der Leichtzuschlag für Blähton-Leichtbetonsteine, in Nahaufnahme",
+      "quelle_url": "https://commons.wikimedia.org/wiki/File:Beton-Leichtstein_02_Oberfl%C3%A4che.jpg",
+      "titel": "Beton-Leichtstein 02 Oberfläche.jpg",
+      "abgerufen": "2026-11-19",
+      "alt": "Foto: Mauerwerk aus Leichtbetonsteinen mit poröser Oberfläche (Leichtbetonstein)",
+      "version": "8",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/1/19/Beton-Leichtstein_02_Oberfl%C3%A4che.jpg",
+      "aufnahmedatum": "2022-08-23",
       "datei": "leichtbetonstein_blaehton.webp",
-      "bearbeitung": "auf 4:3 zugeschnitten, auf 800 × 600 px verkleinert, als WebP gespeichert"
+      "bearbeitung": "auf 4:3 zugeschnitten, auf 800 × 600 px verkleinert, als WebP gespeichert",
+      "hinweis": "Fertiger Beton-Leichtstein im Mauerwerk, Oberfläche und Steinformat sichtbar. Die Dateibeschreibung nennt „Beton-Leichtstein“, die Art des Leichtzuschlags (z. B. Blähton) steht dort nicht."
     },
     "massivholz_laub": {
       "urheber": "Firma TELEYKO",
@@ -357,14 +365,17 @@ window.MATERIALMATCH_BILDER = {
       "bearbeitung": "auf 4:3 zugeschnitten, auf 800 × 600 px verkleinert, als WebP gespeichert"
     },
     "pir": {
-      "urheber": "thingermejig",
-      "lizenz": "CC BY-SA 2.0",
-      "lizenz_url": "https://creativecommons.org/licenses/by-sa/2.0",
+      "urheber": "Sealle",
+      "lizenz": "CC BY-SA 4.0",
+      "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0",
       "quelle_name": "Wikimedia Commons",
-      "quelle_url": "https://commons.wikimedia.org/wiki/File:Polyisocyanurate_insulation_boards.jpg",
-      "titel": "Polyisocyanurate insulation boards.jpg",
-      "abgerufen": "2026-11-18",
-      "alt": "Foto: PIR-Dämmplatten mit Aluminiumkaschierung an einem Holzrahmenbau",
+      "quelle_url": "https://commons.wikimedia.org/wiki/File:PIR_Panels_04.JPG",
+      "titel": "PIR Panels 04.JPG",
+      "abgerufen": "2026-11-19",
+      "alt": "Foto: PIR-Dämmplatte mit Aluminiumkaschierung auf einem Stapel gleicher Platten",
+      "version": "8",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/3/3f/PIR_Panels_04.JPG",
+      "aufnahmedatum": "2016-04-05",
       "datei": "pir.webp",
       "bearbeitung": "auf 4:3 zugeschnitten, auf 800 × 600 px verkleinert, als WebP gespeichert"
     },
@@ -488,16 +499,20 @@ window.MATERIALMATCH_BILDER = {
       "bearbeitung": "auf 4:3 zugeschnitten, auf 800 × 600 px verkleinert, als WebP gespeichert"
     },
     "zinkblech": {
-      "urheber": "KaiKemmann",
-      "lizenz": "CC BY-SA 4.0",
-      "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "urheber": "Zintek Srl",
+      "lizenz": "CC BY 4.0",
+      "lizenz_url": "https://creativecommons.org/licenses/by/4.0",
       "quelle_name": "Wikimedia Commons",
-      "quelle_url": "https://commons.wikimedia.org/wiki/File:Fassadenschindeln_Zinkblech,_Osthofenstra%C3%9Fe_8,_59494_Soest,_Germany.jpg",
-      "titel": "Fassadenschindeln Zinkblech, Osthofenstraße 8, 59494 Soest, Germany.jpg",
-      "abgerufen": "2026-11-18",
-      "alt": "Foto: Hausgiebel mit Fassadenschindeln aus Zinkblech",
+      "quelle_url": "https://commons.wikimedia.org/wiki/File:Zintek-naturale.jpg",
+      "titel": "Zintek-naturale.jpg",
+      "abgerufen": "2026-11-19",
+      "alt": "Foto: aufgerollte Bänder (Coils) aus Titanzink mit blanker, natürlicher Oberfläche",
+      "version": "8",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Zintek-naturale.jpg",
+      "aufnahmedatum": "2020-06-01",
       "datei": "zinkblech.webp",
-      "bearbeitung": "auf 4:3 zugeschnitten, auf 800 × 600 px verkleinert, als WebP gespeichert"
+      "bearbeitung": "auf 4:3 zugeschnitten, auf 800 × 600 px verkleinert, als WebP gespeichert",
+      "hinweis": "Zinkblech als Band (Coil) mit natürlicher Oberfläche (Titanzink, Hersteller Zintek), vom Hersteller selbst unter CC BY 4.0 veröffentlicht. Der Hintergrund ist ein Stollen."
     }
   }
 };

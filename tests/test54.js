@@ -31,9 +31,10 @@ const TEXT3 = 'Danke, dass du MaterialMatch ausprobierst!';
   const gesperrt = await p.evaluate(() => { const e = document.elementFromPoint(40, 200); return !!e.closest('dialog') || e.tagName === 'DIALOG' || e.tagName === 'HTML'; });
   await p.click('#hinweis-ok');
   const nachOk = await p.evaluate(() => ({ offen: document.getElementById('hinweis').open, gespeichert: localStorage.getItem('materialmatch.hinweis.v1') }));
-  check('Klick auf „Verstanden“: das Fenster schließt sich, die Anwendung ist bedienbar, die Bestätigung steht im Browser (Datum)', !nachOk.offen && /^\d{4}-\d{2}-\d{2}$/.test(nachOk.gespeichert) && await p.evaluate(() => document.getElementById('reiter-match').getBoundingClientRect().width > 0), nachOk);
-  await p.reload(); await p.waitForTimeout(1500);
-  check('Zweiter Besuch (Neuladen): kein Fenster mehr', !(await p.evaluate(() => document.getElementById('hinweis').open)));
+  check('Klick auf „Verstanden“: das Fenster schließt sich, die Anwendung ist bedienbar, im Browser wird nichts gespeichert (Version 8)', !nachOk.offen && nachOk.gespeichert === null && await p.evaluate(() => document.getElementById('reiter-match').getBoundingClientRect().width > 0), nachOk);
+  await p.reload(); await p.waitForSelector('#hinweis[open]', { timeout: 5000 });
+  check('Zweiter Besuch (Neuladen) nach Bestätigung: das Fenster erscheint erneut (Version 8: bei jedem Aufruf)', await p.evaluate(() => document.getElementById('hinweis').open));
+  await p.click('#hinweis-ok');
   await p.click('#hinweis-erneut');
   check('Im Fuß der Seite lässt sich der Hinweis erneut aufrufen', await p.evaluate(() => document.getElementById('hinweis').open));
   await p.keyboard.press('Escape');
@@ -43,13 +44,13 @@ const TEXT3 = 'Danke, dass du MaterialMatch ausprobierst!';
   p = await neu('&start=ja'); await p.waitForSelector('#hinweis[open]'); await p.keyboard.press('Escape');
   const ohneSpeicher = await p.evaluate(() => localStorage.getItem('materialmatch.hinweis.v1'));
   await p.reload(); await p.waitForSelector('#hinweis[open]', { timeout: 4000 });
-  check('Wurde das Fenster nur mit Escape geschlossen, wird nichts gespeichert und es erscheint beim nächsten Besuch erneut', ohneSpeicher === null);
+  check('Auch nach Escape wird nichts gespeichert und das Fenster erscheint beim nächsten Besuch erneut', ohneSpeicher === null);
   await p.close();
   // Speicher gesperrt: kein Absturz, Fenster erscheint, Schließen klappt
   const c2 = await b.newContext({ viewport: { width: 1280, height: 800 } }); await c2.addInitScript(() => { Object.defineProperty(window, 'localStorage', { get() { throw new Error('gesperrt'); } }); });
   p = await c2.newPage(); p.on('pageerror', e => errors.push(String(e))); await p.goto(URL + '?modus=echt&start=ja');
   await p.waitForSelector('#hinweis[open]', { timeout: 4000 }); await p.click('#hinweis-ok');
-  check('Ist der Browser-Speicher gesperrt (z. B. privates Fenster), funktioniert das Fenster trotzdem (Schließen klappt, kein Fehler)', !(await p.evaluate(() => document.getElementById('hinweis').open)));
+  check('Ist der Browser-Speicher gesperrt (z. B. privates Fenster), funktioniert das Fenster trotzdem; es braucht keinen Speicher (Schließen klappt, kein Fehler)', !(await p.evaluate(() => document.getElementById('hinweis').open)));
   await p.close();
   // Nur der Hinweis, sonst nichts verändert: ohne ?start=ja (Teststandard) erscheint nichts
   p = await neu('');
@@ -59,23 +60,13 @@ const TEXT3 = 'Danke, dass du MaterialMatch ausprobierst!';
   // ---------- 2. Logo-Auftakt ----------
   p = await neu('&start=ja');
   const a0 = await p.evaluate(() => { const e = document.getElementById('auftakt'); const s = getComputedStyle(e); const i = e.querySelector('img'); const r = i.getBoundingClientRect(); return { logo: i.getAttribute('src'), mittig: Math.abs((r.left + r.width / 2) - innerWidth / 2) < 8 && Math.abs((r.top + r.height / 2) - innerHeight / 2) < 8, pos: s.position, klicks: s.pointerEvents, hidden: e.getAttribute('aria-hidden'), bg: s.backgroundColor }; });
-  check('Der Auftakt zeigt das vorhandene Logo (img/logo.svg) mittig auf ruhigem Hintergrund, ist für Hilfsprogramme verborgen und fängt keine Klicks ab', a0.logo === 'img/logo.svg' && a0.mittig && a0.pos === 'fixed' && a0.klicks === 'none' && a0.hidden === 'true' && /^rgb\(24[0-9], 24[0-9], 24[0-9]\)$/.test(a0.bg), a0);
+  check('Der Auftakt zeigt das vorhandene Logo (img/logo.svg) mittig auf reinweißem Hintergrund (#FFFFFF), ist für Hilfsprogramme verborgen und fängt keine Klicks ab', a0.logo === 'img/logo.svg' && a0.mittig && a0.pos === 'fixed' && a0.klicks === 'none' && a0.hidden === 'true' && a0.bg === 'rgb(255, 255, 255)', a0);
   await p.waitForFunction(() => MM.auftakt && MM.auftakt.beendet() && document.getElementById('auftakt').hidden, null, { timeout: 3000 });
   await p.close();
-  // Zeitgrenzen: der Auftakt dauert etwa 1,3 s ab Seitenstart (Logo bleibt wahrnehmbar), verzögert den Seitenaufbau aber nicht
-  const messen = async (verzoegerung) => { const c = await b.newContext({ viewport: { width: 1280, height: 800 } }); if (verzoegerung) await c.route('**/js/app.js', async r => { await new Promise(x => setTimeout(x, verzoegerung)); r.continue(); }); const q = await c.newPage(); const t0 = Date.now(); await q.goto(URL + '?modus=echt&start=ja', { waitUntil: 'commit' }); await q.waitForFunction(() => window.MM && MM.auftakt && MM.auftakt.beendet() && document.getElementById('auftakt').hidden, null, { timeout: 4000, polling: 20 }); const ms = Date.now() - t0; const bereit = await q.evaluate(() => !!document.querySelector('#bereich-vergleich') && document.querySelectorAll('.tab').length >= 3); await c.close(); return { ms, bereit }; };
+  // Dauer: etwa 2,3 s (Version 8); bei sehr langsamem Laden der Skripte nicht kürzer als die CSS-Animation und nicht länger als 4 s
+  const messen = async (verzoegerung) => { const c = await b.newContext({ viewport: { width: 1280, height: 800 } }); if (verzoegerung) await c.route('**/js/app.js', async r => { await new Promise(x => setTimeout(x, verzoegerung)); r.continue(); }); const q = await c.newPage(); const t0 = Date.now(); await q.goto(URL + '?modus=echt&start=ja', { waitUntil: 'commit' }); await q.waitForFunction(() => window.MM && MM.auftakt && MM.auftakt.beendet() && document.getElementById('auftakt').hidden, null, { timeout: 6000, polling: 20 }); const ms = Date.now() - t0; await c.close(); return ms; };
   const schnell = await messen(0), langsam = await messen(1500);
-  check(`Dauer des Auftakts: etwa 1,2–1,5 Sekunden (gemessen ${schnell.ms} ms inkl. Start des Browsers); auch bei sehr langsamem Laden endet er nach spätestens ~1,6 s (${langsam.ms} ms)`, schnell.ms >= 1100 && schnell.ms <= 1700 && langsam.ms >= 1100 && langsam.ms <= 1800, [schnell, langsam]);
-  // Innerhalb derselben Browser-Sitzung: nur einmal
-  const cs = await b.newContext({ viewport: { width: 1280, height: 800 } }); const ps = await cs.newPage();
-  await ps.goto(URL + '?modus=echt&start=ja&x=7'); await ps.waitForFunction(() => MM.auftakt && MM.auftakt.beendet() && document.getElementById('auftakt').hidden, null, { timeout: 4000 });
-  const sitz1 = await ps.evaluate(() => sessionStorage.getItem('materialmatch.auftakt.v1'));
-  await ps.goto(URL + '?modus=echt&x=7');   // ohne ?start=ja: normale Seite, Sitzung kennt den Auftakt schon
-  const sitz2 = await ps.evaluate(() => { const e = document.getElementById('auftakt'); return !e || e.hidden; });
-  await ps.goto(URL + '?modus=echt&start=ja&x=8');
-  const sitz3 = await ps.evaluate(() => { const e = document.getElementById('auftakt'); return { sichtbar: !!e && !e.hidden }; });
-  check('Innerhalb derselben Browser-Sitzung läuft der Auftakt nicht erneut (sessionStorage); ?start=ja erzwingt ihn zum Ansehen', sitz1 === '1' && sitz2 && sitz3.sichtbar, [sitz1, sitz2, sitz3]);
-  await cs.close();
+  check(`Dauer des Auftakts: etwa 2,3 Sekunden (gemessen ${schnell} ms inkl. Start des Browsers, erlaubt 2,0–2,8 s); auch bei langsam ladenden Skripten (${langsam} ms) nicht kürzer als 2,0 s`, schnell >= 2000 && schnell <= 2800 && langsam >= 2000 && langsam <= 3300, [schnell, langsam]);
   // Bedienbar während des Auftakts
   const c3 = await b.newContext({ viewport: { width: 1280, height: 800 } }); await c3.route('**/js/app.js', async r => { await new Promise(x => setTimeout(x, 400)); r.continue(); });
   p = await c3.newPage(); await p.goto(URL + '?modus=echt&start=ja&x=1', { waitUntil: 'domcontentloaded' });

@@ -28,7 +28,9 @@
   function fotos() { return (root.MATERIALMATCH_BILDER && root.MATERIALMATCH_BILDER.bilder) || {}; }
   function foto(id) { return fotos()[id] || null; }
   function hatFoto(id) { return !!foto(id); }
-  function fotoUrl(id) { var f = foto(id); return f ? FOTOPFAD + f.datei : null; }
+  // Wurde ein Foto ausgetauscht, steht in data/bilder.js ein Feld „version“; es hängt sich als ?v=… an die Adresse und umgeht so den Browser-Zwischenspeicher
+  // (nur für diese Fotos; alle anderen behalten ihre unveränderte Adresse und bleiben im Zwischenspeicher).
+  function fotoUrl(id) { var f = foto(id); return f ? FOTOPFAD + f.datei + (f.version ? "?v=" + encodeURIComponent(f.version) : "") : null; }
   // Bildnachweis als kurzer Text, z. B. „Foto: Max Muster, CC BY-SA 4.0 (Wikimedia Commons)“
   function nachweis(id) {
     var f = foto(id);
